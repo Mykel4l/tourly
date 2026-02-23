@@ -13,6 +13,8 @@ import { useWishlist } from "@/lib/store";
 import { useTranslation } from "@/lib/i18n";
 import { useCurrency } from "@/lib/currency";
 import { TopNavBar } from "@/components/top-nav-bar";
+import { StarRating } from "@/components/star-rating";
+import { useReviews } from "@/lib/reviews";
 
 export default function PackageDetailScreen() {
   const colors = useColors();
@@ -21,9 +23,12 @@ export default function PackageDetailScreen() {
   const { toggle, isSaved } = useWishlist();
   const { t } = useTranslation();
   const { format } = useCurrency();
+  const { getReviewsFor, getAverageRating } = useReviews();
 
   const pkg = packages.find(p => p.id === id);
   const saved = pkg ? isSaved(pkg.id, "package") : false;
+  const pkgReviews = pkg ? getReviewsFor(pkg.id, "package") : [];
+  const avgRating = pkg ? getAverageRating(pkg.id, "package") : 0;
 
   const handleBack = () => {
     if (Platform.OS !== "web") {
@@ -194,16 +199,35 @@ export default function PackageDetailScreen() {
           </View>
 
           {/* Reviews */}
-          <View className="flex-row items-center mb-6">
-            <View className="flex-row">
-              {[...Array(pkg.rating)].map((_, i) => (
-                <IconSymbol key={i} name="star.fill" size={16} color={colors.primary} />
-              ))}
-            </View>
+          <View className="flex-row items-center mb-2">
+            <StarRating rating={avgRating || pkg.rating} size={16} />
             <Text className="ml-2 text-sm" style={{ color: colors.muted }}>
-            ({pkg.reviews} {t.reviewsLabel})
+            {(avgRating || pkg.rating).toFixed(1)} ({pkgReviews.length || pkg.reviews} {t.reviewsLabel})
             </Text>
           </View>
+
+          {/* User Reviews */}
+          {pkgReviews.length > 0 && (
+            <View className="mb-6">
+              {pkgReviews.slice(0, 3).map((review) => (
+                <View
+                  key={review.id}
+                  style={{
+                    backgroundColor: colors.surface,
+                    borderRadius: 14,
+                    padding: 14,
+                    marginBottom: 8,
+                  }}
+                >
+                  <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                    <Text style={{ color: colors.foreground, fontWeight: "600", fontSize: 14 }}>{review.userName}</Text>
+                    <StarRating rating={review.rating} size={12} />
+                  </View>
+                  <Text style={{ color: colors.muted, fontSize: 13, lineHeight: 20 }}>{review.comment}</Text>
+                </View>
+              ))}
+            </View>
+          )}
 
           {/* Description */}
           <View className="mb-6">

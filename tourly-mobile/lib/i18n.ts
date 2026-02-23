@@ -289,6 +289,101 @@ export interface Translations {
   andText: string;
   signOut: string;
   signOutConfirm: string;
+  // Onboarding
+  onboardingTitle1: string;
+  onboardingDesc1: string;
+  onboardingTitle2: string;
+  onboardingDesc2: string;
+  onboardingTitle3: string;
+  onboardingDesc3: string;
+  getStarted: string;
+  next: string;
+  skip: string;
+  // Premium / Subscription
+  premiumTitle: string;
+  premiumSubtitle: string;
+  premiumProTitle: string;
+  premiumEliteTitle: string;
+  premiumPerMonth: string;
+  premiumPerYear: string;
+  premiumSavePercent: string;
+  premiumSubscribe: string;
+  premiumRestore: string;
+  premiumCurrentPlan: string;
+  premiumFreePlan: string;
+  premiumFeatureDeals: string;
+  premiumFeatureSupport: string;
+  premiumFeatureCancellation: string;
+  premiumFeatureAI: string;
+  premiumFeatureAdFree: string;
+  premiumFeatureConcierge: string;
+  premiumFeatureLounge: string;
+  premiumFeatureDoublePoints: string;
+  premiumMostPopular: string;
+  premiumBestValue: string;
+  // Loyalty & Rewards
+  loyaltyTitle: string;
+  loyaltyPoints: string;
+  loyaltyTier: string;
+  loyaltyExplorer: string;
+  loyaltyAdventurer: string;
+  loyaltyGlobetrotter: string;
+  loyaltyEarnPoints: string;
+  loyaltyRedeemPoints: string;
+  loyaltyHistory: string;
+  loyaltyNextTier: string;
+  loyaltyPointsToNext: string;
+  loyaltyReferralBonus: string;
+  loyaltyBookingPoints: string;
+  loyaltyReviewPoints: string;
+  // Referral
+  referralTitle: string;
+  referralSubtitle: string;
+  referralCode: string;
+  referralCopyCode: string;
+  referralCopied: string;
+  referralShareText: string;
+  referralFriendsJoined: string;
+  referralHowItWorks: string;
+  referralStep1: string;
+  referralStep2: string;
+  referralStep3: string;
+  // Reviews & Ratings
+  reviewsTitle: string;
+  writeReview: string;
+  submitReview: string;
+  reviewPlaceholder: string;
+  noReviewsYet: string;
+  beFirstReview: string;
+  ratingRequired: string;
+  reviewSubmitted: string;
+  averageRating: string;
+  // AI Assistant
+  aiAssistantTitle: string;
+  aiAssistantSubtitle: string;
+  aiPlaceholder: string;
+  aiWelcomeMessage: string;
+  aiSuggestion1: string;
+  aiSuggestion2: string;
+  aiSuggestion3: string;
+  aiProFeature: string;
+  // Travel Extras / Upsells
+  extrasTitle: string;
+  extrasSubtitle: string;
+  extrasTransfer: string;
+  extrasTransferDesc: string;
+  extrasInsurance: string;
+  extrasInsuranceDesc: string;
+  extrasSim: string;
+  extrasSimDesc: string;
+  extrasLounge: string;
+  extrasLoungeDesc: string;
+  addToBooking: string;
+  skipExtras: string;
+  // Featured
+  featuredBadge: string;
+  sponsoredBadge: string;
+  trendingBadge: string;
 }
 
 // ─── All Language Packs ────────────────────────────────────────────────────
@@ -405,6 +500,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Continue with Google", continueWithApple: "Continue with Apple",
     agreeToTerms: "By signing up, you agree to our", termsOfService: "Terms of Service", privacyPolicy: "Privacy Policy", andText: "and",
     signOut: "Sign Out", signOutConfirm: "Are you sure you want to sign out?",
+    // Onboarding
+    onboardingTitle1: "Discover Amazing Destinations", onboardingDesc1: "Explore breathtaking places around the world curated just for you.",
+    onboardingTitle2: "Book With Confidence", onboardingDesc2: "Flexible booking, best price guarantee, and 24/7 support.",
+    onboardingTitle3: "Earn Rewards As You Travel", onboardingDesc3: "Collect points on every trip and unlock exclusive perks.",
+    getStarted: "Get Started", next: "Next", skip: "Skip",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "Unlock the ultimate travel experience",
+    premiumProTitle: "Pro", premiumEliteTitle: "Elite",
+    premiumPerMonth: "/month", premiumPerYear: "/year", premiumSavePercent: "Save",
+    premiumSubscribe: "Subscribe Now", premiumRestore: "Restore Purchase", premiumCurrentPlan: "Current Plan", premiumFreePlan: "Free",
+    premiumFeatureDeals: "Exclusive deals & early access", premiumFeatureSupport: "Priority customer support",
+    premiumFeatureCancellation: "Free cancellation on all bookings", premiumFeatureAI: "AI-powered trip planner",
+    premiumFeatureAdFree: "Ad-free experience", premiumFeatureConcierge: "Personal concierge service",
+    premiumFeatureLounge: "Airport lounge access", premiumFeatureDoublePoints: "2× loyalty points",
+    premiumMostPopular: "Most Popular", premiumBestValue: "Best Value",
+    // Loyalty
+    loyaltyTitle: "Rewards", loyaltyPoints: "Points", loyaltyTier: "Tier",
+    loyaltyExplorer: "Explorer", loyaltyAdventurer: "Adventurer", loyaltyGlobetrotter: "Globetrotter",
+    loyaltyEarnPoints: "Earn Points", loyaltyRedeemPoints: "Redeem Points", loyaltyHistory: "History",
+    loyaltyNextTier: "Next Tier", loyaltyPointsToNext: "points to next tier",
+    loyaltyReferralBonus: "Referral Bonus", loyaltyBookingPoints: "Booking Points", loyaltyReviewPoints: "Review Points",
+    // Referral
+    referralTitle: "Refer a Friend", referralSubtitle: "Share Tourly and earn 500 points per referral",
+    referralCode: "Your Referral Code", referralCopyCode: "Copy Code", referralCopied: "Copied!",
+    referralShareText: "Join me on Tourly! Use my code for a bonus: ",
+    referralFriendsJoined: "Friends Joined", referralHowItWorks: "How It Works",
+    referralStep1: "Share your unique code with friends",
+    referralStep2: "They sign up and book their first trip",
+    referralStep3: "You both earn 500 bonus points!",
+    // Reviews
+    reviewsTitle: "Reviews", writeReview: "Write a Review", submitReview: "Submit Review",
+    reviewPlaceholder: "Share your experience...", noReviewsYet: "No reviews yet",
+    beFirstReview: "Be the first to leave a review!", ratingRequired: "Please select a rating",
+    reviewSubmitted: "Review submitted!", averageRating: "Average Rating",
+    // AI Assistant
+    aiAssistantTitle: "AI Travel Planner", aiAssistantSubtitle: "Plan your perfect trip with AI",
+    aiPlaceholder: "Ask me anything about travel...",
+    aiWelcomeMessage: "Hi! I'm your AI travel assistant. I can help you plan trips, suggest destinations, create itineraries, and more. What would you like to explore?",
+    aiSuggestion1: "Plan a 5-day trip to Bali", aiSuggestion2: "Best destinations for families", aiSuggestion3: "Budget travel tips for Europe",
+    aiProFeature: "Upgrade to Pro for unlimited AI planning",
+    // Travel Extras
+    extrasTitle: "Enhance Your Trip", extrasSubtitle: "Add extras to make your journey even better",
+    extrasTransfer: "Airport Transfer", extrasTransferDesc: "Private car pickup and drop-off",
+    extrasInsurance: "Travel Insurance", extrasInsuranceDesc: "Comprehensive coverage for your trip",
+    extrasSim: "eSIM Data Plan", extrasSimDesc: "Stay connected with unlimited data",
+    extrasLounge: "Airport Lounge", extrasLoungeDesc: "Relax before your flight in comfort",
+    addToBooking: "Add to Booking", skipExtras: "Skip, Continue to Confirmation",
+    // Featured
+    featuredBadge: "Featured", sponsoredBadge: "Sponsored", trendingBadge: "Trending",
   },
   es: {
     tabHome: "Inicio", tabExplore: "Explorar", tabTrips: "Viajes", tabSaved: "Guardado", tabGallery: "Galería",
@@ -517,6 +661,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Continuar con Google", continueWithApple: "Continuar con Apple",
     agreeToTerms: "Al registrarte, aceptas nuestros", termsOfService: "Términos de Servicio", privacyPolicy: "Política de Privacidad", andText: "y",
     signOut: "Cerrar Sesión", signOutConfirm: "¿Estás seguro de que deseas cerrar sesión?",
+    // Onboarding
+    onboardingTitle1: "Descubre Destinos Increíbles", onboardingDesc1: "Explora lugares impresionantes de todo el mundo seleccionados para ti.",
+    onboardingTitle2: "Reserva con Confianza", onboardingDesc2: "Reservas flexibles, mejor precio garantizado y soporte 24/7.",
+    onboardingTitle3: "Gana Recompensas al Viajar", onboardingDesc3: "Acumula puntos en cada viaje y desbloquea beneficios exclusivos.",
+    getStarted: "Comenzar", next: "Siguiente", skip: "Omitir",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "Desbloquea la experiencia de viaje definitiva",
+    premiumProTitle: "Pro", premiumEliteTitle: "Elite",
+    premiumPerMonth: "/mes", premiumPerYear: "/año", premiumSavePercent: "Ahorra",
+    premiumSubscribe: "Suscribirse Ahora", premiumRestore: "Restaurar Compra", premiumCurrentPlan: "Plan Actual", premiumFreePlan: "Gratis",
+    premiumFeatureDeals: "Ofertas exclusivas y acceso anticipado", premiumFeatureSupport: "Soporte prioritario al cliente",
+    premiumFeatureCancellation: "Cancelación gratuita en todas las reservas", premiumFeatureAI: "Planificador de viajes con IA",
+    premiumFeatureAdFree: "Experiencia sin anuncios", premiumFeatureConcierge: "Servicio de conserjería personal",
+    premiumFeatureLounge: "Acceso a salas VIP del aeropuerto", premiumFeatureDoublePoints: "2× puntos de fidelidad",
+    premiumMostPopular: "Más Popular", premiumBestValue: "Mejor Valor",
+    // Loyalty
+    loyaltyTitle: "Recompensas", loyaltyPoints: "Puntos", loyaltyTier: "Nivel",
+    loyaltyExplorer: "Explorador", loyaltyAdventurer: "Aventurero", loyaltyGlobetrotter: "Trotamundos",
+    loyaltyEarnPoints: "Ganar Puntos", loyaltyRedeemPoints: "Canjear Puntos", loyaltyHistory: "Historial",
+    loyaltyNextTier: "Siguiente Nivel", loyaltyPointsToNext: "puntos para el siguiente nivel",
+    loyaltyReferralBonus: "Bono por Referido", loyaltyBookingPoints: "Puntos por Reserva", loyaltyReviewPoints: "Puntos por Reseña",
+    // Referral
+    referralTitle: "Invita a un Amigo", referralSubtitle: "Comparte Tourly y gana 500 puntos por referido",
+    referralCode: "Tu Código de Referido", referralCopyCode: "Copiar Código", referralCopied: "¡Copiado!",
+    referralShareText: "¡Únete a Tourly! Usa mi código para un bono: ",
+    referralFriendsJoined: "Amigos que se Unieron", referralHowItWorks: "Cómo Funciona",
+    referralStep1: "Comparte tu código único con amigos",
+    referralStep2: "Ellos se registran y reservan su primer viaje",
+    referralStep3: "¡Ambos ganan 500 puntos de bonificación!",
+    // Reviews
+    reviewsTitle: "Reseñas", writeReview: "Escribir Reseña", submitReview: "Enviar Reseña",
+    reviewPlaceholder: "Comparte tu experiencia...", noReviewsYet: "Sin reseñas aún",
+    beFirstReview: "¡Sé el primero en dejar una reseña!", ratingRequired: "Por favor selecciona una calificación",
+    reviewSubmitted: "¡Reseña enviada!", averageRating: "Calificación Promedio",
+    // AI Assistant
+    aiAssistantTitle: "Planificador IA", aiAssistantSubtitle: "Planifica tu viaje perfecto con IA",
+    aiPlaceholder: "Pregúntame lo que quieras sobre viajes...",
+    aiWelcomeMessage: "¡Hola! Soy tu asistente de viajes con IA. Puedo ayudarte a planificar viajes, sugerir destinos, crear itinerarios y más. ¿Qué te gustaría explorar?",
+    aiSuggestion1: "Planifica un viaje de 5 días a Bali", aiSuggestion2: "Mejores destinos para familias", aiSuggestion3: "Consejos de viaje económico por Europa",
+    aiProFeature: "Mejora a Pro para planificación IA ilimitada",
+    // Travel Extras
+    extrasTitle: "Mejora tu Viaje", extrasSubtitle: "Agrega extras para hacer tu viaje aún mejor",
+    extrasTransfer: "Traslado al Aeropuerto", extrasTransferDesc: "Recogida y entrega en auto privado",
+    extrasInsurance: "Seguro de Viaje", extrasInsuranceDesc: "Cobertura completa para tu viaje",
+    extrasSim: "Plan de Datos eSIM", extrasSimDesc: "Mantente conectado con datos ilimitados",
+    extrasLounge: "Sala VIP del Aeropuerto", extrasLoungeDesc: "Relájate antes de tu vuelo con comodidad",
+    addToBooking: "Agregar a la Reserva", skipExtras: "Omitir, Continuar a Confirmación",
+    // Featured
+    featuredBadge: "Destacado", sponsoredBadge: "Patrocinado", trendingBadge: "Tendencia",
   },
   fr: {
     tabHome: "Accueil", tabExplore: "Explorer", tabTrips: "Voyages", tabSaved: "Sauvegardé", tabGallery: "Galerie",
@@ -628,6 +821,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Continuer avec Google", continueWithApple: "Continuer avec Apple",
     agreeToTerms: "En vous inscrivant, vous acceptez nos", termsOfService: "Conditions d'Utilisation", privacyPolicy: "Politique de Confidentialité", andText: "et",
     signOut: "Se Déconnecter", signOutConfirm: "Êtes-vous sûr de vouloir vous déconnecter ?",
+    // Onboarding
+    onboardingTitle1: "Découvrez des Destinations Incroyables", onboardingDesc1: "Explorez des lieux à couper le souffle à travers le monde, sélectionnés pour vous.",
+    onboardingTitle2: "Réservez en Toute Confiance", onboardingDesc2: "Réservation flexible, meilleur prix garanti et support 24/7.",
+    onboardingTitle3: "Gagnez des Récompenses en Voyageant", onboardingDesc3: "Accumulez des points à chaque voyage et débloquez des avantages exclusifs.",
+    getStarted: "Commencer", next: "Suivant", skip: "Passer",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "Débloquez l'expérience de voyage ultime",
+    premiumProTitle: "Pro", premiumEliteTitle: "Élite",
+    premiumPerMonth: "/mois", premiumPerYear: "/an", premiumSavePercent: "Économisez",
+    premiumSubscribe: "S'abonner", premiumRestore: "Restaurer l'Achat", premiumCurrentPlan: "Plan Actuel", premiumFreePlan: "Gratuit",
+    premiumFeatureDeals: "Offres exclusives et accès anticipé", premiumFeatureSupport: "Support client prioritaire",
+    premiumFeatureCancellation: "Annulation gratuite sur toutes les réservations", premiumFeatureAI: "Planificateur de voyage IA",
+    premiumFeatureAdFree: "Expérience sans publicité", premiumFeatureConcierge: "Service de conciergerie personnel",
+    premiumFeatureLounge: "Accès aux salons d'aéroport", premiumFeatureDoublePoints: "2× points de fidélité",
+    premiumMostPopular: "Le Plus Populaire", premiumBestValue: "Meilleur Rapport",
+    // Loyalty
+    loyaltyTitle: "Récompenses", loyaltyPoints: "Points", loyaltyTier: "Niveau",
+    loyaltyExplorer: "Explorateur", loyaltyAdventurer: "Aventurier", loyaltyGlobetrotter: "Globe-trotter",
+    loyaltyEarnPoints: "Gagner des Points", loyaltyRedeemPoints: "Échanger des Points", loyaltyHistory: "Historique",
+    loyaltyNextTier: "Niveau Suivant", loyaltyPointsToNext: "points pour le niveau suivant",
+    loyaltyReferralBonus: "Bonus de Parrainage", loyaltyBookingPoints: "Points de Réservation", loyaltyReviewPoints: "Points d'Avis",
+    // Referral
+    referralTitle: "Parrainez un Ami", referralSubtitle: "Partagez Tourly et gagnez 500 points par parrainage",
+    referralCode: "Votre Code de Parrainage", referralCopyCode: "Copier le Code", referralCopied: "Copié !",
+    referralShareText: "Rejoignez-moi sur Tourly ! Utilisez mon code pour un bonus : ",
+    referralFriendsJoined: "Amis Inscrits", referralHowItWorks: "Comment Ça Marche",
+    referralStep1: "Partagez votre code unique avec des amis",
+    referralStep2: "Ils s'inscrivent et réservent leur premier voyage",
+    referralStep3: "Vous gagnez tous les deux 500 points bonus !",
+    // Reviews
+    reviewsTitle: "Avis", writeReview: "Écrire un Avis", submitReview: "Soumettre l'Avis",
+    reviewPlaceholder: "Partagez votre expérience...", noReviewsYet: "Pas encore d'avis",
+    beFirstReview: "Soyez le premier à laisser un avis !", ratingRequired: "Veuillez sélectionner une note",
+    reviewSubmitted: "Avis soumis !", averageRating: "Note Moyenne",
+    // AI Assistant
+    aiAssistantTitle: "Planificateur IA", aiAssistantSubtitle: "Planifiez votre voyage parfait avec l'IA",
+    aiPlaceholder: "Posez-moi vos questions sur les voyages...",
+    aiWelcomeMessage: "Bonjour ! Je suis votre assistant de voyage IA. Je peux vous aider à planifier des voyages, suggérer des destinations, créer des itinéraires et plus encore. Que souhaitez-vous explorer ?",
+    aiSuggestion1: "Planifier un voyage de 5 jours à Bali", aiSuggestion2: "Meilleures destinations pour les familles", aiSuggestion3: "Conseils voyage petit budget en Europe",
+    aiProFeature: "Passez à Pro pour une planification IA illimitée",
+    // Travel Extras
+    extrasTitle: "Améliorez Votre Voyage", extrasSubtitle: "Ajoutez des extras pour rendre votre voyage encore meilleur",
+    extrasTransfer: "Transfert Aéroport", extrasTransferDesc: "Prise en charge et dépose en voiture privée",
+    extrasInsurance: "Assurance Voyage", extrasInsuranceDesc: "Couverture complète pour votre voyage",
+    extrasSim: "Forfait eSIM", extrasSimDesc: "Restez connecté avec des données illimitées",
+    extrasLounge: "Salon d'Aéroport", extrasLoungeDesc: "Détendez-vous avant votre vol dans le confort",
+    addToBooking: "Ajouter à la Réservation", skipExtras: "Passer, Continuer à la Confirmation",
+    // Featured
+    featuredBadge: "En Vedette", sponsoredBadge: "Sponsorisé", trendingBadge: "Tendance",
   },
   ja: {
     tabHome: "ホーム", tabExplore: "探索", tabTrips: "旅行", tabSaved: "保存済み", tabGallery: "ギャラリー",
@@ -739,6 +981,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Googleで続行", continueWithApple: "Appleで続行",
     agreeToTerms: "登録することで、以下に同意します", termsOfService: "利用規約", privacyPolicy: "プライバシーポリシー", andText: "と",
     signOut: "サインアウト", signOutConfirm: "サインアウトしてもよろしいですか？",
+    // Onboarding
+    onboardingTitle1: "素晴らしい目的地を発見", onboardingDesc1: "あなたのために厳選された世界中の息をのむような場所を探索しましょう。",
+    onboardingTitle2: "安心して予約", onboardingDesc2: "柔軟な予約、最低価格保証、24時間サポート。",
+    onboardingTitle3: "旅行でリワードを獲得", onboardingDesc3: "旅行のたびにポイントを貯めて、限定特典をアンロック。",
+    getStarted: "始める", next: "次へ", skip: "スキップ",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "究極の旅行体験をアンロック",
+    premiumProTitle: "プロ", premiumEliteTitle: "エリート",
+    premiumPerMonth: "/月", premiumPerYear: "/年", premiumSavePercent: "割引",
+    premiumSubscribe: "今すぐ登録", premiumRestore: "購入を復元", premiumCurrentPlan: "現在のプラン", premiumFreePlan: "無料",
+    premiumFeatureDeals: "限定セールと先行アクセス", premiumFeatureSupport: "優先カスタマーサポート",
+    premiumFeatureCancellation: "全予約無料キャンセル", premiumFeatureAI: "AI旅行プランナー",
+    premiumFeatureAdFree: "広告なし体験", premiumFeatureConcierge: "パーソナルコンシェルジュ",
+    premiumFeatureLounge: "空港ラウンジアクセス", premiumFeatureDoublePoints: "2×ロイヤリティポイント",
+    premiumMostPopular: "一番人気", premiumBestValue: "最もお得",
+    // Loyalty
+    loyaltyTitle: "リワード", loyaltyPoints: "ポイント", loyaltyTier: "ティア",
+    loyaltyExplorer: "エクスプローラー", loyaltyAdventurer: "アドベンチャラー", loyaltyGlobetrotter: "グローブトロッター",
+    loyaltyEarnPoints: "ポイントを貯める", loyaltyRedeemPoints: "ポイントを使う", loyaltyHistory: "履歴",
+    loyaltyNextTier: "次のティア", loyaltyPointsToNext: "次のティアまでのポイント",
+    loyaltyReferralBonus: "紹介ボーナス", loyaltyBookingPoints: "予約ポイント", loyaltyReviewPoints: "レビューポイント",
+    // Referral
+    referralTitle: "友達を紹介", referralSubtitle: "Tourlyを共有して紹介ごとに500ポイント獲得",
+    referralCode: "あなたの紹介コード", referralCopyCode: "コードをコピー", referralCopied: "コピー済み！",
+    referralShareText: "Tourlyに参加しよう！ボーナスコード：",
+    referralFriendsJoined: "参加した友達", referralHowItWorks: "仕組み",
+    referralStep1: "友達にユニークコードを共有",
+    referralStep2: "友達が登録して最初の旅行を予約",
+    referralStep3: "お互いに500ボーナスポイント獲得！",
+    // Reviews
+    reviewsTitle: "レビュー", writeReview: "レビューを書く", submitReview: "レビューを送信",
+    reviewPlaceholder: "体験を共有してください...", noReviewsYet: "まだレビューはありません",
+    beFirstReview: "最初のレビューを残しましょう！", ratingRequired: "評価を選択してください",
+    reviewSubmitted: "レビューが送信されました！", averageRating: "平均評価",
+    // AI Assistant
+    aiAssistantTitle: "AI旅行プランナー", aiAssistantSubtitle: "AIで完璧な旅行を計画",
+    aiPlaceholder: "旅行について何でも聞いてください...",
+    aiWelcomeMessage: "こんにちは！AI旅行アシスタントです。旅行の計画、目的地の提案、旅程の作成などをお手伝いします。何を探索しますか？",
+    aiSuggestion1: "バリ5日間の旅行を計画", aiSuggestion2: "家族向けベストデスティネーション", aiSuggestion3: "ヨーロッパの格安旅行のコツ",
+    aiProFeature: "Proにアップグレードで無制限AI計画",
+    // Travel Extras
+    extrasTitle: "旅をグレードアップ", extrasSubtitle: "エクストラを追加してさらに素晴らしい旅に",
+    extrasTransfer: "空港送迎", extrasTransferDesc: "プライベートカーでの送迎サービス",
+    extrasInsurance: "旅行保険", extrasInsuranceDesc: "旅行の包括的な補償",
+    extrasSim: "eSIMデータプラン", extrasSimDesc: "無制限データで常に接続",
+    extrasLounge: "空港ラウンジ", extrasLoungeDesc: "フライト前に快適にリラックス",
+    addToBooking: "予約に追加", skipExtras: "スキップして確認へ",
+    // Featured
+    featuredBadge: "注目", sponsoredBadge: "スポンサー", trendingBadge: "トレンド",
   },
   ar: {
     tabHome: "الرئيسية", tabExplore: "استكشف", tabTrips: "الرحلات", tabSaved: "المحفوظة", tabGallery: "المعرض",
@@ -850,6 +1141,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "المتابعة عبر Google", continueWithApple: "المتابعة عبر Apple",
     agreeToTerms: "بالتسجيل، أنت توافق على", termsOfService: "شروط الخدمة", privacyPolicy: "سياسة الخصوصية", andText: "و",
     signOut: "تسجيل الخروج", signOutConfirm: "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    // Onboarding
+    onboardingTitle1: "اكتشف وجهات مذهلة", onboardingDesc1: "استكشف أماكن خلابة حول العالم مختارة خصيصاً لك.",
+    onboardingTitle2: "احجز بثقة", onboardingDesc2: "حجز مرن، ضمان أفضل سعر، ودعم على مدار الساعة.",
+    onboardingTitle3: "اكسب مكافآت أثناء السفر", onboardingDesc3: "اجمع نقاطاً في كل رحلة واحصل على مزايا حصرية.",
+    getStarted: "ابدأ الآن", next: "التالي", skip: "تخطي",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "افتح تجربة السفر المثالية",
+    premiumProTitle: "برو", premiumEliteTitle: "إيليت",
+    premiumPerMonth: "/شهر", premiumPerYear: "/سنة", premiumSavePercent: "وفّر",
+    premiumSubscribe: "اشترك الآن", premiumRestore: "استعادة الشراء", premiumCurrentPlan: "الخطة الحالية", premiumFreePlan: "مجاني",
+    premiumFeatureDeals: "عروض حصرية ووصول مبكر", premiumFeatureSupport: "دعم عملاء ذو أولوية",
+    premiumFeatureCancellation: "إلغاء مجاني لجميع الحجوزات", premiumFeatureAI: "مخطط رحلات بالذكاء الاصطناعي",
+    premiumFeatureAdFree: "تجربة بدون إعلانات", premiumFeatureConcierge: "خدمة كونسيرج شخصية",
+    premiumFeatureLounge: "الوصول إلى صالات المطار", premiumFeatureDoublePoints: "2× نقاط ولاء",
+    premiumMostPopular: "الأكثر شعبية", premiumBestValue: "أفضل قيمة",
+    // Loyalty
+    loyaltyTitle: "المكافآت", loyaltyPoints: "النقاط", loyaltyTier: "المستوى",
+    loyaltyExplorer: "مستكشف", loyaltyAdventurer: "مغامر", loyaltyGlobetrotter: "رحّالة",
+    loyaltyEarnPoints: "اكسب النقاط", loyaltyRedeemPoints: "استبدل النقاط", loyaltyHistory: "السجل",
+    loyaltyNextTier: "المستوى التالي", loyaltyPointsToNext: "نقاط للمستوى التالي",
+    loyaltyReferralBonus: "مكافأة الإحالة", loyaltyBookingPoints: "نقاط الحجز", loyaltyReviewPoints: "نقاط التقييم",
+    // Referral
+    referralTitle: "أحل صديقاً", referralSubtitle: "شارك Tourly واكسب 500 نقطة لكل إحالة",
+    referralCode: "رمز الإحالة الخاص بك", referralCopyCode: "نسخ الرمز", referralCopied: "تم النسخ!",
+    referralShareText: "انضم إلي على Tourly! استخدم رمزي للحصول على مكافأة: ",
+    referralFriendsJoined: "أصدقاء انضموا", referralHowItWorks: "كيف يعمل",
+    referralStep1: "شارك رمزك الفريد مع الأصدقاء",
+    referralStep2: "يسجلون ويحجزون رحلتهم الأولى",
+    referralStep3: "كلاكما يكسب 500 نقطة مكافأة!",
+    // Reviews
+    reviewsTitle: "التقييمات", writeReview: "اكتب تقييماً", submitReview: "إرسال التقييم",
+    reviewPlaceholder: "شارك تجربتك...", noReviewsYet: "لا توجد تقييمات بعد",
+    beFirstReview: "كن أول من يترك تقييماً!", ratingRequired: "يرجى اختيار تقييم",
+    reviewSubmitted: "تم إرسال التقييم!", averageRating: "متوسط التقييم",
+    // AI Assistant
+    aiAssistantTitle: "مخطط السفر بالذكاء الاصطناعي", aiAssistantSubtitle: "خطط لرحلتك المثالية مع الذكاء الاصطناعي",
+    aiPlaceholder: "اسألني أي شيء عن السفر...",
+    aiWelcomeMessage: "مرحباً! أنا مساعد السفر بالذكاء الاصطناعي. يمكنني مساعدتك في تخطيط الرحلات واقتراح الوجهات وإنشاء الجداول والمزيد. ماذا تريد استكشافه؟",
+    aiSuggestion1: "خطط لرحلة 5 أيام إلى بالي", aiSuggestion2: "أفضل الوجهات للعائلات", aiSuggestion3: "نصائح السفر الاقتصادي في أوروبا",
+    aiProFeature: "ترقية إلى Pro للتخطيط غير المحدود بالذكاء الاصطناعي",
+    // Travel Extras
+    extrasTitle: "حسّن رحلتك", extrasSubtitle: "أضف إضافات لجعل رحلتك أفضل",
+    extrasTransfer: "نقل المطار", extrasTransferDesc: "استقبال وتوصيل بسيارة خاصة",
+    extrasInsurance: "تأمين السفر", extrasInsuranceDesc: "تغطية شاملة لرحلتك",
+    extrasSim: "خطة بيانات eSIM", extrasSimDesc: "ابق متصلاً ببيانات غير محدودة",
+    extrasLounge: "صالة المطار", extrasLoungeDesc: "استرخ قبل رحلتك بكل راحة",
+    addToBooking: "إضافة إلى الحجز", skipExtras: "تخطي والمتابعة للتأكيد",
+    // Featured
+    featuredBadge: "مميز", sponsoredBadge: "مُموَّل", trendingBadge: "رائج",
   },
 
   // ─────────────────────────── German ───────────────────────────
@@ -964,6 +1304,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Weiter mit Google", continueWithApple: "Weiter mit Apple",
     agreeToTerms: "Mit der Registrierung stimmen Sie unseren", termsOfService: "Nutzungsbedingungen", privacyPolicy: "Datenschutzrichtlinie", andText: "und",
     signOut: "Abmelden", signOutConfirm: "Möchten Sie sich wirklich abmelden?",
+    // Onboarding
+    onboardingTitle1: "Erstaunliche Reiseziele Entdecken", onboardingDesc1: "Erkunden Sie atemberaubende Orte auf der ganzen Welt, ausgewählt für Sie.",
+    onboardingTitle2: "Mit Vertrauen Buchen", onboardingDesc2: "Flexible Buchung, Bestpreisgarantie und 24/7-Support.",
+    onboardingTitle3: "Belohnungen beim Reisen Verdienen", onboardingDesc3: "Sammeln Sie Punkte bei jeder Reise und schalten Sie exklusive Vorteile frei.",
+    getStarted: "Loslegen", next: "Weiter", skip: "Überspringen",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "Das ultimative Reiseerlebnis freischalten",
+    premiumProTitle: "Pro", premiumEliteTitle: "Elite",
+    premiumPerMonth: "/Monat", premiumPerYear: "/Jahr", premiumSavePercent: "Sparen",
+    premiumSubscribe: "Jetzt Abonnieren", premiumRestore: "Kauf Wiederherstellen", premiumCurrentPlan: "Aktueller Plan", premiumFreePlan: "Kostenlos",
+    premiumFeatureDeals: "Exklusive Angebote und Frühzugang", premiumFeatureSupport: "Prioritäts-Kundensupport",
+    premiumFeatureCancellation: "Kostenlose Stornierung aller Buchungen", premiumFeatureAI: "KI-gestützter Reiseplaner",
+    premiumFeatureAdFree: "Werbefreies Erlebnis", premiumFeatureConcierge: "Persönlicher Concierge-Service",
+    premiumFeatureLounge: "Zugang zu Flughafen-Lounges", premiumFeatureDoublePoints: "2× Treuepunkte",
+    premiumMostPopular: "Am Beliebtesten", premiumBestValue: "Bestes Preis-Leistung",
+    // Loyalty
+    loyaltyTitle: "Belohnungen", loyaltyPoints: "Punkte", loyaltyTier: "Stufe",
+    loyaltyExplorer: "Entdecker", loyaltyAdventurer: "Abenteurer", loyaltyGlobetrotter: "Globetrotter",
+    loyaltyEarnPoints: "Punkte Sammeln", loyaltyRedeemPoints: "Punkte Einlösen", loyaltyHistory: "Verlauf",
+    loyaltyNextTier: "Nächste Stufe", loyaltyPointsToNext: "Punkte bis zur nächsten Stufe",
+    loyaltyReferralBonus: "Empfehlungsbonus", loyaltyBookingPoints: "Buchungspunkte", loyaltyReviewPoints: "Bewertungspunkte",
+    // Referral
+    referralTitle: "Freund Empfehlen", referralSubtitle: "Teile Tourly und verdiene 500 Punkte pro Empfehlung",
+    referralCode: "Dein Empfehlungscode", referralCopyCode: "Code Kopieren", referralCopied: "Kopiert!",
+    referralShareText: "Komm zu Tourly! Nutze meinen Code für einen Bonus: ",
+    referralFriendsJoined: "Beigetretene Freunde", referralHowItWorks: "So Funktioniert's",
+    referralStep1: "Teile deinen einzigartigen Code mit Freunden",
+    referralStep2: "Sie melden sich an und buchen ihre erste Reise",
+    referralStep3: "Ihr beide verdient 500 Bonuspunkte!",
+    // Reviews
+    reviewsTitle: "Bewertungen", writeReview: "Bewertung Schreiben", submitReview: "Bewertung Senden",
+    reviewPlaceholder: "Teile deine Erfahrung...", noReviewsYet: "Noch keine Bewertungen",
+    beFirstReview: "Sei der Erste mit einer Bewertung!", ratingRequired: "Bitte wähle eine Bewertung",
+    reviewSubmitted: "Bewertung gesendet!", averageRating: "Durchschnittsbewertung",
+    // AI Assistant
+    aiAssistantTitle: "KI-Reiseplaner", aiAssistantSubtitle: "Plane deine perfekte Reise mit KI",
+    aiPlaceholder: "Frag mich alles über Reisen...",
+    aiWelcomeMessage: "Hallo! Ich bin dein KI-Reiseassistent. Ich kann dir bei der Reiseplanung helfen, Reiseziele vorschlagen, Reisepläne erstellen und mehr. Was möchtest du erkunden?",
+    aiSuggestion1: "5-tägige Reise nach Bali planen", aiSuggestion2: "Beste Reiseziele für Familien", aiSuggestion3: "Budget-Reisetipps für Europa",
+    aiProFeature: "Upgrade auf Pro für unbegrenzte KI-Planung",
+    // Travel Extras
+    extrasTitle: "Reise Aufwerten", extrasSubtitle: "Extras hinzufügen für eine noch bessere Reise",
+    extrasTransfer: "Flughafentransfer", extrasTransferDesc: "Privater Abholungs- und Bringservice",
+    extrasInsurance: "Reiseversicherung", extrasInsuranceDesc: "Umfassender Schutz für Ihre Reise",
+    extrasSim: "eSIM-Datenplan", extrasSimDesc: "Bleiben Sie mit unbegrenzten Daten verbunden",
+    extrasLounge: "Flughafen-Lounge", extrasLoungeDesc: "Entspannen Sie sich vor Ihrem Flug",
+    addToBooking: "Zur Buchung Hinzufügen", skipExtras: "Überspringen, Weiter zur Bestätigung",
+    // Featured
+    featuredBadge: "Empfohlen", sponsoredBadge: "Gesponsert", trendingBadge: "Im Trend",
   },
 
   // ─────────────────────────── Italian ───────────────────────────
@@ -1078,6 +1467,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Continua con Google", continueWithApple: "Continua con Apple",
     agreeToTerms: "Registrandoti, accetti i nostri", termsOfService: "Termini di Servizio", privacyPolicy: "Informativa sulla Privacy", andText: "e",
     signOut: "Esci", signOutConfirm: "Sei sicuro di voler uscire?",
+    // Onboarding
+    onboardingTitle1: "Scopri Destinazioni Incredibili", onboardingDesc1: "Esplora luoghi mozzafiato in tutto il mondo selezionati per te.",
+    onboardingTitle2: "Prenota con Fiducia", onboardingDesc2: "Prenotazione flessibile, miglior prezzo garantito e supporto 24/7.",
+    onboardingTitle3: "Guadagna Premi Viaggiando", onboardingDesc3: "Accumula punti ad ogni viaggio e sblocca vantaggi esclusivi.",
+    getStarted: "Inizia", next: "Avanti", skip: "Salta",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "Sblocca l'esperienza di viaggio definitiva",
+    premiumProTitle: "Pro", premiumEliteTitle: "Elite",
+    premiumPerMonth: "/mese", premiumPerYear: "/anno", premiumSavePercent: "Risparmia",
+    premiumSubscribe: "Abbonati Ora", premiumRestore: "Ripristina Acquisto", premiumCurrentPlan: "Piano Attuale", premiumFreePlan: "Gratuito",
+    premiumFeatureDeals: "Offerte esclusive e accesso anticipato", premiumFeatureSupport: "Supporto clienti prioritario",
+    premiumFeatureCancellation: "Cancellazione gratuita su tutte le prenotazioni", premiumFeatureAI: "Pianificatore di viaggio IA",
+    premiumFeatureAdFree: "Esperienza senza pubblicità", premiumFeatureConcierge: "Servizio concierge personale",
+    premiumFeatureLounge: "Accesso alle lounge aeroportuali", premiumFeatureDoublePoints: "2× punti fedeltà",
+    premiumMostPopular: "Più Popolare", premiumBestValue: "Miglior Valore",
+    // Loyalty
+    loyaltyTitle: "Premi", loyaltyPoints: "Punti", loyaltyTier: "Livello",
+    loyaltyExplorer: "Esploratore", loyaltyAdventurer: "Avventuriero", loyaltyGlobetrotter: "Giramondo",
+    loyaltyEarnPoints: "Guadagna Punti", loyaltyRedeemPoints: "Riscatta Punti", loyaltyHistory: "Cronologia",
+    loyaltyNextTier: "Livello Successivo", loyaltyPointsToNext: "punti per il livello successivo",
+    loyaltyReferralBonus: "Bonus Referral", loyaltyBookingPoints: "Punti Prenotazione", loyaltyReviewPoints: "Punti Recensione",
+    // Referral
+    referralTitle: "Invita un Amico", referralSubtitle: "Condividi Tourly e guadagna 500 punti per ogni invito",
+    referralCode: "Il Tuo Codice Invito", referralCopyCode: "Copia Codice", referralCopied: "Copiato!",
+    referralShareText: "Unisciti a me su Tourly! Usa il mio codice per un bonus: ",
+    referralFriendsJoined: "Amici Iscritti", referralHowItWorks: "Come Funziona",
+    referralStep1: "Condividi il tuo codice unico con gli amici",
+    referralStep2: "Si iscrivono e prenotano il primo viaggio",
+    referralStep3: "Entrambi guadagnate 500 punti bonus!",
+    // Reviews
+    reviewsTitle: "Recensioni", writeReview: "Scrivi Recensione", submitReview: "Invia Recensione",
+    reviewPlaceholder: "Condividi la tua esperienza...", noReviewsYet: "Nessuna recensione ancora",
+    beFirstReview: "Sii il primo a lasciare una recensione!", ratingRequired: "Seleziona una valutazione",
+    reviewSubmitted: "Recensione inviata!", averageRating: "Valutazione Media",
+    // AI Assistant
+    aiAssistantTitle: "Pianificatore IA", aiAssistantSubtitle: "Pianifica il viaggio perfetto con l'IA",
+    aiPlaceholder: "Chiedimi qualsiasi cosa sui viaggi...",
+    aiWelcomeMessage: "Ciao! Sono il tuo assistente di viaggio IA. Posso aiutarti a pianificare viaggi, suggerire destinazioni, creare itinerari e altro. Cosa vorresti esplorare?",
+    aiSuggestion1: "Pianifica un viaggio di 5 giorni a Bali", aiSuggestion2: "Migliori destinazioni per famiglie", aiSuggestion3: "Consigli di viaggio economico in Europa",
+    aiProFeature: "Passa a Pro per pianificazione IA illimitata",
+    // Travel Extras
+    extrasTitle: "Migliora il Tuo Viaggio", extrasSubtitle: "Aggiungi extra per rendere il viaggio ancora migliore",
+    extrasTransfer: "Transfer Aeroporto", extrasTransferDesc: "Prelievo e consegna con auto privata",
+    extrasInsurance: "Assicurazione Viaggio", extrasInsuranceDesc: "Copertura completa per il tuo viaggio",
+    extrasSim: "Piano Dati eSIM", extrasSimDesc: "Resta connesso con dati illimitati",
+    extrasLounge: "Lounge Aeroporto", extrasLoungeDesc: "Rilassati prima del volo in comodità",
+    addToBooking: "Aggiungi alla Prenotazione", skipExtras: "Salta, Continua alla Conferma",
+    // Featured
+    featuredBadge: "In Evidenza", sponsoredBadge: "Sponsorizzato", trendingBadge: "Di Tendenza",
   },
 
   // ─────────────────────────── Portuguese ───────────────────────────
@@ -1192,6 +1630,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Continuar com Google", continueWithApple: "Continuar com Apple",
     agreeToTerms: "Ao se cadastrar, você concorda com nossos", termsOfService: "Termos de Serviço", privacyPolicy: "Política de Privacidade", andText: "e",
     signOut: "Sair", signOutConfirm: "Tem certeza de que deseja sair?",
+    // Onboarding
+    onboardingTitle1: "Descubra Destinos Incríveis", onboardingDesc1: "Explore lugares deslumbrantes pelo mundo selecionados para você.",
+    onboardingTitle2: "Reserve com Confiança", onboardingDesc2: "Reserva flexível, melhor preço garantido e suporte 24/7.",
+    onboardingTitle3: "Ganhe Recompensas ao Viajar", onboardingDesc3: "Acumule pontos em cada viagem e desbloqueie vantagens exclusivas.",
+    getStarted: "Começar", next: "Próximo", skip: "Pular",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "Desbloqueie a experiência de viagem definitiva",
+    premiumProTitle: "Pro", premiumEliteTitle: "Elite",
+    premiumPerMonth: "/mês", premiumPerYear: "/ano", premiumSavePercent: "Economize",
+    premiumSubscribe: "Assinar Agora", premiumRestore: "Restaurar Compra", premiumCurrentPlan: "Plano Atual", premiumFreePlan: "Grátis",
+    premiumFeatureDeals: "Ofertas exclusivas e acesso antecipado", premiumFeatureSupport: "Suporte prioritário ao cliente",
+    premiumFeatureCancellation: "Cancelamento grátis em todas as reservas", premiumFeatureAI: "Planejador de viagem com IA",
+    premiumFeatureAdFree: "Experiência sem anúncios", premiumFeatureConcierge: "Serviço de concierge pessoal",
+    premiumFeatureLounge: "Acesso a lounges do aeroporto", premiumFeatureDoublePoints: "2× pontos de fidelidade",
+    premiumMostPopular: "Mais Popular", premiumBestValue: "Melhor Custo-Benefício",
+    // Loyalty
+    loyaltyTitle: "Recompensas", loyaltyPoints: "Pontos", loyaltyTier: "Nível",
+    loyaltyExplorer: "Explorador", loyaltyAdventurer: "Aventureiro", loyaltyGlobetrotter: "Viajante Global",
+    loyaltyEarnPoints: "Ganhar Pontos", loyaltyRedeemPoints: "Resgatar Pontos", loyaltyHistory: "Histórico",
+    loyaltyNextTier: "Próximo Nível", loyaltyPointsToNext: "pontos para o próximo nível",
+    loyaltyReferralBonus: "Bônus de Indicação", loyaltyBookingPoints: "Pontos de Reserva", loyaltyReviewPoints: "Pontos de Avaliação",
+    // Referral
+    referralTitle: "Indique um Amigo", referralSubtitle: "Compartilhe Tourly e ganhe 500 pontos por indicação",
+    referralCode: "Seu Código de Indicação", referralCopyCode: "Copiar Código", referralCopied: "Copiado!",
+    referralShareText: "Junte-se a mim no Tourly! Use meu código para um bônus: ",
+    referralFriendsJoined: "Amigos que Entraram", referralHowItWorks: "Como Funciona",
+    referralStep1: "Compartilhe seu código único com amigos",
+    referralStep2: "Eles se cadastram e reservam a primeira viagem",
+    referralStep3: "Vocês dois ganham 500 pontos bônus!",
+    // Reviews
+    reviewsTitle: "Avaliações", writeReview: "Escrever Avaliação", submitReview: "Enviar Avaliação",
+    reviewPlaceholder: "Compartilhe sua experiência...", noReviewsYet: "Nenhuma avaliação ainda",
+    beFirstReview: "Seja o primeiro a avaliar!", ratingRequired: "Selecione uma avaliação",
+    reviewSubmitted: "Avaliação enviada!", averageRating: "Avaliação Média",
+    // AI Assistant
+    aiAssistantTitle: "Planejador IA", aiAssistantSubtitle: "Planeje sua viagem perfeita com IA",
+    aiPlaceholder: "Pergunte-me qualquer coisa sobre viagens...",
+    aiWelcomeMessage: "Olá! Sou seu assistente de viagem com IA. Posso ajudar a planejar viagens, sugerir destinos, criar roteiros e mais. O que gostaria de explorar?",
+    aiSuggestion1: "Planejar viagem de 5 dias a Bali", aiSuggestion2: "Melhores destinos para famílias", aiSuggestion3: "Dicas de viagem econômica pela Europa",
+    aiProFeature: "Upgrade para Pro para planejamento IA ilimitado",
+    // Travel Extras
+    extrasTitle: "Melhore Sua Viagem", extrasSubtitle: "Adicione extras para tornar sua viagem ainda melhor",
+    extrasTransfer: "Transfer Aeroporto", extrasTransferDesc: "Busca e entrega com carro privativo",
+    extrasInsurance: "Seguro Viagem", extrasInsuranceDesc: "Cobertura completa para sua viagem",
+    extrasSim: "Plano de Dados eSIM", extrasSimDesc: "Fique conectado com dados ilimitados",
+    extrasLounge: "Lounge do Aeroporto", extrasLoungeDesc: "Relaxe antes do voo com conforto",
+    addToBooking: "Adicionar à Reserva", skipExtras: "Pular, Continuar para Confirmação",
+    // Featured
+    featuredBadge: "Destaque", sponsoredBadge: "Patrocinado", trendingBadge: "Em Alta",
   },
 
   // ─────────────────────────── Korean ───────────────────────────
@@ -1306,6 +1793,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "Google로 계속", continueWithApple: "Apple로 계속",
     agreeToTerms: "가입하면 다음에 동의하는 것입니다", termsOfService: "이용약관", privacyPolicy: "개인정보 처리방침", andText: "및",
     signOut: "로그아웃", signOutConfirm: "정말 로그아웃하시겠습니까?",
+    // Onboarding
+    onboardingTitle1: "놀라운 여행지 발견", onboardingDesc1: "당신을 위해 엄선된 전 세계의 숨 막히는 장소를 탐험하세요.",
+    onboardingTitle2: "자신 있게 예약", onboardingDesc2: "유연한 예약, 최저가 보장, 24시간 지원.",
+    onboardingTitle3: "여행하며 리워드 적립", onboardingDesc3: "매 여행마다 포인트를 적립하고 독점 혜택을 잠금 해제하세요.",
+    getStarted: "시작하기", next: "다음", skip: "건너뛰기",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "최고의 여행 경험을 잠금 해제",
+    premiumProTitle: "프로", premiumEliteTitle: "엘리트",
+    premiumPerMonth: "/월", premiumPerYear: "/년", premiumSavePercent: "할인",
+    premiumSubscribe: "지금 구독", premiumRestore: "구매 복원", premiumCurrentPlan: "현재 플랜", premiumFreePlan: "무료",
+    premiumFeatureDeals: "독점 할인 및 조기 접근", premiumFeatureSupport: "우선 고객 지원",
+    premiumFeatureCancellation: "모든 예약 무료 취소", premiumFeatureAI: "AI 여행 플래너",
+    premiumFeatureAdFree: "광고 없는 경험", premiumFeatureConcierge: "개인 컨시어지 서비스",
+    premiumFeatureLounge: "공항 라운지 이용", premiumFeatureDoublePoints: "2배 로열티 포인트",
+    premiumMostPopular: "가장 인기", premiumBestValue: "최고의 가치",
+    // Loyalty
+    loyaltyTitle: "리워드", loyaltyPoints: "포인트", loyaltyTier: "등급",
+    loyaltyExplorer: "탐험가", loyaltyAdventurer: "모험가", loyaltyGlobetrotter: "세계여행가",
+    loyaltyEarnPoints: "포인트 적립", loyaltyRedeemPoints: "포인트 사용", loyaltyHistory: "내역",
+    loyaltyNextTier: "다음 등급", loyaltyPointsToNext: "다음 등급까지 포인트",
+    loyaltyReferralBonus: "추천 보너스", loyaltyBookingPoints: "예약 포인트", loyaltyReviewPoints: "리뷰 포인트",
+    // Referral
+    referralTitle: "친구 초대", referralSubtitle: "Tourly를 공유하고 추천당 500포인트 적립",
+    referralCode: "내 추천 코드", referralCopyCode: "코드 복사", referralCopied: "복사 완료!",
+    referralShareText: "Tourly에 함께 하세요! 보너스 코드: ",
+    referralFriendsJoined: "참여한 친구", referralHowItWorks: "이용 방법",
+    referralStep1: "친구에게 고유 코드 공유",
+    referralStep2: "친구가 가입하고 첫 여행 예약",
+    referralStep3: "둘 다 500 보너스 포인트 적립!",
+    // Reviews
+    reviewsTitle: "리뷰", writeReview: "리뷰 작성", submitReview: "리뷰 제출",
+    reviewPlaceholder: "경험을 공유하세요...", noReviewsYet: "아직 리뷰가 없습니다",
+    beFirstReview: "첫 번째 리뷰를 남겨보세요!", ratingRequired: "평점을 선택해 주세요",
+    reviewSubmitted: "리뷰가 제출되었습니다!", averageRating: "평균 평점",
+    // AI Assistant
+    aiAssistantTitle: "AI 여행 플래너", aiAssistantSubtitle: "AI로 완벽한 여행 계획",
+    aiPlaceholder: "여행에 대해 무엇이든 물어보세요...",
+    aiWelcomeMessage: "안녕하세요! AI 여행 어시스턴트입니다. 여행 계획, 목적지 추천, 일정 작성 등을 도와드립니다. 무엇을 탐험하고 싶으세요?",
+    aiSuggestion1: "발리 5일 여행 계획", aiSuggestion2: "가족을 위한 최고의 여행지", aiSuggestion3: "유럽 알뜰 여행 팁",
+    aiProFeature: "Pro로 업그레이드하여 무제한 AI 계획",
+    // Travel Extras
+    extrasTitle: "여행 업그레이드", extrasSubtitle: "엑스트라를 추가하여 여행을 더욱 풍성하게",
+    extrasTransfer: "공항 교통편", extrasTransferDesc: "전용 차량 픽업 및 드롭오프",
+    extrasInsurance: "여행자 보험", extrasInsuranceDesc: "여행을 위한 종합 보장",
+    extrasSim: "eSIM 데이터 플랜", extrasSimDesc: "무제한 데이터로 연결 유지",
+    extrasLounge: "공항 라운지", extrasLoungeDesc: "비행 전 편안하게 휴식",
+    addToBooking: "예약에 추가", skipExtras: "건너뛰고 확인으로",
+    // Featured
+    featuredBadge: "추천", sponsoredBadge: "스폰서", trendingBadge: "인기",
   },
 
   // ─────────────────────────── Chinese (Simplified) ───────────────────────────
@@ -1420,6 +1956,55 @@ const translations: Record<Language, Translations> = {
     continueWithGoogle: "使用Google继续", continueWithApple: "使用Apple继续",
     agreeToTerms: "注册即表示您同意我们的", termsOfService: "服务条款", privacyPolicy: "隐私政策", andText: "和",
     signOut: "退出登录", signOutConfirm: "您确定要退出登录吗？",
+    // Onboarding
+    onboardingTitle1: "发现精彩目的地", onboardingDesc1: "探索为您精心挑选的世界各地令人叹为观止的地方。",
+    onboardingTitle2: "放心预订", onboardingDesc2: "灵活预订、最低价保证、全天候客服支持。",
+    onboardingTitle3: "旅行赚取奖励", onboardingDesc3: "每次旅行积累积分，解锁专属福利。",
+    getStarted: "开始使用", next: "下一步", skip: "跳过",
+    // Premium
+    premiumTitle: "Tourly Pro", premiumSubtitle: "解锁终极旅行体验",
+    premiumProTitle: "专业版", premiumEliteTitle: "精英版",
+    premiumPerMonth: "/月", premiumPerYear: "/年", premiumSavePercent: "节省",
+    premiumSubscribe: "立即订阅", premiumRestore: "恢复购买", premiumCurrentPlan: "当前方案", premiumFreePlan: "免费",
+    premiumFeatureDeals: "专属优惠和提前访问", premiumFeatureSupport: "优先客户支持",
+    premiumFeatureCancellation: "所有预订免费取消", premiumFeatureAI: "AI旅行规划师",
+    premiumFeatureAdFree: "无广告体验", premiumFeatureConcierge: "私人礼宾服务",
+    premiumFeatureLounge: "机场贵宾室通行", premiumFeatureDoublePoints: "2倍忠诚积分",
+    premiumMostPopular: "最受欢迎", premiumBestValue: "最超值",
+    // Loyalty
+    loyaltyTitle: "奖励", loyaltyPoints: "积分", loyaltyTier: "等级",
+    loyaltyExplorer: "探索者", loyaltyAdventurer: "冒险家", loyaltyGlobetrotter: "环球旅行家",
+    loyaltyEarnPoints: "赚取积分", loyaltyRedeemPoints: "兑换积分", loyaltyHistory: "历史记录",
+    loyaltyNextTier: "下一等级", loyaltyPointsToNext: "距下一等级还需积分",
+    loyaltyReferralBonus: "推荐奖励", loyaltyBookingPoints: "预订积分", loyaltyReviewPoints: "评价积分",
+    // Referral
+    referralTitle: "推荐好友", referralSubtitle: "分享Tourly，每次推荐赚500积分",
+    referralCode: "你的推荐码", referralCopyCode: "复制代码", referralCopied: "已复制！",
+    referralShareText: "加入我的Tourly！使用我的代码获得奖励：",
+    referralFriendsJoined: "已加入的好友", referralHowItWorks: "使用方法",
+    referralStep1: "与好友分享你的专属代码",
+    referralStep2: "他们注册并预订第一次旅行",
+    referralStep3: "双方各获得500奖励积分！",
+    // Reviews
+    reviewsTitle: "评价", writeReview: "写评价", submitReview: "提交评价",
+    reviewPlaceholder: "分享你的体验...", noReviewsYet: "暂无评价",
+    beFirstReview: "成为第一个评价的人！", ratingRequired: "请选择评分",
+    reviewSubmitted: "评价已提交！", averageRating: "平均评分",
+    // AI Assistant
+    aiAssistantTitle: "AI旅行规划师", aiAssistantSubtitle: "用AI规划完美旅行",
+    aiPlaceholder: "关于旅行随便问我...",
+    aiWelcomeMessage: "你好！我是你的AI旅行助手。我可以帮你规划旅行、推荐目的地、创建行程等。你想探索什么？",
+    aiSuggestion1: "规划5天巴厘岛之旅", aiSuggestion2: "最适合家庭的目的地", aiSuggestion3: "欧洲省钱旅行攻略",
+    aiProFeature: "升级Pro享受无限AI规划",
+    // Travel Extras
+    extrasTitle: "升级你的旅程", extrasSubtitle: "添加额外服务让旅行更精彩",
+    extrasTransfer: "机场接送", extrasTransferDesc: "私人专车接送服务",
+    extrasInsurance: "旅行保险", extrasInsuranceDesc: "为你的旅程提供全面保障",
+    extrasSim: "eSIM流量套餐", extrasSimDesc: "无限流量保持连接",
+    extrasLounge: "机场贵宾室", extrasLoungeDesc: "飞行前舒适放松",
+    addToBooking: "添加到预订", skipExtras: "跳过，继续确认",
+    // Featured
+    featuredBadge: "精选", sponsoredBadge: "赞助", trendingBadge: "热门",
   },
 };
 

@@ -10,6 +10,8 @@ import { useCurrency } from "@/lib/currency";
 import { useBookings, useWishlist, Booking, BookingStatus } from "@/lib/store";
 import { TopNavBar } from "@/components/top-nav-bar";
 import { useAuth } from "@/hooks/use-auth";
+import { useLoyalty, type LoyaltyTier } from "@/lib/loyalty";
+import { usePremium } from "@/lib/premium";
 
 const STATUS_COLORS: Record<BookingStatus, string> = {
   pending: "#F59E0B",
@@ -32,6 +34,20 @@ export default function ProfileScreen() {
   const { bookings, cancelBooking } = useBookings();
   const { items: wishlistItems } = useWishlist();
   const { user, logout } = useAuth({ autoFetch: false });
+  const loyalty = useLoyalty();
+  const { isPro, isElite } = usePremium();
+
+  const tierLabels: Record<LoyaltyTier, string> = {
+    explorer: t.loyaltyExplorer,
+    adventurer: t.loyaltyAdventurer,
+    globetrotter: t.loyaltyGlobetrotter,
+  };
+
+  const tierColors: Record<LoyaltyTier, string> = {
+    explorer: "#6366F1",
+    adventurer: "#F59E0B",
+    globetrotter: "#EF4444",
+  };
 
   const handleLogout = () => {
     Alert.alert(
@@ -130,6 +146,16 @@ export default function ProfileScreen() {
             {user?.email || t.welcomeBack}
           </Text>
 
+          {/* Premium Badge */}
+          {(isPro || isElite) && (
+            <View style={{ marginTop: 8, backgroundColor: "rgba(255,255,255,0.2)", paddingHorizontal: 12, paddingVertical: 4, borderRadius: 12, flexDirection: "row", alignItems: "center", gap: 4 }}>
+              <IconSymbol name="crown.fill" size={12} color="white" />
+              <Text style={{ color: "white", fontSize: 12, fontWeight: "700" }}>
+                {isElite ? "Elite" : "Pro"}
+              </Text>
+            </View>
+          )}
+
           {/* Stats row */}
           <View
             style={{
@@ -156,6 +182,115 @@ export default function ProfileScreen() {
               </View>
             ))}
           </View>
+        </View>
+
+        {/* Loyalty Points Card */}
+        <View
+          style={{
+            backgroundColor: colors.surface,
+            borderRadius: 20,
+            padding: 20,
+            marginBottom: 16,
+          }}
+        >
+          <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+            <Text style={{ color: colors.foreground, fontSize: 16, fontWeight: "700" }}>
+              {t.loyaltyTitle}
+            </Text>
+            <View style={{ backgroundColor: tierColors[loyalty.tier] + "20", paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10 }}>
+              <Text style={{ color: tierColors[loyalty.tier], fontSize: 12, fontWeight: "700" }}>
+                {tierLabels[loyalty.tier]}
+              </Text>
+            </View>
+          </View>
+          <Text style={{ color: colors.primary, fontSize: 32, fontWeight: "800", marginBottom: 4 }}>
+            {loyalty.points.toLocaleString()}
+          </Text>
+          <Text style={{ color: colors.muted, fontSize: 13, marginBottom: 12 }}>
+            {t.loyaltyPoints}
+          </Text>
+          {/* Progress bar */}
+          {loyalty.tier !== "globetrotter" && (
+            <View>
+              <View style={{ height: 6, backgroundColor: colors.border, borderRadius: 3, marginBottom: 6 }}>
+                <View
+                  style={{
+                    height: 6,
+                    width: `${Math.min(loyalty.progressToNextTier * 100, 100)}%`,
+                    backgroundColor: tierColors[loyalty.tier],
+                    borderRadius: 3,
+                  }}
+                />
+              </View>
+              <Text style={{ color: colors.muted, fontSize: 11 }}>
+                {loyalty.nextTierThreshold ? loyalty.nextTierThreshold - loyalty.totalEarned : 0} {t.loyaltyPointsToNext}
+              </Text>
+            </View>
+          )}
+        </View>
+
+        {/* Quick Links */}
+        <View style={{ flexDirection: "row", gap: 10, marginBottom: 24 }}>
+          <Pressable
+            onPress={() => router.push("/premium")}
+            style={({ pressed }) => [
+              {
+                flex: 1,
+                backgroundColor: colors.primary + "10",
+                borderRadius: 16,
+                padding: 16,
+                alignItems: "center",
+                borderWidth: 1,
+                borderColor: colors.primary + "20",
+              },
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <IconSymbol name="crown.fill" size={24} color={colors.primary} />
+            <Text style={{ color: colors.primary, fontSize: 13, fontWeight: "600", marginTop: 6 }}>
+              {t.premiumTitle}
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => router.push("/referral")}
+            style={({ pressed }) => [
+              {
+                flex: 1,
+                backgroundColor: "#6366F1" + "10",
+                borderRadius: 16,
+                padding: 16,
+                alignItems: "center",
+                borderWidth: 1,
+                borderColor: "#6366F1" + "20",
+              },
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <IconSymbol name="gift.fill" size={24} color="#6366F1" />
+            <Text style={{ color: "#6366F1", fontSize: 13, fontWeight: "600", marginTop: 6 }}>
+              {t.referralTitle}
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => router.push("/ai-assistant")}
+            style={({ pressed }) => [
+              {
+                flex: 1,
+                backgroundColor: "#059669" + "10",
+                borderRadius: 16,
+                padding: 16,
+                alignItems: "center",
+                borderWidth: 1,
+                borderColor: "#059669" + "20",
+              },
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <IconSymbol name="sparkles" size={24} color="#059669" />
+            <Text style={{ color: "#059669", fontSize: 13, fontWeight: "600", marginTop: 6 }}>
+              AI
+            </Text>
+          </Pressable>
         </View>
 
         {/* Menu */}

@@ -12,6 +12,7 @@ import { useCurrency } from "@/lib/currency";
 import { packages, TravelPackage } from "@/data/packages";
 import { useWishlist } from "@/lib/store";
 import { TopNavBar } from "@/components/top-nav-bar";
+import { FeaturedBadge } from "@/components/featured-badge";
 
 type SortKey = "default" | "price-asc" | "price-desc" | "rating";
 
@@ -181,11 +182,24 @@ export default function PackagesScreen() {
         }}
       >
         <View style={{ borderRadius: 16, overflow: "hidden" }}>
+        <View style={{ position: "relative" }}>
         <Image
           source={item.image}
           style={{ width: "100%", height: 200 }}
           contentFit="cover"
         />
+        {/* Featured badges - first item is featured, index based on rating */}
+        {item.rating >= 5 && (
+          <View style={{ position: "absolute", top: 12, left: 12 }}>
+            <FeaturedBadge variant="featured" />
+          </View>
+        )}
+        {item.reviews > 200 && item.rating < 5 && (
+          <View style={{ position: "absolute", top: 12, left: 12 }}>
+            <FeaturedBadge variant="trending" />
+          </View>
+        )}
+        </View>
         <View className="p-4">
           <Text 
             className="text-lg font-bold mb-2" 

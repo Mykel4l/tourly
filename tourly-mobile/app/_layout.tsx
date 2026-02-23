@@ -83,6 +83,10 @@ function AuthGate() {
         <Stack.Screen name="sign-up" options={{ presentation: "fullScreenModal" }} />
         <Stack.Screen name="destination/[id]" />
         <Stack.Screen name="package/[id]" />
+        <Stack.Screen name="onboarding" options={{ presentation: "fullScreenModal", gestureEnabled: false }} />
+        <Stack.Screen name="premium" />
+        <Stack.Screen name="ai-assistant" />
+        <Stack.Screen name="referral" />
       </Stack>
       {isAuthenticated && <LiveChatFab bottomOffset={68} />}
       <StatusBar style="auto" />

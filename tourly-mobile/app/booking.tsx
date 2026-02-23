@@ -11,6 +11,9 @@ import { useTranslation } from "@/lib/i18n";
 import { useCurrency } from "@/lib/currency";
 import { TopNavBar } from "@/components/top-nav-bar";
 
+type TravelExtra = { key: string; icon: string; price: number };
+
+
 export default function BookingScreen() {
   const colors = useColors();
   const { t } = useTranslation();
@@ -29,6 +32,35 @@ export default function BookingScreen() {
     specialRequests: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [selectedExtras, setSelectedExtras] = useState<Set<string>>(new Set());
+
+  const extras: TravelExtra[] = [
+    { key: "transfer", icon: "car.fill", price: 45 },
+    { key: "insurance", icon: "shield.checkered", price: 29 },
+    { key: "sim", icon: "antenna.radiowaves.left.and.right", price: 19 },
+    { key: "lounge", icon: "airplane", price: 55 },
+  ];
+
+  const extrasLabels: Record<string, { title: string; desc: string }> = {
+    transfer: { title: t.extrasTransfer, desc: t.extrasTransferDesc },
+    insurance: { title: t.extrasInsurance, desc: t.extrasInsuranceDesc },
+    sim: { title: t.extrasSim, desc: t.extrasSimDesc },
+    lounge: { title: t.extrasLounge, desc: t.extrasLoungeDesc },
+  };
+
+  const toggleExtra = (key: string) => {
+    if (Platform.OS !== "web") Haptics.selectionAsync();
+    setSelectedExtras(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
+
+  const extrasTotal = extras
+    .filter(e => selectedExtras.has(e.key))
+    .reduce((sum, e) => sum + e.price, 0);
 
   const handleSubmit = () => {
     if (Platform.OS !== "web") {
@@ -297,6 +329,79 @@ export default function BookingScreen() {
               style={{ backgroundColor: colors.surface, color: colors.foreground, minHeight: 100 }}
             />
           </View>
+        </View>
+
+        {/* Travel Extras */}
+        <View className="mb-6">
+          <Text 
+            className="text-lg font-bold mb-2" 
+            style={{ color: colors.foreground }}
+          >
+            {t.extrasTitle}
+          </Text>
+          <Text 
+            className="text-sm mb-4" 
+            style={{ color: colors.muted }}
+          >
+            {t.extrasSubtitle}
+          </Text>
+
+          {extras.map((extra) => {
+            const selected = selectedExtras.has(extra.key);
+            const labels = extrasLabels[extra.key];
+            return (
+              <Pressable
+                key={extra.key}
+                onPress={() => toggleExtra(extra.key)}
+                style={({ pressed }) => [
+                  {
+                    flexDirection: "row",
+                    alignItems: "center",
+                    backgroundColor: selected ? colors.primary + "10" : colors.surface,
+                    borderRadius: 14,
+                    padding: 14,
+                    marginBottom: 8,
+                    borderWidth: selected ? 2 : 1,
+                    borderColor: selected ? colors.primary : colors.border,
+                  },
+                  pressed && { opacity: 0.9 },
+                ]}
+              >
+                <View
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                    backgroundColor: selected ? colors.primary + "20" : colors.border + "40",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginRight: 12,
+                  }}
+                >
+                  <IconSymbol name={extra.icon as any} size={18} color={selected ? colors.primary : colors.muted} />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={{ color: colors.foreground, fontWeight: "600", fontSize: 14 }}>
+                    {labels.title}
+                  </Text>
+                  <Text style={{ color: colors.muted, fontSize: 12 }}>
+                    {labels.desc}
+                  </Text>
+                </View>
+                <Text style={{ color: selected ? colors.primary : colors.foreground, fontWeight: "700", fontSize: 15 }}>
+                  +{format(extra.price)}
+                </Text>
+              </Pressable>
+            );
+          })}
+
+          {extrasTotal > 0 && (
+            <View style={{ flexDirection: "row", justifyContent: "flex-end", marginTop: 4 }}>
+              <Text style={{ color: colors.primary, fontWeight: "700", fontSize: 15 }}>
+                {t.extrasTitle}: +{format(extrasTotal)}
+              </Text>
+            </View>
+          )}
         </View>
 
         {/* Submit Button */}

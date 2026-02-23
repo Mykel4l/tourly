@@ -12,6 +12,8 @@ import { destinations } from "@/data/destinations";
 import { useWishlist } from "@/lib/store";
 import { useTranslation } from "@/lib/i18n";
 import { TopNavBar } from "@/components/top-nav-bar";
+import { StarRating } from "@/components/star-rating";
+import { useReviews } from "@/lib/reviews";
 
 export default function DestinationDetailScreen() {
   const colors = useColors();
@@ -19,9 +21,12 @@ export default function DestinationDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { toggle, isSaved } = useWishlist();
   const { t } = useTranslation();
+  const { getReviewsFor, getAverageRating } = useReviews();
   
   const destination = destinations.find(d => d.id === id);
   const saved = destination ? isSaved(destination.id, "destination") : false;
+  const destReviews = destination ? getReviewsFor(destination.id, "destination") : [];
+  const avgRating = destination ? getAverageRating(destination.id, "destination") : 0;
 
   const handleBack = () => {
     if (Platform.OS !== "web") {
@@ -238,6 +243,45 @@ export default function DestinationDetailScreen() {
                 <Text className="text-base" style={{ color: colors.muted }}>{item}</Text>
               </View>
             ))}
+          </View>
+
+          {/* Reviews Section */}
+          <View className="mb-6">
+            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+              <Text className="text-lg font-bold" style={{ color: colors.foreground }}>
+                {t.reviewsTitle}
+              </Text>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+                <StarRating rating={avgRating || destination.rating} size={14} />
+                <Text style={{ color: colors.muted, fontSize: 13 }}>
+                  {(avgRating || destination.rating).toFixed(1)}
+                </Text>
+              </View>
+            </View>
+            {destReviews.length > 0 ? (
+              destReviews.slice(0, 3).map((review) => (
+                <View
+                  key={review.id}
+                  style={{
+                    backgroundColor: colors.surface,
+                    borderRadius: 14,
+                    padding: 14,
+                    marginBottom: 8,
+                  }}
+                >
+                  <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                    <Text style={{ color: colors.foreground, fontWeight: "600", fontSize: 14 }}>{review.userName}</Text>
+                    <StarRating rating={review.rating} size={12} />
+                  </View>
+                  <Text style={{ color: colors.muted, fontSize: 13, lineHeight: 20 }}>{review.comment}</Text>
+                </View>
+              ))
+            ) : (
+              <View style={{ backgroundColor: colors.surface, borderRadius: 14, padding: 20, alignItems: "center" }}>
+                <Text style={{ color: colors.muted, fontSize: 14 }}>{t.noReviewsYet}</Text>
+                <Text style={{ color: colors.muted, fontSize: 12, marginTop: 4 }}>{t.beFirstReview}</Text>
+              </View>
+            )}
           </View>
 
           {/* CTA Row */}
