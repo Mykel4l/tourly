@@ -6,10 +6,17 @@ import * as Haptics from "expo-haptics";
 import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
+import { useBookings } from "@/lib/store";
+import { useTranslation } from "@/lib/i18n";
+import { useCurrency } from "@/lib/currency";
+import { TopNavBar } from "@/components/top-nav-bar";
 
 export default function BookingScreen() {
   const colors = useColors();
+  const { t } = useTranslation();
+  const { format } = useCurrency();
   const params = useLocalSearchParams<{ packageName?: string; price?: string }>();
+  const { addBooking } = useBookings();
   
   const [formData, setFormData] = useState({
     fullName: "",
@@ -21,60 +28,57 @@ export default function BookingScreen() {
     checkOut: "",
     specialRequests: "",
   });
-
-  const handleBack = () => {
-    if (Platform.OS !== "web") {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    }
-    if (router.canGoBack()) {
-      router.back();
-    } else {
-      router.replace("/");
-    }
-  };
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = () => {
     if (Platform.OS !== "web") {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     }
-    
-    if (!formData.fullName || !formData.email || !formData.phone) {
-      Alert.alert("Required Fields", "Please fill in all required fields.");
+
+    const newErrors: Record<string, string> = {};
+    if (!formData.fullName.trim()) newErrors.fullName = t.validationNameRequired;
+    if (!formData.email.trim()) {
+      newErrors.email = t.validationEmailRequired;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = t.validationEmailInvalid;
+    }
+    if (!formData.phone.trim()) newErrors.phone = t.validationPhoneRequired;
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
+    setErrors({});
+
+    addBooking({
+      packageName: formData.destination || t.customTrip,
+      fullName: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      travelers: formData.travelers,
+      checkIn: formData.checkIn,
+      checkOut: formData.checkOut,
+      price: params.price,
+    });
 
     Alert.alert(
-      "Booking Request Sent!",
-      `Thank you ${formData.fullName}! We have received your booking request for ${formData.destination || "your trip"}. Our team will contact you at ${formData.email} within 24 hours.`,
-      [{ text: "OK", onPress: () => router.back() }]
+      t.bookingSuccess,
+      `${t.thankYou} ${formData.fullName}!`,
+      [{ text: t.ok, onPress: () => router.back() }]
     );
   };
 
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors(prev => { const e = { ...prev }; delete e[field]; return e; });
+    }
   };
 
   return (
-    <ScreenContainer className="px-4">
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <View className="flex-row items-center pt-4 pb-6">
-          <Pressable
-            onPress={handleBack}
-            style={({ pressed }) => [
-              { padding: 8, marginLeft: -8 },
-              pressed && { opacity: 0.7 }
-            ]}
-          >
-            <IconSymbol name="chevron.right" size={24} color={colors.foreground} style={{ transform: [{ rotate: '180deg' }] }} />
-          </Pressable>
-          <Text 
-            className="text-2xl font-bold ml-2" 
-            style={{ color: colors.foreground }}
-          >
-            Book Your Trip
-          </Text>
-        </View>
+    <ScreenContainer className="px-4" edges={["left", "right"]}>
+      <TopNavBar title={t.bookingTitle} showBack />
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 8 }}>
 
         {/* Package Info (if coming from a package) */}
         {params.packageName && (
@@ -82,11 +86,11 @@ export default function BookingScreen() {
             className="rounded-2xl p-4 mb-6"
             style={{ backgroundColor: colors.primary }}
           >
-            <Text className="text-white/80 text-sm">Selected Package</Text>
+            <Text className="text-white/80 text-sm">{t.selectedPackage}</Text>
             <Text className="text-white text-lg font-bold">{params.packageName}</Text>
             {params.price && (
               <Text className="text-white text-xl font-bold mt-1">
-                ${params.price} <Text className="text-sm font-normal">/ per person</Text>
+                {format(Number(params.price))} <Text className="text-sm font-normal">{t.perPersonShort}</Text>
               </Text>
             )}
           </View>
@@ -98,31 +102,32 @@ export default function BookingScreen() {
             className="text-lg font-bold mb-4" 
             style={{ color: colors.foreground }}
           >
-            Personal Information
+            {t.personalInfo}
           </Text>
 
           {/* Full Name */}
           <View className="mb-4">
             <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Full Name *
+              {t.fullName} *
             </Text>
             <TextInput
-              placeholder="Enter your full name"
+              placeholder={t.fullName}
               placeholderTextColor={colors.muted}
               value={formData.fullName}
               onChangeText={(v) => updateField("fullName", v)}
               className="rounded-xl px-4 py-3"
               style={{ backgroundColor: colors.surface, color: colors.foreground }}
             />
+            {errors.fullName ? <Text style={{ color: "#ef4444", fontSize: 12, marginTop: 4 }}>{errors.fullName}</Text> : null}
           </View>
 
           {/* Email */}
           <View className="mb-4">
             <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Email Address *
+              {t.email} *
             </Text>
             <TextInput
-              placeholder="Enter your email"
+              placeholder={t.email}
               placeholderTextColor={colors.muted}
               value={formData.email}
               onChangeText={(v) => updateField("email", v)}
@@ -131,15 +136,16 @@ export default function BookingScreen() {
               className="rounded-xl px-4 py-3"
               style={{ backgroundColor: colors.surface, color: colors.foreground }}
             />
+            {errors.email ? <Text style={{ color: "#ef4444", fontSize: 12, marginTop: 4 }}>{errors.email}</Text> : null}
           </View>
 
           {/* Phone */}
           <View className="mb-4">
             <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Phone Number *
+              {t.phone} *
             </Text>
             <TextInput
-              placeholder="Enter your phone number"
+              placeholder={t.phone}
               placeholderTextColor={colors.muted}
               value={formData.phone}
               onChangeText={(v) => updateField("phone", v)}
@@ -147,6 +153,7 @@ export default function BookingScreen() {
               className="rounded-xl px-4 py-3"
               style={{ backgroundColor: colors.surface, color: colors.foreground }}
             />
+            {errors.phone ? <Text style={{ color: "#ef4444", fontSize: 12, marginTop: 4 }}>{errors.phone}</Text> : null}
           </View>
         </View>
 
@@ -156,16 +163,16 @@ export default function BookingScreen() {
             className="text-lg font-bold mb-4" 
             style={{ color: colors.foreground }}
           >
-            Trip Details
+            {t.tripDetails}
           </Text>
 
           {/* Destination */}
           <View className="mb-4">
             <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Destination
+              {t.destinationLabel}
             </Text>
             <TextInput
-              placeholder="Where do you want to go?"
+              placeholder={t.whereToGo}
               placeholderTextColor={colors.muted}
               value={formData.destination}
               onChangeText={(v) => updateField("destination", v)}
@@ -175,28 +182,81 @@ export default function BookingScreen() {
           </View>
 
           {/* Number of Travelers */}
-          <View className="mb-4">
-            <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Number of Travelers
+          <View style={{ marginBottom: 16 }}>
+            <Text style={{ fontSize: 14, fontWeight: "500", marginBottom: 8, color: colors.foreground }}>
+              {t.numberOfTravelers}
             </Text>
-            <TextInput
-              placeholder="1"
-              placeholderTextColor={colors.muted}
-              value={formData.travelers}
-              onChangeText={(v) => updateField("travelers", v)}
-              keyboardType="number-pad"
-              className="rounded-xl px-4 py-3"
-              style={{ backgroundColor: colors.surface, color: colors.foreground }}
-            />
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                backgroundColor: colors.surface,
+                borderRadius: 12,
+                paddingHorizontal: 4,
+                paddingVertical: 4,
+              }}
+            >
+              <Pressable
+                onPress={() => {
+                  const n = Math.max(1, parseInt(formData.travelers) - 1);
+                  if (Platform.OS !== "web") Haptics.selectionAsync();
+                  updateField("travelers", n.toString());
+                }}
+                style={({ pressed }) => [
+                  {
+                    width: 44,
+                    height: 44,
+                    borderRadius: 10,
+                    backgroundColor: colors.border,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  },
+                  pressed && { opacity: 0.7 },
+                ]}
+              >
+                <Text style={{ color: colors.foreground, fontSize: 22, fontWeight: "600", lineHeight: 26 }}>-</Text>
+              </Pressable>
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: "center",
+                  fontSize: 18,
+                  fontWeight: "700",
+                  color: colors.foreground,
+                }}
+              >
+                {formData.travelers}
+              </Text>
+              <Pressable
+                onPress={() => {
+                  const n = Math.min(20, parseInt(formData.travelers) + 1);
+                  if (Platform.OS !== "web") Haptics.selectionAsync();
+                  updateField("travelers", n.toString());
+                }}
+                style={({ pressed }) => [
+                  {
+                    width: 44,
+                    height: 44,
+                    borderRadius: 10,
+                    backgroundColor: colors.primary,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  },
+                  pressed && { opacity: 0.7 },
+                ]}
+              >
+                <Text style={{ color: "white", fontSize: 22, fontWeight: "600", lineHeight: 26 }}>+</Text>
+              </Pressable>
+            </View>
           </View>
 
           {/* Check-in Date */}
           <View className="mb-4">
             <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Preferred Check-in Date
+              {t.preferredCheckIn}
             </Text>
             <TextInput
-              placeholder="YYYY-MM-DD"
+              placeholder={t.datePlaceholder}
               placeholderTextColor={colors.muted}
               value={formData.checkIn}
               onChangeText={(v) => updateField("checkIn", v)}
@@ -208,10 +268,10 @@ export default function BookingScreen() {
           {/* Check-out Date */}
           <View className="mb-4">
             <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Preferred Check-out Date
+              {t.preferredCheckOut}
             </Text>
             <TextInput
-              placeholder="YYYY-MM-DD"
+              placeholder={t.datePlaceholder}
               placeholderTextColor={colors.muted}
               value={formData.checkOut}
               onChangeText={(v) => updateField("checkOut", v)}
@@ -223,10 +283,10 @@ export default function BookingScreen() {
           {/* Special Requests */}
           <View className="mb-4">
             <Text className="text-sm font-medium mb-2" style={{ color: colors.foreground }}>
-              Special Requests
+              {t.specialRequests}
             </Text>
             <TextInput
-              placeholder="Any special requirements or preferences?"
+              placeholder={t.specialRequestsPlaceholder}
               placeholderTextColor={colors.muted}
               value={formData.specialRequests}
               onChangeText={(v) => updateField("specialRequests", v)}
@@ -253,7 +313,7 @@ export default function BookingScreen() {
             pressed && { opacity: 0.9, transform: [{ scale: 0.98 }] }
           ]}
         >
-          <Text className="text-white font-bold text-lg">Submit Booking Request</Text>
+          <Text className="text-white font-bold text-lg">{t.submitBookingRequest}</Text>
         </Pressable>
       </ScrollView>
     </ScreenContainer>

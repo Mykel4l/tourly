@@ -14,22 +14,65 @@ type IconSymbolName = keyof typeof MAPPING;
  * - see SF Symbols in the [SF Symbols](https://developer.apple.com/sf-symbols/) app.
  */
 const MAPPING = {
+  // Navigation & layout
   "house.fill": "home",
-  "paperplane.fill": "send",
-  "chevron.left.forwardslash.chevron.right": "code",
   "chevron.right": "chevron-right",
+  "chevron.left": "chevron-left",
+  "chevron.left.forwardslash.chevron.right": "code",
+  "xmark": "close",
+  "magnifyingglass": "search",
+  // People & profile
+  "person.fill": "person",
+  "person.2.fill": "people",
+  "person.crop.circle": "account-circle",
+  "person.crop.circle.fill": "account-circle",
+  // Notifications & communication
+  "bell.fill": "notifications",
+  "bell": "notifications-none",
+  "paperplane.fill": "send",
+  "envelope.fill": "email",
+  "phone.fill": "phone",
+  "bubble.left.fill": "chat-bubble",
+  "bubble.left.and.bubble.right.fill": "chat",
+  // Travel & maps
   "map.fill": "map",
   "suitcase.fill": "work",
-  "photo.fill": "photo-library",
-  "star.fill": "star",
   "location.fill": "location-on",
+  // Media
+  "photo.fill": "photo-library",
+  "square.and.arrow.up": "share",
+  // Ratings & status
+  "star.fill": "star",
+  "heart.fill": "favorite",
+  "heart": "favorite-border",
+  "tag": "local-offer",
+  "tag.fill": "local-offer",
+  "checkmark": "check",
+  "checkmark.circle": "check-circle-outline",
+  "checkmark.circle.fill": "check-circle",
+  "exclamationmark.circle": "error-outline",
+  "exclamationmark.triangle.fill": "warning",
+  // Time & data
   "clock.fill": "access-time",
-  "person.2.fill": "people",
-  "phone.fill": "phone",
-  "envelope.fill": "email",
-  "magnifyingglass": "search",
   "calendar": "calendar-today",
-  "xmark": "close",
+  "arrow.up.arrow.down": "swap-vert",
+  "arrow.clockwise": "refresh",
+  // Settings & misc
+  "gear": "settings",
+  "gearshape.fill": "settings",
+  "bell.slash": "notifications-off",
+  "bell.slash.fill": "notifications-off",
+  "globe": "language",
+  "moon.fill": "dark-mode",
+  "sun.max.fill": "light-mode",
+  "creditcard.fill": "credit-card",
+  "lock.fill": "lock",
+  "info.circle": "info",
+  "info.circle.fill": "info",
+  "trash.fill": "delete",
+  // Nav mode toggle
+  "pin.fill": "keep",
+  "pin": "keep-off",
 } as IconMapping;
 
 /**

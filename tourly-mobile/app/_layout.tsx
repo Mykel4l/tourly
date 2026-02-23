@@ -1,13 +1,19 @@
 import "@/global.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Stack } from "expo-router";
+import { Stack, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { ActivityIndicator, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import { Platform } from "react-native";
 import "@/lib/_core/nativewind-pressable";
 import { ThemeProvider } from "@/lib/theme-provider";
+import { I18nProvider } from "@/lib/i18n";
+import { CurrencyProvider } from "@/lib/currency";
+import { LiveChatFab } from "@/components/live-chat-fab";
+import { useAuth } from "@/hooks/use-auth";
+import { useColors } from "@/hooks/use-colors";
 import {
   SafeAreaFrameContext,
   SafeAreaInsetsContext,
@@ -25,6 +31,64 @@ const DEFAULT_WEB_FRAME: Rect = { x: 0, y: 0, width: 0, height: 0 };
 export const unstable_settings = {
   anchor: "(tabs)",
 };
+
+// ─── Auth-gated navigation ─────────────────────────────────────────────────
+// Routes that don't require authentication
+const PUBLIC_ROUTES = ["sign-in", "sign-up", "oauth"];
+
+function AuthGate() {
+  const { isAuthenticated, loading } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
+  const colors = useColors();
+
+  useEffect(() => {
+    if (loading) return; // still checking auth state
+
+    const firstSegment = segments[0] ?? "";
+    const isPublicRoute = PUBLIC_ROUTES.includes(firstSegment);
+
+    if (!isAuthenticated && !isPublicRoute) {
+      // Not signed in and trying to access a protected route → redirect to sign-in
+      router.replace("/sign-in");
+    } else if (isAuthenticated && isPublicRoute) {
+      // Already signed in but on auth screen → redirect to home
+      router.replace("/");
+    }
+  }, [isAuthenticated, loading, segments, router]);
+
+  // Loading splash
+  if (loading) {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: colors.background }}>
+        <ActivityIndicator size="large" color={colors.primary} />
+      </View>
+    );
+  }
+
+  return (
+    <>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="oauth/callback" />
+        <Stack.Screen name="search" />
+        <Stack.Screen name="about" />
+        <Stack.Screen name="contact" />
+        <Stack.Screen name="booking" />
+        <Stack.Screen name="profile" />
+        <Stack.Screen name="settings" />
+        <Stack.Screen name="notifications" />
+        <Stack.Screen name="deals" />
+        <Stack.Screen name="sign-in" options={{ presentation: "fullScreenModal" }} />
+        <Stack.Screen name="sign-up" options={{ presentation: "fullScreenModal" }} />
+        <Stack.Screen name="destination/[id]" />
+        <Stack.Screen name="package/[id]" />
+      </Stack>
+      {isAuthenticated && <LiveChatFab bottomOffset={68} />}
+      <StatusBar style="auto" />
+    </>
+  );
+}
 
 export default function RootLayout() {
   const initialInsets = initialWindowMetrics?.insets ?? DEFAULT_WEB_INSETS;
@@ -80,18 +144,15 @@ export default function RootLayout() {
 
   const content = (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <trpc.Provider client={trpcClient} queryClient={queryClient}>
-        <QueryClientProvider client={queryClient}>
-          {/* Default to hiding native headers so raw route segments don't appear (e.g. "(tabs)", "products/[id]"). */}
-          {/* If a screen needs the native header, explicitly enable it and set a human title via Stack.Screen options. */}
-          {/* in order for ios apps tab switching to work properly, use presentation: "fullScreenModal" for login page, whenever you decide to use presentation: "modal*/}
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen name="oauth/callback" />
-          </Stack>
-          <StatusBar style="auto" />
-        </QueryClientProvider>
-      </trpc.Provider>
+      <I18nProvider>
+        <CurrencyProvider>
+        <trpc.Provider client={trpcClient} queryClient={queryClient}>
+          <QueryClientProvider client={queryClient}>
+            <AuthGate />
+          </QueryClientProvider>
+        </trpc.Provider>
+        </CurrencyProvider>
+      </I18nProvider>
     </GestureHandlerRootView>
   );
 

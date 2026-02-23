@@ -1,19 +1,23 @@
-import { Text, View, FlatList, Pressable, Modal, Dimensions } from "react-native";
+import { Text, View, FlatList, Pressable, Modal, useWindowDimensions } from "react-native";
 import { Image } from "expo-image";
 import { useState } from "react";
 import * as Haptics from "expo-haptics";
 import { Platform } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
+import { useTranslation } from "@/lib/i18n";
 import { galleryImages, GalleryImage } from "@/data/gallery";
-
-const { width, height } = Dimensions.get("window");
-const imageSize = (width - 48) / 2;
+import { TopNavBar } from "@/components/top-nav-bar";
 
 export default function GalleryScreen() {
   const colors = useColors();
+  const { width, height } = useWindowDimensions();
+  const imageSize = (width - 48) / 2;
+  const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const handleImagePress = (image: GalleryImage) => {
@@ -57,29 +61,11 @@ export default function GalleryScreen() {
   };
 
   return (
-    <ScreenContainer className="px-4">
-      <View className="pt-4 pb-2">
-        <Text 
-          className="text-sm font-semibold uppercase" 
-          style={{ color: colors.primary }}
-        >
-          Photo Gallery
-        </Text>
-        <Text 
-          className="text-2xl font-bold mt-1" 
-          style={{ color: colors.foreground }}
-        >
-          Photos From Travellers
-        </Text>
-        <Text 
-          className="text-sm mt-2" 
-          style={{ color: colors.muted }}
-        >
-          Explore beautiful moments captured by our travelers around the world.
-        </Text>
-      </View>
+    <ScreenContainer className="px-4" edges={["left", "right"]}>
+      <TopNavBar title={t.photosFromTravellers} />
 
       <FlatList
+        style={{ flex: 1 }}
         data={galleryImages}
         renderItem={renderImage}
         keyExtractor={(item) => item.id}
@@ -102,7 +88,7 @@ export default function GalleryScreen() {
             style={({ pressed }) => [
               { 
                 position: "absolute", 
-                top: 60, 
+                top: insets.top + 16, 
                 right: 20, 
                 zIndex: 10,
                 padding: 8,

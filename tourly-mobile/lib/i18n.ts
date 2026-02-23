@@ -1,0 +1,1474 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useState, useEffect, useCallback, createContext, useContext } from "react";
+
+// ─── Supported Languages ───────────────────────────────────────────────────
+
+export type Language = "en" | "es" | "fr" | "ja" | "ar" | "de" | "it" | "pt" | "ko" | "zh";
+
+export const LANGUAGES: { code: Language; label: string; nativeLabel: string; rtl?: boolean }[] = [
+  { code: "en", label: "English",     nativeLabel: "English"    },
+  { code: "es", label: "Spanish",     nativeLabel: "Español"    },
+  { code: "fr", label: "French",      nativeLabel: "Français"   },
+  { code: "de", label: "German",      nativeLabel: "Deutsch"    },
+  { code: "it", label: "Italian",     nativeLabel: "Italiano"   },
+  { code: "pt", label: "Portuguese",  nativeLabel: "Português"  },
+  { code: "ja", label: "Japanese",    nativeLabel: "日本語"      },
+  { code: "ko", label: "Korean",      nativeLabel: "한국어"      },
+  { code: "zh", label: "Chinese",     nativeLabel: "中文"        },
+  { code: "ar", label: "Arabic",      nativeLabel: "العربية",   rtl: true },
+];
+
+// ─── Translation Keys ──────────────────────────────────────────────────────
+
+export interface Translations {
+  // Tabs
+  tabHome: string;
+  tabExplore: string;
+  tabTrips: string;
+  tabSaved: string;
+  tabGallery: string;
+  // Home screen
+  heroTitle: string;
+  heroSubtitle: string;
+  learnMore: string;
+  bookNow: string;
+  contactUs: string;
+  findYourTrip: string;
+  enterDestination: string;
+  numberOfTravelers: string;
+  inquireNow: string;
+  popularDestinations: string;
+  checkoutPackages: string;
+  viewAll: string;
+  dealsTitle: string;
+  dealsSubtitle: string;
+  // Common actions
+  save: string;
+  saved: string;
+  share: string;
+  back: string;
+  search: string;
+  searchPlaceholder: string;
+  noResults: string;
+  // Search filters
+  filterAll: string;
+  filterDestinations: string;
+  filterPackages: string;
+  sortBy: string;
+  sortDefault: string;
+  sortNameAZ: string;
+  sortRelevance: string;
+  sortPriceLow: string;
+  sortPriceHigh: string;
+  sortRating: string;
+  priceRange: string;
+  resultsFound: string;
+  searchTourly: string;
+  searchHint: string;
+  tryDifferent: string;
+  clearFilters: string;
+  // Destination / Package detail
+  bookThisDestination: string;
+  aboutDestination: string;
+  whatToExpect: string;
+  whatsIncluded: string;
+  sampleItinerary: string;
+  // Booking
+  bookingTitle: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  travelers: string;
+  checkIn: string;
+  checkOut: string;
+  submitBooking: string;
+  bookingSuccess: string;
+  // Notifications
+  notificationsTitle: string;
+  markAllRead: string;
+  noNotifications: string;
+  // Profile
+  profileTitle: string;
+  myBookings: string;
+  settings: string;
+  aboutUs: string;
+  // Settings
+  settingsTitle: string;
+  darkMode: string;
+  language: string;
+  currency: string;
+  pushNotifications: string;
+  emailNotifications: string;
+  // Saved
+  myWishlist: string;
+  savedPlaces: string;
+  nothingSaved: string;
+  nothingSavedHint: string;
+  exploreDestinations: string;
+  // Gallery
+  photoGallery: string;
+  photosFromTravellers: string;
+  // Chat
+  chatTitle: string;
+  chatPlaceholder: string;
+  chatSend: string;
+  chatWelcome: string;
+  chatHello: string;
+  // Booking extras
+  personalInfo: string;
+  tripDetails: string;
+  selectedPackage: string;
+  destinationLabel: string;
+  whereToGo: string;
+  preferredCheckIn: string;
+  preferredCheckOut: string;
+  specialRequests: string;
+  specialRequestsPlaceholder: string;
+  submitBookingRequest: string;
+  validationNameRequired: string;
+  validationEmailRequired: string;
+  validationEmailInvalid: string;
+  validationPhoneRequired: string;
+  // About
+  aboutPageTitle: string;
+  whoWeAre: string;
+  trustedTravelPartner: string;
+  whyChooseUs: string;
+  whatMakesDifferent: string;
+  ourMission: string;
+  happyTravelers: string;
+  tourPackages: string;
+  supportUs: string;
+  // Contact
+  getInTouch: string;
+  feelFreeContact: string;
+  newsletter: string;
+  newsletterSubtitle: string;
+  subscribe: string;
+  enterYourEmail: string;
+  readyForTravel: string;
+  // Deals
+  limitedTime: string;
+  flashDeals: string;
+  flashDealsSubtitle: string;
+  endsIn: string;
+  bookAt: string;
+  perPersonShort: string;
+  // Detail screens
+  packageNotFound: string;
+  destinationNotFound: string;
+  goBack: string;
+  aboutThisPackage: string;
+  maxPax: string;
+  durationLabel: string;
+  locationLabel: string;
+  reviewsLabel: string;
+  topRated: string;
+  countryLabel: string;
+  bestTime: string;
+  allYear: string;
+  groupSizeLabel: string;
+  ratingLabel: string;
+  // Home extras
+  uncoverPlace: string;
+  popularDestinationsSubtitle: string;
+  popularPackages: string;
+  packagesSubtitle: string;
+  callToAction: string;
+  ctaDescription: string;
+  perPerson: string;
+  // Profile
+  defaultUsername: string;
+  welcomeBack: string;
+  countriesLabel: string;
+  noBookingsHint: string;
+  browsePackages: string;
+  cancelBookingTitle: string;
+  cancelBookingMessage: string;
+  keepIt: string;
+  cancelBookingAction: string;
+  bookedOn: string;
+  cancel: string;
+  ok: string;
+  customTrip: string;
+  travellersCount: string;
+  // Saved
+  viewDetails: string;
+  // About features
+  featureBestPrice: string;
+  featureBestPriceDesc: string;
+  featureHandpicked: string;
+  featureHandpickedDesc: string;
+  featureExpertGuides: string;
+  featureExpertGuidesDesc: string;
+  featureFlexibleBooking: string;
+  featureFlexibleBookingDesc: string;
+  aboutParagraph1: string;
+  aboutParagraph2: string;
+  missionStatement: string;
+  // Contact extras
+  ctaContactDescription: string;
+  addressLabel: string;
+  footerCopyright: string;
+  // Booking extras2
+  datePlaceholder: string;
+  // Deals tags
+  tagFlashSale: string;
+  tagWeekendDeal: string;
+  tagLimitedOffer: string;
+  // Notification times
+  timeJustNow: string;
+  timeMinutesAgo: string;
+  timeHoursAgo: string;
+  timeDaysAgo: string;
+  unreadNotifications: string;
+  // Notification seed content
+  notifWelcomeTitle: string;
+  notifWelcomeBody: string;
+  notifSaleTitle: string;
+  notifSaleBody: string;
+  notifNewDestTitle: string;
+  notifNewDestBody: string;
+  // Destination detail
+  destinationDetailDesc: string;
+  expectGuidedTours: string;
+  expectLocalCuisine: string;
+  expectAccommodations: string;
+  expectTransportation: string;
+  expectSupport: string;
+  // Package detail extras
+  inclusionAirfare: string;
+  inclusionTransfers: string;
+  inclusionAccommodation: string;
+  inclusionBreakfast: string;
+  inclusionGuidedTours: string;
+  inclusionInsurance: string;
+  inclusionSupport: string;
+  itineraryDay1Title: string; itineraryDay1Desc: string;
+  itineraryDay2Title: string; itineraryDay2Desc: string;
+  itineraryDay3Title: string; itineraryDay3Desc: string;
+  itineraryDay4Title: string; itineraryDay4Desc: string;
+  itineraryDay5Title: string; itineraryDay5Desc: string;
+  itineraryDay6Title: string; itineraryDay6Desc: string;
+  itineraryDay7Title: string; itineraryDay7Desc: string;
+  packageDetailExtended: string;
+  // Chat extras
+  chatOnlineStatus: string;
+  chatReply1: string;
+  chatReply2: string;
+  chatReply3: string;
+  chatReply4: string;
+  chatReply5: string;
+  // Price presets
+  priceAny: string;
+  priceUnder500: string;
+  price500to1000: string;
+  priceOver1000: string;
+  // Auth
+  signIn: string;
+  signUp: string;
+  password: string;
+  confirmPassword: string;
+  forgotPassword: string;
+  dontHaveAccount: string;
+  alreadyHaveAccount: string;
+  orContinueWith: string;
+  signingIn: string;
+  signingUp: string;
+  passwordMismatch: string;
+  passwordTooShort: string;
+  welcomeTo: string;
+  createAccount: string;
+  signInSubtitle: string;
+  signUpSubtitle: string;
+  continueWithGoogle: string;
+  continueWithApple: string;
+  agreeToTerms: string;
+  termsOfService: string;
+  privacyPolicy: string;
+  andText: string;
+  signOut: string;
+  signOutConfirm: string;
+}
+
+// ─── All Language Packs ────────────────────────────────────────────────────
+
+const translations: Record<Language, Translations> = {
+  en: {
+    tabHome: "Home", tabExplore: "Explore", tabTrips: "Trips", tabSaved: "Saved", tabGallery: "Gallery",
+    heroTitle: "Journey to\nExplore World", heroSubtitle: "Discover amazing destinations and create unforgettable memories with Tourly",
+    learnMore: "Learn More", bookNow: "Book Now", contactUs: "Contact Us",
+    findYourTrip: "Find Your Trip", enterDestination: "Enter Destination", numberOfTravelers: "Number of Travelers",
+    inquireNow: "Inquire Now", popularDestinations: "Popular Destinations", checkoutPackages: "Checkout Our Packages",
+    viewAll: "View All →", dealsTitle: "Deals & Flash Sales 🔥", dealsSubtitle: "Up to 30% off — see all offers",
+    save: "Save", saved: "Saved", share: "Share", back: "Back", search: "Search",
+    searchPlaceholder: "Search destinations, packages...", noResults: "No results found",
+    filterAll: "All", filterDestinations: "Destinations", filterPackages: "Packages",
+    sortBy: "Sort", sortDefault: "Default", sortNameAZ: "Name: A–Z", sortRelevance: "Relevance", sortPriceLow: "Price: Low → High", sortPriceHigh: "Price: High → Low", sortRating: "Top Rated",
+    priceRange: "Price", resultsFound: "results found", searchTourly: "Search Tourly",
+    searchHint: "Find your perfect destination or travel package", tryDifferent: "Try a different search term or adjust filters",
+    clearFilters: "Clear Filters",
+    bookThisDestination: "Book This Destination", aboutDestination: "About This Destination",
+    whatToExpect: "What to Expect", whatsIncluded: "What's Included", sampleItinerary: "Sample Itinerary",
+    bookingTitle: "Book Your Trip", fullName: "Full Name", email: "Email", phone: "Phone",
+    travelers: "Travelers", checkIn: "Check-in Date", checkOut: "Check-out Date",
+    submitBooking: "Submit Booking", bookingSuccess: "Booking submitted successfully!",
+    notificationsTitle: "Notifications", markAllRead: "Mark all read", noNotifications: "No notifications yet",
+    profileTitle: "My Profile", myBookings: "My Bookings", settings: "Settings", aboutUs: "About Us",
+    settingsTitle: "Settings", darkMode: "Dark Mode", language: "Language", currency: "Currency",
+    pushNotifications: "Push Notifications", emailNotifications: "Email Notifications",
+    myWishlist: "My Wishlist", savedPlaces: "Saved Places", nothingSaved: "Nothing saved yet",
+    nothingSavedHint: "Tap the heart icon on any destination or package to save it here.",
+    exploreDestinations: "Explore Destinations", photoGallery: "Photo Gallery", photosFromTravellers: "Photos From Travellers",
+    chatTitle: "Live Support", chatPlaceholder: "Type a message...", chatSend: "Send",
+    chatWelcome: "👋 Hi! Welcome to Tourly. How can we help you today?",
+    chatHello: "Hello! I'm your Tourly travel assistant. Ask me anything about destinations, packages, or bookings!",
+    personalInfo: "Personal Information", tripDetails: "Trip Details",
+    selectedPackage: "Selected Package", destinationLabel: "Destination",
+    whereToGo: "Where do you want to go?", preferredCheckIn: "Preferred Check-in Date",
+    preferredCheckOut: "Preferred Check-out Date", specialRequests: "Special Requests",
+    specialRequestsPlaceholder: "Any special requirements?", submitBookingRequest: "Submit Booking Request",
+    validationNameRequired: "Full name is required", validationEmailRequired: "Email address is required",
+    validationEmailInvalid: "Please enter a valid email address", validationPhoneRequired: "Phone number is required",
+    aboutPageTitle: "About Us", whoWeAre: "Who We Are", trustedTravelPartner: "Your Trusted Travel Partner",
+    whyChooseUs: "Why Choose Us", whatMakesDifferent: "What Makes Us Different",
+    ourMission: "Our Mission", happyTravelers: "Happy Travelers", tourPackages: "Tour Packages", supportUs: "Support",
+    getInTouch: "Get In Touch", feelFreeContact: "Feel free to contact and reach us!",
+    newsletter: "Newsletter", newsletterSubtitle: "Subscribe to get the latest deals and travel inspiration.",
+    subscribe: "Subscribe", enterYourEmail: "Enter your email", readyForTravel: "Ready For Unforgettable Travel?",
+    limitedTime: "Limited Time", flashDeals: "Flash Deals 🔥", flashDealsSubtitle: "Save up to 30% on our top packages",
+    endsIn: "Ends in", bookAt: "Book at", perPersonShort: "/person",
+    packageNotFound: "Package not found", destinationNotFound: "Destination not found",
+    goBack: "Go Back", aboutThisPackage: "About This Package",
+    maxPax: "Max Pax", durationLabel: "Duration", locationLabel: "Location",
+    reviewsLabel: "reviews", topRated: "Top Rated", countryLabel: "Country",
+    bestTime: "Best Time", allYear: "All Year", groupSizeLabel: "Group Size",
+    ratingLabel: "Rating",
+    uncoverPlace: "Uncover Place", popularDestinationsSubtitle: "Explore our most visited destinations around the world",
+    popularPackages: "Popular Packages", packagesSubtitle: "Find the perfect travel package for your next adventure",
+    callToAction: "Call To Action", ctaDescription: "Contact us today and let us help you plan your dream vacation!",
+    perPerson: "per person",
+    defaultUsername: "Traveller", welcomeBack: "Welcome back!",
+    countriesLabel: "Countries", noBookingsHint: "No bookings yet. Book a package or destination to see it here.",
+    browsePackages: "Browse Packages", cancelBookingTitle: "Cancel Booking",
+    cancelBookingMessage: "Cancel your booking for this trip?", keepIt: "Keep It",
+    cancelBookingAction: "Cancel Booking", bookedOn: "Booked", cancel: "Cancel", ok: "OK",
+    customTrip: "Custom Trip", travellersCount: "travellers",
+    viewDetails: "View Details",
+    featureBestPrice: "Best Price Guarantee",
+    featureBestPriceDesc: "We offer the best prices for all our travel packages with no hidden fees.",
+    featureHandpicked: "Handpicked Destinations",
+    featureHandpickedDesc: "Our experts carefully select the most beautiful and unique destinations.",
+    featureExpertGuides: "Expert Guides",
+    featureExpertGuidesDesc: "Professional local guides who know every corner of the destination.",
+    featureFlexibleBooking: "Flexible Booking",
+    featureFlexibleBookingDesc: "Easy booking process with flexible cancellation policies.",
+    aboutParagraph1: "Tourly is a premier travel agency dedicated to creating unforgettable travel experiences. With years of expertise, we connect travelers with the world's most stunning destinations.",
+    aboutParagraph2: "Our team of passionate travel experts works tirelessly to curate unique experiences that go beyond ordinary tourism, ensuring every journey is remarkable.",
+    missionStatement: "To inspire and enable people to explore the world by providing exceptional, sustainable, and affordable travel experiences that create lasting memories.",
+    ctaContactDescription: "Contact us today and let us help you plan your dream vacation. Our team is ready to assist you 24/7.",
+    addressLabel: "Address", footerCopyright: "© 2024 Tourly. All rights reserved",
+    datePlaceholder: "YYYY-MM-DD",
+    tagFlashSale: "Flash Sale", tagWeekendDeal: "Weekend Deal", tagLimitedOffer: "Limited Offer",
+    timeJustNow: "Just now", timeMinutesAgo: "m ago", timeHoursAgo: "h ago", timeDaysAgo: "d ago",
+    unreadNotifications: "unread notifications",
+    notifWelcomeTitle: "Welcome to Tourly \ud83c\udf0d", notifWelcomeBody: "Start exploring amazing destinations and book your next adventure.",
+    notifSaleTitle: "Summer Sale \u2014 Up to 30% Off", notifSaleBody: "Limited-time offer on select packages. Book before March 31, 2026.",
+    notifNewDestTitle: "New Destination Added", notifNewDestBody: "Bali, Indonesia is now available. Check out our exclusive packages!",
+    destinationDetailDesc: "Experience the beauty and culture of this amazing destination. From breathtaking landscapes to rich local traditions, every moment will be unforgettable.",
+    expectGuidedTours: "Guided tours with local experts", expectLocalCuisine: "Authentic local cuisine experiences",
+    expectAccommodations: "Comfortable accommodations", expectTransportation: "Transportation included", expectSupport: "24/7 travel support",
+    inclusionAirfare: "Round-trip airfare", inclusionTransfers: "Airport transfers",
+    inclusionAccommodation: "Accommodation (4-star hotel)", inclusionBreakfast: "Daily breakfast",
+    inclusionGuidedTours: "Guided tours", inclusionInsurance: "Travel insurance", inclusionSupport: "24/7 support",
+    itineraryDay1Title: "Arrival & Welcome", itineraryDay1Desc: "Airport pickup, hotel check-in, welcome dinner",
+    itineraryDay2Title: "City Exploration", itineraryDay2Desc: "Guided city tour, local markets, cultural sites",
+    itineraryDay3Title: "Adventure Day", itineraryDay3Desc: "Outdoor activities, nature excursions",
+    itineraryDay4Title: "Cultural Experience", itineraryDay4Desc: "Traditional workshops, local cuisine",
+    itineraryDay5Title: "Free Day", itineraryDay5Desc: "Optional activities or relaxation",
+    itineraryDay6Title: "Scenic Tour", itineraryDay6Desc: "Day trip to nearby attractions",
+    itineraryDay7Title: "Departure", itineraryDay7Desc: "Breakfast, checkout, airport transfer",
+    packageDetailExtended: "Experience an unforgettable journey with our carefully curated travel package. Every detail has been planned to ensure you have the trip of a lifetime.",
+    chatOnlineStatus: "Online · Tourly Support",
+    chatReply1: "Thanks for reaching out! A travel expert will be with you shortly.",
+    chatReply2: "Great question! Our team is reviewing your message now.",
+    chatReply3: "We'd love to help you plan your perfect trip! Could you share more details?",
+    chatReply4: "Our packages are fully customizable. Let me connect you with a specialist.",
+    chatReply5: "For immediate assistance you can also call us at +01 (123) 4567 90.",
+    priceAny: "Any", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "Sign In", signUp: "Sign Up", password: "Password", confirmPassword: "Confirm Password",
+    forgotPassword: "Forgot Password?", dontHaveAccount: "Don't have an account?", alreadyHaveAccount: "Already have an account?",
+    orContinueWith: "or continue with", signingIn: "Signing in...", signingUp: "Creating account...",
+    passwordMismatch: "Passwords do not match", passwordTooShort: "Password must be at least 8 characters",
+    welcomeTo: "Welcome to", createAccount: "Create Account", signInSubtitle: "Sign in to access your bookings and saved trips",
+    signUpSubtitle: "Join Tourly and start planning your dream vacation",
+    continueWithGoogle: "Continue with Google", continueWithApple: "Continue with Apple",
+    agreeToTerms: "By signing up, you agree to our", termsOfService: "Terms of Service", privacyPolicy: "Privacy Policy", andText: "and",
+    signOut: "Sign Out", signOutConfirm: "Are you sure you want to sign out?",
+  },
+  es: {
+    tabHome: "Inicio", tabExplore: "Explorar", tabTrips: "Viajes", tabSaved: "Guardado", tabGallery: "Galería",
+    heroTitle: "Viaje para\nExplorar el Mundo", heroSubtitle: "Descubre destinos increíbles y crea recuerdos inolvidables con Tourly",
+    learnMore: "Saber Más", bookNow: "Reservar", contactUs: "Contáctanos",
+    findYourTrip: "Encuentra tu Viaje", enterDestination: "Ingresa Destino", numberOfTravelers: "Número de Viajeros",
+    inquireNow: "Consultar Ahora", popularDestinations: "Destinos Populares", checkoutPackages: "Nuestros Paquetes",
+    viewAll: "Ver Todo →", dealsTitle: "Ofertas y Descuentos 🔥", dealsSubtitle: "Hasta 30% de descuento",
+    save: "Guardar", saved: "Guardado", share: "Compartir", back: "Volver", search: "Buscar",
+    searchPlaceholder: "Buscar destinos, paquetes...", noResults: "Sin resultados",
+    filterAll: "Todo", filterDestinations: "Destinos", filterPackages: "Paquetes",
+    sortBy: "Ordenar", sortDefault: "Predeterminado", sortNameAZ: "Nombre: A–Z", sortRelevance: "Relevancia", sortPriceLow: "Precio: Menor → Mayor", sortPriceHigh: "Precio: Mayor → Menor", sortRating: "Mejor Valorado",
+    priceRange: "Precio", resultsFound: "resultados", searchTourly: "Buscar en Tourly",
+    searchHint: "Encuentra tu destino o paquete de viaje perfecto", tryDifferent: "Intenta otro término o ajusta los filtros",
+    clearFilters: "Limpiar Filtros",
+    bookThisDestination: "Reservar este Destino", aboutDestination: "Sobre este Destino",
+    whatToExpect: "Qué Esperar", whatsIncluded: "Qué Incluye", sampleItinerary: "Itinerario de Muestra",
+    bookingTitle: "Reserva tu Viaje", fullName: "Nombre Completo", email: "Correo", phone: "Teléfono",
+    travelers: "Viajeros", checkIn: "Fecha de Entrada", checkOut: "Fecha de Salida",
+    submitBooking: "Enviar Reserva", bookingSuccess: "¡Reserva enviada con éxito!",
+    notificationsTitle: "Notificaciones", markAllRead: "Marcar todo leído", noNotifications: "Sin notificaciones",
+    profileTitle: "Mi Perfil", myBookings: "Mis Reservas", settings: "Configuración", aboutUs: "Sobre Nosotros",
+    settingsTitle: "Configuración", darkMode: "Modo Oscuro", language: "Idioma", currency: "Moneda",
+    pushNotifications: "Notificaciones Push", emailNotifications: "Notificaciones por Email",
+    myWishlist: "Mi Lista de Deseos", savedPlaces: "Lugares Guardados", nothingSaved: "Nada guardado aún",
+    nothingSavedHint: "Toca el corazón en cualquier destino o paquete para guardarlo aquí.",
+    exploreDestinations: "Explorar Destinos", photoGallery: "Galería de Fotos", photosFromTravellers: "Fotos de Viajeros",
+    chatTitle: "Soporte en Vivo", chatPlaceholder: "Escribe un mensaje...", chatSend: "Enviar",
+    chatWelcome: "👋 ¡Hola! Bienvenido a Tourly. ¿Cómo podemos ayudarte?",
+    chatHello: "¡Hola! Soy tu asistente de viajes Tourly. ¡Pregúntame sobre destinos, paquetes o reservas!",
+    personalInfo: "Información Personal", tripDetails: "Detalles del Viaje",
+    selectedPackage: "Paquete Seleccionado", destinationLabel: "Destino",
+    whereToGo: "¿A dónde quieres ir?", preferredCheckIn: "Fecha de Entrada Preferida",
+    preferredCheckOut: "Fecha de Salida Preferida", specialRequests: "Solicitudes Especiales",
+    specialRequestsPlaceholder: "¿Algún requisito especial?", submitBookingRequest: "Enviar Solicitud de Reserva",
+    validationNameRequired: "El nombre completo es requerido", validationEmailRequired: "El correo es requerido",
+    validationEmailInvalid: "Por favor ingresa un correo válido", validationPhoneRequired: "El teléfono es requerido",
+    aboutPageTitle: "Sobre Nosotros", whoWeAre: "Quiénes Somos", trustedTravelPartner: "Tu Socio de Viajes de Confianza",
+    whyChooseUs: "Por Qué Elegirnos", whatMakesDifferent: "Qué Nos Hace Diferentes",
+    ourMission: "Nuestra Misión", happyTravelers: "Viajeros Felices", tourPackages: "Paquetes de Tour", supportUs: "Soporte",
+    getInTouch: "Ponerse en Contacto", feelFreeContact: "¡Siéntete libre de contactarnos!",
+    newsletter: "Boletín", newsletterSubtitle: "Suscríbete para recibir las últimas ofertas.",
+    subscribe: "Suscribirse", enterYourEmail: "Ingresa tu correo", readyForTravel: "¿Listo para un Viaje Inolvidable?",
+    limitedTime: "Tiempo Limitado", flashDeals: "Ofertas Relámpago 🔥", flashDealsSubtitle: "Ahorra hasta un 30% en nuestros mejores paquetes",
+    endsIn: "Termina en", bookAt: "Reservar a", perPersonShort: "/persona",
+    packageNotFound: "Paquete no encontrado", destinationNotFound: "Destino no encontrado",
+    goBack: "Volver", aboutThisPackage: "Sobre este Paquete",
+    maxPax: "Máx. Personas", durationLabel: "Duración", locationLabel: "Ubicación",
+    reviewsLabel: "reseñas", topRated: "Más Valorado", countryLabel: "País",
+    bestTime: "Mejor Época", allYear: "Todo el Año", groupSizeLabel: "Tamaño del Grupo",
+    ratingLabel: "Valoración",
+    uncoverPlace: "Descubre Lugares", popularDestinationsSubtitle: "Explora nuestros destinos más visitados del mundo",
+    popularPackages: "Paquetes Populares", packagesSubtitle: "Encuentra el paquete de viaje perfecto para tu próxima aventura",
+    callToAction: "Llamada a la Acción", ctaDescription: "¡Contáctanos hoy y te ayudaremos a planificar las vacaciones de tus sueños!",
+    perPerson: "por persona",
+    defaultUsername: "Viajero", welcomeBack: "¡Bienvenido de nuevo!",
+    countriesLabel: "Países", noBookingsHint: "Aún no hay reservas. Reserva un paquete o destino para verlo aquí.",
+    browsePackages: "Explorar Paquetes", cancelBookingTitle: "Cancelar Reserva",
+    cancelBookingMessage: "¿Cancelar tu reserva para este viaje?", keepIt: "Mantener",
+    cancelBookingAction: "Cancelar Reserva", bookedOn: "Reservado", cancel: "Cancelar", ok: "OK",
+    customTrip: "Viaje Personalizado", travellersCount: "viajeros",
+    viewDetails: "Ver Detalles",
+    featureBestPrice: "Garantía de Mejor Precio",
+    featureBestPriceDesc: "Ofrecemos los mejores precios para todos nuestros paquetes de viaje sin cargos ocultos.",
+    featureHandpicked: "Destinos Seleccionados",
+    featureHandpickedDesc: "Nuestros expertos seleccionan cuidadosamente los destinos más bellos y únicos.",
+    featureExpertGuides: "Guías Expertos",
+    featureExpertGuidesDesc: "Guías locales profesionales que conocen cada rincón del destino.",
+    featureFlexibleBooking: "Reserva Flexible",
+    featureFlexibleBookingDesc: "Proceso de reserva fácil con políticas de cancelación flexibles.",
+    aboutParagraph1: "Tourly es una agencia de viajes de primera dedicada a crear experiencias de viaje inolvidables. Con años de experiencia, conectamos a los viajeros con los destinos más impresionantes del mundo.",
+    aboutParagraph2: "Nuestro equipo de apasionados expertos en viajes trabaja incansablemente para crear experiencias únicas que van más allá del turismo ordinario.",
+    missionStatement: "Inspirar y permitir que las personas exploren el mundo proporcionando experiencias de viaje excepcionales, sostenibles y asequibles.",
+    ctaContactDescription: "Contáctanos hoy y te ayudaremos a planificar tus vacaciones soñadas. Nuestro equipo está listo para asistirte 24/7.",
+    addressLabel: "Dirección", footerCopyright: "© 2024 Tourly. Todos los derechos reservados",
+    datePlaceholder: "AAAA-MM-DD",
+    tagFlashSale: "Oferta Relámpago", tagWeekendDeal: "Oferta de Fin de Semana", tagLimitedOffer: "Oferta Limitada",
+    timeJustNow: "Ahora", timeMinutesAgo: "m", timeHoursAgo: "h", timeDaysAgo: "d",
+    unreadNotifications: "notificaciones sin leer",
+    notifWelcomeTitle: "Bienvenido a Tourly \ud83c\udf0d", notifWelcomeBody: "Comienza a explorar destinos incre\u00edbles y reserva tu pr\u00f3xima aventura.",
+    notifSaleTitle: "Oferta de Verano \u2014 Hasta 30% Off", notifSaleBody: "Oferta por tiempo limitado en paquetes seleccionados. Reserva antes del 31 de marzo de 2026.",
+    notifNewDestTitle: "Nuevo Destino A\u00f1adido", notifNewDestBody: "Bali, Indonesia ya est\u00e1 disponible. \u00a1Descubre nuestros paquetes exclusivos!",
+    destinationDetailDesc: "Experimenta la belleza y cultura de este increíble destino. Desde paisajes impresionantes hasta ricas tradiciones locales, cada momento será inolvidable.",
+    expectGuidedTours: "Tours guiados con expertos locales", expectLocalCuisine: "Experiencias de cocina local auténtica",
+    expectAccommodations: "Alojamientos confortables", expectTransportation: "Transporte incluido", expectSupport: "Soporte de viaje 24/7",
+    inclusionAirfare: "Vuelo de ida y vuelta", inclusionTransfers: "Traslados al aeropuerto",
+    inclusionAccommodation: "Alojamiento (hotel 4 estrellas)", inclusionBreakfast: "Desayuno diario",
+    inclusionGuidedTours: "Tours guiados", inclusionInsurance: "Seguro de viaje", inclusionSupport: "Soporte 24/7",
+    itineraryDay1Title: "Llegada y Bienvenida", itineraryDay1Desc: "Recogida en aeropuerto, check-in, cena de bienvenida",
+    itineraryDay2Title: "Exploración de la Ciudad", itineraryDay2Desc: "Tour guiado, mercados locales, sitios culturales",
+    itineraryDay3Title: "Día de Aventura", itineraryDay3Desc: "Actividades al aire libre, excursiones por la naturaleza",
+    itineraryDay4Title: "Experiencia Cultural", itineraryDay4Desc: "Talleres tradicionales, cocina local",
+    itineraryDay5Title: "Día Libre", itineraryDay5Desc: "Actividades opcionales o relajación",
+    itineraryDay6Title: "Tour Panorámico", itineraryDay6Desc: "Excursión a atracciones cercanas",
+    itineraryDay7Title: "Partida", itineraryDay7Desc: "Desayuno, checkout, traslado al aeropuerto",
+    packageDetailExtended: "Experimenta un viaje inolvidable con nuestro paquete de viaje cuidadosamente diseñado. Cada detalle ha sido planificado para el viaje de tu vida.",
+    chatOnlineStatus: "En línea · Soporte Tourly",
+    chatReply1: "¡Gracias por contactarnos! Un experto en viajes estará contigo pronto.",
+    chatReply2: "¡Gran pregunta! Nuestro equipo está revisando tu mensaje.",
+    chatReply3: "¡Nos encantaría ayudarte a planificar tu viaje perfecto! ¿Podrías compartir más detalles?",
+    chatReply4: "Nuestros paquetes son totalmente personalizables. Te conectaré con un especialista.",
+    chatReply5: "Para asistencia inmediata también puedes llamarnos al +01 (123) 4567 90.",
+    priceAny: "Cualquiera", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "Iniciar Sesión", signUp: "Registrarse", password: "Contraseña", confirmPassword: "Confirmar Contraseña",
+    forgotPassword: "¿Olvidaste tu contraseña?", dontHaveAccount: "¿No tienes cuenta?", alreadyHaveAccount: "¿Ya tienes cuenta?",
+    orContinueWith: "o continuar con", signingIn: "Iniciando sesión...", signingUp: "Creando cuenta...",
+    passwordMismatch: "Las contraseñas no coinciden", passwordTooShort: "La contraseña debe tener al menos 8 caracteres",
+    welcomeTo: "Bienvenido a", createAccount: "Crear Cuenta", signInSubtitle: "Inicia sesión para acceder a tus reservas y viajes guardados",
+    signUpSubtitle: "Únete a Tourly y comienza a planificar tus vacaciones soñadas",
+    continueWithGoogle: "Continuar con Google", continueWithApple: "Continuar con Apple",
+    agreeToTerms: "Al registrarte, aceptas nuestros", termsOfService: "Términos de Servicio", privacyPolicy: "Política de Privacidad", andText: "y",
+    signOut: "Cerrar Sesión", signOutConfirm: "¿Estás seguro de que deseas cerrar sesión?",
+  },
+  fr: {
+    tabHome: "Accueil", tabExplore: "Explorer", tabTrips: "Voyages", tabSaved: "Sauvegardé", tabGallery: "Galerie",
+    heroTitle: "Voyager pour\nExplorer le Monde", heroSubtitle: "Découvrez des destinations incroyables et créez des souvenirs inoubliables avec Tourly",
+    learnMore: "En Savoir Plus", bookNow: "Réserver", contactUs: "Contactez-nous",
+    findYourTrip: "Trouvez votre Voyage", enterDestination: "Entrez la Destination", numberOfTravelers: "Nombre de Voyageurs",
+    inquireNow: "Demander Maintenant", popularDestinations: "Destinations Populaires", checkoutPackages: "Nos Forfaits",
+    viewAll: "Voir Tout →", dealsTitle: "Offres et Ventes Flash 🔥", dealsSubtitle: "Jusqu'à 30% de réduction",
+    save: "Sauvegarder", saved: "Sauvegardé", share: "Partager", back: "Retour", search: "Rechercher",
+    searchPlaceholder: "Rechercher destinations, forfaits...", noResults: "Aucun résultat",
+    filterAll: "Tout", filterDestinations: "Destinations", filterPackages: "Forfaits",
+    sortBy: "Trier", sortDefault: "Par défaut", sortNameAZ: "Nom: A–Z", sortRelevance: "Pertinence", sortPriceLow: "Prix: Croissant", sortPriceHigh: "Prix: Décroissant", sortRating: "Mieux Noté",
+    priceRange: "Prix", resultsFound: "résultats", searchTourly: "Rechercher sur Tourly",
+    searchHint: "Trouvez votre destination ou forfait de voyage parfait", tryDifferent: "Essayez un autre terme ou ajustez les filtres",
+    clearFilters: "Effacer les Filtres",
+    bookThisDestination: "Réserver cette Destination", aboutDestination: "À propos de cette Destination",
+    whatToExpect: "À Quoi S'Attendre", whatsIncluded: "Ce qui est Inclus", sampleItinerary: "Exemple d'Itinéraire",
+    bookingTitle: "Réserver votre Voyage", fullName: "Nom Complet", email: "Email", phone: "Téléphone",
+    travelers: "Voyageurs", checkIn: "Date d'Arrivée", checkOut: "Date de Départ",
+    submitBooking: "Soumettre la Réservation", bookingSuccess: "Réservation soumise avec succès!",
+    notificationsTitle: "Notifications", markAllRead: "Tout marquer comme lu", noNotifications: "Pas de notifications",
+    profileTitle: "Mon Profil", myBookings: "Mes Réservations", settings: "Paramètres", aboutUs: "À Propos",
+    settingsTitle: "Paramètres", darkMode: "Mode Sombre", language: "Langue", currency: "Devise",
+    pushNotifications: "Notifications Push", emailNotifications: "Notifications Email",
+    myWishlist: "Ma Liste de Souhaits", savedPlaces: "Lieux Sauvegardés", nothingSaved: "Rien de sauvegardé",
+    nothingSavedHint: "Appuyez sur le cœur sur n'importe quelle destination ou forfait pour le sauvegarder ici.",
+    exploreDestinations: "Explorer les Destinations", photoGallery: "Galerie Photo", photosFromTravellers: "Photos des Voyageurs",
+    chatTitle: "Support en Direct", chatPlaceholder: "Tapez un message...", chatSend: "Envoyer",
+    chatWelcome: "👋 Bonjour! Bienvenue sur Tourly. Comment pouvons-nous vous aider?",
+    chatHello: "Bonjour! Je suis votre assistant de voyage Tourly. Posez-moi des questions sur les destinations, forfaits ou réservations!",
+    personalInfo: "Informations Personnelles", tripDetails: "Détails du Voyage",
+    selectedPackage: "Forfait Sélectionné", destinationLabel: "Destination",
+    whereToGo: "Où voulez-vous aller?", preferredCheckIn: "Date d'Arrivée Préférée",
+    preferredCheckOut: "Date de Départ Préférée", specialRequests: "Demandes Spéciales",
+    specialRequestsPlaceholder: "Des exigences particulières?", submitBookingRequest: "Soumettre la Demande de Réservation",
+    validationNameRequired: "Le nom complet est requis", validationEmailRequired: "L'e-mail est requis",
+    validationEmailInvalid: "Veuillez entrer un e-mail valide", validationPhoneRequired: "Le téléphone est requis",
+    aboutPageTitle: "À Propos de Nous", whoWeAre: "Qui Sommes-Nous", trustedTravelPartner: "Votre Partenaire de Voyage de Confiance",
+    whyChooseUs: "Pourquoi Nous Choisir", whatMakesDifferent: "Ce Qui Nous Distingue",
+    ourMission: "Notre Mission", happyTravelers: "Voyageurs Heureux", tourPackages: "Forfaits de Voyage", supportUs: "Support",
+    getInTouch: "Prendre Contact", feelFreeContact: "N'hésitez pas à nous contacter!",
+    newsletter: "Newsletter", newsletterSubtitle: "Abonnez-vous pour les dernières offres.",
+    subscribe: "S'abonner", enterYourEmail: "Entrez votre email", readyForTravel: "Prêt pour un Voyage Inoubliable?",
+    limitedTime: "Temps Limité", flashDeals: "Offres Flash 🔥", flashDealsSubtitle: "Économisez jusqu'à 30% sur nos meilleurs forfaits",
+    endsIn: "Se termine dans", bookAt: "Réserver à", perPersonShort: "/pers",
+    packageNotFound: "Forfait introuvable", destinationNotFound: "Destination introuvable",
+    goBack: "Retour", aboutThisPackage: "À Propos de ce Forfait",
+    maxPax: "Pax Max", durationLabel: "Durée", locationLabel: "Lieu",
+    reviewsLabel: "avis", topRated: "Mieux Noté", countryLabel: "Pays",
+    bestTime: "Meilleure Période", allYear: "Toute l'Année", groupSizeLabel: "Taille du Groupe",    ratingLabel: "Note",
+    uncoverPlace: "Découvrir des Lieux", popularDestinationsSubtitle: "Explorez nos destinations les plus visitées à travers le monde",
+    popularPackages: "Forfaits Populaires", packagesSubtitle: "Trouvez le forfait de voyage parfait pour votre prochaine aventure",
+    callToAction: "Appel à l'Action", ctaDescription: "Contactez-nous aujourd'hui et nous vous aiderons à planifier les vacances de vos rêves !",
+    perPerson: "par personne",
+    defaultUsername: "Voyageur", welcomeBack: "Content de vous revoir !",
+    countriesLabel: "Pays", noBookingsHint: "Pas encore de réservations. Réservez un forfait ou une destination pour le voir ici.",
+    browsePackages: "Parcourir les Forfaits", cancelBookingTitle: "Annuler la Réservation",
+    cancelBookingMessage: "Annuler votre réservation pour ce voyage ?", keepIt: "Garder",
+    cancelBookingAction: "Annuler la Réservation", bookedOn: "Réservé le", cancel: "Annuler", ok: "OK",
+    customTrip: "Voyage Personnalisé", travellersCount: "voyageurs",
+    viewDetails: "Voir les Détails",
+    featureBestPrice: "Garantie du Meilleur Prix",
+    featureBestPriceDesc: "Nous offrons les meilleurs prix pour tous nos forfaits de voyage sans frais cachés.",
+    featureHandpicked: "Destinations Triées sur le Volet",
+    featureHandpickedDesc: "Nos experts sélectionnent soigneusement les destinations les plus belles et uniques.",
+    featureExpertGuides: "Guides Experts",
+    featureExpertGuidesDesc: "Des guides locaux professionnels qui connaissent chaque recoin de la destination.",
+    featureFlexibleBooking: "Réservation Flexible",
+    featureFlexibleBookingDesc: "Processus de réservation facile avec des politiques d'annulation flexibles.",
+    aboutParagraph1: "Tourly est une agence de voyage premium dédiée à créer des expériences de voyage inoubliables. Avec des années d'expérience, nous connectons les voyageurs aux destinations les plus impressionnantes du monde.",
+    aboutParagraph2: "Notre équipe d'experts en voyages passionnés travaille sans relâche pour créer des expériences uniques qui vont au-delà du tourisme ordinaire.",
+    missionStatement: "Inspirer et permettre aux gens d'explorer le monde en fournissant des expériences de voyage exceptionnelles, durables et abordables.",
+    ctaContactDescription: "Contactez-nous aujourd'hui et nous vous aiderons à planifier vos vacances de rêve. Notre équipe est prête à vous assister 24h/24.",
+    addressLabel: "Adresse", footerCopyright: "© 2024 Tourly. Tous droits réservés",
+    datePlaceholder: "AAAA-MM-JJ",
+    tagFlashSale: "Vente Flash", tagWeekendDeal: "Offre Weekend", tagLimitedOffer: "Offre Limitée",
+    timeJustNow: "Maintenant", timeMinutesAgo: "m", timeHoursAgo: "h", timeDaysAgo: "j",
+    unreadNotifications: "notifications non lues",
+    notifWelcomeTitle: "Bienvenue sur Tourly \ud83c\udf0d", notifWelcomeBody: "D\u00e9couvrez des destinations incroyables et r\u00e9servez votre prochaine aventure.",
+    notifSaleTitle: "Soldes d\u2019\u00e9t\u00e9 \u2014 Jusqu\u2019\u00e0 -30%", notifSaleBody: "Offre limit\u00e9e sur des forfaits s\u00e9lectionn\u00e9s. R\u00e9servez avant le 31 mars 2026.",
+    notifNewDestTitle: "Nouvelle Destination Ajout\u00e9e", notifNewDestBody: "Bali, Indon\u00e9sie est d\u00e9sormais disponible. D\u00e9couvrez nos forfaits exclusifs !",
+    destinationDetailDesc: "Vivez la beauté et la culture de cette destination incroyable. Des paysages époustouflants aux riches traditions locales, chaque moment sera inoubliable.",
+    expectGuidedTours: "Visites guidées avec des experts locaux", expectLocalCuisine: "Expériences culinaires locales authentiques",
+    expectAccommodations: "Hébergements confortables", expectTransportation: "Transport inclus", expectSupport: "Assistance voyage 24/7",
+    inclusionAirfare: "Billet d'avion aller-retour", inclusionTransfers: "Transferts aéroport",
+    inclusionAccommodation: "Hébergement (hôtel 4 étoiles)", inclusionBreakfast: "Petit-déjeuner quotidien",
+    inclusionGuidedTours: "Visites guidées", inclusionInsurance: "Assurance voyage", inclusionSupport: "Assistance 24/7",
+    itineraryDay1Title: "Arrivée et Bienvenue", itineraryDay1Desc: "Prise en charge aéroport, enregistrement, dîner de bienvenue",
+    itineraryDay2Title: "Exploration de la Ville", itineraryDay2Desc: "Visite guidée, marchés locaux, sites culturels",
+    itineraryDay3Title: "Journée Aventure", itineraryDay3Desc: "Activités de plein air, randonnées nature",
+    itineraryDay4Title: "Expérience Culturelle", itineraryDay4Desc: "Ateliers traditionnels, cuisine locale",
+    itineraryDay5Title: "Journée Libre", itineraryDay5Desc: "Activités optionnelles ou détente",
+    itineraryDay6Title: "Tour Panoramique", itineraryDay6Desc: "Excursion aux attractions voisines",
+    itineraryDay7Title: "Départ", itineraryDay7Desc: "Petit-déjeuner, checkout, transfert aéroport",
+    packageDetailExtended: "Vivez un voyage inoubliable avec notre forfait de voyage soigneusement conçu. Chaque détail a été planifié pour le voyage d'une vie.",
+    chatOnlineStatus: "En ligne · Support Tourly",
+    chatReply1: "Merci de nous contacter ! Un expert voyage sera avec vous bientôt.",
+    chatReply2: "Excellente question ! Notre équipe examine votre message.",
+    chatReply3: "Nous serions ravis de vous aider à planifier votre voyage parfait ! Pourriez-vous partager plus de détails ?",
+    chatReply4: "Nos forfaits sont entièrement personnalisables. Je vais vous connecter avec un spécialiste.",
+    chatReply5: "Pour une assistance immédiate, vous pouvez aussi nous appeler au +01 (123) 4567 90.",
+    priceAny: "Tous", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "Se Connecter", signUp: "S'inscrire", password: "Mot de passe", confirmPassword: "Confirmer le mot de passe",
+    forgotPassword: "Mot de passe oublié ?", dontHaveAccount: "Pas encore de compte ?", alreadyHaveAccount: "Déjà un compte ?",
+    orContinueWith: "ou continuer avec", signingIn: "Connexion en cours...", signingUp: "Création du compte...",
+    passwordMismatch: "Les mots de passe ne correspondent pas", passwordTooShort: "Le mot de passe doit comporter au moins 8 caractères",
+    welcomeTo: "Bienvenue sur", createAccount: "Créer un Compte", signInSubtitle: "Connectez-vous pour accéder à vos réservations et voyages sauvegardés",
+    signUpSubtitle: "Rejoignez Tourly et commencez à planifier vos vacances de rêve",
+    continueWithGoogle: "Continuer avec Google", continueWithApple: "Continuer avec Apple",
+    agreeToTerms: "En vous inscrivant, vous acceptez nos", termsOfService: "Conditions d'Utilisation", privacyPolicy: "Politique de Confidentialité", andText: "et",
+    signOut: "Se Déconnecter", signOutConfirm: "Êtes-vous sûr de vouloir vous déconnecter ?",
+  },
+  ja: {
+    tabHome: "ホーム", tabExplore: "探索", tabTrips: "旅行", tabSaved: "保存済み", tabGallery: "ギャラリー",
+    heroTitle: "世界を\n探索する旅へ", heroSubtitle: "Tourlyで素晴らしい目的地を発見し、忘れられない思い出を作りましょう",
+    learnMore: "詳細を見る", bookNow: "今すぐ予約", contactUs: "お問い合わせ",
+    findYourTrip: "旅行を探す", enterDestination: "目的地を入力", numberOfTravelers: "旅行者数",
+    inquireNow: "今すぐ問い合わせ", popularDestinations: "人気の目的地", checkoutPackages: "旅行パッケージ",
+    viewAll: "すべて見る →", dealsTitle: "セール＆フラッシュセール 🔥", dealsSubtitle: "最大30%オフ",
+    save: "保存", saved: "保存済み", share: "シェア", back: "戻る", search: "検索",
+    searchPlaceholder: "目的地、パッケージを検索...", noResults: "結果がありません",
+    filterAll: "すべて", filterDestinations: "目的地", filterPackages: "パッケージ",
+    sortBy: "並び替え", sortDefault: "デフォルト", sortNameAZ: "名前: A–Z", sortRelevance: "関連性", sortPriceLow: "価格: 安い順", sortPriceHigh: "価格: 高い順", sortRating: "高評価順",
+    priceRange: "価格帯", resultsFound: "件の結果", searchTourly: "Tourlyで検索",
+    searchHint: "理想の目的地や旅行パッケージを見つけよう", tryDifferent: "別のキーワードやフィルターをお試しください",
+    clearFilters: "フィルターをクリア",
+    bookThisDestination: "この目的地を予約", aboutDestination: "この目的地について",
+    whatToExpect: "期待すること", whatsIncluded: "含まれるもの", sampleItinerary: "サンプル旅程",
+    bookingTitle: "旅行を予約", fullName: "氏名", email: "メール", phone: "電話",
+    travelers: "旅行者", checkIn: "チェックイン日", checkOut: "チェックアウト日",
+    submitBooking: "予約を送信", bookingSuccess: "予約が正常に送信されました！",
+    notificationsTitle: "通知", markAllRead: "すべて既読にする", noNotifications: "通知はありません",
+    profileTitle: "マイプロフィール", myBookings: "マイ予約", settings: "設定", aboutUs: "会社概要",
+    settingsTitle: "設定", darkMode: "ダークモード", language: "言語", currency: "通貨",
+    pushNotifications: "プッシュ通知", emailNotifications: "メール通知",
+    myWishlist: "ウィッシュリスト", savedPlaces: "保存した場所", nothingSaved: "まだ保存されていません",
+    nothingSavedHint: "目的地やパッケージのハートアイコンをタップして保存してください。",
+    exploreDestinations: "目的地を探索", photoGallery: "フォトギャラリー", photosFromTravellers: "旅行者の写真",
+    chatTitle: "ライブサポート", chatPlaceholder: "メッセージを入力...", chatSend: "送信",
+    chatWelcome: "👋 こんにちは！Tourlyへようこそ。何かお手伝いできることはありますか？",
+    chatHello: "こんにちは！Tourlyのトラベルアシスタントです。目的地、パッケージ、予約について何でもお聞きください！",
+    personalInfo: "個人情報", tripDetails: "旅行詳細",
+    selectedPackage: "選択したパッケージ", destinationLabel: "目的地",
+    whereToGo: "どこへ行きたいですか？", preferredCheckIn: "チェックイン希望日",
+    preferredCheckOut: "チェックアウト希望日", specialRequests: "特別リクエスト",
+    specialRequestsPlaceholder: "特別な要件はありますか？", submitBookingRequest: "予約リクエストを送信",
+    validationNameRequired: "氏名は必須です", validationEmailRequired: "メールは必須です",
+    validationEmailInvalid: "有効なメールを入力してください", validationPhoneRequired: "電話番号は必須です",
+    aboutPageTitle: "私たちについて", whoWeAre: "私たちは誰か", trustedTravelPartner: "あなたの信頼できる旅行パートナー",
+    whyChooseUs: "なぜ私たちを選ぶか", whatMakesDifferent: "私たちの違い",
+    ourMission: "私たちの使命", happyTravelers: "満足した旅行者", tourPackages: "ツアーパッケージ", supportUs: "サポート",
+    getInTouch: "連絡する", feelFreeContact: "お気軽にご連絡ください！",
+    newsletter: "ニュースレター", newsletterSubtitle: "最新のお得情報を受け取るために購読してください。",
+    subscribe: "購読する", enterYourEmail: "メールを入力", readyForTravel: "忘れられない旅行の準備はできていますか？",
+    limitedTime: "期間限定", flashDeals: "フラッシュセール 🔥", flashDealsSubtitle: "トップパッケージが最大30%オフ",
+    endsIn: "終了まで", bookAt: "予約価格", perPersonShort: "/人",
+    packageNotFound: "パッケージが見つかりません", destinationNotFound: "目的地が見つかりません",
+    goBack: "戻る", aboutThisPackage: "このパッケージについて",
+    maxPax: "最大人数", durationLabel: "期間", locationLabel: "場所",
+    reviewsLabel: "レビュー", topRated: "高評価", countryLabel: "国",
+    bestTime: "ベストシーズン", allYear: "通年", groupSizeLabel: "グループサイズ",    ratingLabel: "評価",
+    uncoverPlace: "場所を発見", popularDestinationsSubtitle: "世界中で最も訪問された目的地を探索しましょう",
+    popularPackages: "人気パッケージ", packagesSubtitle: "次の冒険にぴったりの旅行パッケージを見つけましょう",
+    callToAction: "お問い合わせ", ctaDescription: "今日ご連絡ください。夢の休暇の計画をお手伝いします！",
+    perPerson: "一人あたり",
+    defaultUsername: "旅行者", welcomeBack: "おかえりなさい！",
+    countriesLabel: "国", noBookingsHint: "まだ予約がありません。パッケージや目的地を予約するとここに表示されます。",
+    browsePackages: "パッケージを見る", cancelBookingTitle: "予約キャンセル",
+    cancelBookingMessage: "この旅行の予約をキャンセルしますか？", keepIt: "そのまま",
+    cancelBookingAction: "予約をキャンセル", bookedOn: "予約日", cancel: "キャンセル", ok: "OK",
+    customTrip: "カスタム旅行", travellersCount: "名の旅行者",
+    viewDetails: "詳細を見る",
+    featureBestPrice: "最低価格保証",
+    featureBestPriceDesc: "隠れた費用なしで、すべての旅行パッケージに最高の価格を提供します。",
+    featureHandpicked: "厳選された目的地",
+    featureHandpickedDesc: "専門家が最も美しくユニークな目的地を厳選しています。",
+    featureExpertGuides: "エキスパートガイド",
+    featureExpertGuidesDesc: "目的地の隅々を知り尽くしたプロの現地ガイド。",
+    featureFlexibleBooking: "フレキシブル予約",
+    featureFlexibleBookingDesc: "柔軟なキャンセルポリシーで簡単に予約できます。",
+    aboutParagraph1: "Tourlyは忘れられない旅行体験の創造に専念するプレミアム旅行会社です。長年の経験を持ち、世界で最も素晴らしい目的地と旅行者をつなぎます。",
+    aboutParagraph2: "情熱的な旅行専門家チームが、通常の観光を超えたユニークな体験を作り出すために日々努力しています。",
+    missionStatement: "卓越した持続可能で手頃な旅行体験を提供することで、人々が世界を探索することをインスパイアし可能にすること。",
+    ctaContactDescription: "今日お問い合わせください。夢の休暇の計画をお手伝いします。チームは24時間対応可能です。",
+    addressLabel: "住所", footerCopyright: "© 2024 Tourly. 全著作権所有",
+    datePlaceholder: "YYYY-MM-DD",
+    tagFlashSale: "フラッシュセール", tagWeekendDeal: "週末セール", tagLimitedOffer: "期間限定",
+    timeJustNow: "たった今", timeMinutesAgo: "分前", timeHoursAgo: "時間前", timeDaysAgo: "日前",
+    unreadNotifications: "件の未読通知",
+    notifWelcomeTitle: "Tourlyへようこそ 🌍", notifWelcomeBody: "素晴らしい目的地を探索して、次の冒険を予約しましょう。",
+    notifSaleTitle: "夏のセール — 最大30%オフ", notifSaleBody: "選りすぐりパッケージの期間限定オファー。2026年3月31日までにご予約ください。",
+    notifNewDestTitle: "新しい目的地が追加されました", notifNewDestBody: "バリ島（インドネシア）が利用可能になりました。限定パッケージをチェック！",
+    destinationDetailDesc: "この素晴らしい目的地の美しさと文化を体験してください。息をのむ景色から豊かな地元の伝統まで、すべての瞬間が忘れられないものになるでしょう。",
+    expectGuidedTours: "地元の専門家によるガイドツアー", expectLocalCuisine: "本格的な地元料理体験",
+    expectAccommodations: "快適な宿泊施設", expectTransportation: "交通手段込み", expectSupport: "24時間旅行サポート",
+    inclusionAirfare: "往復航空券", inclusionTransfers: "空港送迎",
+    inclusionAccommodation: "宿泊施設（4つ星ホテル）", inclusionBreakfast: "毎日の朝食",
+    inclusionGuidedTours: "ガイドツアー", inclusionInsurance: "旅行保険", inclusionSupport: "24時間サポート",
+    itineraryDay1Title: "到着と歓迎", itineraryDay1Desc: "空港出迎え、チェックイン、ウェルカムディナー",
+    itineraryDay2Title: "市内散策", itineraryDay2Desc: "ガイドツアー、地元市場、文化的名所",
+    itineraryDay3Title: "アドベンチャーデー", itineraryDay3Desc: "アウトドアアクティビティ、自然散策",
+    itineraryDay4Title: "文化体験", itineraryDay4Desc: "伝統的なワークショップ、地元料理",
+    itineraryDay5Title: "自由行動日", itineraryDay5Desc: "オプション活動またはリラクゼーション",
+    itineraryDay6Title: "パノラマツアー", itineraryDay6Desc: "近くのアトラクションへの遠足",
+    itineraryDay7Title: "出発", itineraryDay7Desc: "朝食、チェックアウト、空港送迎",
+    packageDetailExtended: "丁寧に設計された旅行パッケージで忘れられない旅を体験してください。すべての詳細が一生に一度の旅のために計画されています。",
+    chatOnlineStatus: "オンライン · Tourlyサポート",
+    chatReply1: "お問い合わせありがとうございます！旅行専門家がすぐに対応いたします。",
+    chatReply2: "素晴らしいご質問ですね！チームがメッセージを確認しています。",
+    chatReply3: "完璧な旅行の計画をお手伝いします！詳細を教えていただけますか？",
+    chatReply4: "パッケージは完全にカスタマイズ可能です。専門家におつなぎします。",
+    chatReply5: "すぐのサポートが必要な場合は、+01 (123) 4567 90 にお電話ください。",
+    priceAny: "すべて", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "ログイン", signUp: "新規登録", password: "パスワード", confirmPassword: "パスワード確認",
+    forgotPassword: "パスワードをお忘れですか？", dontHaveAccount: "アカウントをお持ちでないですか？", alreadyHaveAccount: "すでにアカウントをお持ちですか？",
+    orContinueWith: "または以下で続行", signingIn: "ログイン中...", signingUp: "アカウント作成中...",
+    passwordMismatch: "パスワードが一致しません", passwordTooShort: "パスワードは8文字以上必要です",
+    welcomeTo: "ようこそ", createAccount: "アカウント作成", signInSubtitle: "予約や保存した旅行にアクセスするにはログインしてください",
+    signUpSubtitle: "Tourlyに参加して夢の旅行を計画しましょう",
+    continueWithGoogle: "Googleで続行", continueWithApple: "Appleで続行",
+    agreeToTerms: "登録することで、以下に同意します", termsOfService: "利用規約", privacyPolicy: "プライバシーポリシー", andText: "と",
+    signOut: "サインアウト", signOutConfirm: "サインアウトしてもよろしいですか？",
+  },
+  ar: {
+    tabHome: "الرئيسية", tabExplore: "استكشف", tabTrips: "الرحلات", tabSaved: "المحفوظة", tabGallery: "المعرض",
+    heroTitle: "رحلة لاستكشاف\nالعالم", heroSubtitle: "اكتشف وجهات رائعة وأنشئ ذكريات لا تُنسى مع Tourly",
+    learnMore: "اعرف المزيد", bookNow: "احجز الآن", contactUs: "تواصل معنا",
+    findYourTrip: "ابحث عن رحلتك", enterDestination: "أدخل الوجهة", numberOfTravelers: "عدد المسافرين",
+    inquireNow: "استفسر الآن", popularDestinations: "الوجهات الشائعة", checkoutPackages: "تصفح باقاتنا",
+    viewAll: "← عرض الكل", dealsTitle: "عروض وتخفيضات 🔥", dealsSubtitle: "خصم يصل إلى 30%",
+    save: "حفظ", saved: "محفوظ", share: "مشاركة", back: "رجوع", search: "بحث",
+    searchPlaceholder: "ابحث عن وجهات وباقات...", noResults: "لا توجد نتائج",
+    filterAll: "الكل", filterDestinations: "الوجهات", filterPackages: "الباقات",
+    sortBy: "ترتيب", sortDefault: "افتراضي", sortNameAZ: "الاسم: أ–ي", sortRelevance: "الأكثر صلة", sortPriceLow: "السعر: الأقل → الأعلى", sortPriceHigh: "السعر: الأعلى → الأقل", sortRating: "الأعلى تقييماً",
+    priceRange: "السعر", resultsFound: "نتائج", searchTourly: "البحث في Tourly",
+    searchHint: "ابحث عن وجهتك أو باقة سفرك المثالية", tryDifferent: "جرّب كلمة بحث مختلفة أو عدّل الفلاتر",
+    clearFilters: "مسح الفلاتر",
+    bookThisDestination: "احجز هذه الوجهة", aboutDestination: "عن هذه الوجهة",
+    whatToExpect: "ماذا تتوقع", whatsIncluded: "ما يشمله", sampleItinerary: "مثال على الجدول",
+    bookingTitle: "احجز رحلتك", fullName: "الاسم الكامل", email: "البريد الإلكتروني", phone: "الهاتف",
+    travelers: "المسافرون", checkIn: "تاريخ الوصول", checkOut: "تاريخ المغادرة",
+    submitBooking: "إرسال الحجز", bookingSuccess: "تم إرسال الحجز بنجاح!",
+    notificationsTitle: "الإشعارات", markAllRead: "تعليم الكل كمقروء", noNotifications: "لا توجد إشعارات",
+    profileTitle: "ملفي الشخصي", myBookings: "حجوزاتي", settings: "الإعدادات", aboutUs: "من نحن",
+    settingsTitle: "الإعدادات", darkMode: "الوضع الداكن", language: "اللغة", currency: "العملة",
+    pushNotifications: "إشعارات الدفع", emailNotifications: "إشعارات البريد",
+    myWishlist: "قائمة رغباتي", savedPlaces: "الأماكن المحفوظة", nothingSaved: "لا يوجد محفوظات بعد",
+    nothingSavedHint: "اضغط على أيقونة القلب في أي وجهة أو باقة لحفظها هنا.",
+    exploreDestinations: "استكشف الوجهات", photoGallery: "معرض الصور", photosFromTravellers: "صور من المسافرين",
+    chatTitle: "الدعم المباشر", chatPlaceholder: "اكتب رسالة...", chatSend: "إرسال",
+    chatWelcome: "👋 مرحباً! أهلاً بك في Tourly. كيف يمكننا مساعدتك اليوم؟",
+    chatHello: "مرحباً! أنا مساعد سفرك في Tourly. اسألني عن الوجهات والباقات والحجوزات!",
+    personalInfo: "المعلومات الشخصية", tripDetails: "تفاصيل الرحلة",
+    selectedPackage: "الباقة المختارة", destinationLabel: "الوجهة",
+    whereToGo: "إلى أين تريد الذهاب؟", preferredCheckIn: "تاريخ الوصول المفضل",
+    preferredCheckOut: "تاريخ المغادرة المفضل", specialRequests: "طلبات خاصة",
+    specialRequestsPlaceholder: "أي متطلبات خاصة؟", submitBookingRequest: "إرسال طلب الحجز",
+    validationNameRequired: "الاسم الكامل مطلوب", validationEmailRequired: "البريد الإلكتروني مطلوب",
+    validationEmailInvalid: "الرجاء إدخال بريد إلكتروني صحيح", validationPhoneRequired: "رقم الهاتف مطلوب",
+    aboutPageTitle: "من نحن", whoWeAre: "من نحن", trustedTravelPartner: "شريكك الموثوق في السفر",
+    whyChooseUs: "لماذا تختارنا", whatMakesDifferent: "ما الذي يميزنا",
+    ourMission: "مهمتنا", happyTravelers: "مسافرون سعداء", tourPackages: "باقات السياحة", supportUs: "الدعم",
+    getInTouch: "تواصل معنا", feelFreeContact: "لا تتردد في التواصل معنا!",
+    newsletter: "النشرة الإخبارية", newsletterSubtitle: "اشترك للحصول على أحدث العروض.",
+    subscribe: "اشترك", enterYourEmail: "أدخل بريدك الإلكتروني", readyForTravel: "مستعد لرحلة لا تُنسى؟",
+    limitedTime: "وقت محدود", flashDeals: "عروض سريعة 🔥", flashDealsSubtitle: "وفر حتى 30% على أفضل باقاتنا",
+    endsIn: "تنتهي في", bookAt: "احجز بـ", perPersonShort: "/شخص",
+    packageNotFound: "الباقة غير موجودة", destinationNotFound: "الوجهة غير موجودة",
+    goBack: "العودة", aboutThisPackage: "عن هذه الباقة",
+    maxPax: "أقصى عدد", durationLabel: "المدة", locationLabel: "الموقع",
+    reviewsLabel: "تقييم", topRated: "الأعلى تقييماً", countryLabel: "البلد",
+    bestTime: "أفضل وقت", allYear: "طوال العام", groupSizeLabel: "حجم المجموعة",    ratingLabel: "التقييم",
+    uncoverPlace: "اكتشف الأماكن", popularDestinationsSubtitle: "استكشف وجهاتنا الأكثر زيارة حول العالم",
+    popularPackages: "الباقات الشائعة", packagesSubtitle: "اعثر على باقة السفر المثالية لمغامرتك القادمة",
+    callToAction: "تواصل معنا", ctaDescription: "تواصل معنا اليوم وسنساعدك في التخطيط لعطلة أحلامك!",
+    perPerson: "للشخص",
+    defaultUsername: "مسافر", welcomeBack: "!مرحباً بعودتك",
+    countriesLabel: "دول", noBookingsHint: "لا توجد حجوزات بعد. احجز باقة أو وجهة لرؤيتها هنا.",
+    browsePackages: "تصفح الباقات", cancelBookingTitle: "إلغاء الحجز",
+    cancelBookingMessage: "هل تريد إلغاء حجزك لهذه الرحلة؟", keepIt: "الإبقاء",
+    cancelBookingAction: "إلغاء الحجز", bookedOn: "تم الحجز في", cancel: "إلغاء", ok: "حسناً",
+    customTrip: "رحلة مخصصة", travellersCount: "مسافرين",
+    viewDetails: "عرض التفاصيل",
+    featureBestPrice: "ضمان أفضل سعر",
+    featureBestPriceDesc: "نقدم أفضل الأسعار لجميع باقات السفر بدون رسوم خفية.",
+    featureHandpicked: "وجهات مختارة بعناية",
+    featureHandpickedDesc: "يختار خبراؤنا بعناية أجمل الوجهات وأكثرها تميزاً.",
+    featureExpertGuides: "مرشدون خبراء",
+    featureExpertGuidesDesc: "مرشدون محليون محترفون يعرفون كل زاوية من الوجهة.",
+    featureFlexibleBooking: "حجز مرن",
+    featureFlexibleBookingDesc: "عملية حجز سهلة مع سياسات إلغاء مرنة.",
+    aboutParagraph1: "تورلي هي وكالة سفر متميزة مكرسة لخلق تجارب سفر لا تُنسى. مع سنوات من الخبرة، نربط المسافرين بأروع الوجهات حول العالم.",
+    aboutParagraph2: "يعمل فريقنا من خبراء السفر المتحمسين بلا كلل لخلق تجارب فريدة تتجاوز السياحة العادية.",
+    missionStatement: "إلهام وتمكين الناس من استكشاف العالم من خلال توفير تجارب سفر استثنائية ومستدامة وبأسعار معقولة.",
+    ctaContactDescription: "تواصل معنا اليوم وسنساعدك في التخطيط لعطلة أحلامك. فريقنا جاهز لمساعدتك على مدار الساعة.",
+    addressLabel: "العنوان", footerCopyright: "© 2024 تورلي. جميع الحقوق محفوظة",
+    datePlaceholder: "سنة-شهر-يوم",
+    tagFlashSale: "تخفيض سريع", tagWeekendDeal: "عرض نهاية الأسبوع", tagLimitedOffer: "عرض محدود",
+    timeJustNow: "الآن", timeMinutesAgo: "د", timeHoursAgo: "س", timeDaysAgo: "ي",
+    unreadNotifications: "إشعارات غير مقروءة",
+    notifWelcomeTitle: "مرحبًا بك في Tourly 🌍", notifWelcomeBody: "ابدأ باستكشاف وجهات مذهلة واحجز مغامرتك القادمة.",
+    notifSaleTitle: "تخفيضات الصيف — خصم حتى 30%", notifSaleBody: "عرض محدود على باقات مختارة. احجز قبل 31 مارس 2026.",
+    notifNewDestTitle: "وجهة جديدة مضافة", notifNewDestBody: "بالي، إندونيسيا متاحة الآن. تصفح باقاتنا الحصرية!",
+    destinationDetailDesc: "عش جمال وثقافة هذه الوجهة المذهلة. من المناظر الخلابة إلى التقاليد المحلية الغنية، كل لحظة ستكون لا تُنسى.",
+    expectGuidedTours: "جولات إرشادية مع خبراء محليين", expectLocalCuisine: "تجارب مطبخ محلي أصيل",
+    expectAccommodations: "إقامة مريحة", expectTransportation: "النقل مشمول", expectSupport: "دعم سفر على مدار الساعة",
+    inclusionAirfare: "تذكرة طيران ذهاب وعودة", inclusionTransfers: "نقل من وإلى المطار",
+    inclusionAccommodation: "إقامة (فندق 4 نجوم)", inclusionBreakfast: "فطور يومي",
+    inclusionGuidedTours: "جولات إرشادية", inclusionInsurance: "تأمين سفر", inclusionSupport: "دعم على مدار الساعة",
+    itineraryDay1Title: "الوصول والترحيب", itineraryDay1Desc: "استقبال المطار، تسجيل الوصول، عشاء ترحيبي",
+    itineraryDay2Title: "استكشاف المدينة", itineraryDay2Desc: "جولة إرشادية، أسواق محلية، مواقع ثقافية",
+    itineraryDay3Title: "يوم المغامرة", itineraryDay3Desc: "أنشطة خارجية، مشي في الطبيعة",
+    itineraryDay4Title: "تجربة ثقافية", itineraryDay4Desc: "ورش عمل تقليدية، مطبخ محلي",
+    itineraryDay5Title: "يوم حر", itineraryDay5Desc: "أنشطة اختيارية أو استرخاء",
+    itineraryDay6Title: "جولة بانورامية", itineraryDay6Desc: "رحلة إلى المعالم القريبة",
+    itineraryDay7Title: "المغادرة", itineraryDay7Desc: "فطور، تسجيل المغادرة، نقل إلى المطار",
+    packageDetailExtended: "عش رحلة لا تُنسى مع باقة السفر المصممة بعناية. تم التخطيط لكل تفصيلة لتجعل رحلتك تجربة العمر.",
+    chatOnlineStatus: "متصل · دعم تورلي",
+    chatReply1: "شكراً لتواصلك معنا! خبير سفر سيكون معك قريباً.",
+    chatReply2: "سؤال رائع! فريقنا يراجع رسالتك.",
+    chatReply3: "يسعدنا مساعدتك في التخطيط لرحلتك المثالية! هل يمكنك مشاركة المزيد من التفاصيل؟",
+    chatReply4: "باقاتنا قابلة للتخصيص بالكامل. سأوصلك بمتخصص.",
+    chatReply5: "للمساعدة الفورية يمكنك أيضاً الاتصال بنا على +01 (123) 4567 90.",
+    priceAny: "الكل", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "تسجيل الدخول", signUp: "إنشاء حساب", password: "كلمة المرور", confirmPassword: "تأكيد كلمة المرور",
+    forgotPassword: "نسيت كلمة المرور؟", dontHaveAccount: "ليس لديك حساب؟", alreadyHaveAccount: "لديك حساب بالفعل؟",
+    orContinueWith: "أو المتابعة عبر", signingIn: "جارٍ تسجيل الدخول...", signingUp: "جارٍ إنشاء الحساب...",
+    passwordMismatch: "كلمات المرور غير متطابقة", passwordTooShort: "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+    welcomeTo: "مرحباً بك في", createAccount: "إنشاء حساب", signInSubtitle: "سجّل الدخول للوصول إلى حجوزاتك ورحلاتك المحفوظة",
+    signUpSubtitle: "انضم إلى Tourly وابدأ بالتخطيط لعطلة أحلامك",
+    continueWithGoogle: "المتابعة عبر Google", continueWithApple: "المتابعة عبر Apple",
+    agreeToTerms: "بالتسجيل، أنت توافق على", termsOfService: "شروط الخدمة", privacyPolicy: "سياسة الخصوصية", andText: "و",
+    signOut: "تسجيل الخروج", signOutConfirm: "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  },
+
+  // ─────────────────────────── German ───────────────────────────
+  de: {
+    tabHome: "Startseite", tabExplore: "Entdecken", tabTrips: "Reisen", tabSaved: "Gespeichert", tabGallery: "Galerie",
+    heroTitle: "Reise zum\nEntdecken der Welt", heroSubtitle: "Entdecken Sie erstaunliche Reiseziele und schaffen Sie unvergessliche Erinnerungen mit Tourly",
+    learnMore: "Mehr Erfahren", bookNow: "Jetzt Buchen", contactUs: "Kontakt",
+    findYourTrip: "Finden Sie Ihre Reise", enterDestination: "Reiseziel Eingeben", numberOfTravelers: "Anzahl der Reisenden",
+    inquireNow: "Jetzt Anfragen", popularDestinations: "Beliebte Reiseziele", checkoutPackages: "Unsere Pakete",
+    viewAll: "Alle Anzeigen →", dealsTitle: "Angebote & Flash Sales 🔥", dealsSubtitle: "Bis zu 30% Rabatt",
+    save: "Speichern", saved: "Gespeichert", share: "Teilen", back: "Zurück", search: "Suche",
+    searchPlaceholder: "Reiseziele, Pakete suchen...", noResults: "Keine Ergebnisse",
+    filterAll: "Alle", filterDestinations: "Reiseziele", filterPackages: "Pakete",
+    sortBy: "Sortieren", sortDefault: "Standard", sortNameAZ: "Name: A–Z", sortRelevance: "Relevanz", sortPriceLow: "Preis: Niedrig → Hoch", sortPriceHigh: "Preis: Hoch → Niedrig", sortRating: "Bestbewertet",
+    priceRange: "Preis", resultsFound: "Ergebnisse", searchTourly: "Tourly durchsuchen",
+    searchHint: "Finden Sie Ihr perfektes Reiseziel oder Reisepaket", tryDifferent: "Versuchen Sie andere Suchbegriffe oder passen Sie die Filter an",
+    clearFilters: "Filter Löschen",
+    bookThisDestination: "Dieses Reiseziel Buchen", aboutDestination: "Über dieses Reiseziel",
+    whatToExpect: "Was Sie Erwartet", whatsIncluded: "Was Enthalten Ist", sampleItinerary: "Beispiel-Reiseplan",
+    bookingTitle: "Reise Buchen", fullName: "Vollständiger Name", email: "E-Mail", phone: "Telefon",
+    travelers: "Reisende", checkIn: "Check-in Datum", checkOut: "Check-out Datum",
+    submitBooking: "Buchung Absenden", bookingSuccess: "Buchung erfolgreich eingereicht!",
+    notificationsTitle: "Benachrichtigungen", markAllRead: "Alle als gelesen markieren", noNotifications: "Keine Benachrichtigungen",
+    profileTitle: "Mein Profil", myBookings: "Meine Buchungen", settings: "Einstellungen", aboutUs: "Über Uns",
+    settingsTitle: "Einstellungen", darkMode: "Dunkelmodus", language: "Sprache", currency: "Währung",
+    pushNotifications: "Push-Benachrichtigungen", emailNotifications: "E-Mail-Benachrichtigungen",
+    myWishlist: "Meine Wunschliste", savedPlaces: "Gespeicherte Orte", nothingSaved: "Noch nichts gespeichert",
+    nothingSavedHint: "Tippen Sie auf das Herz bei einem Reiseziel oder Paket, um es hier zu speichern.",
+    exploreDestinations: "Reiseziele Entdecken", photoGallery: "Fotogalerie", photosFromTravellers: "Fotos von Reisenden",
+    chatTitle: "Live-Support", chatPlaceholder: "Nachricht eingeben...", chatSend: "Senden",
+    chatWelcome: "👋 Hallo! Willkommen bei Tourly. Wie können wir Ihnen helfen?",
+    chatHello: "Hallo! Ich bin Ihr Tourly-Reiseassistent. Fragen Sie mich alles über Reiseziele, Pakete oder Buchungen!",
+    personalInfo: "Persönliche Daten", tripDetails: "Reisedetails",
+    selectedPackage: "Ausgewähltes Paket", destinationLabel: "Reiseziel",
+    whereToGo: "Wohin möchten Sie reisen?", preferredCheckIn: "Bevorzugtes Check-in Datum",
+    preferredCheckOut: "Bevorzugtes Check-out Datum", specialRequests: "Sonderwünsche",
+    specialRequestsPlaceholder: "Besondere Anforderungen?", submitBookingRequest: "Buchungsanfrage Absenden",
+    validationNameRequired: "Name ist erforderlich", validationEmailRequired: "E-Mail ist erforderlich",
+    validationEmailInvalid: "Bitte geben Sie eine gültige E-Mail ein", validationPhoneRequired: "Telefonnummer ist erforderlich",
+    aboutPageTitle: "Über Uns", whoWeAre: "Wer Wir Sind", trustedTravelPartner: "Ihr Vertrauenswürdiger Reisepartner",
+    whyChooseUs: "Warum Uns Wählen", whatMakesDifferent: "Was Uns Unterscheidet",
+    ourMission: "Unsere Mission", happyTravelers: "Zufriedene Reisende", tourPackages: "Reisepakete", supportUs: "Support",
+    getInTouch: "Kontakt Aufnehmen", feelFreeContact: "Kontaktieren Sie uns gerne!",
+    newsletter: "Newsletter", newsletterSubtitle: "Abonnieren Sie die neuesten Angebote.",
+    subscribe: "Abonnieren", enterYourEmail: "E-Mail eingeben", readyForTravel: "Bereit für unvergessliches Reisen?",
+    limitedTime: "Zeitlich Begrenzt", flashDeals: "Flash-Angebote 🔥", flashDealsSubtitle: "Sparen Sie bis zu 30% auf unsere Top-Pakete",
+    endsIn: "Endet in", bookAt: "Buchen ab", perPersonShort: "/Person",
+    packageNotFound: "Paket nicht gefunden", destinationNotFound: "Reiseziel nicht gefunden",
+    goBack: "Zurück", aboutThisPackage: "Über dieses Paket",
+    maxPax: "Max. Personen", durationLabel: "Dauer", locationLabel: "Standort",
+    reviewsLabel: "Bewertungen", topRated: "Bestbewertet", countryLabel: "Land",
+    bestTime: "Beste Reisezeit", allYear: "Ganzjährig", groupSizeLabel: "Gruppengröße",
+    ratingLabel: "Bewertung",
+    uncoverPlace: "Orte Entdecken", popularDestinationsSubtitle: "Entdecken Sie unsere meistbesuchten Reiseziele weltweit",
+    popularPackages: "Beliebte Pakete", packagesSubtitle: "Finden Sie das perfekte Reisepaket für Ihr nächstes Abenteuer",
+    callToAction: "Kontaktieren Sie Uns", ctaDescription: "Kontaktieren Sie uns noch heute und wir helfen Ihnen, Ihren Traumurlaub zu planen!",
+    perPerson: "pro Person",
+    defaultUsername: "Reisender", welcomeBack: "Willkommen zurück!",
+    countriesLabel: "Länder", noBookingsHint: "Noch keine Buchungen. Buchen Sie ein Paket oder Reiseziel, um es hier zu sehen.",
+    browsePackages: "Pakete Durchsuchen", cancelBookingTitle: "Buchung Stornieren",
+    cancelBookingMessage: "Ihre Buchung für diese Reise stornieren?", keepIt: "Behalten",
+    cancelBookingAction: "Buchung Stornieren", bookedOn: "Gebucht am", cancel: "Abbrechen", ok: "OK",
+    customTrip: "Individuelle Reise", travellersCount: "Reisende",
+    viewDetails: "Details Anzeigen",
+    featureBestPrice: "Bestpreisgarantie",
+    featureBestPriceDesc: "Wir bieten die besten Preise für alle unsere Reisepakete ohne versteckte Gebühren.",
+    featureHandpicked: "Handverlesene Reiseziele",
+    featureHandpickedDesc: "Unsere Experten wählen sorgfältig die schönsten und einzigartigsten Reiseziele aus.",
+    featureExpertGuides: "Erfahrene Reiseführer",
+    featureExpertGuidesDesc: "Professionelle lokale Reiseführer, die jeden Winkel des Reiseziels kennen.",
+    featureFlexibleBooking: "Flexible Buchung",
+    featureFlexibleBookingDesc: "Einfacher Buchungsprozess mit flexiblen Stornierungsbedingungen.",
+    aboutParagraph1: "Tourly ist ein Premium-Reisebüro, das sich der Schaffung unvergesslicher Reiseerlebnisse widmet. Mit jahrelanger Erfahrung verbinden wir Reisende mit den beeindruckendsten Reisezielen der Welt.",
+    aboutParagraph2: "Unser Team von leidenschaftlichen Reiseexperten arbeitet unermüdlich daran, einzigartige Erlebnisse zu schaffen, die über gewöhnlichen Tourismus hinausgehen.",
+    missionStatement: "Menschen zu inspirieren und zu befähigen, die Welt zu erkunden, indem wir außergewöhnliche, nachhaltige und erschwingliche Reiseerlebnisse bieten.",
+    ctaContactDescription: "Kontaktieren Sie uns heute und wir helfen Ihnen bei der Planung Ihres Traumurlaubs. Unser Team ist rund um die Uhr für Sie da.",
+    addressLabel: "Adresse", footerCopyright: "© 2024 Tourly. Alle Rechte vorbehalten",
+    datePlaceholder: "JJJJ-MM-TT",
+    tagFlashSale: "Blitzangebot", tagWeekendDeal: "Wochenendangebot", tagLimitedOffer: "Begrenztes Angebot",
+    timeJustNow: "Gerade", timeMinutesAgo: "Min", timeHoursAgo: "Std", timeDaysAgo: "T",
+    unreadNotifications: "ungelesene Benachrichtigungen",
+    notifWelcomeTitle: "Willkommen bei Tourly \ud83c\udf0d", notifWelcomeBody: "Entdecken Sie erstaunliche Reiseziele und buchen Sie Ihr n\u00e4chstes Abenteuer.",
+    notifSaleTitle: "Sommerangebot \u2014 Bis zu 30% Rabatt", notifSaleBody: "Zeitlich begrenztes Angebot f\u00fcr ausgew\u00e4hlte Pakete. Buchen Sie vor dem 31. M\u00e4rz 2026.",
+    notifNewDestTitle: "Neues Reiseziel hinzugef\u00fcgt", notifNewDestBody: "Bali, Indonesien ist jetzt verf\u00fcgbar. Entdecken Sie unsere exklusiven Pakete!",
+    destinationDetailDesc: "Erleben Sie die Schönheit und Kultur dieses unglaublichen Reiseziels. Von atemberaubenden Landschaften bis zu reichen lokalen Traditionen wird jeder Moment unvergesslich sein.",
+    expectGuidedTours: "Geführte Touren mit lokalen Experten", expectLocalCuisine: "Authentische lokale Küche",
+    expectAccommodations: "Komfortable Unterkünfte", expectTransportation: "Transport inklusive", expectSupport: "24/7 Reiseunterstützung",
+    inclusionAirfare: "Hin- und Rückflug", inclusionTransfers: "Flughafentransfers",
+    inclusionAccommodation: "Unterkunft (4-Sterne-Hotel)", inclusionBreakfast: "Tägliches Frühstück",
+    inclusionGuidedTours: "Geführte Touren", inclusionInsurance: "Reiseversicherung", inclusionSupport: "24/7 Support",
+    itineraryDay1Title: "Ankunft und Begrüßung", itineraryDay1Desc: "Flughafentransfer, Check-in, Willkommensdinner",
+    itineraryDay2Title: "Stadterkundung", itineraryDay2Desc: "Geführte Tour, lokale Märkte, kulturelle Stätten",
+    itineraryDay3Title: "Abenteuertag", itineraryDay3Desc: "Outdoor-Aktivitäten, Naturwanderungen",
+    itineraryDay4Title: "Kulturerlebnis", itineraryDay4Desc: "Traditionelle Workshops, lokale Küche",
+    itineraryDay5Title: "Freier Tag", itineraryDay5Desc: "Optionale Aktivitäten oder Entspannung",
+    itineraryDay6Title: "Panorama-Tour", itineraryDay6Desc: "Ausflug zu nahegelegenen Sehenswürdigkeiten",
+    itineraryDay7Title: "Abreise", itineraryDay7Desc: "Frühstück, Checkout, Flughafentransfer",
+    packageDetailExtended: "Erleben Sie eine unvergessliche Reise mit unserem sorgfältig gestalteten Reisepaket. Jedes Detail wurde für die Reise Ihres Lebens geplant.",
+    chatOnlineStatus: "Online · Tourly Support",
+    chatReply1: "Vielen Dank für Ihre Kontaktaufnahme! Ein Reiseexperte wird sich bald bei Ihnen melden.",
+    chatReply2: "Tolle Frage! Unser Team prüft Ihre Nachricht.",
+    chatReply3: "Wir helfen Ihnen gerne bei der Planung Ihrer perfekten Reise! Können Sie uns mehr Details mitteilen?",
+    chatReply4: "Unsere Pakete sind vollständig anpassbar. Ich verbinde Sie mit einem Spezialisten.",
+    chatReply5: "Für sofortige Hilfe können Sie uns auch unter +01 (123) 4567 90 anrufen.",
+    priceAny: "Beliebig", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "Anmelden", signUp: "Registrieren", password: "Passwort", confirmPassword: "Passwort bestätigen",
+    forgotPassword: "Passwort vergessen?", dontHaveAccount: "Noch kein Konto?", alreadyHaveAccount: "Bereits ein Konto?",
+    orContinueWith: "oder weiter mit", signingIn: "Anmeldung läuft...", signingUp: "Konto wird erstellt...",
+    passwordMismatch: "Passwörter stimmen nicht überein", passwordTooShort: "Passwort muss mindestens 8 Zeichen lang sein",
+    welcomeTo: "Willkommen bei", createAccount: "Konto Erstellen", signInSubtitle: "Melden Sie sich an, um auf Ihre Buchungen und gespeicherten Reisen zuzugreifen",
+    signUpSubtitle: "Treten Sie Tourly bei und planen Sie Ihren Traumurlaub",
+    continueWithGoogle: "Weiter mit Google", continueWithApple: "Weiter mit Apple",
+    agreeToTerms: "Mit der Registrierung stimmen Sie unseren", termsOfService: "Nutzungsbedingungen", privacyPolicy: "Datenschutzrichtlinie", andText: "und",
+    signOut: "Abmelden", signOutConfirm: "Möchten Sie sich wirklich abmelden?",
+  },
+
+  // ─────────────────────────── Italian ───────────────────────────
+  it: {
+    tabHome: "Home", tabExplore: "Esplora", tabTrips: "Viaggi", tabSaved: "Salvati", tabGallery: "Galleria",
+    heroTitle: "Viaggia per\nEsplorare il Mondo", heroSubtitle: "Scopri destinazioni incredibili e crea ricordi indimenticabili con Tourly",
+    learnMore: "Scopri di Più", bookNow: "Prenota Ora", contactUs: "Contattaci",
+    findYourTrip: "Trova il Tuo Viaggio", enterDestination: "Inserisci Destinazione", numberOfTravelers: "Numero di Viaggiatori",
+    inquireNow: "Richiedi Ora", popularDestinations: "Destinazioni Popolari", checkoutPackages: "I Nostri Pacchetti",
+    viewAll: "Vedi Tutto →", dealsTitle: "Offerte e Flash Sales 🔥", dealsSubtitle: "Fino al 30% di sconto",
+    save: "Salva", saved: "Salvato", share: "Condividi", back: "Indietro", search: "Cerca",
+    searchPlaceholder: "Cerca destinazioni, pacchetti...", noResults: "Nessun risultato",
+    filterAll: "Tutti", filterDestinations: "Destinazioni", filterPackages: "Pacchetti",
+    sortBy: "Ordina", sortDefault: "Predefinito", sortNameAZ: "Nome: A–Z", sortRelevance: "Rilevanza", sortPriceLow: "Prezzo: Basso → Alto", sortPriceHigh: "Prezzo: Alto → Basso", sortRating: "Più Votati",
+    priceRange: "Prezzo", resultsFound: "risultati", searchTourly: "Cerca su Tourly",
+    searchHint: "Trova la tua destinazione o pacchetto viaggio perfetto", tryDifferent: "Prova un termine diverso o regola i filtri",
+    clearFilters: "Cancella Filtri",
+    bookThisDestination: "Prenota questa Destinazione", aboutDestination: "Su questa Destinazione",
+    whatToExpect: "Cosa Aspettarsi", whatsIncluded: "Cosa è Incluso", sampleItinerary: "Itinerario di Esempio",
+    bookingTitle: "Prenota il Viaggio", fullName: "Nome Completo", email: "Email", phone: "Telefono",
+    travelers: "Viaggiatori", checkIn: "Data di Arrivo", checkOut: "Data di Partenza",
+    submitBooking: "Invia Prenotazione", bookingSuccess: "Prenotazione inviata con successo!",
+    notificationsTitle: "Notifiche", markAllRead: "Segna tutto come letto", noNotifications: "Nessuna notifica",
+    profileTitle: "Il Mio Profilo", myBookings: "Le Mie Prenotazioni", settings: "Impostazioni", aboutUs: "Chi Siamo",
+    settingsTitle: "Impostazioni", darkMode: "Modalità Scura", language: "Lingua", currency: "Valuta",
+    pushNotifications: "Notifiche Push", emailNotifications: "Notifiche Email",
+    myWishlist: "La Mia Lista Desideri", savedPlaces: "Luoghi Salvati", nothingSaved: "Niente salvato ancora",
+    nothingSavedHint: "Tocca il cuore su qualsiasi destinazione o pacchetto per salvarlo qui.",
+    exploreDestinations: "Esplora Destinazioni", photoGallery: "Galleria Foto", photosFromTravellers: "Foto dei Viaggiatori",
+    chatTitle: "Supporto Live", chatPlaceholder: "Scrivi un messaggio...", chatSend: "Invia",
+    chatWelcome: "👋 Ciao! Benvenuto su Tourly. Come possiamo aiutarti?",
+    chatHello: "Ciao! Sono il tuo assistente di viaggio Tourly. Chiedimi tutto su destinazioni, pacchetti o prenotazioni!",
+    personalInfo: "Informazioni Personali", tripDetails: "Dettagli del Viaggio",
+    selectedPackage: "Pacchetto Selezionato", destinationLabel: "Destinazione",
+    whereToGo: "Dove vuoi andare?", preferredCheckIn: "Data di Arrivo Preferita",
+    preferredCheckOut: "Data di Partenza Preferita", specialRequests: "Richieste Speciali",
+    specialRequestsPlaceholder: "Requisiti particolari?", submitBookingRequest: "Invia Richiesta di Prenotazione",
+    validationNameRequired: "Il nome completo è richiesto", validationEmailRequired: "L'email è richiesta",
+    validationEmailInvalid: "Inserisci un'email valida", validationPhoneRequired: "Il telefono è richiesto",
+    aboutPageTitle: "Chi Siamo", whoWeAre: "Chi Siamo", trustedTravelPartner: "Il Tuo Partner di Viaggio Fidato",
+    whyChooseUs: "Perché Sceglierci", whatMakesDifferent: "Cosa Ci Rende Diversi",
+    ourMission: "La Nostra Missione", happyTravelers: "Viaggiatori Felici", tourPackages: "Pacchetti Tour", supportUs: "Supporto",
+    getInTouch: "Contattaci", feelFreeContact: "Non esitare a contattarci!",
+    newsletter: "Newsletter", newsletterSubtitle: "Iscriviti per le ultime offerte.",
+    subscribe: "Iscriviti", enterYourEmail: "Inserisci la tua email", readyForTravel: "Pronto per un Viaggio Indimenticabile?",
+    limitedTime: "Tempo Limitato", flashDeals: "Offerte Flash 🔥", flashDealsSubtitle: "Risparmia fino al 30% sui nostri migliori pacchetti",
+    endsIn: "Termina tra", bookAt: "Prenota a", perPersonShort: "/persona",
+    packageNotFound: "Pacchetto non trovato", destinationNotFound: "Destinazione non trovata",
+    goBack: "Indietro", aboutThisPackage: "Su Questo Pacchetto",
+    maxPax: "Max Persone", durationLabel: "Durata", locationLabel: "Posizione",
+    reviewsLabel: "recensioni", topRated: "Più Votati", countryLabel: "Paese",
+    bestTime: "Periodo Migliore", allYear: "Tutto l'Anno", groupSizeLabel: "Dimensione Gruppo",
+    ratingLabel: "Valutazione",
+    uncoverPlace: "Scopri Luoghi", popularDestinationsSubtitle: "Esplora le nostre destinazioni più visitate nel mondo",
+    popularPackages: "Pacchetti Popolari", packagesSubtitle: "Trova il pacchetto viaggio perfetto per la tua prossima avventura",
+    callToAction: "Contattaci Ora", ctaDescription: "Contattaci oggi e ti aiuteremo a pianificare la vacanza dei tuoi sogni!",
+    perPerson: "a persona",
+    defaultUsername: "Viaggiatore", welcomeBack: "Bentornato!",
+    countriesLabel: "Paesi", noBookingsHint: "Ancora nessuna prenotazione. Prenota un pacchetto o una destinazione per vederlo qui.",
+    browsePackages: "Sfoglia Pacchetti", cancelBookingTitle: "Cancella Prenotazione",
+    cancelBookingMessage: "Cancellare la prenotazione per questo viaggio?", keepIt: "Mantieni",
+    cancelBookingAction: "Cancella Prenotazione", bookedOn: "Prenotato il", cancel: "Annulla", ok: "OK",
+    customTrip: "Viaggio Personalizzato", travellersCount: "viaggiatori",
+    viewDetails: "Vedi Dettagli",
+    featureBestPrice: "Garanzia Miglior Prezzo",
+    featureBestPriceDesc: "Offriamo i migliori prezzi per tutti i nostri pacchetti viaggio senza costi nascosti.",
+    featureHandpicked: "Destinazioni Selezionate",
+    featureHandpickedDesc: "I nostri esperti selezionano attentamente le destinazioni più belle e uniche.",
+    featureExpertGuides: "Guide Esperte",
+    featureExpertGuidesDesc: "Guide locali professionali che conoscono ogni angolo della destinazione.",
+    featureFlexibleBooking: "Prenotazione Flessibile",
+    featureFlexibleBookingDesc: "Processo di prenotazione facile con politiche di cancellazione flessibili.",
+    aboutParagraph1: "Tourly è un'agenzia di viaggi premium dedicata alla creazione di esperienze di viaggio indimenticabili. Con anni di esperienza, colleghiamo i viaggiatori alle destinazioni più impressionanti del mondo.",
+    aboutParagraph2: "Il nostro team di appassionati esperti di viaggio lavora instancabilmente per creare esperienze uniche che vanno oltre il turismo ordinario.",
+    missionStatement: "Ispirare e consentire alle persone di esplorare il mondo fornendo esperienze di viaggio eccezionali, sostenibili e accessibili.",
+    ctaContactDescription: "Contattaci oggi e ti aiuteremo a pianificare la tua vacanza da sogno. Il nostro team è pronto ad assisterti 24/7.",
+    addressLabel: "Indirizzo", footerCopyright: "© 2024 Tourly. Tutti i diritti riservati",
+    datePlaceholder: "AAAA-MM-GG",
+    tagFlashSale: "Vendita Flash", tagWeekendDeal: "Offerta Weekend", tagLimitedOffer: "Offerta Limitata",
+    timeJustNow: "Ora", timeMinutesAgo: "m", timeHoursAgo: "h", timeDaysAgo: "g",
+    unreadNotifications: "notifiche non lette",
+    notifWelcomeTitle: "Benvenuto su Tourly \ud83c\udf0d", notifWelcomeBody: "Inizia a esplorare destinazioni incredibili e prenota la tua prossima avventura.",
+    notifSaleTitle: "Saldi Estivi \u2014 Fino al 30% di Sconto", notifSaleBody: "Offerta a tempo limitato su pacchetti selezionati. Prenota entro il 31 marzo 2026.",
+    notifNewDestTitle: "Nuova Destinazione Aggiunta", notifNewDestBody: "Bali, Indonesia \u00e8 ora disponibile. Scopri i nostri pacchetti esclusivi!",
+    destinationDetailDesc: "Vivi la bellezza e la cultura di questa incredibile destinazione. Dai paesaggi mozzafiato alle ricche tradizioni locali, ogni momento sarà indimenticabile.",
+    expectGuidedTours: "Tour guidati con esperti locali", expectLocalCuisine: "Esperienze culinarie locali autentiche",
+    expectAccommodations: "Alloggi confortevoli", expectTransportation: "Trasporto incluso", expectSupport: "Supporto viaggio 24/7",
+    inclusionAirfare: "Volo andata e ritorno", inclusionTransfers: "Trasferimenti aeroporto",
+    inclusionAccommodation: "Alloggio (hotel 4 stelle)", inclusionBreakfast: "Colazione giornaliera",
+    inclusionGuidedTours: "Tour guidati", inclusionInsurance: "Assicurazione viaggio", inclusionSupport: "Supporto 24/7",
+    itineraryDay1Title: "Arrivo e Benvenuto", itineraryDay1Desc: "Trasferimento aeroporto, check-in, cena di benvenuto",
+    itineraryDay2Title: "Esplorazione della Città", itineraryDay2Desc: "Tour guidato, mercati locali, siti culturali",
+    itineraryDay3Title: "Giornata Avventura", itineraryDay3Desc: "Attività all'aperto, escursioni nella natura",
+    itineraryDay4Title: "Esperienza Culturale", itineraryDay4Desc: "Workshop tradizionali, cucina locale",
+    itineraryDay5Title: "Giornata Libera", itineraryDay5Desc: "Attività opzionali o relax",
+    itineraryDay6Title: "Tour Panoramico", itineraryDay6Desc: "Escursione alle attrazioni vicine",
+    itineraryDay7Title: "Partenza", itineraryDay7Desc: "Colazione, checkout, trasferimento aeroporto",
+    packageDetailExtended: "Vivi un viaggio indimenticabile con il nostro pacchetto viaggio accuratamente progettato. Ogni dettaglio è stato pianificato per il viaggio della tua vita.",
+    chatOnlineStatus: "Online · Supporto Tourly",
+    chatReply1: "Grazie per averci contattato! Un esperto di viaggi sarà con te a breve.",
+    chatReply2: "Ottima domanda! Il nostro team sta esaminando il tuo messaggio.",
+    chatReply3: "Ci piacerebbe aiutarti a pianificare il tuo viaggio perfetto! Puoi condividere maggiori dettagli?",
+    chatReply4: "I nostri pacchetti sono completamente personalizzabili. Ti metterò in contatto con uno specialista.",
+    chatReply5: "Per assistenza immediata puoi anche chiamarci al +01 (123) 4567 90.",
+    priceAny: "Qualsiasi", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "Accedi", signUp: "Registrati", password: "Password", confirmPassword: "Conferma Password",
+    forgotPassword: "Password dimenticata?", dontHaveAccount: "Non hai un account?", alreadyHaveAccount: "Hai già un account?",
+    orContinueWith: "o continua con", signingIn: "Accesso in corso...", signingUp: "Creazione account...",
+    passwordMismatch: "Le password non corrispondono", passwordTooShort: "La password deve avere almeno 8 caratteri",
+    welcomeTo: "Benvenuto su", createAccount: "Crea Account", signInSubtitle: "Accedi per visualizzare le tue prenotazioni e i viaggi salvati",
+    signUpSubtitle: "Unisciti a Tourly e inizia a pianificare la tua vacanza da sogno",
+    continueWithGoogle: "Continua con Google", continueWithApple: "Continua con Apple",
+    agreeToTerms: "Registrandoti, accetti i nostri", termsOfService: "Termini di Servizio", privacyPolicy: "Informativa sulla Privacy", andText: "e",
+    signOut: "Esci", signOutConfirm: "Sei sicuro di voler uscire?",
+  },
+
+  // ─────────────────────────── Portuguese ───────────────────────────
+  pt: {
+    tabHome: "Início", tabExplore: "Explorar", tabTrips: "Viagens", tabSaved: "Salvos", tabGallery: "Galeria",
+    heroTitle: "Viaje para\nExplorar o Mundo", heroSubtitle: "Descubra destinos incríveis e crie memórias inesquecíveis com Tourly",
+    learnMore: "Saiba Mais", bookNow: "Reservar Agora", contactUs: "Contato",
+    findYourTrip: "Encontre sua Viagem", enterDestination: "Insira o Destino", numberOfTravelers: "Número de Viajantes",
+    inquireNow: "Consultar Agora", popularDestinations: "Destinos Populares", checkoutPackages: "Nossos Pacotes",
+    viewAll: "Ver Tudo →", dealsTitle: "Ofertas e Flash Sales 🔥", dealsSubtitle: "Até 30% de desconto",
+    save: "Salvar", saved: "Salvo", share: "Compartilhar", back: "Voltar", search: "Buscar",
+    searchPlaceholder: "Buscar destinos, pacotes...", noResults: "Nenhum resultado",
+    filterAll: "Todos", filterDestinations: "Destinos", filterPackages: "Pacotes",
+    sortBy: "Ordenar", sortDefault: "Padrão", sortNameAZ: "Nome: A–Z", sortRelevance: "Relevância", sortPriceLow: "Preço: Menor → Maior", sortPriceHigh: "Preço: Maior → Menor", sortRating: "Mais Avaliados",
+    priceRange: "Preço", resultsFound: "resultados", searchTourly: "Buscar no Tourly",
+    searchHint: "Encontre seu destino ou pacote de viagem perfeito", tryDifferent: "Tente outro termo ou ajuste os filtros",
+    clearFilters: "Limpar Filtros",
+    bookThisDestination: "Reservar este Destino", aboutDestination: "Sobre este Destino",
+    whatToExpect: "O Que Esperar", whatsIncluded: "O Que Está Incluído", sampleItinerary: "Itinerário de Exemplo",
+    bookingTitle: "Reserve sua Viagem", fullName: "Nome Completo", email: "E-mail", phone: "Telefone",
+    travelers: "Viajantes", checkIn: "Data de Entrada", checkOut: "Data de Saída",
+    submitBooking: "Enviar Reserva", bookingSuccess: "Reserva enviada com sucesso!",
+    notificationsTitle: "Notificações", markAllRead: "Marcar tudo como lido", noNotifications: "Sem notificações",
+    profileTitle: "Meu Perfil", myBookings: "Minhas Reservas", settings: "Configurações", aboutUs: "Sobre Nós",
+    settingsTitle: "Configurações", darkMode: "Modo Escuro", language: "Idioma", currency: "Moeda",
+    pushNotifications: "Notificações Push", emailNotifications: "Notificações por Email",
+    myWishlist: "Minha Lista de Desejos", savedPlaces: "Lugares Salvos", nothingSaved: "Nada salvo ainda",
+    nothingSavedHint: "Toque no coração em qualquer destino ou pacote para salvá-lo aqui.",
+    exploreDestinations: "Explorar Destinos", photoGallery: "Galeria de Fotos", photosFromTravellers: "Fotos dos Viajantes",
+    chatTitle: "Suporte ao Vivo", chatPlaceholder: "Digite uma mensagem...", chatSend: "Enviar",
+    chatWelcome: "👋 Olá! Bem-vindo ao Tourly. Como podemos ajudá-lo?",
+    chatHello: "Olá! Sou seu assistente de viagem Tourly. Pergunte-me sobre destinos, pacotes ou reservas!",
+    personalInfo: "Informações Pessoais", tripDetails: "Detalhes da Viagem",
+    selectedPackage: "Pacote Selecionado", destinationLabel: "Destino",
+    whereToGo: "Para onde você quer ir?", preferredCheckIn: "Data de Entrada Preferida",
+    preferredCheckOut: "Data de Saída Preferida", specialRequests: "Pedidos Especiais",
+    specialRequestsPlaceholder: "Algum requisito especial?", submitBookingRequest: "Enviar Pedido de Reserva",
+    validationNameRequired: "Nome completo é obrigatório", validationEmailRequired: "E-mail é obrigatório",
+    validationEmailInvalid: "Por favor insira um e-mail válido", validationPhoneRequired: "Telefone é obrigatório",
+    aboutPageTitle: "Sobre Nós", whoWeAre: "Quem Somos", trustedTravelPartner: "Seu Parceiro de Viagem de Confiança",
+    whyChooseUs: "Por Que Nos Escolher", whatMakesDifferent: "O Que Nos Diferencia",
+    ourMission: "Nossa Missão", happyTravelers: "Viajantes Felizes", tourPackages: "Pacotes de Viagem", supportUs: "Suporte",
+    getInTouch: "Entre em Contato", feelFreeContact: "Sinta-se à vontade para nos contatar!",
+    newsletter: "Newsletter", newsletterSubtitle: "Inscreva-se para receber as últimas ofertas.",
+    subscribe: "Inscrever-se", enterYourEmail: "Insira seu e-mail", readyForTravel: "Pronto para uma Viagem Inesquecível?",
+    limitedTime: "Tempo Limitado", flashDeals: "Ofertas Relâmpago 🔥", flashDealsSubtitle: "Economize até 30% nos nossos melhores pacotes",
+    endsIn: "Termina em", bookAt: "Reservar por", perPersonShort: "/pessoa",
+    packageNotFound: "Pacote não encontrado", destinationNotFound: "Destino não encontrado",
+    goBack: "Voltar", aboutThisPackage: "Sobre Este Pacote",
+    maxPax: "Máx. Pessoas", durationLabel: "Duração", locationLabel: "Localização",
+    reviewsLabel: "avaliações", topRated: "Mais Avaliados", countryLabel: "País",
+    bestTime: "Melhor Época", allYear: "O Ano Todo", groupSizeLabel: "Tamanho do Grupo",
+    ratingLabel: "Avaliação",
+    uncoverPlace: "Descubra Lugares", popularDestinationsSubtitle: "Explore nossos destinos mais visitados ao redor do mundo",
+    popularPackages: "Pacotes Populares", packagesSubtitle: "Encontre o pacote de viagem perfeito para sua próxima aventura",
+    callToAction: "Entre em Contato", ctaDescription: "Entre em contato hoje e ajudaremos você a planejar as férias dos seus sonhos!",
+    perPerson: "por pessoa",
+    defaultUsername: "Viajante", welcomeBack: "Bem-vindo de volta!",
+    countriesLabel: "Países", noBookingsHint: "Ainda sem reservas. Reserve um pacote ou destino para ver aqui.",
+    browsePackages: "Explorar Pacotes", cancelBookingTitle: "Cancelar Reserva",
+    cancelBookingMessage: "Cancelar sua reserva para esta viagem?", keepIt: "Manter",
+    cancelBookingAction: "Cancelar Reserva", bookedOn: "Reservado em", cancel: "Cancelar", ok: "OK",
+    customTrip: "Viagem Personalizada", travellersCount: "viajantes",
+    viewDetails: "Ver Detalhes",
+    featureBestPrice: "Garantia de Melhor Preço",
+    featureBestPriceDesc: "Oferecemos os melhores preços para todos os nossos pacotes de viagem sem taxas ocultas.",
+    featureHandpicked: "Destinos Selecionados",
+    featureHandpickedDesc: "Nossos especialistas selecionam cuidadosamente os destinos mais bonitos e únicos.",
+    featureExpertGuides: "Guias Especialistas",
+    featureExpertGuidesDesc: "Guias locais profissionais que conhecem cada canto do destino.",
+    featureFlexibleBooking: "Reserva Flexível",
+    featureFlexibleBookingDesc: "Processo de reserva fácil com políticas de cancelamento flexíveis.",
+    aboutParagraph1: "Tourly é uma agência de viagens premium dedicada a criar experiências de viagem inesquecíveis. Com anos de experiência, conectamos viajantes aos destinos mais impressionantes do mundo.",
+    aboutParagraph2: "Nossa equipe de apaixonados especialistas em viagens trabalha incansavelmente para criar experiências únicas que vão além do turismo comum.",
+    missionStatement: "Inspirar e capacitar pessoas a explorar o mundo fornecendo experiências de viagem excepcionais, sustentáveis e acessíveis.",
+    ctaContactDescription: "Entre em contato hoje e ajudaremos a planejar suas férias dos sonhos. Nossa equipe está pronta para ajudá-lo 24/7.",
+    addressLabel: "Endereço", footerCopyright: "© 2024 Tourly. Todos os direitos reservados",
+    datePlaceholder: "AAAA-MM-DD",
+    tagFlashSale: "Venda Relâmpago", tagWeekendDeal: "Oferta de Fim de Semana", tagLimitedOffer: "Oferta Limitada",
+    timeJustNow: "Agora", timeMinutesAgo: "m", timeHoursAgo: "h", timeDaysAgo: "d",
+    unreadNotifications: "notificações não lidas",
+    notifWelcomeTitle: "Bem-vindo ao Tourly 🌍", notifWelcomeBody: "Comece a explorar destinos incríveis e reserve sua próxima aventura.",
+    notifSaleTitle: "Promoção de Verão — Até 30% Off", notifSaleBody: "Oferta por tempo limitado em pacotes selecionados. Reserve até 31 de março de 2026.",
+    notifNewDestTitle: "Novo Destino Adicionado", notifNewDestBody: "Bali, Indonésia já está disponível. Confira nossos pacotes exclusivos!",
+    destinationDetailDesc: "Viva a beleza e cultura deste destino incrível. De paisagens deslumbrantes a ricas tradições locais, cada momento será inesquecível.",
+    expectGuidedTours: "Passeios guiados com especialistas locais", expectLocalCuisine: "Experiências autênticas da culinária local",
+    expectAccommodations: "Acomodações confortáveis", expectTransportation: "Transporte incluído", expectSupport: "Suporte de viagem 24/7",
+    inclusionAirfare: "Passagem aérea ida e volta", inclusionTransfers: "Transfers aeroporto",
+    inclusionAccommodation: "Hospedagem (hotel 4 estrelas)", inclusionBreakfast: "Café da manhã diário",
+    inclusionGuidedTours: "Passeios guiados", inclusionInsurance: "Seguro viagem", inclusionSupport: "Suporte 24/7",
+    itineraryDay1Title: "Chegada e Boas-vindas", itineraryDay1Desc: "Transfer aeroporto, check-in, jantar de boas-vindas",
+    itineraryDay2Title: "Exploração da Cidade", itineraryDay2Desc: "Tour guiado, mercados locais, pontos culturais",
+    itineraryDay3Title: "Dia de Aventura", itineraryDay3Desc: "Atividades ao ar livre, trilhas na natureza",
+    itineraryDay4Title: "Experiência Cultural", itineraryDay4Desc: "Oficinas tradicionais, culinária local",
+    itineraryDay5Title: "Dia Livre", itineraryDay5Desc: "Atividades opcionais ou relaxamento",
+    itineraryDay6Title: "Tour Panorâmico", itineraryDay6Desc: "Excursão a atrações próximas",
+    itineraryDay7Title: "Partida", itineraryDay7Desc: "Café da manhã, checkout, transfer aeroporto",
+    packageDetailExtended: "Viva uma viagem inesquecível com nosso pacote de viagem cuidadosamente projetado. Cada detalhe foi planejado para a viagem da sua vida.",
+    chatOnlineStatus: "Online · Suporte Tourly",
+    chatReply1: "Obrigado por entrar em contato! Um especialista em viagens estará com você em breve.",
+    chatReply2: "Ótima pergunta! Nossa equipe está analisando sua mensagem.",
+    chatReply3: "Adoraríamos ajudá-lo a planejar sua viagem perfeita! Poderia compartilhar mais detalhes?",
+    chatReply4: "Nossos pacotes são totalmente personalizáveis. Vou conectá-lo com um especialista.",
+    chatReply5: "Para assistência imediata, você também pode nos ligar no +01 (123) 4567 90.",
+    priceAny: "Qualquer", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "Entrar", signUp: "Cadastrar", password: "Senha", confirmPassword: "Confirmar Senha",
+    forgotPassword: "Esqueceu a senha?", dontHaveAccount: "Não tem conta?", alreadyHaveAccount: "Já tem conta?",
+    orContinueWith: "ou continue com", signingIn: "Entrando...", signingUp: "Criando conta...",
+    passwordMismatch: "As senhas não coincidem", passwordTooShort: "A senha deve ter pelo menos 8 caracteres",
+    welcomeTo: "Bem-vindo ao", createAccount: "Criar Conta", signInSubtitle: "Entre para acessar suas reservas e viagens salvas",
+    signUpSubtitle: "Junte-se ao Tourly e comece a planejar suas férias dos sonhos",
+    continueWithGoogle: "Continuar com Google", continueWithApple: "Continuar com Apple",
+    agreeToTerms: "Ao se cadastrar, você concorda com nossos", termsOfService: "Termos de Serviço", privacyPolicy: "Política de Privacidade", andText: "e",
+    signOut: "Sair", signOutConfirm: "Tem certeza de que deseja sair?",
+  },
+
+  // ─────────────────────────── Korean ───────────────────────────
+  ko: {
+    tabHome: "홈", tabExplore: "탐색", tabTrips: "여행", tabSaved: "저장됨", tabGallery: "갤러리",
+    heroTitle: "세계를\n탐험하는 여행", heroSubtitle: "Tourly와 함께 놀라운 여행지를 발견하고 잊을 수 없는 추억을 만드세요",
+    learnMore: "자세히 보기", bookNow: "지금 예약", contactUs: "문의하기",
+    findYourTrip: "여행 찾기", enterDestination: "여행지 입력", numberOfTravelers: "여행자 수",
+    inquireNow: "지금 문의", popularDestinations: "인기 여행지", checkoutPackages: "패키지 보기",
+    viewAll: "모두 보기 →", dealsTitle: "특가 & 플래시 세일 🔥", dealsSubtitle: "최대 30% 할인",
+    save: "저장", saved: "저장됨", share: "공유", back: "뒤로", search: "검색",
+    searchPlaceholder: "여행지, 패키지 검색...", noResults: "결과 없음",
+    filterAll: "전체", filterDestinations: "여행지", filterPackages: "패키지",
+    sortBy: "정렬", sortDefault: "기본", sortNameAZ: "이름: A–Z", sortRelevance: "관련성", sortPriceLow: "가격: 낮은순", sortPriceHigh: "가격: 높은순", sortRating: "최고 평점",
+    priceRange: "가격", resultsFound: "개 결과", searchTourly: "Tourly 검색",
+    searchHint: "완벽한 여행지나 패키지를 찾아보세요", tryDifferent: "다른 검색어를 시도하거나 필터를 조정하세요",
+    clearFilters: "필터 초기화",
+    bookThisDestination: "이 여행지 예약", aboutDestination: "이 여행지 소개",
+    whatToExpect: "기대할 수 있는 것", whatsIncluded: "포함 사항", sampleItinerary: "샘플 일정",
+    bookingTitle: "여행 예약", fullName: "성명", email: "이메일", phone: "전화번호",
+    travelers: "여행자", checkIn: "체크인 날짜", checkOut: "체크아웃 날짜",
+    submitBooking: "예약 제출", bookingSuccess: "예약이 성공적으로 제출되었습니다!",
+    notificationsTitle: "알림", markAllRead: "모두 읽음 표시", noNotifications: "알림 없음",
+    profileTitle: "내 프로필", myBookings: "내 예약", settings: "설정", aboutUs: "소개",
+    settingsTitle: "설정", darkMode: "다크 모드", language: "언어", currency: "통화",
+    pushNotifications: "푸시 알림", emailNotifications: "이메일 알림",
+    myWishlist: "위시리스트", savedPlaces: "저장된 장소", nothingSaved: "아직 저장된 것이 없습니다",
+    nothingSavedHint: "여행지나 패키지의 하트 아이콘을 탭하여 여기에 저장하세요.",
+    exploreDestinations: "여행지 탐색", photoGallery: "포토 갤러리", photosFromTravellers: "여행자 사진",
+    chatTitle: "실시간 지원", chatPlaceholder: "메시지 입력...", chatSend: "보내기",
+    chatWelcome: "👋 안녕하세요! Tourly에 오신 것을 환영합니다. 어떻게 도와드릴까요?",
+    chatHello: "안녕하세요! Tourly 여행 도우미입니다. 여행지, 패키지, 예약에 대해 뭐든 물어보세요!",
+    personalInfo: "개인 정보", tripDetails: "여행 상세",
+    selectedPackage: "선택된 패키지", destinationLabel: "여행지",
+    whereToGo: "어디로 가고 싶으세요?", preferredCheckIn: "선호 체크인 날짜",
+    preferredCheckOut: "선호 체크아웃 날짜", specialRequests: "특별 요청",
+    specialRequestsPlaceholder: "특별한 요구사항이 있으신가요?", submitBookingRequest: "예약 요청 제출",
+    validationNameRequired: "성명은 필수입니다", validationEmailRequired: "이메일은 필수입니다",
+    validationEmailInvalid: "유효한 이메일을 입력하세요", validationPhoneRequired: "전화번호는 필수입니다",
+    aboutPageTitle: "소개", whoWeAre: "우리는 누구인가", trustedTravelPartner: "믿을 수 있는 여행 파트너",
+    whyChooseUs: "왜 우리를 선택하나요", whatMakesDifferent: "우리의 차별점",
+    ourMission: "우리의 미션", happyTravelers: "만족한 여행자", tourPackages: "투어 패키지", supportUs: "지원",
+    getInTouch: "연락하기", feelFreeContact: "편하게 연락주세요!",
+    newsletter: "뉴스레터", newsletterSubtitle: "최신 할인 정보를 받아보세요.",
+    subscribe: "구독", enterYourEmail: "이메일 입력", readyForTravel: "잊을 수 없는 여행 준비 되셨나요?",
+    limitedTime: "기간 한정", flashDeals: "플래시 세일 🔥", flashDealsSubtitle: "인기 패키지 최대 30% 할인",
+    endsIn: "종료까지", bookAt: "예약가", perPersonShort: "/인",
+    packageNotFound: "패키지를 찾을 수 없습니다", destinationNotFound: "여행지를 찾을 수 없습니다",
+    goBack: "돌아가기", aboutThisPackage: "이 패키지 소개",
+    maxPax: "최대 인원", durationLabel: "기간", locationLabel: "위치",
+    reviewsLabel: "리뷰", topRated: "최고 평점", countryLabel: "국가",
+    bestTime: "최적 시기", allYear: "연중", groupSizeLabel: "그룹 크기",
+    ratingLabel: "평점",
+    uncoverPlace: "장소 발견", popularDestinationsSubtitle: "전 세계에서 가장 많이 방문한 여행지를 탐색하세요",
+    popularPackages: "인기 패키지", packagesSubtitle: "다음 모험에 완벽한 여행 패키지를 찾아보세요",
+    callToAction: "문의하기", ctaDescription: "오늘 연락주시면 꿈의 휴가 계획을 도와드리겠습니다!",
+    perPerson: "1인당",
+    defaultUsername: "여행자", welcomeBack: "돌아오신 것을 환영합니다!",
+    countriesLabel: "국가", noBookingsHint: "아직 예약이 없습니다. 패키지나 여행지를 예약하면 여기에 표시됩니다.",
+    browsePackages: "패키지 둘러보기", cancelBookingTitle: "예약 취소",
+    cancelBookingMessage: "이 여행 예약을 취소하시겠습니까?", keepIt: "유지",
+    cancelBookingAction: "예약 취소", bookedOn: "예약일", cancel: "취소", ok: "확인",
+    customTrip: "맞춤 여행", travellersCount: "명의 여행자",
+    viewDetails: "상세 보기",
+    featureBestPrice: "최저가 보장",
+    featureBestPriceDesc: "숨겨진 비용 없이 모든 여행 패키지에 최고의 가격을 제공합니다.",
+    featureHandpicked: "엄선된 여행지",
+    featureHandpickedDesc: "전문가들이 가장 아름답고 독특한 여행지를 엄선합니다.",
+    featureExpertGuides: "전문 가이드",
+    featureExpertGuidesDesc: "여행지의 구석구석을 아는 전문 현지 가이드.",
+    featureFlexibleBooking: "유연한 예약",
+    featureFlexibleBookingDesc: "유연한 취소 정책으로 쉽게 예약할 수 있습니다.",
+    aboutParagraph1: "Tourly는 잊을 수 없는 여행 경험을 만드는 데 전념하는 프리미엄 여행사입니다. 수년간의 경험으로 세계에서 가장 인상적인 여행지와 여행자를 연결합니다.",
+    aboutParagraph2: "열정적인 여행 전문가 팀이 일반 관광을 뛰어넘는 독특한 경험을 만들기 위해 끊임없이 노력합니다.",
+    missionStatement: "탁월하고 지속 가능하며 합리적인 여행 경험을 제공하여 사람들이 세계를 탐험할 수 있도록 영감을 주고 지원합니다.",
+    ctaContactDescription: "오늘 연락주시면 꿈의 휴가 계획을 도와드리겠습니다. 저희 팀은 24시간 대기하고 있습니다.",
+    addressLabel: "주소", footerCopyright: "© 2024 Tourly. 모든 권리 보유",
+    datePlaceholder: "YYYY-MM-DD",
+    tagFlashSale: "플래시 세일", tagWeekendDeal: "주말 특가", tagLimitedOffer: "한정 혜택",
+    timeJustNow: "방금", timeMinutesAgo: "분 전", timeHoursAgo: "시간 전", timeDaysAgo: "일 전",
+    unreadNotifications: "개의 읽지 않은 알림",
+    notifWelcomeTitle: "Tourly에 오신 것을 환영합니다 🌍", notifWelcomeBody: "멋진 여행지를 탐색하고 다음 모험을 예약하세요.",
+    notifSaleTitle: "여름 세일 — 최대 30% 할인", notifSaleBody: "선택된 패키지 한정 할인. 2026년 3월 31일까지 예약하세요.",
+    notifNewDestTitle: "새로운 여행지 추가", notifNewDestBody: "발리, 인도네시아가 이용 가능합니다. 단독 패키지를 확인하세요!",
+    destinationDetailDesc: "이 놀라운 여행지의 아름다움과 문화를 경험하세요. 숨 막히는 풍경부터 풍부한 현지 전통까지, 모든 순간이 잊을 수 없을 것입니다.",
+    expectGuidedTours: "현지 전문가와 함께하는 가이드 투어", expectLocalCuisine: "정통 현지 음식 체험",
+    expectAccommodations: "편안한 숙박시설", expectTransportation: "교통편 포함", expectSupport: "24시간 여행 지원",
+    inclusionAirfare: "왕복 항공권", inclusionTransfers: "공항 픽업",
+    inclusionAccommodation: "숙박 (4성급 호텔)", inclusionBreakfast: "매일 조식",
+    inclusionGuidedTours: "가이드 투어", inclusionInsurance: "여행자 보험", inclusionSupport: "24시간 지원",
+    itineraryDay1Title: "도착 및 환영", itineraryDay1Desc: "공항 픽업, 체크인, 환영 만찬",
+    itineraryDay2Title: "도시 탐방", itineraryDay2Desc: "가이드 투어, 현지 시장, 문화 명소",
+    itineraryDay3Title: "어드벤처 데이", itineraryDay3Desc: "야외 활동, 자연 탐방",
+    itineraryDay4Title: "문화 체험", itineraryDay4Desc: "전통 워크숍, 현지 요리",
+    itineraryDay5Title: "자유 시간", itineraryDay5Desc: "선택 활동 또는 휴식",
+    itineraryDay6Title: "파노라마 투어", itineraryDay6Desc: "인근 명소 견학",
+    itineraryDay7Title: "출발", itineraryDay7Desc: "조식, 체크아웃, 공항 이동",
+    packageDetailExtended: "세심하게 설계된 여행 패키지로 잊을 수 없는 여행을 경험하세요. 모든 세부 사항이 일생일대의 여행을 위해 계획되었습니다.",
+    chatOnlineStatus: "온라인 · Tourly 지원팀",
+    chatReply1: "연락 주셔서 감사합니다! 여행 전문가가 곧 도와드리겠습니다.",
+    chatReply2: "좋은 질문입니다! 팀에서 메시지를 확인하고 있습니다.",
+    chatReply3: "완벽한 여행 계획을 도와드리겠습니다! 자세한 내용을 알려주시겠어요?",
+    chatReply4: "패키지는 완전히 맞춤 가능합니다. 전문가에게 연결해드리겠습니다.",
+    chatReply5: "즉시 도움이 필요하시면 +01 (123) 4567 90으로 전화해 주세요.",
+    priceAny: "전체", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "로그인", signUp: "회원가입", password: "비밀번호", confirmPassword: "비밀번호 확인",
+    forgotPassword: "비밀번호를 잊으셨나요?", dontHaveAccount: "계정이 없으신가요?", alreadyHaveAccount: "이미 계정이 있으신가요?",
+    orContinueWith: "또는 다음으로 계속", signingIn: "로그인 중...", signingUp: "계정 생성 중...",
+    passwordMismatch: "비밀번호가 일치하지 않습니다", passwordTooShort: "비밀번호는 8자 이상이어야 합니다",
+    welcomeTo: "환영합니다", createAccount: "계정 만들기", signInSubtitle: "예약 및 저장된 여행에 접근하려면 로그인하세요",
+    signUpSubtitle: "Tourly에 가입하고 꿈의 여행을 계획하세요",
+    continueWithGoogle: "Google로 계속", continueWithApple: "Apple로 계속",
+    agreeToTerms: "가입하면 다음에 동의하는 것입니다", termsOfService: "이용약관", privacyPolicy: "개인정보 처리방침", andText: "및",
+    signOut: "로그아웃", signOutConfirm: "정말 로그아웃하시겠습니까?",
+  },
+
+  // ─────────────────────────── Chinese (Simplified) ───────────────────────────
+  zh: {
+    tabHome: "首页", tabExplore: "探索", tabTrips: "行程", tabSaved: "已收藏", tabGallery: "图库",
+    heroTitle: "踏上探索\n世界之旅", heroSubtitle: "与Tourly一起发现令人惊叹的目的地，创造难忘的回忆",
+    learnMore: "了解更多", bookNow: "立即预订", contactUs: "联系我们",
+    findYourTrip: "寻找您的旅行", enterDestination: "输入目的地", numberOfTravelers: "旅客人数",
+    inquireNow: "立即咨询", popularDestinations: "热门目的地", checkoutPackages: "查看我们的套餐",
+    viewAll: "查看全部 →", dealsTitle: "特惠 & 限时抢购 🔥", dealsSubtitle: "最高享受30%折扣",
+    save: "保存", saved: "已保存", share: "分享", back: "返回", search: "搜索",
+    searchPlaceholder: "搜索目的地、套餐...", noResults: "未找到结果",
+    filterAll: "全部", filterDestinations: "目的地", filterPackages: "套餐",
+    sortBy: "排序", sortDefault: "默认", sortNameAZ: "名称: A–Z", sortRelevance: "相关性", sortPriceLow: "价格: 低→高", sortPriceHigh: "价格: 高→低", sortRating: "最高评分",
+    priceRange: "价格", resultsFound: "条结果", searchTourly: "搜索Tourly",
+    searchHint: "找到您理想的目的地或旅行套餐", tryDifferent: "尝试其他关键词或调整筛选条件",
+    clearFilters: "清除筛选",
+    bookThisDestination: "预订此目的地", aboutDestination: "关于此目的地",
+    whatToExpect: "行程亮点", whatsIncluded: "包含内容", sampleItinerary: "行程示例",
+    bookingTitle: "预订旅行", fullName: "姓名", email: "电子邮件", phone: "电话",
+    travelers: "旅客", checkIn: "入住日期", checkOut: "退房日期",
+    submitBooking: "提交预订", bookingSuccess: "预订已成功提交！",
+    notificationsTitle: "通知", markAllRead: "全部标为已读", noNotifications: "暂无通知",
+    profileTitle: "我的资料", myBookings: "我的预订", settings: "设置", aboutUs: "关于我们",
+    settingsTitle: "设置", darkMode: "深色模式", language: "语言", currency: "货币",
+    pushNotifications: "推送通知", emailNotifications: "邮件通知",
+    myWishlist: "我的心愿单", savedPlaces: "已保存的地方", nothingSaved: "暂无收藏",
+    nothingSavedHint: "点击任何目的地或套餐的心形图标将其保存至此。",
+    exploreDestinations: "探索目的地", photoGallery: "照片库", photosFromTravellers: "旅行者照片",
+    chatTitle: "在线客服", chatPlaceholder: "输入消息...", chatSend: "发送",
+    chatWelcome: "👋 您好！欢迎来到Tourly。我们能为您做什么？",
+    chatHello: "您好！我是您的Tourly旅行助手。有关目的地、套餐或预订的任何问题都可以问我！",
+    personalInfo: "个人信息", tripDetails: "行程详情",
+    selectedPackage: "已选套餐", destinationLabel: "目的地",
+    whereToGo: "您想去哪里？", preferredCheckIn: "首选入住日期",
+    preferredCheckOut: "首选退房日期", specialRequests: "特别要求",
+    specialRequestsPlaceholder: "有特殊需求吗？", submitBookingRequest: "提交预订请求",
+    validationNameRequired: "姓名为必填项", validationEmailRequired: "邮箱为必填项",
+    validationEmailInvalid: "请输入有效的电子邮件", validationPhoneRequired: "电话为必填项",
+    aboutPageTitle: "关于我们", whoWeAre: "我们是谁", trustedTravelPartner: "您值得信赖的旅行伙伴",
+    whyChooseUs: "为什么选择我们", whatMakesDifferent: "我们的不同之处",
+    ourMission: "我们的使命", happyTravelers: "满意旅客", tourPackages: "旅行套餐", supportUs: "支持",
+    getInTouch: "联系我们", feelFreeContact: "欢迎随时联系我们！",
+    newsletter: "新闻通讯", newsletterSubtitle: "订阅获取最新优惠信息。",
+    subscribe: "订阅", enterYourEmail: "输入您的邮箱", readyForTravel: "准备好开启难忘之旅了吗？",
+    limitedTime: "限时", flashDeals: "限时抢购 🔥", flashDealsSubtitle: "热门套餐最高省30%",
+    endsIn: "剩余", bookAt: "预订价", perPersonShort: "/人",
+    packageNotFound: "未找到套餐", destinationNotFound: "未找到目的地",
+    goBack: "返回", aboutThisPackage: "关于此套餐",
+    maxPax: "最大人数", durationLabel: "时长", locationLabel: "位置",
+    reviewsLabel: "评价", topRated: "最高评分", countryLabel: "国家",
+    bestTime: "最佳时间", allYear: "全年", groupSizeLabel: "团队规模",
+    ratingLabel: "评分",
+    uncoverPlace: "发现目的地", popularDestinationsSubtitle: "探索我们全球最受欢迎的旅游目的地",
+    popularPackages: "热门套餐", packagesSubtitle: "为您的下一次冒险找到完美的旅行套餐",
+    callToAction: "立即咨询", ctaDescription: "今天就联系我们，我们将帮助您规划梦想假期！",
+    perPerson: "每人",
+    defaultUsername: "旅行者", welcomeBack: "欢迎回来！",
+    countriesLabel: "国家", noBookingsHint: "暂无预订。预订套餐或目的地后将在此显示。",
+    browsePackages: "浏览套餐", cancelBookingTitle: "取消预订",
+    cancelBookingMessage: "确定要取消此行程的预订吗？", keepIt: "保留",
+    cancelBookingAction: "取消预订", bookedOn: "预订日期", cancel: "取消", ok: "确定",
+    customTrip: "定制行程", travellersCount: "位旅客",
+    viewDetails: "查看详情",
+    featureBestPrice: "最优价格保证",
+    featureBestPriceDesc: "我们为所有旅行套餐提供最优惠的价格，无隐藏费用。",
+    featureHandpicked: "精选目的地",
+    featureHandpickedDesc: "我们的专家精心挑选最美丽、最独特的旅游目的地。",
+    featureExpertGuides: "专业导游",
+    featureExpertGuidesDesc: "了解目的地每个角落的专业当地导游。",
+    featureFlexibleBooking: "灵活预订",
+    featureFlexibleBookingDesc: "便捷的预订流程，灵活的取消政策。",
+    aboutParagraph1: "Tourly是一家专注于创造难忘旅行体验的高端旅行社。凭借多年经验，我们将旅行者与世界上最令人印象深刻的目的地连接起来。",
+    aboutParagraph2: "我们充满热情的旅行专家团队不懈努力，打造超越普通旅游的独特体验。",
+    missionStatement: "通过提供卓越、可持续且经济实惠的旅行体验，激励和帮助人们探索世界。",
+    ctaContactDescription: "今天联系我们，我们将帮助您规划梦想假期。我们的团队全天候为您服务。",
+    addressLabel: "地址", footerCopyright: "© 2024 Tourly. 保留所有权利",
+    datePlaceholder: "年-月-日",
+    tagFlashSale: "限时抢购", tagWeekendDeal: "周末特惠", tagLimitedOffer: "限量优惠",
+    timeJustNow: "刚刚", timeMinutesAgo: "分钟前", timeHoursAgo: "小时前", timeDaysAgo: "天前",
+    unreadNotifications: "条未读通知",
+    notifWelcomeTitle: "欢迎来到 Tourly 🌍", notifWelcomeBody: "开始探索精彩目的地，预订您的下一次冒险。",
+    notifSaleTitle: "夏季特惠 — 最高七折", notifSaleBody: "精选套餐限时优惠。2026年3月31日前预订。",
+    notifNewDestTitle: "新目的地已添加", notifNewDestBody: "巴厘岛（印度尼西亚）现已开放。查看我们的专属套餐！",
+    destinationDetailDesc: "体验这个令人惊叹的目的地的美丽与文化。从令人叹为观止的风景到丰富的当地传统，每一刻都将令人难忘。",
+    expectGuidedTours: "当地专家带领的导览", expectLocalCuisine: "正宗当地美食体验",
+    expectAccommodations: "舒适住宿", expectTransportation: "交通包含", expectSupport: "全天候旅行支持",
+    inclusionAirfare: "往返机票", inclusionTransfers: "机场接送",
+    inclusionAccommodation: "住宿（四星级酒店）", inclusionBreakfast: "每日早餐",
+    inclusionGuidedTours: "导览", inclusionInsurance: "旅行保险", inclusionSupport: "全天候客服",
+    itineraryDay1Title: "抵达与欢迎", itineraryDay1Desc: "机场接机、入住、欢迎晚宴",
+    itineraryDay2Title: "城市探索", itineraryDay2Desc: "导览参观、当地集市、文化遗址",
+    itineraryDay3Title: "探险日", itineraryDay3Desc: "户外活动、自然徒步",
+    itineraryDay4Title: "文化体验", itineraryDay4Desc: "传统工作坊、当地美食",
+    itineraryDay5Title: "自由活动日", itineraryDay5Desc: "选择性活动或休闲放松",
+    itineraryDay6Title: "全景游览", itineraryDay6Desc: "前往附近景点游览",
+    itineraryDay7Title: "离开", itineraryDay7Desc: "早餐、退房、机场送机",
+    packageDetailExtended: "通过我们精心设计的旅行套餐，体验一次难忘的旅程。每个细节都为打造您一生难忘的旅行而规划。",
+    chatOnlineStatus: "在线 · Tourly客服",
+    chatReply1: "感谢您的联系！旅行专家将很快为您服务。",
+    chatReply2: "好问题！我们的团队正在查看您的消息。",
+    chatReply3: "我们很乐意帮您规划完美旅程！能否分享更多细节？",
+    chatReply4: "我们的套餐完全可定制。我将为您连接专家。",
+    chatReply5: "如需即时帮助，您也可以拨打 +01 (123) 4567 90。",
+    priceAny: "不限", priceUnder500: "< 500", price500to1000: "500 – 700", priceOver1000: "> 700",
+    signIn: "登录", signUp: "注册", password: "密码", confirmPassword: "确认密码",
+    forgotPassword: "忘记密码？", dontHaveAccount: "还没有账号？", alreadyHaveAccount: "已有账号？",
+    orContinueWith: "或通过以下方式继续", signingIn: "登录中...", signingUp: "创建账号中...",
+    passwordMismatch: "密码不匹配", passwordTooShort: "密码至少需要8个字符",
+    welcomeTo: "欢迎来到", createAccount: "创建账号", signInSubtitle: "登录以访问您的预订和已保存的行程",
+    signUpSubtitle: "加入Tourly，开始规划您的梦想假期",
+    continueWithGoogle: "使用Google继续", continueWithApple: "使用Apple继续",
+    agreeToTerms: "注册即表示您同意我们的", termsOfService: "服务条款", privacyPolicy: "隐私政策", andText: "和",
+    signOut: "退出登录", signOutConfirm: "您确定要退出登录吗？",
+  },
+};
+
+// ─── Storage Key ──────────────────────────────────────────────────────────
+
+const LANG_KEY = "@tourly:language";
+
+// ─── Context ──────────────────────────────────────────────────────────────
+
+interface I18nContextValue {
+  language: Language;
+  setLanguage: (lang: Language) => Promise<void>;
+  t: Translations;
+  isRTL: boolean;
+}
+
+const I18nContext = createContext<I18nContextValue>({
+  language: "en",
+  setLanguage: async () => {},
+  t: translations.en,
+  isRTL: false,
+});
+
+export function I18nProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLangState] = useState<Language>("en");
+
+  useEffect(() => {
+    AsyncStorage.getItem(LANG_KEY).then((stored) => {
+      if (stored && translations[stored as Language]) {
+        setLangState(stored as Language);
+      }
+    });
+  }, []);
+
+  const setLanguage = useCallback(async (lang: Language) => {
+    setLangState(lang);
+    await AsyncStorage.setItem(LANG_KEY, lang);
+  }, []);
+
+  const isRTL = LANGUAGES.find((l) => l.code === language)?.rtl ?? false;
+  const t = translations[language];
+
+  return React.createElement(
+    I18nContext.Provider,
+    { value: { language, setLanguage, t, isRTL } },
+    children
+  );
+}
+
+export function useTranslation() {
+  return useContext(I18nContext);
+}

@@ -1,21 +1,28 @@
-import { ScrollView, Text, View, ImageBackground, TextInput, Pressable, Dimensions, Alert } from "react-native";
+import { ScrollView, Text, View, ImageBackground, TextInput, Pressable, Alert, useWindowDimensions, Platform } from "react-native";
 import { Image } from "expo-image";
 import { useState } from "react";
 import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Haptics from "expo-haptics";
-import { Platform } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
 import { destinations } from "@/data/destinations";
 import { packages } from "@/data/packages";
-
-const { width } = Dimensions.get("window");
+import { useNotifications, useWishlist } from "@/lib/store";
+import { useTranslation } from "@/lib/i18n";
+import { useCurrency } from "@/lib/currency";
 
 export default function HomeScreen() {
   const colors = useColors();
+  const { width } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
+  const { unreadCount } = useNotifications();
+  const { toggle, isSaved } = useWishlist();
+  const { t } = useTranslation();
+  const { format } = useCurrency();
   const [destination, setDestination] = useState("");
   const [travelers, setTravelers] = useState("");
 
@@ -29,7 +36,7 @@ export default function HomeScreen() {
         params: { packageName: destination }
       });
     } else {
-      Alert.alert("Please Enter Destination", "Enter a destination to submit your inquiry.");
+      Alert.alert(t.enterDestination, t.searchPlaceholder);
     }
   };
 
@@ -87,6 +94,83 @@ export default function HomeScreen() {
 
   return (
     <ScreenContainer edges={["left", "right"]}>
+      {/* ── Fixed hero icons ── stay on screen while scrolling ── */}
+      <View
+        pointerEvents="box-none"
+        style={{
+          position: "absolute",
+          top: insets.top + 12,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          paddingHorizontal: 20,
+        }}
+      >
+        {/* Profile Button */}
+        <Pressable
+          onPress={() => router.push("/profile")}
+          style={({ pressed }) => [
+            {
+              backgroundColor: "rgba(255,255,255,0.2)",
+              padding: 12,
+              borderRadius: 50,
+            },
+            pressed && { opacity: 0.7 },
+          ]}
+        >
+          <IconSymbol name="person.fill" size={22} color="white" />
+        </Pressable>
+
+        <View style={{ flexDirection: "row", gap: 8 }}>
+          {/* Bell / Notifications Button */}
+          <Pressable
+            onPress={() => router.push("/notifications")}
+            style={({ pressed }) => [
+              {
+                backgroundColor: "rgba(255,255,255,0.2)",
+                padding: 12,
+                borderRadius: 50,
+              },
+              pressed && { opacity: 0.7 },
+            ]}
+          >
+            <IconSymbol name="bell.fill" size={22} color="white" />
+            {unreadCount > 0 && (
+              <View
+                style={{
+                  position: "absolute",
+                  top: 6,
+                  right: 6,
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  backgroundColor: colors.error,
+                  borderWidth: 1.5,
+                  borderColor: "transparent",
+                }}
+              />
+            )}
+          </Pressable>
+
+          {/* Search Button */}
+          <Pressable
+            onPress={handleSearch}
+            style={({ pressed }) => [
+              {
+                backgroundColor: "rgba(255,255,255,0.2)",
+                padding: 12,
+                borderRadius: 50,
+              },
+              pressed && { opacity: 0.7 },
+            ]}
+          >
+            <IconSymbol name="magnifyingglass" size={22} color="white" />
+          </Pressable>
+        </View>
+      </View>
+
       <ScrollView 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 20 }}
@@ -99,31 +183,14 @@ export default function HomeScreen() {
         >
           <LinearGradient
             colors={["rgba(0,0,0,0.5)", "rgba(0,0,0,0.7)"]}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24, paddingTop: 60 }}
+            style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24, paddingTop: insets.top + 20 }}
           >
-            {/* Search Button */}
-            <Pressable
-              onPress={handleSearch}
-              style={({ pressed }) => [
-                { 
-                  position: "absolute", 
-                  top: 50, 
-                  right: 20, 
-                  backgroundColor: "rgba(255,255,255,0.2)",
-                  padding: 12,
-                  borderRadius: 50,
-                },
-                pressed && { opacity: 0.7 }
-              ]}
-            >
-              <IconSymbol name="magnifyingglass" size={22} color="white" />
-            </Pressable>
 
             <Text className="text-white text-4xl font-bold text-center mb-4" style={{ fontFamily: "System" }}>
-              Journey to{"\n"}Explore World
+              {t.heroTitle}
             </Text>
             <Text className="text-white/80 text-base text-center mb-6 px-4">
-              Discover amazing destinations and create unforgettable memories with Tourly
+              {t.heroSubtitle}
             </Text>
             <View className="flex-row gap-3">
               <Pressable
@@ -133,7 +200,7 @@ export default function HomeScreen() {
                   pressed && { opacity: 0.9, transform: [{ scale: 0.97 }] }
                 ]}
               >
-                <Text className="text-white font-semibold">Learn More</Text>
+                <Text className="text-white font-semibold">{t.learnMore}</Text>
               </Pressable>
               <Pressable
                 onPress={handleBookNow}
@@ -142,7 +209,7 @@ export default function HomeScreen() {
                   pressed && { opacity: 0.8 }
                 ]}
               >
-                <Text className="text-white font-semibold">Book Now</Text>
+                <Text className="text-white font-semibold">{t.bookNow}</Text>
               </Pressable>
             </View>
           </LinearGradient>
@@ -150,7 +217,7 @@ export default function HomeScreen() {
 
         {/* Search Section */}
         <View className="bg-primary mx-4 -mt-8 rounded-2xl p-5 shadow-lg" style={{ backgroundColor: colors.primary }}>
-          <Text className="text-white text-lg font-bold mb-4">Find Your Trip</Text>
+          <Text className="text-white text-lg font-bold mb-4">{t.findYourTrip}</Text>
           
           <Pressable 
             onPress={handleSearch}
@@ -159,7 +226,7 @@ export default function HomeScreen() {
             <View className="bg-white rounded-full px-4 py-3 flex-row items-center">
               <IconSymbol name="magnifyingglass" size={20} color={colors.muted} />
               <TextInput
-                placeholder="Enter Destination"
+                placeholder={t.enterDestination}
                 placeholderTextColor={colors.muted}
                 value={destination}
                 onChangeText={setDestination}
@@ -172,7 +239,7 @@ export default function HomeScreen() {
           <View className="bg-white rounded-full px-4 py-3 mb-4 flex-row items-center">
             <IconSymbol name="person.2.fill" size={20} color={colors.muted} />
             <TextInput
-              placeholder="Number of Travelers"
+              placeholder={t.numberOfTravelers}
               placeholderTextColor={colors.muted}
               value={travelers}
               onChangeText={setTravelers}
@@ -189,20 +256,28 @@ export default function HomeScreen() {
               pressed && { opacity: 0.9 }
             ]}
           >
-            <Text className="font-bold" style={{ color: colors.primary }}>Inquire Now</Text>
+            <Text className="font-bold" style={{ color: colors.primary }}>{t.inquireNow}</Text>
           </Pressable>
         </View>
 
         {/* Popular Destinations Section */}
         <View className="mt-8 px-4">
           <Text className="text-primary text-sm font-semibold uppercase mb-1" style={{ color: colors.primary }}>
-            Uncover Place
+            {t.uncoverPlace}
           </Text>
-          <Text className="text-foreground text-2xl font-bold mb-2" style={{ color: colors.foreground }}>
-            Popular Destinations
-          </Text>
+          <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+            <Text className="text-foreground text-2xl font-bold" style={{ color: colors.foreground }}>
+              {t.popularDestinations}
+            </Text>
+            <Pressable
+              onPress={() => router.push("/(tabs)/destinations")}
+              style={({ pressed }) => [pressed && { opacity: 0.7 }]}
+            >
+              <Text style={{ color: colors.primary, fontSize: 13, fontWeight: "600" }}>{t.viewAll}</Text>
+            </Pressable>
+          </View>
           <Text className="text-muted text-sm mb-5" style={{ color: colors.muted }}>
-            Explore our most visited destinations around the world
+            {t.popularDestinationsSubtitle}
           </Text>
 
           <ScrollView 
@@ -248,16 +323,52 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
 
+        {/* Deals Banner */}
+        <Pressable
+          onPress={() => router.push("/deals")}
+          style={({ pressed }) => [
+            {
+              marginHorizontal: 16,
+              marginTop: 28,
+              backgroundColor: colors.error,
+              borderRadius: 20,
+              padding: 18,
+              flexDirection: "row",
+              alignItems: "center",
+            },
+            pressed && { opacity: 0.9 },
+          ]}
+        >
+          <View style={{ flex: 1 }}>
+            <Text style={{ color: "white", fontSize: 11, fontWeight: "700", textTransform: "uppercase", marginBottom: 4 }}>
+              {t.limitedTime}
+            </Text>
+            <Text style={{ color: "white", fontSize: 18, fontWeight: "800", marginBottom: 4 }}>
+              {t.dealsTitle}
+            </Text>
+            <Text style={{ color: "rgba(255,255,255,0.85)", fontSize: 12 }}>{t.dealsSubtitle}</Text>
+          </View>
+          <IconSymbol name="chevron.right" size={24} color="rgba(255,255,255,0.7)" />
+        </Pressable>
+
         {/* Featured Packages Preview */}
         <View className="mt-8 px-4">
           <Text className="text-primary text-sm font-semibold uppercase mb-1" style={{ color: colors.primary }}>
-            Popular Packages
+            {t.popularPackages}
           </Text>
-          <Text className="text-foreground text-2xl font-bold mb-2" style={{ color: colors.foreground }}>
-            Checkout Our Packages
-          </Text>
+          <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+            <Text className="text-foreground text-2xl font-bold" style={{ color: colors.foreground }}>
+              {t.checkoutPackages}
+            </Text>
+            <Pressable
+              onPress={() => router.push("/(tabs)/packages")}
+              style={({ pressed }) => [pressed && { opacity: 0.7 }]}
+            >
+              <Text style={{ color: colors.primary, fontSize: 13, fontWeight: "600" }}>{t.viewAll}</Text>
+            </Pressable>
+          </View>
           <Text className="text-muted text-sm mb-5" style={{ color: colors.muted }}>
-            Find the perfect travel package for your next adventure
+            {t.packagesSubtitle}
           </Text>
 
           {packages.slice(0, 2).map((pkg) => (
@@ -267,9 +378,18 @@ export default function HomeScreen() {
               style={({ pressed }) => [pressed && { opacity: 0.95 }]}
             >
               <View 
-                className="bg-surface rounded-2xl mb-4 overflow-hidden shadow-sm"
-                style={{ backgroundColor: colors.surface }}
+                style={{
+                  borderRadius: 16,
+                  marginBottom: 16,
+                  backgroundColor: colors.surface,
+                  shadowColor: "#000",
+                  shadowOffset: { width: 0, height: 3 },
+                  shadowOpacity: 0.10,
+                  shadowRadius: 8,
+                  elevation: 4,
+                }}
               >
+                <View style={{ borderRadius: 16, overflow: "hidden" }}>
                 <Image
                   source={pkg.image}
                   style={{ width: "100%", height: 180 }}
@@ -289,7 +409,7 @@ export default function HomeScreen() {
                     </View>
                     <View className="flex-row items-center gap-1">
                       <IconSymbol name="person.2.fill" size={14} color={colors.muted} />
-                      <Text className="text-muted text-xs" style={{ color: colors.muted }}>pax: {pkg.maxPax}</Text>
+                      <Text className="text-muted text-xs" style={{ color: colors.muted }}>{t.maxPax}: {pkg.maxPax}</Text>
                     </View>
                     <View className="flex-row items-center gap-1">
                       <IconSymbol name="location.fill" size={14} color={colors.muted} />
@@ -299,20 +419,50 @@ export default function HomeScreen() {
                   <View className="flex-row items-center justify-between">
                     <View>
                       <Text className="text-foreground text-xl font-bold" style={{ color: colors.foreground }}>
-                        ${pkg.price}
-                        <Text className="text-muted text-sm font-normal" style={{ color: colors.muted }}> / per person</Text>
+                        {format(pkg.price)}
+                        <Text className="text-muted text-sm font-normal" style={{ color: colors.muted }}> {t.perPerson}</Text>
                       </Text>
                     </View>
-                    <Pressable
-                      onPress={() => handlePackageBook(pkg)}
-                      style={({ pressed }) => [
-                        { backgroundColor: colors.primary, paddingHorizontal: 16, paddingVertical: 8, borderRadius: 50 },
-                        pressed && { opacity: 0.9 }
-                      ]}
-                    >
-                      <Text className="text-white font-semibold text-sm">Book Now</Text>
-                    </Pressable>
+                    <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
+                      <Pressable
+                        onPress={() => toggle({ id: pkg.id, type: "package", name: pkg.title, image: pkg.image, subtitle: `${format(pkg.price)} ${t.perPerson}` })}
+                        style={({ pressed }) => [
+                          {
+                            width: 40,
+                            height: 40,
+                            borderRadius: 20,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            backgroundColor: isSaved(pkg.id, "package") ? colors.error : "white",
+                            borderWidth: 2,
+                            borderColor: colors.error,
+                            shadowColor: colors.error,
+                            shadowOffset: { width: 0, height: 2 },
+                            shadowOpacity: isSaved(pkg.id, "package") ? 0.35 : 0.12,
+                            shadowRadius: 4,
+                            elevation: isSaved(pkg.id, "package") ? 4 : 2,
+                          },
+                          pressed && { transform: [{ scale: 0.88 }] },
+                        ]}
+                      >
+                        <IconSymbol
+                          name={isSaved(pkg.id, "package") ? "heart.fill" : "heart"}
+                          size={17}
+                          color={isSaved(pkg.id, "package") ? "white" : colors.error}
+                        />
+                      </Pressable>
+                      <Pressable
+                        onPress={() => handlePackageBook(pkg)}
+                        style={({ pressed }) => [
+                          { backgroundColor: colors.primary, paddingHorizontal: 16, paddingVertical: 8, borderRadius: 50 },
+                          pressed && { opacity: 0.9 }
+                        ]}
+                      >
+                        <Text className="text-white font-semibold text-sm">{t.bookNow}</Text>
+                      </Pressable>
+                    </View>
                   </View>
+                </View>
                 </View>
               </View>
             </Pressable>
@@ -321,12 +471,12 @@ export default function HomeScreen() {
 
         {/* CTA Section */}
         <View className="mt-4 mx-4 bg-primary rounded-2xl p-6" style={{ backgroundColor: colors.primary }}>
-          <Text className="text-white/80 text-sm uppercase mb-2">Call To Action</Text>
+          <Text className="text-white/80 text-sm uppercase mb-2">{t.callToAction}</Text>
           <Text className="text-white text-xl font-bold mb-3">
-            Ready For Unforgettable Travel?
+            {t.readyForTravel}
           </Text>
           <Text className="text-white/80 text-sm mb-4">
-            Contact us today and let us help you plan your dream vacation!
+            {t.ctaDescription}
           </Text>
           <Pressable
             onPress={handleContact}
@@ -335,7 +485,7 @@ export default function HomeScreen() {
               pressed && { backgroundColor: "rgba(255,255,255,0.1)" }
             ]}
           >
-            <Text className="text-white font-semibold">Contact Us</Text>
+            <Text className="text-white font-semibold">{t.contactUs}</Text>
           </Pressable>
         </View>
       </ScrollView>

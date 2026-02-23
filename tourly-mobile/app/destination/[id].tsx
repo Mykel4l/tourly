@@ -1,21 +1,27 @@
-import { Text, View, ScrollView, Pressable, Dimensions } from "react-native";
+import { Text, View, ScrollView, Pressable, Share } from "react-native";
 import { Image } from "expo-image";
 import { router, useLocalSearchParams } from "expo-router";
 import * as Haptics from "expo-haptics";
 import { Platform } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
 import { destinations } from "@/data/destinations";
-
-const { width } = Dimensions.get("window");
+import { useWishlist } from "@/lib/store";
+import { useTranslation } from "@/lib/i18n";
+import { TopNavBar } from "@/components/top-nav-bar";
 
 export default function DestinationDetailScreen() {
   const colors = useColors();
+  const insets = useSafeAreaInsets();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { toggle, isSaved } = useWishlist();
+  const { t } = useTranslation();
   
   const destination = destinations.find(d => d.id === id);
+  const saved = destination ? isSaved(destination.id, "destination") : false;
 
   const handleBack = () => {
     if (Platform.OS !== "web") {
@@ -26,6 +32,33 @@ export default function DestinationDetailScreen() {
     } else {
       router.replace("/");
     }
+  };
+
+  const handleWishlist = () => {
+    if (!destination) return;
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+    toggle({
+      id: destination.id,
+      type: "destination",
+      name: destination.name,
+      image: destination.image,
+      subtitle: destination.country,
+    });
+  };
+
+  const handleShare = async () => {
+    if (!destination) return;
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    try {
+      await Share.share({
+        message: `${t.shareDestination}: ${destination.name} - ${destination.country} | Tourly`,
+        title: destination.name,
+      });
+    } catch {}
   };
 
   const handleBookNow = () => {
@@ -41,29 +74,55 @@ export default function DestinationDetailScreen() {
   if (!destination) {
     return (
       <ScreenContainer className="flex-1 items-center justify-center">
-        <Text style={{ color: colors.foreground }}>Destination not found</Text>
+        <Text style={{ color: colors.foreground }}>{t.destinationNotFound}</Text>
         <Pressable onPress={handleBack} className="mt-4">
-          <Text style={{ color: colors.primary }}>Go Back</Text>
+          <Text style={{ color: colors.primary }}>{t.goBack}</Text>
         </Pressable>
       </ScreenContainer>
     );
   }
 
   const highlights = [
-    { icon: "star.fill" as const, label: "Top Rated", value: `${destination.rating}/5` },
-    { icon: "location.fill" as const, label: "Country", value: destination.country },
-    { icon: "clock.fill" as const, label: "Best Time", value: "All Year" },
-    { icon: "person.2.fill" as const, label: "Group Size", value: "2-15" },
+    { icon: "star.fill" as const, label: t.topRated, value: `${destination.rating}/5` },
+    { icon: "location.fill" as const, label: t.countryLabel, value: destination.country },
+    { icon: "clock.fill" as const, label: t.bestTime, value: t.allYear },
+    { icon: "person.2.fill" as const, label: t.groupSizeLabel, value: "2-15" },
   ];
 
   return (
     <ScreenContainer edges={["left", "right"]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <TopNavBar
+        showBack
+        title={destination.name}
+        rightContent={
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+            <Pressable
+              onPress={handleShare}
+              hitSlop={8}
+              style={({ pressed }) => [{ padding: 6 }, pressed && { opacity: 0.8 }]}
+            >
+              <IconSymbol name="square.and.arrow.up" size={20} color={colors.foreground} />
+            </Pressable>
+            <Pressable
+              onPress={handleWishlist}
+              hitSlop={8}
+              style={({ pressed }) => [{ padding: 6 }, pressed && { opacity: 0.8 }]}
+            >
+              <IconSymbol
+                name={saved ? "heart.fill" : "heart"}
+                size={20}
+                color={saved ? colors.error : colors.foreground}
+              />
+            </Pressable>
+          </View>
+        }
+      />
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         {/* Hero Image */}
         <View style={{ position: "relative" }}>
           <Image
             source={destination.image}
-            style={{ width: width, height: 350 }}
+            style={{ width: "100%", height: 350 }}
             contentFit="cover"
           />
           <View 
@@ -76,24 +135,6 @@ export default function DestinationDetailScreen() {
               backgroundColor: "rgba(0,0,0,0.2)" 
             }} 
           />
-          
-          {/* Back Button */}
-          <Pressable
-            onPress={handleBack}
-            style={({ pressed }) => [
-              { 
-                position: "absolute", 
-                top: 50, 
-                left: 16, 
-                backgroundColor: "rgba(255,255,255,0.9)",
-                padding: 10,
-                borderRadius: 50,
-              },
-              pressed && { opacity: 0.8 }
-            ]}
-          >
-            <IconSymbol name="chevron.right" size={20} color={colors.foreground} style={{ transform: [{ rotate: '180deg' }] }} />
-          </Pressable>
 
           {/* Rating Badge */}
           <View 
@@ -116,7 +157,7 @@ export default function DestinationDetailScreen() {
         </View>
 
         {/* Content */}
-        <View className="px-4 pt-6">
+        <View className="px-4 pt-6" style={{ paddingBottom: Math.max(insets.bottom, 16) }}>
           {/* Title */}
           <Text 
             className="text-sm font-semibold uppercase" 
@@ -132,21 +173,19 @@ export default function DestinationDetailScreen() {
           </Text>
 
           {/* Highlights */}
-          <View 
-            className="flex-row flex-wrap rounded-2xl p-4 mb-6"
-            style={{ backgroundColor: colors.surface }}
+          <View
+            style={{ backgroundColor: colors.surface, borderRadius: 16, padding: 16, marginBottom: 24 }}
           >
             {highlights.map((item, index) => (
-              <View key={index} className="w-1/2 flex-row items-center py-2">
-                <View 
-                  className="w-10 h-10 rounded-full items-center justify-center mr-3"
-                  style={{ backgroundColor: colors.primary + "20" }}
+              <View key={index} style={{ flexDirection: "row", alignItems: "center", paddingVertical: 8 }}>
+                <View
+                  style={{ width: 40, height: 40, borderRadius: 20, alignItems: "center", justifyContent: "center", marginRight: 12, backgroundColor: colors.primary + "20" }}
                 >
                   <IconSymbol name={item.icon} size={18} color={colors.primary} />
                 </View>
                 <View>
-                  <Text className="text-xs" style={{ color: colors.muted }}>{item.label}</Text>
-                  <Text className="text-sm font-semibold" style={{ color: colors.foreground }}>{item.value}</Text>
+                  <Text style={{ fontSize: 12, color: colors.muted }}>{item.label}</Text>
+                  <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>{item.value}</Text>
                 </View>
               </View>
             ))}
@@ -158,7 +197,7 @@ export default function DestinationDetailScreen() {
               className="text-lg font-bold mb-3" 
               style={{ color: colors.foreground }}
             >
-              About This Destination
+              {t.aboutDestination}
             </Text>
             <Text 
               className="text-base leading-relaxed mb-4" 
@@ -170,10 +209,7 @@ export default function DestinationDetailScreen() {
               className="text-base leading-relaxed" 
               style={{ color: colors.muted }}
             >
-              Experience the beauty and culture of {destination.name} in {destination.country}. 
-              This stunning destination offers breathtaking views, rich history, and unforgettable 
-              experiences for travelers of all types. Whether you're seeking adventure, relaxation, 
-              or cultural immersion, {destination.name} has something special waiting for you.
+              {t.destinationDetailDesc}
             </Text>
           </View>
 
@@ -183,14 +219,14 @@ export default function DestinationDetailScreen() {
               className="text-lg font-bold mb-3" 
               style={{ color: colors.foreground }}
             >
-              What to Expect
+              {t.whatToExpect}
             </Text>
             {[
-              "Guided tours with local experts",
-              "Authentic local cuisine experiences",
-              "Comfortable accommodations",
-              "Transportation included",
-              "24/7 travel support",
+              t.expectGuidedTours,
+              t.expectLocalCuisine,
+              t.expectAccommodations,
+              t.expectTransportation,
+              t.expectSupport,
             ].map((item, index) => (
               <View key={index} className="flex-row items-center mb-2">
                 <View 
@@ -204,22 +240,56 @@ export default function DestinationDetailScreen() {
             ))}
           </View>
 
-          {/* Book Now Button */}
-          <Pressable
-            onPress={handleBookNow}
-            style={({ pressed }) => [
-              { 
-                backgroundColor: colors.primary, 
-                paddingVertical: 16, 
-                borderRadius: 50, 
-                alignItems: "center",
-                marginBottom: 32,
-              },
-              pressed && { opacity: 0.9, transform: [{ scale: 0.98 }] }
-            ]}
-          >
-            <Text className="text-white font-bold text-lg">Book This Destination</Text>
-          </Pressable>
+          {/* CTA Row */}
+          <View style={{ flexDirection: "row", gap: 12, marginBottom: 32 }}>
+            <Pressable
+              onPress={handleWishlist}
+              style={({ pressed }) => [
+                {
+                  flex: 1,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                  paddingVertical: 16,
+                  borderRadius: 50,
+                  backgroundColor: saved ? colors.error : "white",
+                  borderWidth: 2,
+                  borderColor: colors.error,
+                  shadowColor: colors.error,
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: saved ? 0.35 : 0.12,
+                  shadowRadius: 6,
+                  elevation: saved ? 4 : 2,
+                },
+                pressed && { transform: [{ scale: 0.97 }] },
+              ]}
+            >
+              <IconSymbol
+                name={saved ? "heart.fill" : "heart"}
+                size={20}
+                color={saved ? "white" : colors.error}
+              />
+              <Text style={{ fontWeight: "700", fontSize: 15, color: saved ? "white" : colors.error }}>
+                {saved ? t.saved : t.save}
+              </Text>
+            </Pressable>
+            <Pressable
+              onPress={handleBookNow}
+              style={({ pressed }) => [
+                {
+                  flex: 2,
+                  backgroundColor: colors.primary,
+                  paddingVertical: 16,
+                  borderRadius: 50,
+                  alignItems: "center",
+                },
+                pressed && { opacity: 0.9, transform: [{ scale: 0.98 }] },
+              ]}
+            >
+              <Text style={{ color: "white", fontWeight: "700", fontSize: 16 }}>{t.bookThisDestination}</Text>
+            </Pressable>
+          </View>
         </View>
       </ScrollView>
     </ScreenContainer>

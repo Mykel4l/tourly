@@ -5,9 +5,13 @@ export const themeColors: {
   foreground: { light: string; dark: string };
   muted: { light: string; dark: string };
   border: { light: string; dark: string };
+  input: { light: string; dark: string };
+  inputText: { light: string; dark: string };
+  inputPlaceholder: { light: string; dark: string };
   success: { light: string; dark: string };
   warning: { light: string; dark: string };
   error: { light: string; dark: string };
+  accent: { light: string; dark: string };
 };
 
 declare const themeConfig: {

@@ -1,14 +1,15 @@
 import { Text, View, ScrollView, Pressable, TextInput, Linking, Platform } from "react-native";
 import { useState } from "react";
-import { router } from "expo-router";
 import * as Haptics from "expo-haptics";
-
 import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
+import { useTranslation } from "@/lib/i18n";
+import { TopNavBar } from "@/components/top-nav-bar";
 
 export default function ContactScreen() {
   const colors = useColors();
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleCall = () => {
@@ -32,47 +33,22 @@ export default function ContactScreen() {
     setEmail("");
   };
 
-  const handleBack = () => {
-    if (router.canGoBack()) {
-      router.back();
-    } else {
-      router.replace("/");
-    }
-  };
-
   return (
-    <ScreenContainer className="px-4">
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <View className="flex-row items-center pt-4 pb-6">
-          <Pressable
-            onPress={handleBack}
-            style={({ pressed }) => [
-              { padding: 8, marginLeft: -8 },
-              pressed && { opacity: 0.7 }
-            ]}
-          >
-            <IconSymbol name="chevron.left.forwardslash.chevron.right" size={24} color={colors.foreground} />
-          </Pressable>
-          <Text 
-            className="text-2xl font-bold ml-2" 
-            style={{ color: colors.foreground }}
-          >
-            Contact Us
-          </Text>
-        </View>
+    <ScreenContainer className="px-4" edges={["left", "right"]}>
+      <TopNavBar title={t.contactUs} showBack />
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 8 }}>
 
         {/* CTA Section */}
         <View 
           className="rounded-2xl p-6 mb-6"
           style={{ backgroundColor: colors.primary }}
         >
-          <Text className="text-white/80 text-sm uppercase mb-2">Call To Action</Text>
+          <Text className="text-white/80 text-sm uppercase mb-2">{t.callToAction}</Text>
           <Text className="text-white text-xl font-bold mb-3">
-            Ready For Unforgettable Travel?
+            {t.readyForTravel}
           </Text>
           <Text className="text-white/80 text-sm">
-            Contact us today and let us help you plan your dream vacation. Our team is ready to assist you 24/7.
+            {t.ctaContactDescription}
           </Text>
         </View>
 
@@ -82,13 +58,13 @@ export default function ContactScreen() {
             className="text-lg font-bold mb-4" 
             style={{ color: colors.foreground }}
           >
-            Get In Touch
+            {t.getInTouch}
           </Text>
           <Text 
             className="text-sm mb-4" 
             style={{ color: colors.muted }}
           >
-            Feel free to contact and reach us!
+            {t.feelFreeContact}
           </Text>
 
           {/* Phone */}
@@ -113,7 +89,7 @@ export default function ContactScreen() {
               <IconSymbol name="phone.fill" size={20} color="white" />
             </View>
             <View>
-              <Text className="text-sm" style={{ color: colors.muted }}>Phone</Text>
+              <Text className="text-sm" style={{ color: colors.muted }}>{t.phone}</Text>
               <Text className="text-base font-semibold" style={{ color: colors.foreground }}>
                 +01 (123) 4567 90
               </Text>
@@ -142,7 +118,7 @@ export default function ContactScreen() {
               <IconSymbol name="envelope.fill" size={20} color="white" />
             </View>
             <View>
-              <Text className="text-sm" style={{ color: colors.muted }}>Email</Text>
+              <Text className="text-sm" style={{ color: colors.muted }}>{t.email}</Text>
               <Text className="text-base font-semibold" style={{ color: colors.foreground }}>
                 info@tourly.com
               </Text>
@@ -161,7 +137,7 @@ export default function ContactScreen() {
               <IconSymbol name="location.fill" size={20} color="white" />
             </View>
             <View className="flex-1">
-              <Text className="text-sm" style={{ color: colors.muted }}>Address</Text>
+              <Text className="text-sm" style={{ color: colors.muted }}>{t.addressLabel}</Text>
               <Text className="text-base font-semibold" style={{ color: colors.foreground }}>
                 3146 Koontz, California
               </Text>
@@ -178,18 +154,18 @@ export default function ContactScreen() {
             className="text-lg font-bold mb-2" 
             style={{ color: colors.foreground }}
           >
-            Newsletter
+            {t.newsletter}
           </Text>
           <Text 
             className="text-sm mb-4" 
             style={{ color: colors.muted }}
           >
-            Subscribe to our newsletter for more updates and news!
+            {t.newsletterSubtitle}
           </Text>
 
           <View className="flex-row gap-3">
             <TextInput
-              placeholder="Enter Your Email"
+              placeholder={t.enterYourEmail}
               placeholderTextColor={colors.muted}
               value={email}
               onChangeText={setEmail}
@@ -211,7 +187,7 @@ export default function ContactScreen() {
                 pressed && { opacity: 0.9 }
               ]}
             >
-              <Text className="text-white font-semibold">Subscribe</Text>
+              <Text className="text-white font-semibold">{t.subscribe}</Text>
             </Pressable>
           </View>
         </View>
@@ -219,7 +195,7 @@ export default function ContactScreen() {
         {/* Footer */}
         <View className="items-center pb-8">
           <Text className="text-sm" style={{ color: colors.muted }}>
-            © 2024 Tourly. All rights reserved
+            {t.footerCopyright}
           </Text>
         </View>
       </ScrollView>
