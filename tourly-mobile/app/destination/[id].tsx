@@ -26,7 +26,9 @@ export default function DestinationDetailScreen() {
   const destination = destinations.find(d => d.id === id);
   const saved = destination ? isSaved(destination.id, "destination") : false;
   const destReviews = destination ? getReviewsFor(destination.id, "destination") : [];
-  const avgRating = destination ? getAverageRating(destination.id, "destination") : 0;
+  const { average: avgRating } = destination
+    ? getAverageRating(destination.id, "destination")
+    : { average: 0 };
 
   const handleBack = () => {
     if (Platform.OS !== "web") {
@@ -270,10 +272,10 @@ export default function DestinationDetailScreen() {
                   }}
                 >
                   <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                    <Text style={{ color: colors.foreground, fontWeight: "600", fontSize: 14 }}>{review.userName}</Text>
+                    <Text style={{ color: colors.foreground, fontWeight: "600", fontSize: 14 }}>{review.authorName}</Text>
                     <StarRating rating={review.rating} size={12} />
                   </View>
-                  <Text style={{ color: colors.muted, fontSize: 13, lineHeight: 20 }}>{review.comment}</Text>
+                  <Text style={{ color: colors.muted, fontSize: 13, lineHeight: 20 }}>{review.text}</Text>
                 </View>
               ))
             ) : (

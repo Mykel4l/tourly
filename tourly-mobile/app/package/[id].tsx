@@ -28,7 +28,9 @@ export default function PackageDetailScreen() {
   const pkg = packages.find(p => p.id === id);
   const saved = pkg ? isSaved(pkg.id, "package") : false;
   const pkgReviews = pkg ? getReviewsFor(pkg.id, "package") : [];
-  const avgRating = pkg ? getAverageRating(pkg.id, "package") : 0;
+  const { average: avgRating, count: reviewCount } = pkg
+    ? getAverageRating(pkg.id, "package")
+    : { average: 0, count: 0 };
 
   const handleBack = () => {
     if (Platform.OS !== "web") {
@@ -202,7 +204,7 @@ export default function PackageDetailScreen() {
           <View className="flex-row items-center mb-2">
             <StarRating rating={avgRating || pkg.rating} size={16} />
             <Text className="ml-2 text-sm" style={{ color: colors.muted }}>
-            {(avgRating || pkg.rating).toFixed(1)} ({pkgReviews.length || pkg.reviews} {t.reviewsLabel})
+            {(avgRating || pkg.rating).toFixed(1)} ({reviewCount || pkg.reviews} {t.reviewsLabel})
             </Text>
           </View>
 
@@ -220,10 +222,10 @@ export default function PackageDetailScreen() {
                   }}
                 >
                   <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                    <Text style={{ color: colors.foreground, fontWeight: "600", fontSize: 14 }}>{review.userName}</Text>
+                    <Text style={{ color: colors.foreground, fontWeight: "600", fontSize: 14 }}>{review.authorName}</Text>
                     <StarRating rating={review.rating} size={12} />
                   </View>
-                  <Text style={{ color: colors.muted, fontSize: 13, lineHeight: 20 }}>{review.comment}</Text>
+                  <Text style={{ color: colors.muted, fontSize: 13, lineHeight: 20 }}>{review.text}</Text>
                 </View>
               ))}
             </View>

@@ -17,14 +17,14 @@ export interface Review {
 
 // Seed reviews for a more realistic feel
 const SEED_REVIEWS: Review[] = [
-  { id: "r1", targetId: "dest-1", targetType: "destination", rating: 5, text: "Absolutely breathtaking! The views were incredible and the locals were so welcoming.", authorName: "Sarah M.", createdAt: new Date(Date.now() - 86400000 * 3).toISOString() },
-  { id: "r2", targetId: "dest-1", targetType: "destination", rating: 4, text: "Beautiful destination. Would recommend visiting during spring.", authorName: "James K.", createdAt: new Date(Date.now() - 86400000 * 7).toISOString() },
-  { id: "r3", targetId: "dest-2", targetType: "destination", rating: 5, text: "A must-visit! The culture and food are amazing.", authorName: "Maria L.", createdAt: new Date(Date.now() - 86400000 * 5).toISOString() },
-  { id: "r4", targetId: "pkg-1", targetType: "package", rating: 5, text: "The package was perfectly organized. Every detail was taken care of. Highly recommend!", authorName: "David R.", createdAt: new Date(Date.now() - 86400000 * 2).toISOString() },
-  { id: "r5", targetId: "pkg-1", targetType: "package", rating: 4, text: "Great value for money. The hotel was excellent and the guided tours were informative.", authorName: "Emily W.", createdAt: new Date(Date.now() - 86400000 * 10).toISOString() },
-  { id: "r6", targetId: "pkg-2", targetType: "package", rating: 5, text: "Best vacation package I've ever booked. Will definitely use Tourly again!", authorName: "Chris T.", createdAt: new Date(Date.now() - 86400000 * 4).toISOString() },
-  { id: "r7", targetId: "dest-3", targetType: "destination", rating: 4, text: "Wonderful experience. The scenery was unreal.", authorName: "Aisha N.", createdAt: new Date(Date.now() - 86400000 * 8).toISOString() },
-  { id: "r8", targetId: "pkg-3", targetType: "package", rating: 5, text: "Outstanding service from start to finish. Everything exceeded my expectations.", authorName: "Tom H.", createdAt: new Date(Date.now() - 86400000 * 6).toISOString() },
+  { id: "r1", targetId: "1", targetType: "destination", rating: 5, text: "Absolutely breathtaking! The views were incredible and the locals were so welcoming.", authorName: "Sarah M.", createdAt: new Date(Date.now() - 86400000 * 3).toISOString() },
+  { id: "r2", targetId: "1", targetType: "destination", rating: 4, text: "Beautiful destination. Would recommend visiting during spring.", authorName: "James K.", createdAt: new Date(Date.now() - 86400000 * 7).toISOString() },
+  { id: "r3", targetId: "2", targetType: "destination", rating: 5, text: "A must-visit! The culture and food are amazing.", authorName: "Maria L.", createdAt: new Date(Date.now() - 86400000 * 5).toISOString() },
+  { id: "r4", targetId: "1", targetType: "package", rating: 5, text: "The package was perfectly organized. Every detail was taken care of. Highly recommend!", authorName: "David R.", createdAt: new Date(Date.now() - 86400000 * 2).toISOString() },
+  { id: "r5", targetId: "1", targetType: "package", rating: 4, text: "Great value for money. The hotel was excellent and the guided tours were informative.", authorName: "Emily W.", createdAt: new Date(Date.now() - 86400000 * 10).toISOString() },
+  { id: "r6", targetId: "2", targetType: "package", rating: 5, text: "Best vacation package I've ever booked. Will definitely use Tourly again!", authorName: "Chris T.", createdAt: new Date(Date.now() - 86400000 * 4).toISOString() },
+  { id: "r7", targetId: "3", targetType: "destination", rating: 4, text: "Wonderful experience. The scenery was unreal.", authorName: "Aisha N.", createdAt: new Date(Date.now() - 86400000 * 8).toISOString() },
+  { id: "r8", targetId: "3", targetType: "package", rating: 5, text: "Outstanding service from start to finish. Everything exceeded my expectations.", authorName: "Tom H.", createdAt: new Date(Date.now() - 86400000 * 6).toISOString() },
 ];
 
 export function useReviews() {

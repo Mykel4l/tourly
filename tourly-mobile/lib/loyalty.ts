@@ -81,11 +81,6 @@ export function useLoyalty() {
     });
   }, []);
 
-  const persist = (next: LoyaltyState) => {
-    setState(next);
-    AsyncStorage.setItem(LOYALTY_KEY, JSON.stringify(next));
-  };
-
   const addPoints = useCallback(
     (type: LoyaltyEntry["type"], points: number, description: string) => {
       setState((prev) => {
