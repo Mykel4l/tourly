@@ -1,5 +1,6 @@
 import * as Api from "@/lib/_core/api";
 import * as Auth from "@/lib/_core/auth";
+import { getApiBaseUrl } from "@/constants/oauth";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Platform } from "react-native";
 
@@ -9,12 +10,28 @@ export const DUMMY_CREDENTIALS = {
   password: "tourly123",
 } as const;
 
+export const ADMIN_CREDENTIALS = {
+  email: "admin@tourly.com",
+  password: "admin123",
+} as const;
+
 const DUMMY_USER: Auth.User = {
   id: 1,
   openId: "dummy-open-id-001",
   name: "Demo User",
   email: DUMMY_CREDENTIALS.email,
   loginMethod: "email",
+  role: "user",
+  lastSignedIn: new Date(),
+};
+
+const DUMMY_ADMIN: Auth.User = {
+  id: 2,
+  openId: "dummy-open-id-002",
+  name: "Admin User",
+  email: ADMIN_CREDENTIALS.email,
+  loginMethod: "email",
+  role: "admin",
   lastSignedIn: new Date(),
 };
 
@@ -62,6 +79,7 @@ export function useAuth(options?: UseAuthOptions) {
             name: apiUser.name,
             email: apiUser.email,
             loginMethod: apiUser.loginMethod,
+            role: (apiUser as any).role ?? "user",
             lastSignedIn: new Date(apiUser.lastSignedIn),
           };
           setUser(userInfo);
@@ -134,17 +152,55 @@ export function useAuth(options?: UseAuthOptions) {
   /** Dummy email/password login for development. Returns true on success. */
   const dummyLogin = useCallback(
     async (email: string, password: string): Promise<boolean> => {
-      if (
-        email.toLowerCase().trim() === DUMMY_CREDENTIALS.email &&
-        password === DUMMY_CREDENTIALS.password
-      ) {
-        const userInfo: Auth.User = { ...DUMMY_USER, lastSignedIn: new Date() };
-        setUser(userInfo);
-        setGlobalUser(userInfo);
-        await Auth.setUserInfo(userInfo);
-        return true;
+      const normalizedEmail = email.toLowerCase().trim();
+      const isUser = normalizedEmail === DUMMY_CREDENTIALS.email && password === DUMMY_CREDENTIALS.password;
+      const isAdmin = normalizedEmail === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password;
+
+      if (!isUser && !isAdmin) {
+        return false;
       }
-      return false;
+
+      const dummyProfile = isAdmin ? DUMMY_ADMIN : DUMMY_USER;
+
+      // On web, call the backend dev-login endpoint so a session cookie is set.
+      // This makes /api/auth/me work after page refresh.
+      if (Platform.OS === "web") {
+        try {
+          const baseUrl = getApiBaseUrl();
+          const res = await fetch(`${baseUrl}/api/auth/dev-login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ email: email.toLowerCase().trim(), password }),
+          });
+          if (!res.ok) throw new Error(`Dev-login returned ${res.status}`);
+          const data = await res.json();
+          if (data.user) {
+            const userInfo: Auth.User = {
+              id: data.user.id,
+              openId: data.user.openId,
+              name: data.user.name,
+              email: data.user.email,
+              loginMethod: data.user.loginMethod,
+              role: data.user.role ?? dummyProfile.role,
+              lastSignedIn: new Date(data.user.lastSignedIn),
+            };
+            setUser(userInfo);
+            setGlobalUser(userInfo);
+            await Auth.setUserInfo(userInfo);
+            return true;
+          }
+        } catch (err) {
+          console.warn("[useAuth] Dev-login backend call failed, falling back to client-only:", err);
+        }
+      }
+
+      // Fallback (native or backend not reachable): client-side only
+      const userInfo: Auth.User = { ...dummyProfile, lastSignedIn: new Date() };
+      setUser(userInfo);
+      setGlobalUser(userInfo);
+      await Auth.setUserInfo(userInfo);
+      return true;
     },
     [],
   );

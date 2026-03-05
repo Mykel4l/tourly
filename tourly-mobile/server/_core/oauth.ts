@@ -2,7 +2,18 @@ import { COOKIE_NAME, ONE_YEAR_MS } from "../../shared/const.js";
 import type { Express, Request, Response } from "express";
 import { getUserByOpenId, upsertUser } from "../db";
 import { getSessionCookieOptions } from "./cookies";
+import { ENV } from "./env";
 import { sdk } from "./sdk";
+
+// ─── Dev-only dummy credentials (matches hooks/use-auth.ts) ────────────────
+const DEV_DUMMY_USER = {
+  openId: "dummy-open-id-001",
+  name: "Demo User",
+  email: "demo@tourly.com",
+  loginMethod: "email",
+  role: "admin" as const,
+};
+const DEV_DUMMY_PASSWORD = "tourly123";
 
 function getQueryParam(req: Request, key: string): string | undefined {
   const value = req.query[key];
@@ -140,9 +151,90 @@ export function registerOAuthRoutes(app: Express) {
       const user = await sdk.authenticateRequest(req);
       res.json({ user: buildUserResponse(user) });
     } catch (error) {
+      // In dev mode, if session is valid but DB has no user, return dummy user
+      if (!ENV.isProduction) {
+        try {
+          const cookies = req.headers.cookie ?? "";
+          const sessionCookie =
+            cookies.match(new RegExp(`(?:^|;\\s*)${COOKIE_NAME}=([^;]*)`))?.[1] ?? undefined;
+          const authHeader = req.headers.authorization;
+          const token =
+            typeof authHeader === "string" && authHeader.startsWith("Bearer ")
+              ? authHeader.slice(7).trim()
+              : undefined;
+          const session = await sdk.verifySession(token || sessionCookie);
+          if (session && session.openId === DEV_DUMMY_USER.openId) {
+            res.json({
+              user: {
+                id: 1,
+                openId: DEV_DUMMY_USER.openId,
+                name: DEV_DUMMY_USER.name,
+                email: DEV_DUMMY_USER.email,
+                loginMethod: DEV_DUMMY_USER.loginMethod,
+                lastSignedIn: new Date().toISOString(),
+              },
+            });
+            return;
+          }
+        } catch {
+          // fall through
+        }
+      }
       console.error("[Auth] /api/auth/me failed:", error);
       res.status(401).json({ error: "Not authenticated", user: null });
     }
+  });
+
+  // ─── Dev login bypass (no Manus OAuth required) ─────────────────────────
+  // Accepts the dummy credentials from use-auth.ts, creates a real JWT session
+  // cookie so /api/auth/me works on web after page refresh.
+  app.post("/api/auth/dev-login", async (req: Request, res: Response) => {
+    if (ENV.isProduction) {
+      res.status(404).json({ error: "Not found" });
+      return;
+    }
+
+    const { email, password } = req.body ?? {};
+    if (email !== DEV_DUMMY_USER.email || password !== DEV_DUMMY_PASSWORD) {
+      res.status(401).json({ error: "Invalid credentials" });
+      return;
+    }
+
+    try {
+      // Upsert the dummy user into DB if available
+      await upsertUser({
+        openId: DEV_DUMMY_USER.openId,
+        name: DEV_DUMMY_USER.name,
+        email: DEV_DUMMY_USER.email,
+        loginMethod: DEV_DUMMY_USER.loginMethod,
+        role: DEV_DUMMY_USER.role,
+        lastSignedIn: new Date(),
+      });
+    } catch {
+      // DB may not be available yet — that's fine for dev
+      console.warn("[Dev-login] Could not upsert dev user to DB (DB may not be configured)");
+    }
+
+    // Create a JWT so cookie-based auth works on web
+    const sessionToken = await sdk.createSessionToken(DEV_DUMMY_USER.openId, {
+      name: DEV_DUMMY_USER.name,
+      expiresInMs: ONE_YEAR_MS,
+    });
+
+    const cookieOptions = getSessionCookieOptions(req);
+    res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+
+    res.json({
+      success: true,
+      user: {
+        id: 1,
+        openId: DEV_DUMMY_USER.openId,
+        name: DEV_DUMMY_USER.name,
+        email: DEV_DUMMY_USER.email,
+        loginMethod: DEV_DUMMY_USER.loginMethod,
+        lastSignedIn: new Date().toISOString(),
+      },
+    });
   });
 
   // Establish session cookie from Bearer token

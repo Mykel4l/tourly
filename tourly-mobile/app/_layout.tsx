@@ -12,6 +12,8 @@ import { ThemeProvider } from "@/lib/theme-provider";
 import { I18nProvider } from "@/lib/i18n";
 import { CurrencyProvider } from "@/lib/currency";
 import { LiveChatFab } from "@/components/live-chat-fab";
+import { SmartAppBanner } from "@/components/smart-app-banner";
+import { Preloader } from "@/components/preloader";
 import { useAuth } from "@/hooks/use-auth";
 import { useColors } from "@/hooks/use-colors";
 import {
@@ -34,10 +36,10 @@ export const unstable_settings = {
 
 // ─── Auth-gated navigation ─────────────────────────────────────────────────
 // Routes that don't require authentication
-const PUBLIC_ROUTES = ["sign-in", "sign-up", "oauth"];
+const PUBLIC_ROUTES = ["sign-in", "sign-up", "oauth", "landing", "download"];
 
 function AuthGate() {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
   const segments = useSegments();
   const router = useRouter();
   const colors = useColors();
@@ -48,22 +50,25 @@ function AuthGate() {
     const firstSegment = segments[0] ?? "";
     const isPublicRoute = PUBLIC_ROUTES.includes(firstSegment);
 
+    // Routes accessible regardless of auth state
+    const ALWAYS_PUBLIC = ["download"];
+
     if (!isAuthenticated && !isPublicRoute) {
-      // Not signed in and trying to access a protected route → redirect to sign-in
-      router.replace("/sign-in");
-    } else if (isAuthenticated && isPublicRoute) {
-      // Already signed in but on auth screen → redirect to home
-      router.replace("/");
+      // Not signed in and trying to access a protected route → redirect to landing
+      router.replace("/landing");
+    } else if (isAuthenticated && isPublicRoute && !ALWAYS_PUBLIC.includes(firstSegment)) {
+      // Already signed in but on public screen → redirect based on role
+      if (user?.role === "admin") {
+        router.replace("/admin");
+      } else {
+        router.replace("/");
+      }
     }
-  }, [isAuthenticated, loading, segments, router]);
+  }, [isAuthenticated, loading, segments, router, user]);
 
   // Loading splash
   if (loading) {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: colors.background }}>
-        <ActivityIndicator size="large" color={colors.primary} />
-      </View>
-    );
+    return <Preloader variant="app" message="Loading your experience…" />;
   }
 
   return (
@@ -87,8 +92,12 @@ function AuthGate() {
         <Stack.Screen name="premium" />
         <Stack.Screen name="ai-assistant" />
         <Stack.Screen name="referral" />
+        <Stack.Screen name="download" />
+        <Stack.Screen name="landing" options={{ presentation: "fullScreenModal", headerShown: false }} />
+        <Stack.Screen name="admin" />
       </Stack>
-      {isAuthenticated && <LiveChatFab bottomOffset={68} />}
+      {isAuthenticated && segments[0] !== "admin" && segments[0] !== "settings" && <LiveChatFab bottomOffset={68} />}
+      <SmartAppBanner />
       <StatusBar style="auto" />
     </>
   );

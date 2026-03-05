@@ -52,7 +52,7 @@ export default function SignUpScreen() {
       // Use the existing OAuth flow for registration
       await startOAuthLogin();
     } catch (_err) {
-      Alert.alert("Error", "Sign up failed. Please try again.");
+      Alert.alert(t.authError, t.authSignUpFailed);
     } finally {
       setLoading(false);
     }
@@ -65,7 +65,7 @@ export default function SignUpScreen() {
     try {
       await startOAuthLogin();
     } catch (_err) {
-      Alert.alert("Error", "OAuth login failed. Please try again.");
+      Alert.alert(t.authError, "OAuth login failed. Please try again.");
     }
   };
 
@@ -304,7 +304,7 @@ export default function SignUpScreen() {
               }}
             >
               <Text style={{ fontSize: 20 }}>G</Text>
-              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>Google</Text>
+              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>{t.authGoogle}</Text>
             </Pressable>
             <Pressable
               onPress={handleOAuthLogin}
@@ -322,7 +322,7 @@ export default function SignUpScreen() {
               }}
             >
               <IconSymbol name="apple.logo" size={20} color={colors.foreground} />
-              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>Apple</Text>
+              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>{t.authApple}</Text>
             </Pressable>
           </View>
 

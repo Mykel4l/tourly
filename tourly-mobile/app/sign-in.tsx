@@ -8,7 +8,7 @@ import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
 import { useTranslation } from "@/lib/i18n";
 import { startOAuthLogin } from "@/constants/oauth";
-import { useAuth, DUMMY_CREDENTIALS } from "@/hooks/use-auth";
+import { useAuth, DUMMY_CREDENTIALS, ADMIN_CREDENTIALS } from "@/hooks/use-auth";
 
 export default function SignInScreen() {
   const colors = useColors();
@@ -45,13 +45,13 @@ export default function SignInScreen() {
       const success = await dummyLogin(email, password);
       if (!success) {
         Alert.alert(
-          "Invalid credentials",
-          `Use ${DUMMY_CREDENTIALS.email} / ${DUMMY_CREDENTIALS.password}`,
+          t.authInvalidCredentials,
+          `User: ${DUMMY_CREDENTIALS.email} / ${DUMMY_CREDENTIALS.password}\nAdmin: ${ADMIN_CREDENTIALS.email} / ${ADMIN_CREDENTIALS.password}`,
         );
       }
       // AuthGate will auto-redirect to "/" once isAuthenticated becomes true
     } catch (_err) {
-      Alert.alert("Error", "Sign in failed. Please try again.");
+      Alert.alert(t.authError, t.authSignInFailed);
     } finally {
       setLoading(false);
     }
@@ -64,7 +64,7 @@ export default function SignInScreen() {
     try {
       await startOAuthLogin();
     } catch (_err) {
-      Alert.alert("Error", "OAuth login failed. Please try again.");
+      Alert.alert(t.authError, "OAuth login failed. Please try again.");
     }
   };
 
@@ -228,7 +228,7 @@ export default function SignInScreen() {
               }}
             >
               <Text style={{ fontSize: 20 }}>G</Text>
-              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>Google</Text>
+              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>{t.authGoogle}</Text>
             </Pressable>
             <Pressable
               onPress={handleOAuthLogin}
@@ -246,7 +246,7 @@ export default function SignInScreen() {
               }}
             >
               <IconSymbol name="apple.logo" size={20} color={colors.foreground} />
-              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>Apple</Text>
+              <Text style={{ fontSize: 14, fontWeight: "600", color: colors.foreground }}>{t.authApple}</Text>
             </Pressable>
           </View>
 

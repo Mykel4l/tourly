@@ -24,21 +24,21 @@ type Message = {
 };
 
 // Simulated AI responses based on keywords
-function getAIResponse(input: string): string {
+function getAIResponse(input: string, t: any): string {
   const lower = input.toLowerCase();
   if (lower.includes("bali")) {
-    return "Bali is a fantastic choice! Here's a suggested 5-day itinerary:\n\n📍 Day 1: Arrive, explore Seminyak Beach\n📍 Day 2: Ubud Rice Terraces & Monkey Forest\n📍 Day 3: Uluwatu Temple & Kecak Dance\n📍 Day 4: Nusa Penida day trip\n📍 Day 5: Spa day & departure\n\nBest time to visit: April-October (dry season). Budget: ~$50-150/day depending on comfort level.";
+    return t.aiResponseBali;
   }
   if (lower.includes("family") || lower.includes("families") || lower.includes("kid")) {
-    return "Great family destinations:\n\n🏖️ Maldives - overwater villas, snorkeling\n🏰 Japan - Tokyo Disneyland, cultural experiences\n🌴 Thailand - beaches, elephant sanctuaries\n🏔️ Switzerland - scenic trains, hiking\n🦁 Kenya - family-friendly safaris\n\nWould you like more details on any of these?";
+    return t.aiResponseFamily;
   }
   if (lower.includes("budget") || lower.includes("cheap") || lower.includes("affordable")) {
-    return "Top budget travel tips:\n\n💡 Travel during shoulder season (spring/fall)\n💡 Book flights on Tuesdays for best deals\n💡 Use local transport instead of taxis\n💡 Stay in guesthouses or hostels\n💡 Eat at local markets & street food\n💡 Get city passes for attractions\n\nBudget-friendly destinations: Vietnam, Portugal, Mexico, Thailand, Morocco.";
+    return t.aiResponseBudget;
   }
   if (lower.includes("europe")) {
-    return "Europe trip planning:\n\n🇫🇷 Paris - 3 days minimum\n🇮🇹 Rome/Florence - 4 days\n🇪🇸 Barcelona - 2-3 days\n🇬🇷 Santorini - 2-3 days\n\n✈️ Pro tip: Use budget airlines like Ryanair/EasyJet between cities. Get a Eurail pass for longer trips. Budget: €60-150/day.";
+    return t.aiResponseEurope;
   }
-  return "That's a great question! I'd recommend exploring our curated packages for the best deals. You can also check out our destinations page for inspiration.\n\nWant me to help you plan a specific trip? Just tell me:\n• Where you'd like to go\n• How many days\n• Your budget range\n• Travel style (adventure, relaxation, culture)";
+  return t.aiResponseDefault;
 }
 
 export default function AIAssistantScreen() {
@@ -75,7 +75,7 @@ export default function AIAssistantScreen() {
         const aiMsg: Message = {
           id: (Date.now() + 1).toString(),
           role: "assistant",
-          text: getAIResponse(text),
+          text: getAIResponse(text, t),
         };
         setMessages((prev) => [...prev, aiMsg]);
         setIsTyping(false);
@@ -84,7 +84,7 @@ export default function AIAssistantScreen() {
 
       setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 100);
     },
-    []
+    [t]
   );
 
   return (

@@ -111,6 +111,11 @@ export default function ProfileScreen() {
       label: t.contactUs,
       onPress: () => router.push("/contact"),
     },
+    {
+      icon: "arrow.down.app.fill" as const,
+      label: t.getTheApp,
+      onPress: () => router.push("/download"),
+    },
   ];
 
   return (
@@ -151,7 +156,7 @@ export default function ProfileScreen() {
             <View style={{ marginTop: 8, backgroundColor: "rgba(255,255,255,0.2)", paddingHorizontal: 12, paddingVertical: 4, borderRadius: 12, flexDirection: "row", alignItems: "center", gap: 4 }}>
               <IconSymbol name="crown.fill" size={12} color="white" />
               <Text style={{ color: "white", fontSize: 12, fontWeight: "700" }}>
-                {isElite ? "Elite" : "Pro"}
+                {isElite ? t.tierElite : t.tierPro}
               </Text>
             </View>
           )}
@@ -230,7 +235,7 @@ export default function ProfileScreen() {
         </View>
 
         {/* Quick Links */}
-        <View style={{ flexDirection: "row", gap: 10, marginBottom: 24 }}>
+        <View style={{ flexDirection: "row", gap: 10, marginBottom: 12 }}>
           <Pressable
             onPress={() => router.push("/premium")}
             style={({ pressed }) => [
@@ -288,10 +293,53 @@ export default function ProfileScreen() {
           >
             <IconSymbol name="sparkles" size={24} color="#059669" />
             <Text style={{ color: "#059669", fontSize: 13, fontWeight: "600", marginTop: 6 }}>
-              AI
+              {t.aiLabel}
             </Text>
           </Pressable>
         </View>
+
+        {/* Admin Panel — only visible to admins */}
+        {user?.role === "admin" && (
+          <Pressable
+            onPress={() => router.push("/admin" as any)}
+            style={({ pressed }) => [
+              {
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 14,
+                backgroundColor: "#EF444415",
+                borderRadius: 16,
+                padding: 16,
+                marginBottom: 24,
+                borderWidth: 1,
+                borderColor: "#EF444425",
+              },
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <View
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 12,
+                backgroundColor: "#EF444420",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <IconSymbol name="shield.lefthalf.filled" size={20} color="#EF4444" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={{ color: colors.foreground, fontSize: 15, fontWeight: "700" }}>
+                {t.adminPanel}
+              </Text>
+              <Text style={{ color: colors.muted, fontSize: 12 }}>
+                {t.adminPanelDesc}
+              </Text>
+            </View>
+            <IconSymbol name="chevron.right" size={16} color={colors.muted} />
+          </Pressable>
+        )}
 
         {/* Menu */}
         <View

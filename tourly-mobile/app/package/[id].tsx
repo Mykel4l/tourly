@@ -1,4 +1,4 @@
-import { Text, View, ScrollView, Pressable, Share } from "react-native";
+import { Text, View, ScrollView, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { router, useLocalSearchParams } from "expo-router";
 import * as Haptics from "expo-haptics";
@@ -15,6 +15,7 @@ import { useCurrency } from "@/lib/currency";
 import { TopNavBar } from "@/components/top-nav-bar";
 import { StarRating } from "@/components/star-rating";
 import { useReviews } from "@/lib/reviews";
+import { ShareSheet } from "@/components/share-sheet";
 
 export default function PackageDetailScreen() {
   const colors = useColors();
@@ -55,19 +56,6 @@ export default function PackageDetailScreen() {
       image: pkg.image,
       subtitle: `${format(pkg.price)} ${t.perPerson}`,
     });
-  };
-
-  const handleShare = async () => {
-    if (!pkg) return;
-    if (Platform.OS !== "web") {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    }
-    try {
-      await Share.share({
-        message: `${t.sharePackage}: "${pkg.title}" | Tourly — ${format(pkg.price)}${t.perPersonShort}`,
-        title: pkg.title,
-      });
-    } catch {}
   };
 
   const handleBookNow = () => {
@@ -119,13 +107,21 @@ export default function PackageDetailScreen() {
         title={pkg.title}
         rightContent={
           <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
-            <Pressable
-              onPress={handleShare}
-              hitSlop={8}
-              style={({ pressed }) => [{ padding: 6 }, pressed && { opacity: 0.8 }]}
-            >
-              <IconSymbol name="square.and.arrow.up" size={20} color={colors.foreground} />
-            </Pressable>
+            <ShareSheet content={{
+              title: pkg.title,
+              message: `${t.sharePackage}: "${pkg.title}" | Tourly — ${format(pkg.price)}${t.perPersonShort}`,
+              url: `https://tourly.app/package/${pkg.id}`,
+            }}>
+              {(onShare) => (
+                <Pressable
+                  onPress={onShare}
+                  hitSlop={8}
+                  style={({ pressed }) => [{ padding: 6 }, pressed && { opacity: 0.8 }]}
+                >
+                  <IconSymbol name="square.and.arrow.up" size={20} color={colors.foreground} />
+                </Pressable>
+              )}
+            </ShareSheet>
             <Pressable
               onPress={handleWishlist}
               hitSlop={8}

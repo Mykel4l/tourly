@@ -384,6 +384,326 @@ export interface Translations {
   featuredBadge: string;
   sponsoredBadge: string;
   trendingBadge: string;
+  // Landing page
+  landingBrand: string;
+  landingHeroBadge: string;
+  landingHeroTitle: string;
+  landingHeroSubtitle: string;
+  landingCTA: string;
+  landingStatTrips: string;
+  landingStatTripsLabel: string;
+  landingStatDest: string;
+  landingStatDestLabel: string;
+  landingStatRating: string;
+  landingStatRatingLabel: string;
+  landingWhyEyebrow: string;
+  landingWhyTitle: string;
+  landingWhySubtitle: string;
+  landingFeatureAI: string;
+  landingFeatureAIDesc: string;
+  landingFeatureDest: string;
+  landingFeatureDestDesc: string;
+  landingFeatureSecure: string;
+  landingFeatureSecureDesc: string;
+  landingFeatureConcierge: string;
+  landingFeatureConciergeDesc: string;
+  landingTrendingEyebrow: string;
+  landingTrendingTitle: string;
+  landingCuratedEyebrow: string;
+  landingCuratedTitle: string;
+  landingTestimonialsEyebrow: string;
+  landingTestimonialsTitle: string;
+  landingTestimonial1Name: string;
+  landingTestimonial1Location: string;
+  landingTestimonial1Quote: string;
+  landingTestimonial2Name: string;
+  landingTestimonial2Location: string;
+  landingTestimonial2Quote: string;
+  landingTestimonial3Name: string;
+  landingTestimonial3Location: string;
+  landingTestimonial3Quote: string;
+  landingReadyCTA: string;
+  landingReadyDesc: string;
+  landingCreateAccount: string;
+  landingFooterTagline: string;
+  landingFooterAbout: string;
+  landingFooterContact: string;
+  landingFooterDeals: string;
+  landingFooterCopyright: string;
+  landingExplore: string;
+  // Download page
+  downloadTitle: string;
+  downloadHeroSubtitle: string;
+  downloadOnThe: string;
+  downloadGetItOn: string;
+  downloadAppStore: string;
+  downloadGooglePlay: string;
+  downloadStatRating: string;
+  downloadStatRatingLabel: string;
+  downloadStatDownloads: string;
+  downloadStatDownloadsLabel: string;
+  downloadStatDest: string;
+  downloadStatDestLabel: string;
+  downloadStatSupport: string;
+  downloadStatSupportLabel: string;
+  downloadExclusiveEyebrow: string;
+  downloadWhyTitle: string;
+  downloadWhySubtitle: string;
+  downloadFeatureFast: string;
+  downloadFeatureFastDesc: string;
+  downloadFeatureNotif: string;
+  downloadFeatureNotifDesc: string;
+  downloadFeatureOffline: string;
+  downloadFeatureOfflineDesc: string;
+  downloadFeatureOneTap: string;
+  downloadFeatureOneTapDesc: string;
+  downloadFeatureAI: string;
+  downloadFeatureAIDesc: string;
+  downloadFeatureSecure: string;
+  downloadFeatureSecureDesc: string;
+  downloadReviewsEyebrow: string;
+  downloadReviewsTitle: string;
+  downloadReview1Name: string;
+  downloadReview1Text: string;
+  downloadReview2Name: string;
+  downloadReview2Text: string;
+  downloadReview3Name: string;
+  downloadReview3Text: string;
+  downloadCompareTitle: string;
+  downloadCompareApp: string;
+  downloadCompareWeb: string;
+  downloadComparePush: string;
+  downloadCompareOffline: string;
+  downloadCompareBiometric: string;
+  downloadCompareOneTap: string;
+  downloadCompareAI: string;
+  downloadCompareBrowse: string;
+  downloadBottomCTATitle: string;
+  downloadBottomCTADesc: string;
+  downloadPlatformIOS: string;
+  downloadPlatformAndroid: string;
+  // Auth extras
+  authError: string;
+  authInvalidCredentials: string;
+  authSignInFailed: string;
+  authSignUpFailed: string;
+  authOAuthFailed: string;
+  authGoogle: string;
+  authApple: string;
+  // Profile extras
+  getTheApp: string;
+  adminPanel: string;
+  adminPanelDesc: string;
+  tierElite: string;
+  tierPro: string;
+  aiLabel: string;
+  // Premium extras
+  premiumNoPurchases: string;
+  // Missing keys
+  thankYou: string;
+  shareDestination: string;
+  sharePackage: string;
+  // Social share sheet
+  shareVia: string;
+  shareWhatsApp: string;
+  shareTwitter: string;
+  shareFacebook: string;
+  shareTelegram: string;
+  shareEmail: string;
+  shareSMS: string;
+  shareCopyLink: string;
+  shareLinkCopied: string;
+  shareMoreOptions: string;
+  // AI assistant responses
+  aiResponseBali: string;
+  aiResponseFamily: string;
+  aiResponseBudget: string;
+  aiResponseEurope: string;
+  aiResponseDefault: string;
+  // Smart app banner
+  bannerGetApp: string;
+  bannerFasterOn: string;
+  bannerOpen: string;
+  // Live chat extras
+  chatWelcomeBack: string;
+  chatNewConvo: string;
+  chatFreshConvo: string;
+  chatLiveAgent: string;
+  chatConnectedTeam: string;
+  chatEnd: string;
+  chatConvoClosed: string;
+  chatStartNew: string;
+  chatHereToHelp: string;
+  chatReturnLive: string;
+  chatActiveConvo: string;
+  chatConnectAgent: string;
+  chatConnectAgentDesc: string;
+  chatConnectedLive: string;
+  chatAgentRespondSoon: string;
+  chatEnded: string;
+  chatArchivedChat: string;
+  chatHistory: string;
+  chatClearAll: string;
+  chatDelete: string;
+  chatNoArchives: string;
+  chatLiveAgentChat: string;
+  chatBotConvo: string;
+  chatBackToArchives: string;
+  chatConversations: string;
+  chatMessages: string;
+  // Chat translation
+  chatTranslate: string;
+  chatShowOriginal: string;
+  chatTranslating: string;
+  chatTranslateAll: string;
+  chatAutoTranslate: string;
+  chatTranslatedFrom: string;
+  chatTranslationFailed: string;
+  // Admin panel
+  adminTitle: string;
+  adminDashboardTitle: string;
+  adminDashboardSubtitle: string;
+  adminTabDashboard: string;
+  adminTabBookings: string;
+  adminTabChat: string;
+  adminTabDestinations: string;
+  adminTabPackages: string;
+  adminTabUsers: string;
+  adminCancel: string;
+  adminSave: string;
+  adminEdit: string;
+  adminDelete: string;
+  adminSearch: string;
+  adminValidation: string;
+  adminTapUpload: string;
+  adminChange: string;
+  adminRemove: string;
+  adminPermissionNeeded: string;
+  adminGrantCameraAccess: string;
+  // Admin dashboard
+  adminTotalBookings: string;
+  adminTotalBookingsTrend: string;
+  adminRevenue: string;
+  adminRevenueTrend: string;
+  adminTotalUsers: string;
+  adminTotalUsersTrend: string;
+  adminDestinations: string;
+  adminQuickActions: string;
+  adminAddDestination: string;
+  adminCreatePackage: string;
+  adminSendNotification: string;
+  adminViewReports: string;
+  adminRecentBookings: string;
+  adminNoBookingsYet: string;
+  // Admin reports
+  adminReports: string;
+  adminDone: string;
+  adminBookingStatus: string;
+  adminConfirmed: string;
+  adminPending: string;
+  adminCancelled: string;
+  adminMonthlyBookings: string;
+  adminTotalPeriod: string;
+  adminRevenueLabel: string;
+  adminRevenueByPackage: string;
+  adminNoRevenueYet: string;
+  adminLatestBookings: string;
+  adminCustomTrip: string;
+  adminAvgBooking: string;
+  // Admin notifications
+  adminSendTo: string;
+  adminAllUsers: string;
+  adminSelectUsers: string;
+  adminNotifTitle: string;
+  adminNotifTitlePlaceholder: string;
+  adminNotifMessage: string;
+  adminNotifMessagePlaceholder: string;
+  adminNotifType: string;
+  adminTitleMessageRequired: string;
+  adminSelectAtLeastOne: string;
+  adminSent: string;
+  adminNotifSentTo: string;
+  adminUsersSelected: string;
+  adminClear: string;
+  // Admin bookings
+  adminBookingDetails: string;
+  adminFullName: string;
+  adminEmail: string;
+  adminPhone: string;
+  adminTravelers: string;
+  adminCheckIn: string;
+  adminCheckOut: string;
+  adminDatePlaceholder: string;
+  adminUpdated: string;
+  adminBookingUpdated: string;
+  adminAll: string;
+  adminNoBookingsFound: string;
+  adminConfirm: string;
+  adminPax: string;
+  adminNA: string;
+  // Admin destinations
+  adminEditDestination: string;
+  adminAddDestinationTitle: string;
+  adminCoverImage: string;
+  adminName: string;
+  adminNamePlaceholder: string;
+  adminCountry: string;
+  adminCountryPlaceholder: string;
+  adminRating: string;
+  adminDescription: string;
+  adminDescPlaceholder: string;
+  adminSearchDestinations: string;
+  adminAddNewDestination: string;
+  adminDeleteDestination: string;
+  adminDeleteConfirm: string;
+  adminNameCountryRequired: string;
+  // Admin packages
+  adminEditPackage: string;
+  adminAddPackageTitle: string;
+  adminPackageImage: string;
+  adminPackageTitle: string;
+  adminTitlePlaceholder: string;
+  adminLocation: string;
+  adminLocationPlaceholder: string;
+  adminDuration: string;
+  adminDurationPlaceholder: string;
+  adminMaxPax: string;
+  adminPrice: string;
+  adminPricePlaceholder: string;
+  adminPackageDescPlaceholder: string;
+  adminSearchPackages: string;
+  adminAddNewPackage: string;
+  adminDeletePackage: string;
+  adminTitleLocationPriceRequired: string;
+  adminReviews: string;
+  // Admin users
+  adminEditUser: string;
+  adminAvatar: string;
+  adminRole: string;
+  adminSearchUsers: string;
+  adminActive: string;
+  adminSuspended: string;
+  adminAdmins: string;
+  adminJoined: string;
+  adminBookingsCount: string;
+  adminPromote: string;
+  adminDemote: string;
+  adminSuspend: string;
+  adminActivate: string;
+  adminNameEmailRequired: string;
+  // Admin chat
+  adminConversations: string;
+  adminLive: string;
+  adminNoConvoYet: string;
+  adminNoConvoDesc: string;
+  adminNoMessages: string;
+  adminReopen: string;
+  adminClose: string;
+  adminConvoClosed: string;
+  adminTypeReply: string;
+  adminYou: string;
+  adminClosed: string;
+  adminUnread: string;
 }
 
 // ─── All Language Packs ────────────────────────────────────────────────────
@@ -549,6 +869,152 @@ const translations: Record<Language, Translations> = {
     addToBooking: "Add to Booking", skipExtras: "Skip, Continue to Confirmation",
     // Featured
     featuredBadge: "Featured", sponsoredBadge: "Sponsored", trendingBadge: "Trending",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "#1 AI-Powered Travel App",
+    landingHeroTitle: "Explore The\nWorld With\nTourly", landingHeroSubtitle: "Discover breathtaking destinations, curated packages, and AI-powered travel planning — all in one app.",
+    landingCTA: "Get Started",
+    landingStatTrips: "50K+", landingStatTripsLabel: "Trips Booked", landingStatDest: "120+", landingStatDestLabel: "Destinations", landingStatRating: "4.9", landingStatRatingLabel: "App Rating",
+    landingWhyEyebrow: "Why Tourly", landingWhyTitle: "Travel Smarter,\nNot Harder", landingWhySubtitle: "Everything you need for the perfect trip, powered by modern technology and local insights.",
+    landingFeatureAI: "AI Trip Planner", landingFeatureAIDesc: "Get personalized itineraries crafted by advanced AI based on your preferences and budget.",
+    landingFeatureDest: "50+ Destinations", landingFeatureDestDesc: "Explore curated destinations across 6 continents, from hidden gems to iconic landmarks.",
+    landingFeatureSecure: "Secure Booking", landingFeatureSecureDesc: "End-to-end encrypted payments with flexible cancellation and full refund protection.",
+    landingFeatureConcierge: "24/7 Concierge", landingFeatureConciergeDesc: "Real-time support from local experts who know every corner of your destination.",
+    landingTrendingEyebrow: "Trending Now", landingTrendingTitle: "Popular Destinations",
+    landingCuratedEyebrow: "Curated For You", landingCuratedTitle: "Travel Packages",
+    landingTestimonialsEyebrow: "Testimonials", landingTestimonialsTitle: "Loved by Travelers",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "New York, USA",
+    landingTestimonial1Quote: "Tourly made planning our honeymoon effortless. The AI suggested places we never would have found!",
+    landingTestimonial2Name: "Kenji Tanaka", landingTestimonial2Location: "Tokyo, Japan",
+    landingTestimonial2Quote: "The concierge service was incredible. Felt like having a local friend in every city we visited.",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "Accra, Ghana",
+    landingTestimonial3Quote: "Best travel app I've used. The deals are real and the booking process is seamless.",
+    landingReadyCTA: "Ready for Your Next Adventure?", landingReadyDesc: "Join 50,000+ travelers who plan and book with Tourly. Start your free account today.",
+    landingCreateAccount: "Create Free Account",
+    landingFooterTagline: "Making travel accessible, personalized, and unforgettable since 2024.",
+    landingFooterAbout: "About", landingFooterContact: "Contact", landingFooterDeals: "Deals",
+    landingFooterCopyright: "© 2024–2026 Tourly. All rights reserved.",
+    landingExplore: "Explore",
+    // Download page
+    downloadTitle: "Get the App",
+    downloadHeroSubtitle: "Your pocket travel companion.\nExplore, book, and go — all from one app.",
+    downloadOnThe: "Download on the", downloadGetItOn: "Get it on", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "App Rating", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "Downloads",
+    downloadStatDest: "100+", downloadStatDestLabel: "Destinations", downloadStatSupport: "24/7", downloadStatSupportLabel: "Support",
+    downloadExclusiveEyebrow: "App Exclusive", downloadWhyTitle: "Why Download Tourly?", downloadWhySubtitle: "The app unlocks features you can't get in the browser.",
+    downloadFeatureFast: "Lightning Fast", downloadFeatureFastDesc: "Native performance that's smoother than any browser experience.",
+    downloadFeatureNotif: "Push Notifications", downloadFeatureNotifDesc: "Never miss a deal — get instant alerts on flash sales and price drops.",
+    downloadFeatureOffline: "Offline Access", downloadFeatureOfflineDesc: "Save itineraries and maps for when you're off the grid.",
+    downloadFeatureOneTap: "One-Tap Booking", downloadFeatureOneTapDesc: "Book trips in seconds with saved payment and traveler info.",
+    downloadFeatureAI: "AI Trip Planner", downloadFeatureAIDesc: "Get personalized trip suggestions powered by AI, built right in.",
+    downloadFeatureSecure: "Secure & Private", downloadFeatureSecureDesc: "Biometric login and encrypted data keep your info safe.",
+    downloadReviewsEyebrow: "Loved by Travelers", downloadReviewsTitle: "What Users Say",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "Best travel app I've ever used! Booked my Bali trip in under 2 minutes.",
+    downloadReview2Name: "James K.", downloadReview2Text: "The offline maps saved me in rural Japan. Absolute game changer.",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "Push notifications caught a 40% flash sale. Saved $300 on my trip!",
+    downloadCompareTitle: "App vs. Browser", downloadCompareApp: "App", downloadCompareWeb: "Web",
+    downloadComparePush: "Push Notifications", downloadCompareOffline: "Offline Access", downloadCompareBiometric: "Biometric Login",
+    downloadCompareOneTap: "One-Tap Booking", downloadCompareAI: "AI Trip Planner", downloadCompareBrowse: "Browse Destinations",
+    downloadBottomCTATitle: "Ready to Travel Smarter?", downloadBottomCTADesc: "Download Tourly free on iOS and Android.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    // Auth extras
+    authError: "Error", authInvalidCredentials: "Invalid credentials",
+    authSignInFailed: "Sign in failed. Please try again.", authSignUpFailed: "Sign up failed. Please try again.",
+    authOAuthFailed: "OAuth login failed. Please try again.", authGoogle: "Google", authApple: "Apple",
+    // Profile extras
+    getTheApp: "Get the App", adminPanel: "Admin Panel", adminPanelDesc: "Manage bookings, users & destinations",
+    tierElite: "Elite", tierPro: "Pro", aiLabel: "AI",
+    // Premium extras
+    premiumNoPurchases: "No previous purchases found.",
+    // Missing keys
+    thankYou: "Thank You!", shareDestination: "Check out this destination on Tourly!", sharePackage: "Check out this package on Tourly!",
+    shareVia: "Share via", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "Email", shareSMS: "SMS", shareCopyLink: "Copy Link", shareLinkCopied: "Link copied to clipboard!", shareMoreOptions: "More options",
+    // AI assistant responses
+    aiResponseBali: "Bali is a fantastic choice! Here's a suggested 5-day itinerary:\n\n📍 Day 1: Arrive, explore Seminyak Beach\n📍 Day 2: Ubud Rice Terraces & Monkey Forest\n📍 Day 3: Uluwatu Temple & Kecak Dance\n📍 Day 4: Nusa Penida day trip\n📍 Day 5: Spa day & departure\n\nBest time to visit: April-October (dry season). Budget: ~$50-150/day depending on comfort level.",
+    aiResponseFamily: "Great family destinations:\n\n🏖️ Maldives - overwater villas, snorkeling\n🏰 Japan - Tokyo Disneyland, cultural experiences\n🌴 Thailand - beaches, elephant sanctuaries\n🏔️ Switzerland - scenic trains, hiking\n🦁 Kenya - family-friendly safaris\n\nWould you like more details on any of these?",
+    aiResponseBudget: "Top budget travel tips:\n\n💡 Travel during shoulder season (spring/fall)\n💡 Book flights on Tuesdays for best deals\n💡 Use local transport instead of taxis\n💡 Stay in guesthouses or hostels\n💡 Eat at local markets & street food\n💡 Get city passes for attractions\n\nBudget-friendly destinations: Vietnam, Portugal, Mexico, Thailand, Morocco.",
+    aiResponseEurope: "Europe trip planning:\n\n🇫🇷 Paris - 3 days minimum\n🇮🇹 Rome/Florence - 4 days\n🇪🇸 Barcelona - 2-3 days\n🇬🇷 Santorini - 2-3 days\n\n✈️ Pro tip: Use budget airlines like Ryanair/EasyJet between cities. Get a Eurail pass for longer trips. Budget: €60-150/day.",
+    aiResponseDefault: "That's a great question! I'd recommend exploring our curated packages for the best deals. You can also check out our destinations page for inspiration.\n\nWant me to help you plan a specific trip? Just tell me:\n• Where you'd like to go\n• How many days\n• Your budget range\n• Travel style (adventure, relaxation, culture)",
+    // Smart app banner
+    bannerGetApp: "Get the Tourly App", bannerFasterOn: "Faster experience on", bannerOpen: "Open",
+    // Live chat extras
+    chatWelcomeBack: "Welcome back! 👋 Great to see you again. How can I help you today?",
+    chatNewConvo: "New conversation started! ✨ Previous chat has been archived. How can I help?",
+    chatFreshConvo: "Starting a fresh conversation! ✨ What can I help you with?",
+    chatLiveAgent: "Live Agent", chatConnectedTeam: "Connected to support team", chatEnd: "End",
+    chatConvoClosed: "This conversation has been closed", chatStartNew: "Start a new conversation",
+    chatHereToHelp: "We're here to help — ask us anything",
+    chatReturnLive: "Return to Live Chat", chatActiveConvo: "You have an active conversation with support",
+    chatConnectAgent: "Chat with Live Agent", chatConnectAgentDesc: "Connect to our support team for real-time help",
+    chatConnectedLive: "Connected to Live Support", chatAgentRespondSoon: "A support agent will respond shortly.\nType a message to get started.",
+    chatEnded: "Chat ended",
+    chatArchivedChat: "Archived Chat", chatHistory: "Chat History", chatClearAll: "Clear All", chatDelete: "Delete",
+    chatNoArchives: "No archived chats", chatLiveAgentChat: "Live Agent Chat", chatBotConvo: "Bot Conversation",
+    chatBackToArchives: "Back to all archives", chatConversations: "conversations", chatMessages: "messages",
+    // Chat translation
+    chatTranslate: "Translate", chatShowOriginal: "Show original", chatTranslating: "Translating…",
+    chatTranslateAll: "Translate all", chatAutoTranslate: "Auto-translate",
+    chatTranslatedFrom: "Translated from", chatTranslationFailed: "Translation failed",
+    // Admin panel
+    adminTitle: "Admin Panel", adminDashboardTitle: "Admin Dashboard", adminDashboardSubtitle: "Manage your travel platform",
+    adminTabDashboard: "Dashboard", adminTabBookings: "Bookings", adminTabChat: "Chat",
+    adminTabDestinations: "Destinations", adminTabPackages: "Packages", adminTabUsers: "Users",
+    adminCancel: "Cancel", adminSave: "Save", adminEdit: "Edit", adminDelete: "Delete", adminSearch: "Search",
+    adminValidation: "Validation", adminTapUpload: "Tap to upload", adminChange: "Change", adminRemove: "Remove",
+    adminPermissionNeeded: "Permission needed", adminGrantCameraAccess: "Please grant camera roll access to upload images.",
+    // Admin dashboard
+    adminTotalBookings: "Total Bookings", adminTotalBookingsTrend: "+12% this month",
+    adminRevenue: "Revenue", adminRevenueTrend: "+8% this month",
+    adminTotalUsers: "Total Users", adminTotalUsersTrend: "+3 this week",
+    adminDestinations: "Destinations",
+    adminQuickActions: "Quick Actions", adminAddDestination: "Add Destination", adminCreatePackage: "Create Package",
+    adminSendNotification: "Send Notification", adminViewReports: "View Reports",
+    adminRecentBookings: "Recent Bookings", adminNoBookingsYet: "No bookings yet",
+    // Admin reports
+    adminReports: "Reports", adminDone: "Done",
+    adminBookingStatus: "Booking Status", adminConfirmed: "Confirmed", adminPending: "Pending", adminCancelled: "Cancelled",
+    adminMonthlyBookings: "Monthly Bookings (Last 6 Months)", adminTotalPeriod: "Total this period",
+    adminRevenueLabel: "revenue", adminRevenueByPackage: "Revenue by Package", adminNoRevenueYet: "No revenue data yet",
+    adminLatestBookings: "Latest Bookings", adminCustomTrip: "Custom Trip", adminAvgBooking: "Avg / Booking",
+    // Admin notifications
+    adminSendTo: "Send To", adminAllUsers: "All Users", adminSelectUsers: "Select Users",
+    adminNotifTitle: "Title", adminNotifTitlePlaceholder: "e.g. Summer Sale — 30% Off",
+    adminNotifMessage: "Message", adminNotifMessagePlaceholder: "Notification message...", adminNotifType: "Type",
+    adminTitleMessageRequired: "Title and message are required.", adminSelectAtLeastOne: "Please select at least one user.",
+    adminSent: "Sent", adminNotifSentTo: "Notification sent to", adminUsersSelected: "selected", adminClear: "Clear",
+    // Admin bookings
+    adminBookingDetails: "Booking Details", adminFullName: "Full Name", adminEmail: "Email", adminPhone: "Phone",
+    adminTravelers: "Travelers", adminCheckIn: "Check-in", adminCheckOut: "Check-out", adminDatePlaceholder: "YYYY-MM-DD",
+    adminUpdated: "Updated", adminBookingUpdated: "Booking details updated (local demo).",
+    adminAll: "All", adminNoBookingsFound: "No bookings found", adminConfirm: "Confirm", adminPax: "pax", adminNA: "N/A",
+    // Admin destinations
+    adminEditDestination: "Edit Destination", adminAddDestinationTitle: "Add Destination",
+    adminCoverImage: "Cover Image", adminName: "Name", adminNamePlaceholder: "e.g. Santorini",
+    adminCountry: "Country", adminCountryPlaceholder: "e.g. Greece", adminRating: "Rating (1-5)",
+    adminDescription: "Description", adminDescPlaceholder: "Short description...",
+    adminSearchDestinations: "Search destinations...", adminAddNewDestination: "Add New Destination",
+    adminDeleteDestination: "Delete Destination", adminDeleteConfirm: "Are you sure you want to delete",
+    adminNameCountryRequired: "Name and country are required.",
+    // Admin packages
+    adminEditPackage: "Edit Package", adminAddPackageTitle: "Add Package",
+    adminPackageImage: "Package Image", adminPackageTitle: "Title", adminTitlePlaceholder: "e.g. Beach Holiday",
+    adminLocation: "Location", adminLocationPlaceholder: "e.g. Malaysia",
+    adminDuration: "Duration", adminDurationPlaceholder: "e.g. 7D/6N", adminMaxPax: "Max Pax",
+    adminPrice: "Price ($)", adminPricePlaceholder: "e.g. 750",
+    adminPackageDescPlaceholder: "Package description...", adminSearchPackages: "Search packages...",
+    adminAddNewPackage: "Add New Package", adminDeletePackage: "Delete Package",
+    adminTitleLocationPriceRequired: "Title, location, and price are required.", adminReviews: "reviews",
+    // Admin users
+    adminEditUser: "Edit User", adminAvatar: "Avatar", adminRole: "Role",
+    adminSearchUsers: "Search users...", adminActive: "Active", adminSuspended: "Suspended", adminAdmins: "Admins",
+    adminJoined: "Joined", adminBookingsCount: "bookings",
+    adminPromote: "Promote", adminDemote: "Demote", adminSuspend: "Suspend", adminActivate: "Activate",
+    adminNameEmailRequired: "Name and email are required.",
+    // Admin chat
+    adminConversations: "Conversations", adminLive: "Live", adminNoConvoYet: "No conversations yet",
+    adminNoConvoDesc: "When users start chatting via the live chat,\ntheir conversations will appear here.",
+    adminNoMessages: "No messages yet", adminReopen: "Reopen", adminClose: "Close",
+    adminConvoClosed: "Conversation closed", adminTypeReply: "Type a reply...",
+    adminYou: "You: ", adminClosed: "Closed", adminUnread: "unread",
   },
   es: {
     tabHome: "Inicio", tabExplore: "Explorar", tabTrips: "Viajes", tabSaved: "Guardado", tabGallery: "Galería",
@@ -710,6 +1176,143 @@ const translations: Record<Language, Translations> = {
     addToBooking: "Agregar a la Reserva", skipExtras: "Omitir, Continuar a Confirmación",
     // Featured
     featuredBadge: "Destacado", sponsoredBadge: "Patrocinado", trendingBadge: "Tendencia",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "#1 App de Viajes con IA",
+    landingHeroTitle: "Explora El\nMundo Con\nTourly", landingHeroSubtitle: "Descubre destinos impresionantes, paquetes seleccionados y planificación de viajes con IA — todo en una app.",
+    landingCTA: "Comenzar",
+    landingStatTrips: "50K+", landingStatTripsLabel: "Viajes Reservados", landingStatDest: "120+", landingStatDestLabel: "Destinos", landingStatRating: "4.9", landingStatRatingLabel: "Calificación",
+    landingWhyEyebrow: "Por Qué Tourly", landingWhyTitle: "Viaja Inteligente,\nNo Difícil", landingWhySubtitle: "Todo lo que necesitas para el viaje perfecto, impulsado por tecnología moderna y conocimiento local.",
+    landingFeatureAI: "Planificador IA", landingFeatureAIDesc: "Obtén itinerarios personalizados creados por IA avanzada según tus preferencias y presupuesto.",
+    landingFeatureDest: "50+ Destinos", landingFeatureDestDesc: "Explora destinos seleccionados en 6 continentes, desde joyas ocultas hasta monumentos icónicos.",
+    landingFeatureSecure: "Reserva Segura", landingFeatureSecureDesc: "Pagos cifrados de extremo a extremo con cancelación flexible y protección de reembolso completa.",
+    landingFeatureConcierge: "Conserje 24/7", landingFeatureConciergeDesc: "Soporte en tiempo real de expertos locales que conocen cada rincón de tu destino.",
+    landingTrendingEyebrow: "Tendencias", landingTrendingTitle: "Destinos Populares",
+    landingCuratedEyebrow: "Seleccionado Para Ti", landingCuratedTitle: "Paquetes de Viaje",
+    landingTestimonialsEyebrow: "Testimonios", landingTestimonialsTitle: "Amado por Viajeros",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "Nueva York, EE.UU.",
+    landingTestimonial1Quote: "Tourly hizo que planificar nuestra luna de miel fuera sencillo. ¡La IA sugirió lugares que nunca habríamos encontrado!",
+    landingTestimonial2Name: "Kenji Tanaka", landingTestimonial2Location: "Tokio, Japón",
+    landingTestimonial2Quote: "El servicio de conserje fue increíble. Se sentía como tener un amigo local en cada ciudad que visitamos.",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "Acra, Ghana",
+    landingTestimonial3Quote: "La mejor app de viajes que he usado. Las ofertas son reales y el proceso de reserva es impecable.",
+    landingReadyCTA: "¿Listo para tu Próxima Aventura?", landingReadyDesc: "Únete a más de 50,000 viajeros que planifican y reservan con Tourly. Crea tu cuenta gratis hoy.",
+    landingCreateAccount: "Crear Cuenta Gratis",
+    landingFooterTagline: "Haciendo los viajes accesibles, personalizados e inolvidables desde 2024.",
+    landingFooterAbout: "Acerca de", landingFooterContact: "Contacto", landingFooterDeals: "Ofertas",
+    landingFooterCopyright: "© 2024–2026 Tourly. Todos los derechos reservados.",
+    landingExplore: "Explorar",
+    // Download page
+    downloadTitle: "Obtener la App",
+    downloadHeroSubtitle: "Tu compañero de viaje de bolsillo.\nExplora, reserva y viaja — todo desde una app.",
+    downloadOnThe: "Descargar en", downloadGetItOn: "Disponible en", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "Calificación", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "Descargas",
+    downloadStatDest: "100+", downloadStatDestLabel: "Destinos", downloadStatSupport: "24/7", downloadStatSupportLabel: "Soporte",
+    downloadExclusiveEyebrow: "Exclusivo de la App", downloadWhyTitle: "¿Por Qué Descargar Tourly?", downloadWhySubtitle: "La app desbloquea funciones que no puedes obtener en el navegador.",
+    downloadFeatureFast: "Ultra Rápido", downloadFeatureFastDesc: "Rendimiento nativo más fluido que cualquier experiencia en navegador.",
+    downloadFeatureNotif: "Notificaciones Push", downloadFeatureNotifDesc: "No te pierdas ninguna oferta — recibe alertas instantáneas de ventas flash y bajadas de precio.",
+    downloadFeatureOffline: "Acceso Sin Conexión", downloadFeatureOfflineDesc: "Guarda itinerarios y mapas para cuando estés sin internet.",
+    downloadFeatureOneTap: "Reserva con Un Toque", downloadFeatureOneTapDesc: "Reserva viajes en segundos con pago e información guardados.",
+    downloadFeatureAI: "Planificador IA", downloadFeatureAIDesc: "Obtén sugerencias de viaje personalizadas con IA, integradas directamente.",
+    downloadFeatureSecure: "Seguro y Privado", downloadFeatureSecureDesc: "Inicio de sesión biométrico y datos cifrados mantienen tu información segura.",
+    downloadReviewsEyebrow: "Amado por Viajeros", downloadReviewsTitle: "Lo Que Dicen los Usuarios",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "¡La mejor app de viajes que he usado! Reservé mi viaje a Bali en menos de 2 minutos.",
+    downloadReview2Name: "James K.", downloadReview2Text: "Los mapas sin conexión me salvaron en el Japón rural. Un cambio total de juego.",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "Las notificaciones push captaron una venta flash del 40%. ¡Ahorré $300 en mi viaje!",
+    downloadCompareTitle: "App vs. Navegador", downloadCompareApp: "App", downloadCompareWeb: "Web",
+    downloadComparePush: "Notificaciones Push", downloadCompareOffline: "Acceso Sin Conexión", downloadCompareBiometric: "Inicio Biométrico",
+    downloadCompareOneTap: "Reserva con Un Toque", downloadCompareAI: "Planificador IA", downloadCompareBrowse: "Explorar Destinos",
+    downloadBottomCTATitle: "¿Listo para Viajar Más Inteligente?", downloadBottomCTADesc: "Descarga Tourly gratis en iOS y Android.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    // Auth extras
+    authError: "Error", authInvalidCredentials: "Credenciales inválidas",
+    authSignInFailed: "Error al iniciar sesión. Inténtalo de nuevo.", authSignUpFailed: "Error al registrarse. Inténtalo de nuevo.",
+    authOAuthFailed: "Error de OAuth. Inténtalo de nuevo.", authGoogle: "Google", authApple: "Apple",
+    // Profile extras
+    getTheApp: "Obtener la App", adminPanel: "Panel de Admin", adminPanelDesc: "Gestionar reservas, usuarios y destinos",
+    tierElite: "Élite", tierPro: "Pro", aiLabel: "IA",
+    // Premium extras
+    premiumNoPurchases: "No se encontraron compras anteriores.",
+    // Missing keys
+    thankYou: "¡Gracias!", shareDestination: "¡Mira este destino en Tourly!", sharePackage: "¡Mira este paquete en Tourly!",
+    shareVia: "Compartir vía", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "Correo electrónico", shareSMS: "SMS", shareCopyLink: "Copiar enlace", shareLinkCopied: "¡Enlace copiado al portapapeles!", shareMoreOptions: "Más opciones",
+    // AI assistant responses
+    aiResponseBali: "¡Bali es una elección fantástica! Aquí tienes un itinerario sugerido de 5 días:\n\n📍 Día 1: Llegar, explorar playa Seminyak\n📍 Día 2: Terrazas de arroz de Ubud y Bosque de Monos\n📍 Día 3: Templo Uluwatu y Danza Kecak\n📍 Día 4: Excursión a Nusa Penida\n📍 Día 5: Día de spa y partida\n\nMejor época: Abril-Octubre (temporada seca). Presupuesto: ~$50-150/día según el nivel de confort.",
+    aiResponseFamily: "Grandes destinos familiares:\n\n🏖️ Maldivas - villas sobre el agua, snorkel\n🏰 Japón - Tokyo Disneyland, experiencias culturales\n🌴 Tailandia - playas, santuarios de elefantes\n🏔️ Suiza - trenes panorámicos, senderismo\n🦁 Kenia - safaris familiares\n\n¿Te gustaría más detalles sobre alguno?",
+    aiResponseBudget: "Mejores consejos de viaje económico:\n\n💡 Viaja en temporada media (primavera/otoño)\n💡 Reserva vuelos los martes para mejores precios\n💡 Usa transporte local en vez de taxis\n💡 Alójate en pensiones u hostales\n💡 Come en mercados locales y comida callejera\n💡 Consigue pases de ciudad para atracciones\n\nDestinos económicos: Vietnam, Portugal, México, Tailandia, Marruecos.",
+    aiResponseEurope: "Planificación de viaje por Europa:\n\n🇫🇷 París - mínimo 3 días\n🇮🇹 Roma/Florencia - 4 días\n🇪🇸 Barcelona - 2-3 días\n🇬🇷 Santorini - 2-3 días\n\n✈️ Consejo pro: Usa aerolíneas económicas como Ryanair/EasyJet entre ciudades. Obtén un pase Eurail para viajes largos. Presupuesto: €60-150/día.",
+    aiResponseDefault: "¡Gran pregunta! Te recomiendo explorar nuestros paquetes seleccionados para las mejores ofertas. También puedes ver nuestra página de destinos para inspiración.\n\n¿Quieres que te ayude a planificar un viaje específico? Solo dime:\n• A dónde te gustaría ir\n• Cuántos días\n• Tu rango de presupuesto\n• Estilo de viaje (aventura, relax, cultura)",
+    // Smart app banner
+    bannerGetApp: "Obtén la App Tourly", bannerFasterOn: "Experiencia más rápida en", bannerOpen: "Abrir",
+    // Live chat extras
+    chatWelcomeBack: "¡Bienvenido de nuevo! 👋 Qué bueno verte. ¿Cómo puedo ayudarte hoy?",
+    chatNewConvo: "¡Nueva conversación iniciada! ✨ El chat anterior fue archivado. ¿Cómo puedo ayudar?",
+    chatFreshConvo: "¡Iniciando conversación nueva! ✨ ¿En qué puedo ayudarte?",
+    chatLiveAgent: "Agente en Vivo", chatConnectedTeam: "Conectado al equipo de soporte", chatEnd: "Terminar",
+    chatConvoClosed: "Esta conversación ha sido cerrada", chatStartNew: "Iniciar nueva conversación",
+    chatHereToHelp: "Estamos aquí para ayudar — pregúntanos lo que sea",
+    chatReturnLive: "Volver al Chat en Vivo", chatActiveConvo: "Tienes una conversación activa con soporte",
+    chatConnectAgent: "Chatear con Agente", chatConnectAgentDesc: "Conéctate con nuestro equipo de soporte para ayuda en tiempo real",
+    chatConnectedLive: "Conectado a Soporte en Vivo", chatAgentRespondSoon: "Un agente de soporte responderá pronto.\nEscribe un mensaje para comenzar.",
+    chatEnded: "Chat terminado",
+    chatArchivedChat: "Chat Archivado", chatHistory: "Historial de Chat", chatClearAll: "Borrar Todo", chatDelete: "Eliminar",
+    chatNoArchives: "No hay chats archivados", chatLiveAgentChat: "Chat con Agente", chatBotConvo: "Conversación con Bot",
+    chatBackToArchives: "Volver a archivos", chatConversations: "conversaciones", chatMessages: "mensajes",
+    chatTranslate: "Traducir", chatShowOriginal: "Mostrar original", chatTranslating: "Traduciendo…",
+    chatTranslateAll: "Traducir todo", chatAutoTranslate: "Traducción automática",
+    chatTranslatedFrom: "Traducido de", chatTranslationFailed: "Error de traducción",
+    // Admin panel
+    adminTitle: "Panel de Admin", adminDashboardTitle: "Panel de Administración", adminDashboardSubtitle: "Gestiona tu plataforma de viajes",
+    adminTabDashboard: "Panel", adminTabBookings: "Reservas", adminTabChat: "Chat",
+    adminTabDestinations: "Destinos", adminTabPackages: "Paquetes", adminTabUsers: "Usuarios",
+    adminCancel: "Cancelar", adminSave: "Guardar", adminEdit: "Editar", adminDelete: "Eliminar", adminSearch: "Buscar",
+    adminValidation: "Validación", adminTapUpload: "Toca para subir", adminChange: "Cambiar", adminRemove: "Quitar",
+    adminPermissionNeeded: "Permiso necesario", adminGrantCameraAccess: "Por favor concede acceso al carrete para subir imágenes.",
+    adminTotalBookings: "Total de Reservas", adminTotalBookingsTrend: "+12% este mes",
+    adminRevenue: "Ingresos", adminRevenueTrend: "+8% este mes",
+    adminTotalUsers: "Total de Usuarios", adminTotalUsersTrend: "+3 esta semana",
+    adminDestinations: "Destinos",
+    adminQuickActions: "Acciones Rápidas", adminAddDestination: "Agregar Destino", adminCreatePackage: "Crear Paquete",
+    adminSendNotification: "Enviar Notificación", adminViewReports: "Ver Informes",
+    adminRecentBookings: "Reservas Recientes", adminNoBookingsYet: "Aún no hay reservas",
+    adminReports: "Informes", adminDone: "Listo",
+    adminBookingStatus: "Estado de Reserva", adminConfirmed: "Confirmado", adminPending: "Pendiente", adminCancelled: "Cancelado",
+    adminMonthlyBookings: "Reservas Mensuales (Últimos 6 Meses)", adminTotalPeriod: "Total este período",
+    adminRevenueLabel: "ingresos", adminRevenueByPackage: "Ingresos por Paquete", adminNoRevenueYet: "Sin datos de ingresos aún",
+    adminLatestBookings: "Últimas Reservas", adminCustomTrip: "Viaje Personalizado", adminAvgBooking: "Prom / Reserva",
+    adminSendTo: "Enviar A", adminAllUsers: "Todos los Usuarios", adminSelectUsers: "Seleccionar Usuarios",
+    adminNotifTitle: "Título", adminNotifTitlePlaceholder: "ej. Venta de Verano — 30% Desc",
+    adminNotifMessage: "Mensaje", adminNotifMessagePlaceholder: "Mensaje de notificación...", adminNotifType: "Tipo",
+    adminTitleMessageRequired: "Título y mensaje son requeridos.", adminSelectAtLeastOne: "Selecciona al menos un usuario.",
+    adminSent: "Enviado", adminNotifSentTo: "Notificación enviada a", adminUsersSelected: "seleccionados", adminClear: "Limpiar",
+    adminBookingDetails: "Detalles de Reserva", adminFullName: "Nombre Completo", adminEmail: "Correo", adminPhone: "Teléfono",
+    adminTravelers: "Viajeros", adminCheckIn: "Entrada", adminCheckOut: "Salida", adminDatePlaceholder: "AAAA-MM-DD",
+    adminUpdated: "Actualizado", adminBookingUpdated: "Detalles de reserva actualizados (demo local).",
+    adminAll: "Todos", adminNoBookingsFound: "No se encontraron reservas", adminConfirm: "Confirmar", adminPax: "pax", adminNA: "N/D",
+    adminEditDestination: "Editar Destino", adminAddDestinationTitle: "Agregar Destino",
+    adminCoverImage: "Imagen de Portada", adminName: "Nombre", adminNamePlaceholder: "ej. Santorini",
+    adminCountry: "País", adminCountryPlaceholder: "ej. Grecia", adminRating: "Calificación (1-5)",
+    adminDescription: "Descripción", adminDescPlaceholder: "Descripción breve...",
+    adminSearchDestinations: "Buscar destinos...", adminAddNewDestination: "Agregar Nuevo Destino",
+    adminDeleteDestination: "Eliminar Destino", adminDeleteConfirm: "¿Estás seguro de que quieres eliminar",
+    adminNameCountryRequired: "Nombre y país son requeridos.",
+    adminEditPackage: "Editar Paquete", adminAddPackageTitle: "Agregar Paquete",
+    adminPackageImage: "Imagen del Paquete", adminPackageTitle: "Título", adminTitlePlaceholder: "ej. Vacaciones en la Playa",
+    adminLocation: "Ubicación", adminLocationPlaceholder: "ej. Malasia",
+    adminDuration: "Duración", adminDurationPlaceholder: "ej. 7D/6N", adminMaxPax: "Máx. Personas",
+    adminPrice: "Precio ($)", adminPricePlaceholder: "ej. 750",
+    adminPackageDescPlaceholder: "Descripción del paquete...", adminSearchPackages: "Buscar paquetes...",
+    adminAddNewPackage: "Agregar Nuevo Paquete", adminDeletePackage: "Eliminar Paquete",
+    adminTitleLocationPriceRequired: "Título, ubicación y precio son requeridos.", adminReviews: "reseñas",
+    adminEditUser: "Editar Usuario", adminAvatar: "Avatar", adminRole: "Rol",
+    adminSearchUsers: "Buscar usuarios...", adminActive: "Activo", adminSuspended: "Suspendido", adminAdmins: "Admins",
+    adminJoined: "Registrado", adminBookingsCount: "reservas",
+    adminPromote: "Promover", adminDemote: "Degradar", adminSuspend: "Suspender", adminActivate: "Activar",
+    adminNameEmailRequired: "Nombre y correo son requeridos.",
+    adminConversations: "Conversaciones", adminLive: "En Vivo", adminNoConvoYet: "Aún no hay conversaciones",
+    adminNoConvoDesc: "Cuando los usuarios inicien chat en vivo,\nsus conversaciones aparecerán aquí.",
+    adminNoMessages: "Aún no hay mensajes", adminReopen: "Reabrir", adminClose: "Cerrar",
+    adminConvoClosed: "Conversación cerrada", adminTypeReply: "Escribe una respuesta...",
+    adminYou: "Tú: ", adminClosed: "Cerrado", adminUnread: "no leídos",
   },
   fr: {
     tabHome: "Accueil", tabExplore: "Explorer", tabTrips: "Voyages", tabSaved: "Sauvegardé", tabGallery: "Galerie",
@@ -870,6 +1473,137 @@ const translations: Record<Language, Translations> = {
     addToBooking: "Ajouter à la Réservation", skipExtras: "Passer, Continuer à la Confirmation",
     // Featured
     featuredBadge: "En Vedette", sponsoredBadge: "Sponsorisé", trendingBadge: "Tendance",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "App de Voyage #1 avec IA",
+    landingHeroTitle: "Explorez Le\nMonde Avec\nTourly", landingHeroSubtitle: "Découvrez des destinations à couper le souffle, des forfaits sélectionnés et la planification de voyage par IA — le tout dans une seule app.",
+    landingCTA: "Commencer",
+    landingStatTrips: "50K+", landingStatTripsLabel: "Voyages Réservés", landingStatDest: "120+", landingStatDestLabel: "Destinations", landingStatRating: "4.9", landingStatRatingLabel: "Note",
+    landingWhyEyebrow: "Pourquoi Tourly", landingWhyTitle: "Voyagez Malin,\nPas Difficile", landingWhySubtitle: "Tout ce dont vous avez besoin pour le voyage parfait, propulsé par la technologie moderne et l'expertise locale.",
+    landingFeatureAI: "Planificateur IA", landingFeatureAIDesc: "Obtenez des itinéraires personnalisés créés par une IA avancée selon vos préférences et budget.",
+    landingFeatureDest: "50+ Destinations", landingFeatureDestDesc: "Explorez des destinations sélectionnées sur 6 continents, des joyaux cachés aux monuments emblématiques.",
+    landingFeatureSecure: "Réservation Sécurisée", landingFeatureSecureDesc: "Paiements chiffrés de bout en bout avec annulation flexible et protection de remboursement complète.",
+    landingFeatureConcierge: "Concierge 24/7", landingFeatureConciergeDesc: "Support en temps réel d'experts locaux qui connaissent chaque recoin de votre destination.",
+    landingTrendingEyebrow: "Tendances", landingTrendingTitle: "Destinations Populaires",
+    landingCuratedEyebrow: "Sélectionné Pour Vous", landingCuratedTitle: "Forfaits Voyage",
+    landingTestimonialsEyebrow: "Témoignages", landingTestimonialsTitle: "Adoré par les Voyageurs",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "New York, États-Unis",
+    landingTestimonial1Quote: "Tourly a rendu la planification de notre lune de miel si facile. L'IA a suggéré des endroits que nous n'aurions jamais trouvés!",
+    landingTestimonial2Name: "Kenji Tanaka", landingTestimonial2Location: "Tokyo, Japon",
+    landingTestimonial2Quote: "Le service concierge était incroyable. C'était comme avoir un ami local dans chaque ville visitée.",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "Accra, Ghana",
+    landingTestimonial3Quote: "La meilleure app de voyage que j'ai utilisée. Les offres sont réelles et la réservation est fluide.",
+    landingReadyCTA: "Prêt pour Votre Prochaine Aventure?", landingReadyDesc: "Rejoignez plus de 50 000 voyageurs qui planifient et réservent avec Tourly. Créez votre compte gratuit aujourd'hui.",
+    landingCreateAccount: "Créer un Compte Gratuit",
+    landingFooterTagline: "Rendre le voyage accessible, personnalisé et inoubliable depuis 2024.",
+    landingFooterAbout: "À Propos", landingFooterContact: "Contact", landingFooterDeals: "Offres",
+    landingFooterCopyright: "© 2024–2026 Tourly. Tous droits réservés.",
+    landingExplore: "Explorer",
+    // Download page
+    downloadTitle: "Obtenir l'App",
+    downloadHeroSubtitle: "Votre compagnon de voyage de poche.\nExplorez, réservez et partez — tout depuis une app.",
+    downloadOnThe: "Télécharger sur", downloadGetItOn: "Disponible sur", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "Note", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "Téléchargements",
+    downloadStatDest: "100+", downloadStatDestLabel: "Destinations", downloadStatSupport: "24/7", downloadStatSupportLabel: "Support",
+    downloadExclusiveEyebrow: "Exclusif App", downloadWhyTitle: "Pourquoi Télécharger Tourly?", downloadWhySubtitle: "L'app débloque des fonctionnalités indisponibles dans le navigateur.",
+    downloadFeatureFast: "Ultra Rapide", downloadFeatureFastDesc: "Performance native plus fluide que toute expérience navigateur.",
+    downloadFeatureNotif: "Notifications Push", downloadFeatureNotifDesc: "Ne manquez aucune offre — recevez des alertes instantanées sur les ventes flash.",
+    downloadFeatureOffline: "Accès Hors Ligne", downloadFeatureOfflineDesc: "Sauvegardez itinéraires et cartes quand vous êtes hors réseau.",
+    downloadFeatureOneTap: "Réservation en Un Clic", downloadFeatureOneTapDesc: "Réservez en secondes avec paiement et infos sauvegardés.",
+    downloadFeatureAI: "Planificateur IA", downloadFeatureAIDesc: "Obtenez des suggestions de voyage personnalisées par IA, intégrées directement.",
+    downloadFeatureSecure: "Sécurisé et Privé", downloadFeatureSecureDesc: "Connexion biométrique et données chiffrées protègent vos informations.",
+    downloadReviewsEyebrow: "Adoré par les Voyageurs", downloadReviewsTitle: "Ce Que Disent les Utilisateurs",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "La meilleure app de voyage! J'ai réservé mon voyage à Bali en moins de 2 minutes.",
+    downloadReview2Name: "James K.", downloadReview2Text: "Les cartes hors ligne m'ont sauvé au Japon rural. Un vrai changement de jeu.",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "Les notifications ont capté une vente flash de 40%. J'ai économisé 300$ sur mon voyage!",
+    downloadCompareTitle: "App vs. Navigateur", downloadCompareApp: "App", downloadCompareWeb: "Web",
+    downloadComparePush: "Notifications Push", downloadCompareOffline: "Accès Hors Ligne", downloadCompareBiometric: "Connexion Biométrique",
+    downloadCompareOneTap: "Réservation en Un Clic", downloadCompareAI: "Planificateur IA", downloadCompareBrowse: "Explorer Destinations",
+    downloadBottomCTATitle: "Prêt à Voyager Plus Malin?", downloadBottomCTADesc: "Téléchargez Tourly gratuitement sur iOS et Android.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    // Auth extras
+    authError: "Erreur", authInvalidCredentials: "Identifiants invalides",
+    authSignInFailed: "Échec de connexion. Veuillez réessayer.", authSignUpFailed: "Échec d'inscription. Veuillez réessayer.",
+    authOAuthFailed: "Échec OAuth. Veuillez réessayer.", authGoogle: "Google", authApple: "Apple",
+    // Profile extras
+    getTheApp: "Obtenir l'App", adminPanel: "Panneau Admin", adminPanelDesc: "Gérer réservations, utilisateurs et destinations",
+    tierElite: "Élite", tierPro: "Pro", aiLabel: "IA",
+    premiumNoPurchases: "Aucun achat précédent trouvé.",
+    thankYou: "Merci!", shareDestination: "Découvrez cette destination sur Tourly!", sharePackage: "Découvrez ce forfait sur Tourly!",
+    shareVia: "Partager via", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "E-mail", shareSMS: "SMS", shareCopyLink: "Copier le lien", shareLinkCopied: "Lien copié dans le presse-papiers !", shareMoreOptions: "Plus d'options",
+    aiResponseBali: "Bali est un choix fantastique! Voici un itinéraire suggéré de 5 jours:\n\n📍 Jour 1: Arrivée, explorer la plage de Seminyak\n📍 Jour 2: Rizières d'Ubud et Forêt des Singes\n📍 Jour 3: Temple d'Uluwatu et Danse Kecak\n📍 Jour 4: Excursion à Nusa Penida\n📍 Jour 5: Journée spa et départ\n\nMeilleure période: Avril-Octobre (saison sèche). Budget: ~50-150$/jour selon le confort.",
+    aiResponseFamily: "Superbes destinations familiales:\n\n🏖️ Maldives - villas sur l'eau, snorkeling\n🏰 Japon - Tokyo Disneyland, expériences culturelles\n🌴 Thaïlande - plages, sanctuaires d'éléphants\n🏔️ Suisse - trains panoramiques, randonnée\n🦁 Kenya - safaris familiaux\n\nVoulez-vous plus de détails?",
+    aiResponseBudget: "Meilleurs conseils voyage économique:\n\n💡 Voyagez en mi-saison (printemps/automne)\n💡 Réservez les vols le mardi\n💡 Utilisez les transports locaux\n💡 Séjournez en auberges\n💡 Mangez aux marchés locaux\n💡 Prenez des pass touristiques\n\nDestinations abordables: Vietnam, Portugal, Mexique, Thaïlande, Maroc.",
+    aiResponseEurope: "Planification voyage Europe:\n\n🇫🇷 Paris - 3 jours minimum\n🇮🇹 Rome/Florence - 4 jours\n🇪🇸 Barcelone - 2-3 jours\n🇬🇷 Santorin - 2-3 jours\n\n✈️ Astuce: Utilisez des compagnies low-cost entre les villes. Prenez un pass Eurail. Budget: 60-150€/jour.",
+    aiResponseDefault: "Excellente question! Je recommande d'explorer nos forfaits pour les meilleures offres. Consultez aussi notre page destinations.\n\nVoulez-vous que je planifie un voyage? Dites-moi:\n• Où aller\n• Combien de jours\n• Votre budget\n• Style de voyage (aventure, détente, culture)",
+    bannerGetApp: "Obtenez l'App Tourly", bannerFasterOn: "Expérience plus rapide sur", bannerOpen: "Ouvrir",
+    chatWelcomeBack: "Bon retour! 👋 Ravi de vous revoir. Comment puis-je vous aider?",
+    chatNewConvo: "Nouvelle conversation! ✨ Le chat précédent a été archivé. Comment puis-je aider?",
+    chatFreshConvo: "Nouvelle conversation! ✨ En quoi puis-je vous aider?",
+    chatLiveAgent: "Agent en Direct", chatConnectedTeam: "Connecté à l'équipe support", chatEnd: "Terminer",
+    chatConvoClosed: "Cette conversation a été fermée", chatStartNew: "Démarrer une nouvelle conversation",
+    chatHereToHelp: "Nous sommes là pour aider — posez-nous vos questions",
+    chatReturnLive: "Retour au Chat en Direct", chatActiveConvo: "Vous avez une conversation active avec le support",
+    chatConnectAgent: "Chatter avec un Agent", chatConnectAgentDesc: "Connectez-vous à notre équipe support pour une aide en temps réel",
+    chatConnectedLive: "Connecté au Support en Direct", chatAgentRespondSoon: "Un agent répondra sous peu.\nÉcrivez un message pour commencer.",
+    chatEnded: "Chat terminé",
+    chatArchivedChat: "Chat Archivé", chatHistory: "Historique de Chat", chatClearAll: "Tout Effacer", chatDelete: "Supprimer",
+    chatNoArchives: "Pas de chats archivés", chatLiveAgentChat: "Chat Agent en Direct", chatBotConvo: "Conversation Bot",
+    chatBackToArchives: "Retour aux archives", chatConversations: "conversations", chatMessages: "messages",
+    chatTranslate: "Traduire", chatShowOriginal: "Afficher l'original", chatTranslating: "Traduction…",
+    chatTranslateAll: "Tout traduire", chatAutoTranslate: "Traduction automatique",
+    chatTranslatedFrom: "Traduit de", chatTranslationFailed: "Échec de la traduction",
+    adminTitle: "Panneau Admin", adminDashboardTitle: "Tableau de Bord Admin", adminDashboardSubtitle: "Gérez votre plateforme de voyage",
+    adminTabDashboard: "Tableau", adminTabBookings: "Réservations", adminTabChat: "Chat",
+    adminTabDestinations: "Destinations", adminTabPackages: "Forfaits", adminTabUsers: "Utilisateurs",
+    adminCancel: "Annuler", adminSave: "Enregistrer", adminEdit: "Modifier", adminDelete: "Supprimer", adminSearch: "Rechercher",
+    adminValidation: "Validation", adminTapUpload: "Appuyez pour télécharger", adminChange: "Changer", adminRemove: "Retirer",
+    adminPermissionNeeded: "Permission nécessaire", adminGrantCameraAccess: "Veuillez accorder l'accès à la pellicule pour télécharger des images.",
+    adminTotalBookings: "Total Réservations", adminTotalBookingsTrend: "+12% ce mois",
+    adminRevenue: "Revenus", adminRevenueTrend: "+8% ce mois",
+    adminTotalUsers: "Total Utilisateurs", adminTotalUsersTrend: "+3 cette semaine",
+    adminDestinations: "Destinations",
+    adminQuickActions: "Actions Rapides", adminAddDestination: "Ajouter Destination", adminCreatePackage: "Créer Forfait",
+    adminSendNotification: "Envoyer Notification", adminViewReports: "Voir Rapports",
+    adminRecentBookings: "Réservations Récentes", adminNoBookingsYet: "Aucune réservation",
+    adminReports: "Rapports", adminDone: "Terminé",
+    adminBookingStatus: "Statut Réservation", adminConfirmed: "Confirmé", adminPending: "En Attente", adminCancelled: "Annulé",
+    adminMonthlyBookings: "Réservations Mensuelles (6 Derniers Mois)", adminTotalPeriod: "Total cette période",
+    adminRevenueLabel: "revenus", adminRevenueByPackage: "Revenus par Forfait", adminNoRevenueYet: "Pas de données de revenus",
+    adminLatestBookings: "Dernières Réservations", adminCustomTrip: "Voyage Sur Mesure", adminAvgBooking: "Moy / Réservation",
+    adminSendTo: "Envoyer À", adminAllUsers: "Tous les Utilisateurs", adminSelectUsers: "Sélectionner Utilisateurs",
+    adminNotifTitle: "Titre", adminNotifTitlePlaceholder: "ex. Soldes d'Été — 30% de Réduction",
+    adminNotifMessage: "Message", adminNotifMessagePlaceholder: "Message de notification...", adminNotifType: "Type",
+    adminTitleMessageRequired: "Titre et message requis.", adminSelectAtLeastOne: "Sélectionnez au moins un utilisateur.",
+    adminSent: "Envoyé", adminNotifSentTo: "Notification envoyée à", adminUsersSelected: "sélectionnés", adminClear: "Effacer",
+    adminBookingDetails: "Détails Réservation", adminFullName: "Nom Complet", adminEmail: "Email", adminPhone: "Téléphone",
+    adminTravelers: "Voyageurs", adminCheckIn: "Arrivée", adminCheckOut: "Départ", adminDatePlaceholder: "AAAA-MM-JJ",
+    adminUpdated: "Mis à jour", adminBookingUpdated: "Détails de réservation mis à jour (démo locale).",
+    adminAll: "Tous", adminNoBookingsFound: "Aucune réservation trouvée", adminConfirm: "Confirmer", adminPax: "pax", adminNA: "N/D",
+    adminEditDestination: "Modifier Destination", adminAddDestinationTitle: "Ajouter Destination",
+    adminCoverImage: "Image de Couverture", adminName: "Nom", adminNamePlaceholder: "ex. Santorin",
+    adminCountry: "Pays", adminCountryPlaceholder: "ex. Grèce", adminRating: "Note (1-5)",
+    adminDescription: "Description", adminDescPlaceholder: "Courte description...",
+    adminSearchDestinations: "Rechercher destinations...", adminAddNewDestination: "Ajouter Nouvelle Destination",
+    adminDeleteDestination: "Supprimer Destination", adminDeleteConfirm: "Êtes-vous sûr de vouloir supprimer",
+    adminNameCountryRequired: "Nom et pays requis.",
+    adminEditPackage: "Modifier Forfait", adminAddPackageTitle: "Ajouter Forfait",
+    adminPackageImage: "Image Forfait", adminPackageTitle: "Titre", adminTitlePlaceholder: "ex. Vacances Plage",
+    adminLocation: "Lieu", adminLocationPlaceholder: "ex. Malaisie",
+    adminDuration: "Durée", adminDurationPlaceholder: "ex. 7J/6N", adminMaxPax: "Max Personnes",
+    adminPrice: "Prix ($)", adminPricePlaceholder: "ex. 750",
+    adminPackageDescPlaceholder: "Description du forfait...", adminSearchPackages: "Rechercher forfaits...",
+    adminAddNewPackage: "Ajouter Nouveau Forfait", adminDeletePackage: "Supprimer Forfait",
+    adminTitleLocationPriceRequired: "Titre, lieu et prix requis.", adminReviews: "avis",
+    adminEditUser: "Modifier Utilisateur", adminAvatar: "Avatar", adminRole: "Rôle",
+    adminSearchUsers: "Rechercher utilisateurs...", adminActive: "Actif", adminSuspended: "Suspendu", adminAdmins: "Admins",
+    adminJoined: "Inscrit", adminBookingsCount: "réservations",
+    adminPromote: "Promouvoir", adminDemote: "Rétrograder", adminSuspend: "Suspendre", adminActivate: "Activer",
+    adminNameEmailRequired: "Nom et email requis.",
+    adminConversations: "Conversations", adminLive: "En Direct", adminNoConvoYet: "Aucune conversation",
+    adminNoConvoDesc: "Quand les utilisateurs démarrent un chat en direct,\nleurs conversations apparaîtront ici.",
+    adminNoMessages: "Aucun message", adminReopen: "Rouvrir", adminClose: "Fermer",
+    adminConvoClosed: "Conversation fermée", adminTypeReply: "Tapez une réponse...",
+    adminYou: "Vous: ", adminClosed: "Fermé", adminUnread: "non lus",
   },
   ja: {
     tabHome: "ホーム", tabExplore: "探索", tabTrips: "旅行", tabSaved: "保存済み", tabGallery: "ギャラリー",
@@ -1030,6 +1764,136 @@ const translations: Record<Language, Translations> = {
     addToBooking: "予約に追加", skipExtras: "スキップして確認へ",
     // Featured
     featuredBadge: "注目", sponsoredBadge: "スポンサー", trendingBadge: "トレンド",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "#1 AI搭載トラベルアプリ",
+    landingHeroTitle: "Tourlyで\n世界を\n探索しよう", landingHeroSubtitle: "息をのむような目的地、厳選パッケージ、AI旅行プランニング — すべてひとつのアプリで。",
+    landingCTA: "始めましょう",
+    landingStatTrips: "50K+", landingStatTripsLabel: "予約済み旅行", landingStatDest: "120+", landingStatDestLabel: "目的地", landingStatRating: "4.9", landingStatRatingLabel: "アプリ評価",
+    landingWhyEyebrow: "なぜTourly", landingWhyTitle: "賢く旅しよう、\n大変にならずに", landingWhySubtitle: "最新技術と地元の知恵で、完璧な旅に必要なすべてを。",
+    landingFeatureAI: "AI旅行プランナー", landingFeatureAIDesc: "あなたの好みと予算に基づいてAIが作成するパーソナライズされた旅程。",
+    landingFeatureDest: "50以上の目的地", landingFeatureDestDesc: "6大陸の隠れた名所から象徴的なランドマークまで、厳選された目的地を探索。",
+    landingFeatureSecure: "安全な予約", landingFeatureSecureDesc: "エンドツーエンド暗号化決済、柔軟なキャンセルと全額返金保証。",
+    landingFeatureConcierge: "24/7コンシェルジュ", landingFeatureConciergeDesc: "目的地の隅々を知る地元エキスパートからのリアルタイムサポート。",
+    landingTrendingEyebrow: "トレンド", landingTrendingTitle: "人気の目的地",
+    landingCuratedEyebrow: "あなたのために厳選", landingCuratedTitle: "トラベルパッケージ",
+    landingTestimonialsEyebrow: "お客様の声", landingTestimonialsTitle: "旅行者に愛されています",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "ニューヨーク、アメリカ",
+    landingTestimonial1Quote: "Tourlyのおかげでハネムーンの計画が楽になりました。AIが見つけられなかった場所を提案してくれました！",
+    landingTestimonial2Name: "田中健二", landingTestimonial2Location: "東京、日本",
+    landingTestimonial2Quote: "コンシェルジュサービスは素晴らしかった。訪れた各都市に地元の友人がいるような感覚でした。",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "アクラ、ガーナ",
+    landingTestimonial3Quote: "今まで使った中で最高の旅行アプリ。お得な情報は本物で、予約プロセスもスムーズです。",
+    landingReadyCTA: "次の冒険の準備はできましたか？", landingReadyDesc: "Tourlyで計画・予約する5万人以上の旅行者に加わりましょう。今すぐ無料アカウントを作成。",
+    landingCreateAccount: "無料アカウント作成",
+    landingFooterTagline: "2024年から旅行をアクセシブル、パーソナル、忘れられないものに。",
+    landingFooterAbout: "概要", landingFooterContact: "お問い合わせ", landingFooterDeals: "お得情報",
+    landingFooterCopyright: "© 2024–2026 Tourly. 全著作権所有。",
+    landingExplore: "探索",
+    // Download page
+    downloadTitle: "アプリを入手",
+    downloadHeroSubtitle: "ポケットの旅行コンパニオン。\n探索、予約、出発 — すべてひとつのアプリで。",
+    downloadOnThe: "でダウンロード", downloadGetItOn: "で入手", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "アプリ評価", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "ダウンロード",
+    downloadStatDest: "100+", downloadStatDestLabel: "目的地", downloadStatSupport: "24/7", downloadStatSupportLabel: "サポート",
+    downloadExclusiveEyebrow: "アプリ限定", downloadWhyTitle: "なぜTourlyをダウンロード？", downloadWhySubtitle: "アプリはブラウザでは使えない機能を解放します。",
+    downloadFeatureFast: "超高速", downloadFeatureFastDesc: "ブラウザより滑らかなネイティブパフォーマンス。",
+    downloadFeatureNotif: "プッシュ通知", downloadFeatureNotifDesc: "フラッシュセールや値下げの即時アラートで見逃しなし。",
+    downloadFeatureOffline: "オフラインアクセス", downloadFeatureOfflineDesc: "圏外でも使えるように旅程と地図を保存。",
+    downloadFeatureOneTap: "ワンタップ予約", downloadFeatureOneTapDesc: "保存済みの支払い・旅行者情報で数秒で予約。",
+    downloadFeatureAI: "AI旅行プランナー", downloadFeatureAIDesc: "AI搭載のパーソナライズされた旅行提案を直接アプリ内で。",
+    downloadFeatureSecure: "安全＆プライベート", downloadFeatureSecureDesc: "生体認証ログインと暗号化データで情報を安全に。",
+    downloadReviewsEyebrow: "旅行者に愛されています", downloadReviewsTitle: "ユーザーの声",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "今まで使った中で最高の旅行アプリ！バリ旅行を2分以内で予約しました。",
+    downloadReview2Name: "James K.", downloadReview2Text: "オフラインマップが日本の田舎で助けてくれました。まさにゲームチェンジャー。",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "プッシュ通知で40%フラッシュセールをキャッチ。旅行で$300節約！",
+    downloadCompareTitle: "アプリ vs. ブラウザ", downloadCompareApp: "アプリ", downloadCompareWeb: "Web",
+    downloadComparePush: "プッシュ通知", downloadCompareOffline: "オフラインアクセス", downloadCompareBiometric: "生体認証ログイン",
+    downloadCompareOneTap: "ワンタップ予約", downloadCompareAI: "AI旅行プランナー", downloadCompareBrowse: "目的地を閲覧",
+    downloadBottomCTATitle: "もっと賢く旅する準備はできましたか？", downloadBottomCTADesc: "TourlyをiOSとAndroidで無料ダウンロード。",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    // Auth extras
+    authError: "エラー", authInvalidCredentials: "無効な資格情報",
+    authSignInFailed: "サインインに失敗しました。もう一度お試しください。", authSignUpFailed: "サインアップに失敗しました。もう一度お試しください。",
+    authOAuthFailed: "OAuthログインに失敗しました。もう一度お試しください。", authGoogle: "Google", authApple: "Apple",
+    getTheApp: "アプリを入手", adminPanel: "管理パネル", adminPanelDesc: "予約、ユーザー、目的地を管理",
+    tierElite: "エリート", tierPro: "プロ", aiLabel: "AI",
+    premiumNoPurchases: "以前の購入は見つかりませんでした。",
+    thankYou: "ありがとうございます！", shareDestination: "Tourlyでこの目的地をチェック！", sharePackage: "Tourlyでこのパッケージをチェック！",
+    shareVia: "共有方法", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "メール", shareSMS: "SMS", shareCopyLink: "リンクをコピー", shareLinkCopied: "リンクをクリップボードにコピーしました！", shareMoreOptions: "その他のオプション",
+    aiResponseBali: "バリは素晴らしい選択です！5日間のおすすめ旅程です:\n\n📍 1日目: 到着、スミニャックビーチを散策\n📍 2日目: ウブドの棚田とモンキーフォレスト\n📍 3日目: ウルワツ寺院とケチャックダンス\n📍 4日目: ヌサペニダ日帰り旅行\n📍 5日目: スパデーと出発\n\nベストシーズン: 4月-10月（乾季）。予算: 快適さに応じて〜$50-150/日。",
+    aiResponseFamily: "素晴らしい家族旅行先:\n\n🏖️ モルディブ - 水上ヴィラ、シュノーケリング\n🏰 日本 - 東京ディズニーランド、文化体験\n🌴 タイ - ビーチ、象の保護施設\n🏔️ スイス - 絶景列車、ハイキング\n🦁 ケニア - ファミリーサファリ\n\n詳しく知りたいものはありますか？",
+    aiResponseBudget: "予算旅行のベストヒント:\n\n💡 ショルダーシーズン（春/秋）に旅行\n💡 火曜日にフライト予約でお得に\n💡 タクシーの代わりに地元の交通機関を利用\n💡 ゲストハウスやホステルに宿泊\n💡 地元の市場や屋台で食事\n💡 観光パスを取得\n\n格安旅行先: ベトナム、ポルトガル、メキシコ、タイ、モロッコ。",
+    aiResponseEurope: "ヨーロッパ旅行計画:\n\n🇫🇷 パリ - 最低3日\n🇮🇹 ローマ/フィレンツェ - 4日\n🇪🇸 バルセロナ - 2-3日\n🇬🇷 サントリーニ - 2-3日\n\n✈️ プロヒント: 都市間はLCCを利用。長距離にはユーレイルパス。予算: €60-150/日。",
+    aiResponseDefault: "素晴らしい質問です！最高のお得情報については厳選パッケージをご覧ください。目的地ページもインスピレーションに。\n\n特定の旅行を計画しましょうか？教えてください:\n• 行き先\n• 日数\n• 予算範囲\n• 旅のスタイル（冒険、リラックス、文化）",
+    bannerGetApp: "Tourlyアプリを入手", bannerFasterOn: "より速い体験", bannerOpen: "開く",
+    chatWelcomeBack: "おかえりなさい！👋 またお会いできて嬉しいです。今日はどうされましたか？",
+    chatNewConvo: "新しい会話を開始！✨ 前のチャットはアーカイブされました。どうお手伝いしましょうか？",
+    chatFreshConvo: "新しい会話を開始！✨ 何かお手伝いできますか？",
+    chatLiveAgent: "ライブエージェント", chatConnectedTeam: "サポートチームに接続中", chatEnd: "終了",
+    chatConvoClosed: "この会話は閉じられました", chatStartNew: "新しい会話を開始",
+    chatHereToHelp: "お気軽にお問い合わせください",
+    chatReturnLive: "ライブチャットに戻る", chatActiveConvo: "サポートとの会話が進行中です",
+    chatConnectAgent: "エージェントとチャット", chatConnectAgentDesc: "リアルタイムヘルプのためサポートチームに接続",
+    chatConnectedLive: "ライブサポートに接続", chatAgentRespondSoon: "サポートエージェントがまもなく応答します。\nメッセージを入力して開始してください。",
+    chatEnded: "チャット終了",
+    chatArchivedChat: "アーカイブされたチャット", chatHistory: "チャット履歴", chatClearAll: "すべてクリア", chatDelete: "削除",
+    chatNoArchives: "アーカイブされたチャットはありません", chatLiveAgentChat: "ライブエージェントチャット", chatBotConvo: "ボット会話",
+    chatBackToArchives: "アーカイブに戻る", chatConversations: "会話", chatMessages: "メッセージ",
+    chatTranslate: "翻訳", chatShowOriginal: "原文を表示", chatTranslating: "翻訳中…",
+    chatTranslateAll: "すべて翻訳", chatAutoTranslate: "自動翻訳",
+    chatTranslatedFrom: "翻訳元", chatTranslationFailed: "翻訳に失敗しました",
+    adminTitle: "管理パネル", adminDashboardTitle: "管理ダッシュボード", adminDashboardSubtitle: "旅行プラットフォームを管理",
+    adminTabDashboard: "ダッシュボード", adminTabBookings: "予約", adminTabChat: "チャット",
+    adminTabDestinations: "目的地", adminTabPackages: "パッケージ", adminTabUsers: "ユーザー",
+    adminCancel: "キャンセル", adminSave: "保存", adminEdit: "編集", adminDelete: "削除", adminSearch: "検索",
+    adminValidation: "バリデーション", adminTapUpload: "タップしてアップロード", adminChange: "変更", adminRemove: "削除",
+    adminPermissionNeeded: "許可が必要", adminGrantCameraAccess: "画像をアップロードするにはカメラロールへのアクセスを許可してください。",
+    adminTotalBookings: "予約総数", adminTotalBookingsTrend: "今月+12%",
+    adminRevenue: "収益", adminRevenueTrend: "今月+8%",
+    adminTotalUsers: "ユーザー総数", adminTotalUsersTrend: "今週+3",
+    adminDestinations: "目的地",
+    adminQuickActions: "クイックアクション", adminAddDestination: "目的地追加", adminCreatePackage: "パッケージ作成",
+    adminSendNotification: "通知送信", adminViewReports: "レポート表示",
+    adminRecentBookings: "最近の予約", adminNoBookingsYet: "まだ予約はありません",
+    adminReports: "レポート", adminDone: "完了",
+    adminBookingStatus: "予約状況", adminConfirmed: "確認済み", adminPending: "保留中", adminCancelled: "キャンセル済み",
+    adminMonthlyBookings: "月間予約（過去6ヶ月）", adminTotalPeriod: "この期間の合計",
+    adminRevenueLabel: "収益", adminRevenueByPackage: "パッケージ別収益", adminNoRevenueYet: "収益データなし",
+    adminLatestBookings: "最新の予約", adminCustomTrip: "カスタム旅行", adminAvgBooking: "平均/予約",
+    adminSendTo: "送信先", adminAllUsers: "全ユーザー", adminSelectUsers: "ユーザー選択",
+    adminNotifTitle: "タイトル", adminNotifTitlePlaceholder: "例：夏のセール — 30%オフ",
+    adminNotifMessage: "メッセージ", adminNotifMessagePlaceholder: "通知メッセージ...", adminNotifType: "タイプ",
+    adminTitleMessageRequired: "タイトルとメッセージが必要です。", adminSelectAtLeastOne: "少なくとも1人のユーザーを選択してください。",
+    adminSent: "送信済み", adminNotifSentTo: "通知送信先", adminUsersSelected: "選択済み", adminClear: "クリア",
+    adminBookingDetails: "予約詳細", adminFullName: "氏名", adminEmail: "メール", adminPhone: "電話",
+    adminTravelers: "旅行者", adminCheckIn: "チェックイン", adminCheckOut: "チェックアウト", adminDatePlaceholder: "YYYY-MM-DD",
+    adminUpdated: "更新済み", adminBookingUpdated: "予約詳細が更新されました（ローカルデモ）。",
+    adminAll: "すべて", adminNoBookingsFound: "予約が見つかりません", adminConfirm: "確認", adminPax: "名", adminNA: "N/A",
+    adminEditDestination: "目的地編集", adminAddDestinationTitle: "目的地追加",
+    adminCoverImage: "カバー画像", adminName: "名前", adminNamePlaceholder: "例：サントリーニ",
+    adminCountry: "国", adminCountryPlaceholder: "例：ギリシャ", adminRating: "評価 (1-5)",
+    adminDescription: "説明", adminDescPlaceholder: "簡単な説明...",
+    adminSearchDestinations: "目的地を検索...", adminAddNewDestination: "新しい目的地追加",
+    adminDeleteDestination: "目的地削除", adminDeleteConfirm: "本当に削除しますか",
+    adminNameCountryRequired: "名前と国が必要です。",
+    adminEditPackage: "パッケージ編集", adminAddPackageTitle: "パッケージ追加",
+    adminPackageImage: "パッケージ画像", adminPackageTitle: "タイトル", adminTitlePlaceholder: "例：ビーチホリデー",
+    adminLocation: "場所", adminLocationPlaceholder: "例：マレーシア",
+    adminDuration: "期間", adminDurationPlaceholder: "例：7日/6泊", adminMaxPax: "最大人数",
+    adminPrice: "価格 ($)", adminPricePlaceholder: "例：750",
+    adminPackageDescPlaceholder: "パッケージの説明...", adminSearchPackages: "パッケージを検索...",
+    adminAddNewPackage: "新しいパッケージ追加", adminDeletePackage: "パッケージ削除",
+    adminTitleLocationPriceRequired: "タイトル、場所、価格が必要です。", adminReviews: "レビュー",
+    adminEditUser: "ユーザー編集", adminAvatar: "アバター", adminRole: "ロール",
+    adminSearchUsers: "ユーザーを検索...", adminActive: "アクティブ", adminSuspended: "停止中", adminAdmins: "管理者",
+    adminJoined: "参加日", adminBookingsCount: "予約",
+    adminPromote: "昇格", adminDemote: "降格", adminSuspend: "停止", adminActivate: "有効化",
+    adminNameEmailRequired: "名前とメールが必要です。",
+    adminConversations: "会話", adminLive: "ライブ", adminNoConvoYet: "まだ会話はありません",
+    adminNoConvoDesc: "ユーザーがライブチャットを開始すると、\nここに会話が表示されます。",
+    adminNoMessages: "メッセージなし", adminReopen: "再開", adminClose: "閉じる",
+    adminConvoClosed: "会話が閉じられました", adminTypeReply: "返信を入力...",
+    adminYou: "あなた: ", adminClosed: "クローズ", adminUnread: "未読",
   },
   ar: {
     tabHome: "الرئيسية", tabExplore: "استكشف", tabTrips: "الرحلات", tabSaved: "المحفوظة", tabGallery: "المعرض",
@@ -1190,6 +2054,135 @@ const translations: Record<Language, Translations> = {
     addToBooking: "إضافة إلى الحجز", skipExtras: "تخطي والمتابعة للتأكيد",
     // Featured
     featuredBadge: "مميز", sponsoredBadge: "مُموَّل", trendingBadge: "رائج",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "تطبيق السفر #1 بالذكاء الاصطناعي",
+    landingHeroTitle: "استكشف\nالعالم مع\nTourly", landingHeroSubtitle: "اكتشف وجهات خلابة وباقات مختارة وتخطيط سفر بالذكاء الاصطناعي — كل ذلك في تطبيق واحد.",
+    landingCTA: "ابدأ الآن",
+    landingStatTrips: "+50 ألف", landingStatTripsLabel: "رحلات محجوزة", landingStatDest: "+120", landingStatDestLabel: "وجهات", landingStatRating: "4.9", landingStatRatingLabel: "تقييم التطبيق",
+    landingWhyEyebrow: "لماذا Tourly", landingWhyTitle: "سافر بذكاء،\nليس بصعوبة", landingWhySubtitle: "كل ما تحتاجه للرحلة المثالية، مدعوم بالتكنولوجيا الحديثة والخبرة المحلية.",
+    landingFeatureAI: "مخطط رحلات ذكي", landingFeatureAIDesc: "احصل على برامج رحلات مخصصة من الذكاء الاصطناعي بناءً على تفضيلاتك وميزانيتك.",
+    landingFeatureDest: "+50 وجهة", landingFeatureDestDesc: "استكشف وجهات مختارة عبر 6 قارات، من الجواهر الخفية إلى المعالم الشهيرة.",
+    landingFeatureSecure: "حجز آمن", landingFeatureSecureDesc: "مدفوعات مشفرة من طرف لطرف مع إلغاء مرن وحماية كاملة للاسترداد.",
+    landingFeatureConcierge: "كونسيرج 24/7", landingFeatureConciergeDesc: "دعم فوري من خبراء محليين يعرفون كل زاوية في وجهتك.",
+    landingTrendingEyebrow: "رائج الآن", landingTrendingTitle: "الوجهات الشائعة",
+    landingCuratedEyebrow: "مختار لك", landingCuratedTitle: "باقات السفر",
+    landingTestimonialsEyebrow: "آراء العملاء", landingTestimonialsTitle: "محبوب من المسافرين",
+    landingTestimonial1Name: "سارة ميتشل", landingTestimonial1Location: "نيويورك، الولايات المتحدة",
+    landingTestimonial1Quote: "Tourly جعل تخطيط شهر العسل سهلاً جداً. اقترح الذكاء الاصطناعي أماكن لم نكن لنجدها أبداً!",
+    landingTestimonial2Name: "كينجي تاناكا", landingTestimonial2Location: "طوكيو، اليابان",
+    landingTestimonial2Quote: "خدمة الكونسيرج كانت رائعة. شعرت وكأن لدي صديقاً محلياً في كل مدينة زرناها.",
+    landingTestimonial3Name: "أمارا أوسي", landingTestimonial3Location: "أكرا، غانا",
+    landingTestimonial3Quote: "أفضل تطبيق سفر استخدمته. العروض حقيقية وعملية الحجز سلسة.",
+    landingReadyCTA: "مستعد لمغامرتك القادمة؟", landingReadyDesc: "انضم إلى أكثر من 50,000 مسافر يخططون ويحجزون مع Tourly. أنشئ حسابك المجاني اليوم.",
+    landingCreateAccount: "إنشاء حساب مجاني",
+    landingFooterTagline: "نجعل السفر متاحاً وشخصياً ولا يُنسى منذ 2024.",
+    landingFooterAbout: "عنا", landingFooterContact: "اتصل", landingFooterDeals: "عروض",
+    landingFooterCopyright: "© 2024–2026 Tourly. جميع الحقوق محفوظة.",
+    landingExplore: "استكشف",
+    // Download page
+    downloadTitle: "حمّل التطبيق",
+    downloadHeroSubtitle: "رفيق سفرك في جيبك.\nاستكشف واحجز وانطلق — كل شيء من تطبيق واحد.",
+    downloadOnThe: "حمّل من", downloadGetItOn: "متوفر على", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "تقييم التطبيق", downloadStatDownloads: "+500 ألف", downloadStatDownloadsLabel: "تحميل",
+    downloadStatDest: "+100", downloadStatDestLabel: "وجهات", downloadStatSupport: "24/7", downloadStatSupportLabel: "دعم",
+    downloadExclusiveEyebrow: "حصري للتطبيق", downloadWhyTitle: "لماذا تحمّل Tourly؟", downloadWhySubtitle: "التطبيق يفتح ميزات لا تتوفر في المتصفح.",
+    downloadFeatureFast: "سريع جداً", downloadFeatureFastDesc: "أداء أصلي أكثر سلاسة من أي متصفح.",
+    downloadFeatureNotif: "إشعارات فورية", downloadFeatureNotifDesc: "لا تفوت أي عرض — احصل على تنبيهات فورية لعروض الفلاش.",
+    downloadFeatureOffline: "وصول بدون إنترنت", downloadFeatureOfflineDesc: "احفظ البرامج والخرائط لاستخدامها بدون إنترنت.",
+    downloadFeatureOneTap: "حجز بلمسة واحدة", downloadFeatureOneTapDesc: "احجز في ثوانٍ مع بيانات الدفع المحفوظة.",
+    downloadFeatureAI: "مخطط رحلات ذكي", downloadFeatureAIDesc: "اقتراحات سفر مخصصة بالذكاء الاصطناعي مدمجة مباشرة.",
+    downloadFeatureSecure: "آمن وخاص", downloadFeatureSecureDesc: "تسجيل دخول بيومتري وبيانات مشفرة تحمي معلوماتك.",
+    downloadReviewsEyebrow: "محبوب من المسافرين", downloadReviewsTitle: "ماذا يقول المستخدمون",
+    downloadReview1Name: "سارة م.", downloadReview1Text: "أفضل تطبيق سفر استخدمته! حجزت رحلتي لبالي في أقل من دقيقتين.",
+    downloadReview2Name: "جيمس ك.", downloadReview2Text: "الخرائط بدون إنترنت أنقذتني في ريف اليابان. تغيير حقيقي للعبة.",
+    downloadReview3Name: "عائشة ر.", downloadReview3Text: "الإشعارات التقطت عرض فلاش 40%. وفّرت 300$ في رحلتي!",
+    downloadCompareTitle: "التطبيق مقابل المتصفح", downloadCompareApp: "التطبيق", downloadCompareWeb: "ويب",
+    downloadComparePush: "إشعارات فورية", downloadCompareOffline: "وصول بدون إنترنت", downloadCompareBiometric: "تسجيل بيومتري",
+    downloadCompareOneTap: "حجز بلمسة واحدة", downloadCompareAI: "مخطط رحلات ذكي", downloadCompareBrowse: "تصفح الوجهات",
+    downloadBottomCTATitle: "مستعد للسفر بذكاء؟", downloadBottomCTADesc: "حمّل Tourly مجاناً على iOS و Android.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    authError: "خطأ", authInvalidCredentials: "بيانات غير صحيحة",
+    authSignInFailed: "فشل تسجيل الدخول. حاول مرة أخرى.", authSignUpFailed: "فشل التسجيل. حاول مرة أخرى.",
+    authOAuthFailed: "فشل تسجيل OAuth. حاول مرة أخرى.", authGoogle: "جوجل", authApple: "آبل",
+    getTheApp: "حمّل التطبيق", adminPanel: "لوحة الإدارة", adminPanelDesc: "إدارة الحجوزات والمستخدمين والوجهات",
+    tierElite: "نخبة", tierPro: "برو", aiLabel: "ذكاء اصطناعي",
+    premiumNoPurchases: "لم يتم العثور على مشتريات سابقة.",
+    thankYou: "شكراً لك!", shareDestination: "تحقق من هذه الوجهة على Tourly!", sharePackage: "تحقق من هذه الباقة على Tourly!",
+    shareVia: "مشاركة عبر", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "البريد الإلكتروني", shareSMS: "SMS", shareCopyLink: "نسخ الرابط", shareLinkCopied: "تم نسخ الرابط إلى الحافظة!", shareMoreOptions: "خيارات أخرى",
+    aiResponseBali: "بالي خيار رائع! إليك برنامج مقترح لـ 5 أيام:\n\n📍 اليوم 1: الوصول واستكشاف شاطئ سيمينياك\n📍 اليوم 2: مدرجات أرز أوبود وغابة القرود\n📍 اليوم 3: معبد أولواتو ورقصة كيتشاك\n📍 اليوم 4: رحلة يومية لنوسا بينيدا\n📍 اليوم 5: يوم سبا والمغادرة\n\nأفضل وقت: أبريل-أكتوبر (الموسم الجاف). الميزانية: ~50-150$/يوم.",
+    aiResponseFamily: "وجهات عائلية رائعة:\n\n🏖️ المالديف - فيلات فوق الماء، غطس\n🏰 اليابان - طوكيو ديزني لاند، تجارب ثقافية\n🌴 تايلاند - شواطئ، محميات أفيال\n🏔️ سويسرا - قطارات بانورامية، مشي لمسافات\n🦁 كينيا - سفاري عائلي\n\nهل تريد المزيد من التفاصيل؟",
+    aiResponseBudget: "أفضل نصائح السفر الاقتصادي:\n\n💡 سافر في الموسم المتوسط (ربيع/خريف)\n💡 احجز الرحلات يوم الثلاثاء\n💡 استخدم النقل المحلي\n💡 أقم في بيوت ضيافة\n💡 كل في الأسواق المحلية\n💡 احصل على بطاقات المدن\n\nوجهات اقتصادية: فيتنام، البرتغال، المكسيك، تايلاند، المغرب.",
+    aiResponseEurope: "تخطيط رحلة أوروبا:\n\n🇫🇷 باريس - 3 أيام كحد أدنى\n🇮🇹 روما/فلورنسا - 4 أيام\n🇪🇸 برشلونة - 2-3 أيام\n🇬🇷 سانتوريني - 2-3 أيام\n\n✈️ نصيحة: استخدم شركات طيران اقتصادية بين المدن. احصل على تذكرة يوريل. الميزانية: 60-150€/يوم.",
+    aiResponseDefault: "سؤال رائع! أنصح باستكشاف باقاتنا المختارة لأفضل العروض. يمكنك أيضاً زيارة صفحة الوجهات للإلهام.\n\nهل تريد مساعدة في تخطيط رحلة؟ أخبرني:\n• إلى أين تريد الذهاب\n• عدد الأيام\n• ميزانيتك\n• نمط السفر (مغامرة، استرخاء، ثقافة)",
+    bannerGetApp: "حمّل تطبيق Tourly", bannerFasterOn: "تجربة أسرع على", bannerOpen: "فتح",
+    chatWelcomeBack: "مرحباً بعودتك! 👋 سعيد برؤيتك مجدداً. كيف يمكنني مساعدتك اليوم؟",
+    chatNewConvo: "محادثة جديدة! ✨ تم أرشفة المحادثة السابقة. كيف يمكنني المساعدة؟",
+    chatFreshConvo: "بدء محادثة جديدة! ✨ بماذا يمكنني مساعدتك؟",
+    chatLiveAgent: "وكيل مباشر", chatConnectedTeam: "متصل بفريق الدعم", chatEnd: "إنهاء",
+    chatConvoClosed: "تم إغلاق هذه المحادثة", chatStartNew: "بدء محادثة جديدة",
+    chatHereToHelp: "نحن هنا للمساعدة — اسألنا أي شيء",
+    chatReturnLive: "العودة للدردشة المباشرة", chatActiveConvo: "لديك محادثة نشطة مع الدعم",
+    chatConnectAgent: "الدردشة مع وكيل", chatConnectAgentDesc: "تواصل مع فريق الدعم للمساعدة الفورية",
+    chatConnectedLive: "متصل بالدعم المباشر", chatAgentRespondSoon: "سيرد وكيل الدعم قريباً.\nاكتب رسالة للبدء.",
+    chatEnded: "انتهت الدردشة",
+    chatArchivedChat: "دردشة مؤرشفة", chatHistory: "سجل الدردشة", chatClearAll: "مسح الكل", chatDelete: "حذف",
+    chatNoArchives: "لا توجد دردشات مؤرشفة", chatLiveAgentChat: "دردشة مع وكيل", chatBotConvo: "محادثة مع البوت",
+    chatBackToArchives: "العودة للأرشيف", chatConversations: "محادثات", chatMessages: "رسائل",
+    chatTranslate: "ترجمة", chatShowOriginal: "عرض الأصل", chatTranslating: "جاري الترجمة…",
+    chatTranslateAll: "ترجمة الكل", chatAutoTranslate: "ترجمة تلقائية",
+    chatTranslatedFrom: "مترجم من", chatTranslationFailed: "فشلت الترجمة",
+    adminTitle: "لوحة الإدارة", adminDashboardTitle: "لوحة التحكم", adminDashboardSubtitle: "إدارة منصة السفر",
+    adminTabDashboard: "لوحة التحكم", adminTabBookings: "الحجوزات", adminTabChat: "الدردشة",
+    adminTabDestinations: "الوجهات", adminTabPackages: "الباقات", adminTabUsers: "المستخدمون",
+    adminCancel: "إلغاء", adminSave: "حفظ", adminEdit: "تعديل", adminDelete: "حذف", adminSearch: "بحث",
+    adminValidation: "التحقق", adminTapUpload: "انقر للتحميل", adminChange: "تغيير", adminRemove: "إزالة",
+    adminPermissionNeeded: "إذن مطلوب", adminGrantCameraAccess: "يرجى منح الوصول إلى ألبوم الصور لتحميل الصور.",
+    adminTotalBookings: "إجمالي الحجوزات", adminTotalBookingsTrend: "+12% هذا الشهر",
+    adminRevenue: "الإيرادات", adminRevenueTrend: "+8% هذا الشهر",
+    adminTotalUsers: "إجمالي المستخدمين", adminTotalUsersTrend: "+3 هذا الأسبوع",
+    adminDestinations: "الوجهات",
+    adminQuickActions: "إجراءات سريعة", adminAddDestination: "إضافة وجهة", adminCreatePackage: "إنشاء باقة",
+    adminSendNotification: "إرسال إشعار", adminViewReports: "عرض التقارير",
+    adminRecentBookings: "الحجوزات الأخيرة", adminNoBookingsYet: "لا توجد حجوزات بعد",
+    adminReports: "التقارير", adminDone: "تم",
+    adminBookingStatus: "حالة الحجز", adminConfirmed: "مؤكد", adminPending: "قيد الانتظار", adminCancelled: "ملغي",
+    adminMonthlyBookings: "الحجوزات الشهرية (آخر 6 أشهر)", adminTotalPeriod: "إجمالي هذه الفترة",
+    adminRevenueLabel: "إيرادات", adminRevenueByPackage: "الإيرادات حسب الباقة", adminNoRevenueYet: "لا توجد بيانات إيرادات",
+    adminLatestBookings: "أحدث الحجوزات", adminCustomTrip: "رحلة مخصصة", adminAvgBooking: "متوسط / حجز",
+    adminSendTo: "إرسال إلى", adminAllUsers: "جميع المستخدمين", adminSelectUsers: "اختيار مستخدمين",
+    adminNotifTitle: "العنوان", adminNotifTitlePlaceholder: "مثال: تخفيضات الصيف — 30% خصم",
+    adminNotifMessage: "الرسالة", adminNotifMessagePlaceholder: "رسالة الإشعار...", adminNotifType: "النوع",
+    adminTitleMessageRequired: "العنوان والرسالة مطلوبان.", adminSelectAtLeastOne: "يرجى اختيار مستخدم واحد على الأقل.",
+    adminSent: "مُرسل", adminNotifSentTo: "تم إرسال الإشعار إلى", adminUsersSelected: "مختارون", adminClear: "مسح",
+    adminBookingDetails: "تفاصيل الحجز", adminFullName: "الاسم الكامل", adminEmail: "البريد", adminPhone: "الهاتف",
+    adminTravelers: "المسافرون", adminCheckIn: "الوصول", adminCheckOut: "المغادرة", adminDatePlaceholder: "YYYY-MM-DD",
+    adminUpdated: "تم التحديث", adminBookingUpdated: "تم تحديث تفاصيل الحجز (عرض محلي).",
+    adminAll: "الكل", adminNoBookingsFound: "لم يتم العثور على حجوزات", adminConfirm: "تأكيد", adminPax: "شخص", adminNA: "غ/م",
+    adminEditDestination: "تعديل الوجهة", adminAddDestinationTitle: "إضافة وجهة",
+    adminCoverImage: "صورة الغلاف", adminName: "الاسم", adminNamePlaceholder: "مثال: سانتوريني",
+    adminCountry: "البلد", adminCountryPlaceholder: "مثال: اليونان", adminRating: "التقييم (1-5)",
+    adminDescription: "الوصف", adminDescPlaceholder: "وصف قصير...",
+    adminSearchDestinations: "بحث في الوجهات...", adminAddNewDestination: "إضافة وجهة جديدة",
+    adminDeleteDestination: "حذف الوجهة", adminDeleteConfirm: "هل أنت متأكد من حذف",
+    adminNameCountryRequired: "الاسم والبلد مطلوبان.",
+    adminEditPackage: "تعديل الباقة", adminAddPackageTitle: "إضافة باقة",
+    adminPackageImage: "صورة الباقة", adminPackageTitle: "العنوان", adminTitlePlaceholder: "مثال: عطلة شاطئية",
+    adminLocation: "الموقع", adminLocationPlaceholder: "مثال: ماليزيا",
+    adminDuration: "المدة", adminDurationPlaceholder: "مثال: 7 أيام/6 ليالٍ", adminMaxPax: "الحد الأقصى",
+    adminPrice: "السعر ($)", adminPricePlaceholder: "مثال: 750",
+    adminPackageDescPlaceholder: "وصف الباقة...", adminSearchPackages: "بحث في الباقات...",
+    adminAddNewPackage: "إضافة باقة جديدة", adminDeletePackage: "حذف الباقة",
+    adminTitleLocationPriceRequired: "العنوان والموقع والسعر مطلوبة.", adminReviews: "تقييمات",
+    adminEditUser: "تعديل المستخدم", adminAvatar: "الصورة الرمزية", adminRole: "الدور",
+    adminSearchUsers: "بحث في المستخدمين...", adminActive: "نشط", adminSuspended: "موقوف", adminAdmins: "مديرون",
+    adminJoined: "انضم", adminBookingsCount: "حجوزات",
+    adminPromote: "ترقية", adminDemote: "تخفيض", adminSuspend: "إيقاف", adminActivate: "تفعيل",
+    adminNameEmailRequired: "الاسم والبريد مطلوبان.",
+    adminConversations: "المحادثات", adminLive: "مباشر", adminNoConvoYet: "لا توجد محادثات بعد",
+    adminNoConvoDesc: "عندما يبدأ المستخدمون الدردشة المباشرة،\nستظهر محادثاتهم هنا.",
+    adminNoMessages: "لا توجد رسائل", adminReopen: "إعادة فتح", adminClose: "إغلاق",
+    adminConvoClosed: "تم إغلاق المحادثة", adminTypeReply: "اكتب رداً...",
+    adminYou: "أنت: ", adminClosed: "مغلق", adminUnread: "غير مقروءة",
   },
 
   // ─────────────────────────── German ───────────────────────────
@@ -1353,6 +2346,135 @@ const translations: Record<Language, Translations> = {
     addToBooking: "Zur Buchung Hinzufügen", skipExtras: "Überspringen, Weiter zur Bestätigung",
     // Featured
     featuredBadge: "Empfohlen", sponsoredBadge: "Gesponsert", trendingBadge: "Im Trend",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "#1 KI-gestützte Reise-App",
+    landingHeroTitle: "Entdecke Die\nWelt Mit\nTourly", landingHeroSubtitle: "Entdecken Sie atemberaubende Reiseziele, kuratierte Pakete und KI-gestützte Reiseplanung — alles in einer App.",
+    landingCTA: "Jetzt Starten",
+    landingStatTrips: "50K+", landingStatTripsLabel: "Gebuchte Reisen", landingStatDest: "120+", landingStatDestLabel: "Reiseziele", landingStatRating: "4.9", landingStatRatingLabel: "App-Bewertung",
+    landingWhyEyebrow: "Warum Tourly", landingWhyTitle: "Reise Smarter,\nNicht Schwerer", landingWhySubtitle: "Alles was Sie für die perfekte Reise brauchen, angetrieben von moderner Technologie und lokaler Expertise.",
+    landingFeatureAI: "KI-Reiseplaner", landingFeatureAIDesc: "Erhalten Sie personalisierte Reisepläne von fortschrittlicher KI basierend auf Ihren Vorlieben und Budget.",
+    landingFeatureDest: "50+ Reiseziele", landingFeatureDestDesc: "Erkunden Sie kuratierte Reiseziele auf 6 Kontinenten, von versteckten Juwelen bis zu ikonischen Wahrzeichen.",
+    landingFeatureSecure: "Sichere Buchung", landingFeatureSecureDesc: "Ende-zu-Ende-verschlüsselte Zahlungen mit flexibler Stornierung und vollständigem Rückerstattungsschutz.",
+    landingFeatureConcierge: "24/7 Concierge", landingFeatureConciergeDesc: "Echtzeit-Support von lokalen Experten, die jeden Winkel Ihres Reiseziels kennen.",
+    landingTrendingEyebrow: "Im Trend", landingTrendingTitle: "Beliebte Reiseziele",
+    landingCuratedEyebrow: "Für Sie Kuratiert", landingCuratedTitle: "Reisepakete",
+    landingTestimonialsEyebrow: "Bewertungen", landingTestimonialsTitle: "Von Reisenden Geliebt",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "New York, USA",
+    landingTestimonial1Quote: "Tourly hat die Planung unserer Flitterwochen mühelos gemacht. Die KI schlug Orte vor, die wir nie gefunden hätten!",
+    landingTestimonial2Name: "Kenji Tanaka", landingTestimonial2Location: "Tokio, Japan",
+    landingTestimonial2Quote: "Der Concierge-Service war unglaublich. Es fühlte sich an, als hätte man in jeder Stadt einen einheimischen Freund.",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "Accra, Ghana",
+    landingTestimonial3Quote: "Beste Reise-App die ich je benutzt habe. Die Angebote sind echt und der Buchungsprozess ist nahtlos.",
+    landingReadyCTA: "Bereit für Ihr Nächstes Abenteuer?", landingReadyDesc: "Schließen Sie sich über 50.000 Reisenden an, die mit Tourly planen und buchen. Erstellen Sie heute Ihr kostenloses Konto.",
+    landingCreateAccount: "Kostenloses Konto Erstellen",
+    landingFooterTagline: "Reisen seit 2024 zugänglich, personalisiert und unvergesslich machen.",
+    landingFooterAbout: "Über Uns", landingFooterContact: "Kontakt", landingFooterDeals: "Angebote",
+    landingFooterCopyright: "© 2024–2026 Tourly. Alle Rechte vorbehalten.",
+    landingExplore: "Entdecken",
+    // Download page
+    downloadTitle: "App Herunterladen",
+    downloadHeroSubtitle: "Ihr Reisebegleiter für die Tasche.\nEntdecken, buchen und los — alles aus einer App.",
+    downloadOnThe: "Laden im", downloadGetItOn: "Jetzt bei", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "App-Bewertung", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "Downloads",
+    downloadStatDest: "100+", downloadStatDestLabel: "Reiseziele", downloadStatSupport: "24/7", downloadStatSupportLabel: "Support",
+    downloadExclusiveEyebrow: "App Exklusiv", downloadWhyTitle: "Warum Tourly Herunterladen?", downloadWhySubtitle: "Die App schaltet Funktionen frei, die im Browser nicht verfügbar sind.",
+    downloadFeatureFast: "Blitzschnell", downloadFeatureFastDesc: "Native Leistung, die flüssiger ist als jede Browser-Erfahrung.",
+    downloadFeatureNotif: "Push-Benachrichtigungen", downloadFeatureNotifDesc: "Verpassen Sie kein Angebot — erhalten Sie sofortige Benachrichtigungen über Flash-Sales.",
+    downloadFeatureOffline: "Offline-Zugang", downloadFeatureOfflineDesc: "Speichern Sie Reisepläne und Karten für unterwegs ohne Internet.",
+    downloadFeatureOneTap: "Ein-Tipp-Buchung", downloadFeatureOneTapDesc: "Buchen Sie in Sekunden mit gespeicherten Zahlungs- und Reisedaten.",
+    downloadFeatureAI: "KI-Reiseplaner", downloadFeatureAIDesc: "Personalisierte Reisevorschläge powered by KI, direkt integriert.",
+    downloadFeatureSecure: "Sicher & Privat", downloadFeatureSecureDesc: "Biometrische Anmeldung und verschlüsselte Daten schützen Ihre Informationen.",
+    downloadReviewsEyebrow: "Von Reisenden Geliebt", downloadReviewsTitle: "Was Nutzer Sagen",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "Beste Reise-App! Habe meine Bali-Reise in unter 2 Minuten gebucht.",
+    downloadReview2Name: "James K.", downloadReview2Text: "Die Offline-Karten haben mich im ländlichen Japan gerettet. Ein absoluter Gamechanger.",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "Push-Benachrichtigungen fingen einen 40% Flash-Sale ab. 300$ bei meiner Reise gespart!",
+    downloadCompareTitle: "App vs. Browser", downloadCompareApp: "App", downloadCompareWeb: "Web",
+    downloadComparePush: "Push-Benachrichtigungen", downloadCompareOffline: "Offline-Zugang", downloadCompareBiometric: "Biometrische Anmeldung",
+    downloadCompareOneTap: "Ein-Tipp-Buchung", downloadCompareAI: "KI-Reiseplaner", downloadCompareBrowse: "Reiseziele Durchsuchen",
+    downloadBottomCTATitle: "Bereit Smarter zu Reisen?", downloadBottomCTADesc: "Laden Sie Tourly kostenlos auf iOS und Android herunter.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    authError: "Fehler", authInvalidCredentials: "Ungültige Anmeldedaten",
+    authSignInFailed: "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.", authSignUpFailed: "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    authOAuthFailed: "OAuth-Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.", authGoogle: "Google", authApple: "Apple",
+    getTheApp: "App Herunterladen", adminPanel: "Admin-Panel", adminPanelDesc: "Buchungen, Benutzer und Reiseziele verwalten",
+    tierElite: "Elite", tierPro: "Pro", aiLabel: "KI",
+    premiumNoPurchases: "Keine früheren Käufe gefunden.",
+    thankYou: "Danke!", shareDestination: "Entdecken Sie dieses Reiseziel auf Tourly!", sharePackage: "Entdecken Sie dieses Paket auf Tourly!",
+    shareVia: "Teilen über", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "E-Mail", shareSMS: "SMS", shareCopyLink: "Link kopieren", shareLinkCopied: "Link in die Zwischenablage kopiert!", shareMoreOptions: "Weitere Optionen",
+    aiResponseBali: "Bali ist eine fantastische Wahl! Hier ist ein 5-Tage-Reiseplan:\n\n📍 Tag 1: Ankunft, Seminyak Beach erkunden\n📍 Tag 2: Ubud-Reisterrassen & Affenwald\n📍 Tag 3: Uluwatu-Tempel & Kecak-Tanz\n📍 Tag 4: Nusa Penida Tagesausflug\n📍 Tag 5: Spa-Tag & Abreise\n\nBeste Reisezeit: April-Oktober (Trockenzeit). Budget: ~50-150$/Tag je nach Komfort.",
+    aiResponseFamily: "Tolle Familienziele:\n\n🏖️ Malediven - Überwasservillen, Schnorcheln\n🏰 Japan - Tokyo Disneyland, Kulturerlebnisse\n🌴 Thailand - Strände, Elefantenschutzgebiete\n🏔️ Schweiz - Panoramazüge, Wandern\n🦁 Kenia - Familiensafaris\n\nMöchten Sie mehr Details?",
+    aiResponseBudget: "Top Budget-Reisetipps:\n\n💡 In der Nebensaison reisen\n💡 Flüge dienstags buchen\n💡 Lokale Verkehrsmittel nutzen\n💡 In Gästehäusern übernachten\n💡 Auf lokalen Märkten essen\n💡 City-Pässe kaufen\n\nGünstige Ziele: Vietnam, Portugal, Mexiko, Thailand, Marokko.",
+    aiResponseEurope: "Europa-Reiseplanung:\n\n🇫🇷 Paris - mindestens 3 Tage\n🇮🇹 Rom/Florenz - 4 Tage\n🇪🇸 Barcelona - 2-3 Tage\n🇬🇷 Santorini - 2-3 Tage\n\n✈️ Tipp: Budget-Airlines zwischen Städten nutzen. Eurail-Pass für längere Reisen. Budget: 60-150€/Tag.",
+    aiResponseDefault: "Tolle Frage! Ich empfehle unsere kuratierten Pakete für die besten Angebote. Schauen Sie auch auf unserer Reiseziele-Seite vorbei.\n\nSoll ich eine Reise planen? Sagen Sie mir:\n• Wohin Sie möchten\n• Wie viele Tage\n• Ihr Budget\n• Reisestil (Abenteuer, Entspannung, Kultur)",
+    bannerGetApp: "Tourly App Holen", bannerFasterOn: "Schnellere Erfahrung auf", bannerOpen: "Öffnen",
+    chatWelcomeBack: "Willkommen zurück! 👋 Schön Sie wiederzusehen. Wie kann ich Ihnen helfen?",
+    chatNewConvo: "Neue Unterhaltung! ✨ Vorheriger Chat wurde archiviert. Wie kann ich helfen?",
+    chatFreshConvo: "Frische Unterhaltung! ✨ Wie kann ich Ihnen helfen?",
+    chatLiveAgent: "Live-Agent", chatConnectedTeam: "Mit Support-Team verbunden", chatEnd: "Beenden",
+    chatConvoClosed: "Diese Unterhaltung wurde geschlossen", chatStartNew: "Neue Unterhaltung starten",
+    chatHereToHelp: "Wir sind hier um zu helfen — fragen Sie uns alles",
+    chatReturnLive: "Zurück zum Live-Chat", chatActiveConvo: "Sie haben eine aktive Unterhaltung mit dem Support",
+    chatConnectAgent: "Mit Agent Chatten", chatConnectAgentDesc: "Verbinden Sie sich mit unserem Support-Team für Echtzeit-Hilfe",
+    chatConnectedLive: "Mit Live-Support Verbunden", chatAgentRespondSoon: "Ein Support-Agent wird in Kürze antworten.\nSchreiben Sie eine Nachricht um zu beginnen.",
+    chatEnded: "Chat beendet",
+    chatArchivedChat: "Archivierter Chat", chatHistory: "Chat-Verlauf", chatClearAll: "Alle Löschen", chatDelete: "Löschen",
+    chatNoArchives: "Keine archivierten Chats", chatLiveAgentChat: "Live-Agent-Chat", chatBotConvo: "Bot-Unterhaltung",
+    chatBackToArchives: "Zurück zu Archiven", chatConversations: "Unterhaltungen", chatMessages: "Nachrichten",
+    chatTranslate: "Übersetzen", chatShowOriginal: "Original anzeigen", chatTranslating: "Übersetze…",
+    chatTranslateAll: "Alle übersetzen", chatAutoTranslate: "Auto-Übersetzen",
+    chatTranslatedFrom: "Übersetzt aus", chatTranslationFailed: "Übersetzung fehlgeschlagen",
+    adminTitle: "Admin-Panel", adminDashboardTitle: "Admin-Dashboard", adminDashboardSubtitle: "Verwalten Sie Ihre Reiseplattform",
+    adminTabDashboard: "Dashboard", adminTabBookings: "Buchungen", adminTabChat: "Chat",
+    adminTabDestinations: "Reiseziele", adminTabPackages: "Pakete", adminTabUsers: "Benutzer",
+    adminCancel: "Abbrechen", adminSave: "Speichern", adminEdit: "Bearbeiten", adminDelete: "Löschen", adminSearch: "Suchen",
+    adminValidation: "Validierung", adminTapUpload: "Tippen zum Hochladen", adminChange: "Ändern", adminRemove: "Entfernen",
+    adminPermissionNeeded: "Berechtigung erforderlich", adminGrantCameraAccess: "Bitte gewähren Sie Zugriff auf die Kamerarolle zum Hochladen von Bildern.",
+    adminTotalBookings: "Gesamtbuchungen", adminTotalBookingsTrend: "+12% diesen Monat",
+    adminRevenue: "Umsatz", adminRevenueTrend: "+8% diesen Monat",
+    adminTotalUsers: "Gesamtbenutzer", adminTotalUsersTrend: "+3 diese Woche",
+    adminDestinations: "Reiseziele",
+    adminQuickActions: "Schnellaktionen", adminAddDestination: "Reiseziel Hinzufügen", adminCreatePackage: "Paket Erstellen",
+    adminSendNotification: "Benachrichtigung Senden", adminViewReports: "Berichte Anzeigen",
+    adminRecentBookings: "Neueste Buchungen", adminNoBookingsYet: "Noch keine Buchungen",
+    adminReports: "Berichte", adminDone: "Fertig",
+    adminBookingStatus: "Buchungsstatus", adminConfirmed: "Bestätigt", adminPending: "Ausstehend", adminCancelled: "Storniert",
+    adminMonthlyBookings: "Monatliche Buchungen (Letzte 6 Monate)", adminTotalPeriod: "Gesamt diesen Zeitraum",
+    adminRevenueLabel: "Umsatz", adminRevenueByPackage: "Umsatz nach Paket", adminNoRevenueYet: "Noch keine Umsatzdaten",
+    adminLatestBookings: "Neueste Buchungen", adminCustomTrip: "Individuelle Reise", adminAvgBooking: "Durchschn. / Buchung",
+    adminSendTo: "Senden An", adminAllUsers: "Alle Benutzer", adminSelectUsers: "Benutzer Auswählen",
+    adminNotifTitle: "Titel", adminNotifTitlePlaceholder: "z.B. Sommerschlussverkauf — 30% Rabatt",
+    adminNotifMessage: "Nachricht", adminNotifMessagePlaceholder: "Benachrichtigungsnachricht...", adminNotifType: "Typ",
+    adminTitleMessageRequired: "Titel und Nachricht sind erforderlich.", adminSelectAtLeastOne: "Bitte wählen Sie mindestens einen Benutzer.",
+    adminSent: "Gesendet", adminNotifSentTo: "Benachrichtigung gesendet an", adminUsersSelected: "ausgewählt", adminClear: "Löschen",
+    adminBookingDetails: "Buchungsdetails", adminFullName: "Vollständiger Name", adminEmail: "E-Mail", adminPhone: "Telefon",
+    adminTravelers: "Reisende", adminCheckIn: "Check-in", adminCheckOut: "Check-out", adminDatePlaceholder: "JJJJ-MM-TT",
+    adminUpdated: "Aktualisiert", adminBookingUpdated: "Buchungsdetails aktualisiert (lokale Demo).",
+    adminAll: "Alle", adminNoBookingsFound: "Keine Buchungen gefunden", adminConfirm: "Bestätigen", adminPax: "Pers.", adminNA: "k.A.",
+    adminEditDestination: "Reiseziel Bearbeiten", adminAddDestinationTitle: "Reiseziel Hinzufügen",
+    adminCoverImage: "Titelbild", adminName: "Name", adminNamePlaceholder: "z.B. Santorini",
+    adminCountry: "Land", adminCountryPlaceholder: "z.B. Griechenland", adminRating: "Bewertung (1-5)",
+    adminDescription: "Beschreibung", adminDescPlaceholder: "Kurze Beschreibung...",
+    adminSearchDestinations: "Reiseziele suchen...", adminAddNewDestination: "Neues Reiseziel Hinzufügen",
+    adminDeleteDestination: "Reiseziel Löschen", adminDeleteConfirm: "Möchten Sie wirklich löschen",
+    adminNameCountryRequired: "Name und Land sind erforderlich.",
+    adminEditPackage: "Paket Bearbeiten", adminAddPackageTitle: "Paket Hinzufügen",
+    adminPackageImage: "Paketbild", adminPackageTitle: "Titel", adminTitlePlaceholder: "z.B. Strandurlaub",
+    adminLocation: "Ort", adminLocationPlaceholder: "z.B. Malaysia",
+    adminDuration: "Dauer", adminDurationPlaceholder: "z.B. 7T/6N", adminMaxPax: "Max. Pers.",
+    adminPrice: "Preis ($)", adminPricePlaceholder: "z.B. 750",
+    adminPackageDescPlaceholder: "Paketbeschreibung...", adminSearchPackages: "Pakete suchen...",
+    adminAddNewPackage: "Neues Paket Hinzufügen", adminDeletePackage: "Paket Löschen",
+    adminTitleLocationPriceRequired: "Titel, Ort und Preis sind erforderlich.", adminReviews: "Bewertungen",
+    adminEditUser: "Benutzer Bearbeiten", adminAvatar: "Avatar", adminRole: "Rolle",
+    adminSearchUsers: "Benutzer suchen...", adminActive: "Aktiv", adminSuspended: "Gesperrt", adminAdmins: "Admins",
+    adminJoined: "Beigetreten", adminBookingsCount: "Buchungen",
+    adminPromote: "Befördern", adminDemote: "Herabstufen", adminSuspend: "Sperren", adminActivate: "Aktivieren",
+    adminNameEmailRequired: "Name und E-Mail sind erforderlich.",
+    adminConversations: "Unterhaltungen", adminLive: "Live", adminNoConvoYet: "Noch keine Unterhaltungen",
+    adminNoConvoDesc: "Wenn Benutzer den Live-Chat starten,\nerscheinen ihre Unterhaltungen hier.",
+    adminNoMessages: "Keine Nachrichten", adminReopen: "Wiedereröffnen", adminClose: "Schließen",
+    adminConvoClosed: "Unterhaltung geschlossen", adminTypeReply: "Antwort eingeben...",
+    adminYou: "Sie: ", adminClosed: "Geschlossen", adminUnread: "ungelesen",
   },
 
   // ─────────────────────────── Italian ───────────────────────────
@@ -1516,6 +2638,135 @@ const translations: Record<Language, Translations> = {
     addToBooking: "Aggiungi alla Prenotazione", skipExtras: "Salta, Continua alla Conferma",
     // Featured
     featuredBadge: "In Evidenza", sponsoredBadge: "Sponsorizzato", trendingBadge: "Di Tendenza",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "App di Viaggio #1 con IA",
+    landingHeroTitle: "Esplora Il\nMondo Con\nTourly", landingHeroSubtitle: "Scopri destinazioni mozzafiato, pacchetti curati e pianificazione viaggi con IA — tutto in un'app.",
+    landingCTA: "Inizia Ora",
+    landingStatTrips: "50K+", landingStatTripsLabel: "Viaggi Prenotati", landingStatDest: "120+", landingStatDestLabel: "Destinazioni", landingStatRating: "4.9", landingStatRatingLabel: "Valutazione App",
+    landingWhyEyebrow: "Perché Tourly", landingWhyTitle: "Viaggia Intelligente,\nNon Difficile", landingWhySubtitle: "Tutto ciò che serve per il viaggio perfetto, alimentato da tecnologia moderna e competenza locale.",
+    landingFeatureAI: "Pianificatore IA", landingFeatureAIDesc: "Ottieni itinerari personalizzati creati dall'IA avanzata in base alle tue preferenze e budget.",
+    landingFeatureDest: "50+ Destinazioni", landingFeatureDestDesc: "Esplora destinazioni curate in 6 continenti, da gemme nascoste a monumenti iconici.",
+    landingFeatureSecure: "Prenotazione Sicura", landingFeatureSecureDesc: "Pagamenti crittografati end-to-end con cancellazione flessibile e protezione rimborso completa.",
+    landingFeatureConcierge: "Concierge 24/7", landingFeatureConciergeDesc: "Supporto in tempo reale da esperti locali che conoscono ogni angolo della tua destinazione.",
+    landingTrendingEyebrow: "Di Tendenza", landingTrendingTitle: "Destinazioni Popolari",
+    landingCuratedEyebrow: "Curato Per Te", landingCuratedTitle: "Pacchetti Viaggio",
+    landingTestimonialsEyebrow: "Testimonianze", landingTestimonialsTitle: "Amato dai Viaggiatori",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "New York, USA",
+    landingTestimonial1Quote: "Tourly ha reso la pianificazione della luna di miele semplicissima. L'IA ha suggerito posti che non avremmo mai trovato!",
+    landingTestimonial2Name: "Kenji Tanaka", landingTestimonial2Location: "Tokyo, Giappone",
+    landingTestimonial2Quote: "Il servizio concierge era incredibile. Sembrava avere un amico locale in ogni città visitata.",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "Accra, Ghana",
+    landingTestimonial3Quote: "La migliore app di viaggio che abbia usato. Le offerte sono vere e il processo di prenotazione è fluido.",
+    landingReadyCTA: "Pronto per la Prossima Avventura?", landingReadyDesc: "Unisciti a oltre 50.000 viaggiatori che pianificano e prenotano con Tourly. Crea il tuo account gratuito oggi.",
+    landingCreateAccount: "Crea Account Gratuito",
+    landingFooterTagline: "Rendere i viaggi accessibili, personalizzati e indimenticabili dal 2024.",
+    landingFooterAbout: "Chi Siamo", landingFooterContact: "Contatti", landingFooterDeals: "Offerte",
+    landingFooterCopyright: "© 2024–2026 Tourly. Tutti i diritti riservati.",
+    landingExplore: "Esplora",
+    // Download page
+    downloadTitle: "Scarica l'App",
+    downloadHeroSubtitle: "Il tuo compagno di viaggio tascabile.\nEsplora, prenota e parti — tutto da un'app.",
+    downloadOnThe: "Scarica su", downloadGetItOn: "Disponibile su", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "Valutazione", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "Download",
+    downloadStatDest: "100+", downloadStatDestLabel: "Destinazioni", downloadStatSupport: "24/7", downloadStatSupportLabel: "Supporto",
+    downloadExclusiveEyebrow: "Esclusivo App", downloadWhyTitle: "Perché Scaricare Tourly?", downloadWhySubtitle: "L'app sblocca funzionalità non disponibili nel browser.",
+    downloadFeatureFast: "Ultra Veloce", downloadFeatureFastDesc: "Prestazioni native più fluide di qualsiasi esperienza browser.",
+    downloadFeatureNotif: "Notifiche Push", downloadFeatureNotifDesc: "Non perdere offerte — ricevi avvisi istantanei su vendite flash.",
+    downloadFeatureOffline: "Accesso Offline", downloadFeatureOfflineDesc: "Salva itinerari e mappe per quando sei senza rete.",
+    downloadFeatureOneTap: "Prenotazione con Un Tocco", downloadFeatureOneTapDesc: "Prenota in secondi con pagamento e dati salvati.",
+    downloadFeatureAI: "Pianificatore IA", downloadFeatureAIDesc: "Suggerimenti di viaggio personalizzati con IA, integrati direttamente.",
+    downloadFeatureSecure: "Sicuro e Privato", downloadFeatureSecureDesc: "Login biometrico e dati crittografati proteggono le tue informazioni.",
+    downloadReviewsEyebrow: "Amato dai Viaggiatori", downloadReviewsTitle: "Cosa Dicono gli Utenti",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "La migliore app di viaggio! Ho prenotato il viaggio a Bali in meno di 2 minuti.",
+    downloadReview2Name: "James K.", downloadReview2Text: "Le mappe offline mi hanno salvato nel Giappone rurale. Un vero game changer.",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "Le notifiche push hanno catturato una vendita flash del 40%. Risparmiato 300$ sul viaggio!",
+    downloadCompareTitle: "App vs. Browser", downloadCompareApp: "App", downloadCompareWeb: "Web",
+    downloadComparePush: "Notifiche Push", downloadCompareOffline: "Accesso Offline", downloadCompareBiometric: "Login Biometrico",
+    downloadCompareOneTap: "Prenotazione con Un Tocco", downloadCompareAI: "Pianificatore IA", downloadCompareBrowse: "Sfoglia Destinazioni",
+    downloadBottomCTATitle: "Pronto a Viaggiare Più Intelligente?", downloadBottomCTADesc: "Scarica Tourly gratis su iOS e Android.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    authError: "Errore", authInvalidCredentials: "Credenziali non valide",
+    authSignInFailed: "Accesso non riuscito. Riprova.", authSignUpFailed: "Registrazione non riuscita. Riprova.",
+    authOAuthFailed: "Accesso OAuth non riuscito. Riprova.", authGoogle: "Google", authApple: "Apple",
+    getTheApp: "Scarica l'App", adminPanel: "Pannello Admin", adminPanelDesc: "Gestisci prenotazioni, utenti e destinazioni",
+    tierElite: "Elite", tierPro: "Pro", aiLabel: "IA",
+    premiumNoPurchases: "Nessun acquisto precedente trovato.",
+    thankYou: "Grazie!", shareDestination: "Scopri questa destinazione su Tourly!", sharePackage: "Scopri questo pacchetto su Tourly!",
+    shareVia: "Condividi tramite", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "Email", shareSMS: "SMS", shareCopyLink: "Copia link", shareLinkCopied: "Link copiato negli appunti!", shareMoreOptions: "Altre opzioni",
+    aiResponseBali: "Bali è una scelta fantastica! Ecco un itinerario di 5 giorni:\n\n📍 Giorno 1: Arrivo, esplorare Seminyak Beach\n📍 Giorno 2: Terrazze di riso di Ubud e Foresta delle Scimmie\n📍 Giorno 3: Tempio di Uluwatu e Danza Kecak\n📍 Giorno 4: Gita a Nusa Penida\n📍 Giorno 5: Giornata spa e partenza\n\nPeriodo migliore: Aprile-Ottobre (stagione secca). Budget: ~50-150$/giorno.",
+    aiResponseFamily: "Ottime destinazioni familiari:\n\n🏖️ Maldive - ville sull'acqua, snorkeling\n🏰 Giappone - Tokyo Disneyland, esperienze culturali\n🌴 Thailandia - spiagge, santuari elefanti\n🏔️ Svizzera - treni panoramici, escursioni\n🦁 Kenya - safari familiari\n\nVuoi più dettagli?",
+    aiResponseBudget: "Migliori consigli di viaggio economico:\n\n💡 Viaggia in bassa stagione\n💡 Prenota voli il martedì\n💡 Usa trasporti locali\n💡 Alloggia in ostelli\n💡 Mangia ai mercati locali\n💡 Prendi pass turistici\n\nDestinazioni economiche: Vietnam, Portogallo, Messico, Thailandia, Marocco.",
+    aiResponseEurope: "Pianificazione viaggio Europa:\n\n🇫🇷 Parigi - minimo 3 giorni\n🇮🇹 Roma/Firenze - 4 giorni\n🇪🇸 Barcellona - 2-3 giorni\n🇬🇷 Santorini - 2-3 giorni\n\n✈️ Consiglio: Usa compagnie low-cost tra le città. Prendi un pass Eurail. Budget: 60-150€/giorno.",
+    aiResponseDefault: "Ottima domanda! Consiglio di esplorare i nostri pacchetti curati per le migliori offerte. Visita anche la pagina destinazioni.\n\nVuoi che pianifichi un viaggio? Dimmi:\n• Dove vuoi andare\n• Quanti giorni\n• Il tuo budget\n• Stile di viaggio (avventura, relax, cultura)",
+    bannerGetApp: "Scarica l'App Tourly", bannerFasterOn: "Esperienza più veloce su", bannerOpen: "Apri",
+    chatWelcomeBack: "Bentornato! 👋 Bello rivederti. Come posso aiutarti?",
+    chatNewConvo: "Nuova conversazione! ✨ La chat precedente è stata archiviata. Come posso aiutare?",
+    chatFreshConvo: "Nuova conversazione! ✨ In cosa posso aiutarti?",
+    chatLiveAgent: "Agente Live", chatConnectedTeam: "Connesso al team supporto", chatEnd: "Termina",
+    chatConvoClosed: "Questa conversazione è stata chiusa", chatStartNew: "Inizia nuova conversazione",
+    chatHereToHelp: "Siamo qui per aiutare — chiedi pure",
+    chatReturnLive: "Torna alla Chat Live", chatActiveConvo: "Hai una conversazione attiva con il supporto",
+    chatConnectAgent: "Chatta con un Agente", chatConnectAgentDesc: "Connettiti al nostro team per aiuto in tempo reale",
+    chatConnectedLive: "Connesso al Supporto Live", chatAgentRespondSoon: "Un agente risponderà a breve.\nScrivi un messaggio per iniziare.",
+    chatEnded: "Chat terminata",
+    chatArchivedChat: "Chat Archiviata", chatHistory: "Cronologia Chat", chatClearAll: "Cancella Tutto", chatDelete: "Elimina",
+    chatNoArchives: "Nessuna chat archiviata", chatLiveAgentChat: "Chat Agente Live", chatBotConvo: "Conversazione Bot",
+    chatBackToArchives: "Torna agli archivi", chatConversations: "conversazioni", chatMessages: "messaggi",
+    chatTranslate: "Traduci", chatShowOriginal: "Mostra originale", chatTranslating: "Traduzione…",
+    chatTranslateAll: "Traduci tutto", chatAutoTranslate: "Traduzione automatica",
+    chatTranslatedFrom: "Tradotto da", chatTranslationFailed: "Traduzione non riuscita",
+    adminTitle: "Pannello Admin", adminDashboardTitle: "Dashboard Admin", adminDashboardSubtitle: "Gestisci la tua piattaforma di viaggio",
+    adminTabDashboard: "Dashboard", adminTabBookings: "Prenotazioni", adminTabChat: "Chat",
+    adminTabDestinations: "Destinazioni", adminTabPackages: "Pacchetti", adminTabUsers: "Utenti",
+    adminCancel: "Annulla", adminSave: "Salva", adminEdit: "Modifica", adminDelete: "Elimina", adminSearch: "Cerca",
+    adminValidation: "Validazione", adminTapUpload: "Tocca per caricare", adminChange: "Cambia", adminRemove: "Rimuovi",
+    adminPermissionNeeded: "Permesso necessario", adminGrantCameraAccess: "Concedi l'accesso al rullino per caricare immagini.",
+    adminTotalBookings: "Prenotazioni Totali", adminTotalBookingsTrend: "+12% questo mese",
+    adminRevenue: "Fatturato", adminRevenueTrend: "+8% questo mese",
+    adminTotalUsers: "Utenti Totali", adminTotalUsersTrend: "+3 questa settimana",
+    adminDestinations: "Destinazioni",
+    adminQuickActions: "Azioni Rapide", adminAddDestination: "Aggiungi Destinazione", adminCreatePackage: "Crea Pacchetto",
+    adminSendNotification: "Invia Notifica", adminViewReports: "Visualizza Report",
+    adminRecentBookings: "Prenotazioni Recenti", adminNoBookingsYet: "Nessuna prenotazione",
+    adminReports: "Report", adminDone: "Fatto",
+    adminBookingStatus: "Stato Prenotazione", adminConfirmed: "Confermato", adminPending: "In Attesa", adminCancelled: "Cancellato",
+    adminMonthlyBookings: "Prenotazioni Mensili (Ultimi 6 Mesi)", adminTotalPeriod: "Totale questo periodo",
+    adminRevenueLabel: "fatturato", adminRevenueByPackage: "Fatturato per Pacchetto", adminNoRevenueYet: "Nessun dato fatturato",
+    adminLatestBookings: "Ultime Prenotazioni", adminCustomTrip: "Viaggio Personalizzato", adminAvgBooking: "Media / Prenotazione",
+    adminSendTo: "Invia A", adminAllUsers: "Tutti gli Utenti", adminSelectUsers: "Seleziona Utenti",
+    adminNotifTitle: "Titolo", adminNotifTitlePlaceholder: "es. Saldi Estivi — 30% Sconto",
+    adminNotifMessage: "Messaggio", adminNotifMessagePlaceholder: "Messaggio notifica...", adminNotifType: "Tipo",
+    adminTitleMessageRequired: "Titolo e messaggio richiesti.", adminSelectAtLeastOne: "Seleziona almeno un utente.",
+    adminSent: "Inviato", adminNotifSentTo: "Notifica inviata a", adminUsersSelected: "selezionati", adminClear: "Cancella",
+    adminBookingDetails: "Dettagli Prenotazione", adminFullName: "Nome Completo", adminEmail: "Email", adminPhone: "Telefono",
+    adminTravelers: "Viaggiatori", adminCheckIn: "Check-in", adminCheckOut: "Check-out", adminDatePlaceholder: "AAAA-MM-GG",
+    adminUpdated: "Aggiornato", adminBookingUpdated: "Dettagli prenotazione aggiornati (demo locale).",
+    adminAll: "Tutti", adminNoBookingsFound: "Nessuna prenotazione trovata", adminConfirm: "Conferma", adminPax: "pers.", adminNA: "N/D",
+    adminEditDestination: "Modifica Destinazione", adminAddDestinationTitle: "Aggiungi Destinazione",
+    adminCoverImage: "Immagine Copertina", adminName: "Nome", adminNamePlaceholder: "es. Santorini",
+    adminCountry: "Paese", adminCountryPlaceholder: "es. Grecia", adminRating: "Valutazione (1-5)",
+    adminDescription: "Descrizione", adminDescPlaceholder: "Breve descrizione...",
+    adminSearchDestinations: "Cerca destinazioni...", adminAddNewDestination: "Aggiungi Nuova Destinazione",
+    adminDeleteDestination: "Elimina Destinazione", adminDeleteConfirm: "Sei sicuro di voler eliminare",
+    adminNameCountryRequired: "Nome e paese richiesti.",
+    adminEditPackage: "Modifica Pacchetto", adminAddPackageTitle: "Aggiungi Pacchetto",
+    adminPackageImage: "Immagine Pacchetto", adminPackageTitle: "Titolo", adminTitlePlaceholder: "es. Vacanza al Mare",
+    adminLocation: "Luogo", adminLocationPlaceholder: "es. Malesia",
+    adminDuration: "Durata", adminDurationPlaceholder: "es. 7G/6N", adminMaxPax: "Max Pers.",
+    adminPrice: "Prezzo ($)", adminPricePlaceholder: "es. 750",
+    adminPackageDescPlaceholder: "Descrizione pacchetto...", adminSearchPackages: "Cerca pacchetti...",
+    adminAddNewPackage: "Aggiungi Nuovo Pacchetto", adminDeletePackage: "Elimina Pacchetto",
+    adminTitleLocationPriceRequired: "Titolo, luogo e prezzo richiesti.", adminReviews: "recensioni",
+    adminEditUser: "Modifica Utente", adminAvatar: "Avatar", adminRole: "Ruolo",
+    adminSearchUsers: "Cerca utenti...", adminActive: "Attivo", adminSuspended: "Sospeso", adminAdmins: "Admin",
+    adminJoined: "Iscritto", adminBookingsCount: "prenotazioni",
+    adminPromote: "Promuovi", adminDemote: "Retrocedi", adminSuspend: "Sospendi", adminActivate: "Attiva",
+    adminNameEmailRequired: "Nome e email richiesti.",
+    adminConversations: "Conversazioni", adminLive: "Live", adminNoConvoYet: "Nessuna conversazione",
+    adminNoConvoDesc: "Quando gli utenti avviano la chat live,\nle conversazioni appariranno qui.",
+    adminNoMessages: "Nessun messaggio", adminReopen: "Riapri", adminClose: "Chiudi",
+    adminConvoClosed: "Conversazione chiusa", adminTypeReply: "Scrivi una risposta...",
+    adminYou: "Tu: ", adminClosed: "Chiuso", adminUnread: "non letti",
   },
 
   // ─────────────────────────── Portuguese ───────────────────────────
@@ -1679,6 +2930,135 @@ const translations: Record<Language, Translations> = {
     addToBooking: "Adicionar à Reserva", skipExtras: "Pular, Continuar para Confirmação",
     // Featured
     featuredBadge: "Destaque", sponsoredBadge: "Patrocinado", trendingBadge: "Em Alta",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "App de Viagem #1 com IA",
+    landingHeroTitle: "Explore O\nMundo Com\nTourly", landingHeroSubtitle: "Descubra destinos deslumbrantes, pacotes selecionados e planejamento de viagem com IA — tudo num app.",
+    landingCTA: "Começar",
+    landingStatTrips: "50K+", landingStatTripsLabel: "Viagens Reservadas", landingStatDest: "120+", landingStatDestLabel: "Destinos", landingStatRating: "4.9", landingStatRatingLabel: "Avaliação",
+    landingWhyEyebrow: "Por Que Tourly", landingWhyTitle: "Viaje Inteligente,\nNão Difícil", landingWhySubtitle: "Tudo que você precisa para a viagem perfeita, impulsionado por tecnologia moderna e expertise local.",
+    landingFeatureAI: "Planejador IA", landingFeatureAIDesc: "Obtenha itinerários personalizados criados por IA avançada com base nas suas preferências e orçamento.",
+    landingFeatureDest: "50+ Destinos", landingFeatureDestDesc: "Explore destinos selecionados em 6 continentes, de joias ocultas a marcos icônicos.",
+    landingFeatureSecure: "Reserva Segura", landingFeatureSecureDesc: "Pagamentos criptografados ponta a ponta com cancelamento flexível e proteção total de reembolso.",
+    landingFeatureConcierge: "Concierge 24/7", landingFeatureConciergeDesc: "Suporte em tempo real de especialistas locais que conhecem cada canto do seu destino.",
+    landingTrendingEyebrow: "Em Alta", landingTrendingTitle: "Destinos Populares",
+    landingCuratedEyebrow: "Selecionado Para Você", landingCuratedTitle: "Pacotes de Viagem",
+    landingTestimonialsEyebrow: "Depoimentos", landingTestimonialsTitle: "Amado por Viajantes",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "Nova York, EUA",
+    landingTestimonial1Quote: "Tourly tornou o planejamento da lua de mel muito fácil. A IA sugeriu lugares que nunca teríamos encontrado!",
+    landingTestimonial2Name: "Kenji Tanaka", landingTestimonial2Location: "Tóquio, Japão",
+    landingTestimonial2Quote: "O serviço de concierge foi incrível. Parecia ter um amigo local em cada cidade visitada.",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "Acra, Gana",
+    landingTestimonial3Quote: "Melhor app de viagem que já usei. As ofertas são reais e o processo de reserva é perfeito.",
+    landingReadyCTA: "Pronto para Sua Próxima Aventura?", landingReadyDesc: "Junte-se a mais de 50.000 viajantes que planejam e reservam com Tourly. Crie sua conta gratuita hoje.",
+    landingCreateAccount: "Criar Conta Gratuita",
+    landingFooterTagline: "Tornando viagens acessíveis, personalizadas e inesquecíveis desde 2024.",
+    landingFooterAbout: "Sobre", landingFooterContact: "Contato", landingFooterDeals: "Ofertas",
+    landingFooterCopyright: "© 2024–2026 Tourly. Todos os direitos reservados.",
+    landingExplore: "Explorar",
+    // Download page
+    downloadTitle: "Baixar o App",
+    downloadHeroSubtitle: "Seu companheiro de viagem de bolso.\nExplore, reserve e vá — tudo num app.",
+    downloadOnThe: "Baixar na", downloadGetItOn: "Disponível no", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "Avaliação", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "Downloads",
+    downloadStatDest: "100+", downloadStatDestLabel: "Destinos", downloadStatSupport: "24/7", downloadStatSupportLabel: "Suporte",
+    downloadExclusiveEyebrow: "Exclusivo do App", downloadWhyTitle: "Por Que Baixar o Tourly?", downloadWhySubtitle: "O app desbloqueia recursos indisponíveis no navegador.",
+    downloadFeatureFast: "Ultra Rápido", downloadFeatureFastDesc: "Performance nativa mais fluida que qualquer experiência no navegador.",
+    downloadFeatureNotif: "Notificações Push", downloadFeatureNotifDesc: "Não perca ofertas — receba alertas instantâneos de vendas relâmpago.",
+    downloadFeatureOffline: "Acesso Offline", downloadFeatureOfflineDesc: "Salve itinerários e mapas para quando estiver sem internet.",
+    downloadFeatureOneTap: "Reserva com Um Toque", downloadFeatureOneTapDesc: "Reserve em segundos com pagamento e dados salvos.",
+    downloadFeatureAI: "Planejador IA", downloadFeatureAIDesc: "Sugestões de viagem personalizadas com IA, integradas diretamente.",
+    downloadFeatureSecure: "Seguro e Privado", downloadFeatureSecureDesc: "Login biométrico e dados criptografados mantêm suas informações seguras.",
+    downloadReviewsEyebrow: "Amado por Viajantes", downloadReviewsTitle: "O Que Dizem os Usuários",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "Melhor app de viagem! Reservei minha viagem a Bali em menos de 2 minutos.",
+    downloadReview2Name: "James K.", downloadReview2Text: "Os mapas offline me salvaram no Japão rural. Mudou completamente o jogo.",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "As notificações push pegaram uma venda relâmpago de 40%. Economizei $300 na viagem!",
+    downloadCompareTitle: "App vs. Navegador", downloadCompareApp: "App", downloadCompareWeb: "Web",
+    downloadComparePush: "Notificações Push", downloadCompareOffline: "Acesso Offline", downloadCompareBiometric: "Login Biométrico",
+    downloadCompareOneTap: "Reserva com Um Toque", downloadCompareAI: "Planejador IA", downloadCompareBrowse: "Explorar Destinos",
+    downloadBottomCTATitle: "Pronto para Viajar Mais Inteligente?", downloadBottomCTADesc: "Baixe o Tourly grátis no iOS e Android.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    authError: "Erro", authInvalidCredentials: "Credenciais inválidas",
+    authSignInFailed: "Falha ao entrar. Tente novamente.", authSignUpFailed: "Falha ao cadastrar. Tente novamente.",
+    authOAuthFailed: "Falha no OAuth. Tente novamente.", authGoogle: "Google", authApple: "Apple",
+    getTheApp: "Baixar o App", adminPanel: "Painel Admin", adminPanelDesc: "Gerenciar reservas, usuários e destinos",
+    tierElite: "Elite", tierPro: "Pro", aiLabel: "IA",
+    premiumNoPurchases: "Nenhuma compra anterior encontrada.",
+    thankYou: "Obrigado!", shareDestination: "Confira este destino no Tourly!", sharePackage: "Confira este pacote no Tourly!",
+    shareVia: "Compartilhar via", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "Email", shareSMS: "SMS", shareCopyLink: "Copiar link", shareLinkCopied: "Link copiado para a área de transferência!", shareMoreOptions: "Mais opções",
+    aiResponseBali: "Bali é uma escolha fantástica! Aqui está um roteiro de 5 dias:\n\n📍 Dia 1: Chegada, explorar Praia Seminyak\n📍 Dia 2: Terraços de Arroz de Ubud e Floresta dos Macacos\n📍 Dia 3: Templo Uluwatu e Dança Kecak\n📍 Dia 4: Passeio a Nusa Penida\n📍 Dia 5: Dia de spa e partida\n\nMelhor época: Abril-Outubro (estação seca). Orçamento: ~$50-150/dia.",
+    aiResponseFamily: "Ótimos destinos familiares:\n\n🏖️ Maldivas - villas sobre a água, snorkeling\n🏰 Japão - Tokyo Disneyland, experiências culturais\n🌴 Tailândia - praias, santuários de elefantes\n🏔️ Suíça - trens panorâmicos, trilhas\n🦁 Quênia - safáris familiares\n\nQuer mais detalhes?",
+    aiResponseBudget: "Melhores dicas de viagem econômica:\n\n💡 Viaje na baixa temporada\n💡 Reserve voos às terças\n💡 Use transporte local\n💡 Fique em pousadas\n💡 Coma em mercados locais\n💡 Pegue passes turísticos\n\nDestinos econômicos: Vietnã, Portugal, México, Tailândia, Marrocos.",
+    aiResponseEurope: "Planejamento Europa:\n\n🇫🇷 Paris - mínimo 3 dias\n🇮🇹 Roma/Florença - 4 dias\n🇪🇸 Barcelona - 2-3 dias\n🇬🇷 Santorini - 2-3 dias\n\n✈️ Dica: Use aéreas econômicas entre cidades. Pegue um passe Eurail. Orçamento: €60-150/dia.",
+    aiResponseDefault: "Ótima pergunta! Recomendo explorar nossos pacotes selecionados para as melhores ofertas. Visite também a página de destinos.\n\nQuer que eu planeje uma viagem? Me diga:\n• Para onde quer ir\n• Quantos dias\n• Seu orçamento\n• Estilo de viagem (aventura, relaxamento, cultura)",
+    bannerGetApp: "Baixe o App Tourly", bannerFasterOn: "Experiência mais rápida no", bannerOpen: "Abrir",
+    chatWelcomeBack: "Bem-vindo de volta! 👋 Bom te ver novamente. Como posso ajudar?",
+    chatNewConvo: "Nova conversa! ✨ O chat anterior foi arquivado. Como posso ajudar?",
+    chatFreshConvo: "Conversa nova! ✨ Em que posso ajudar?",
+    chatLiveAgent: "Agente ao Vivo", chatConnectedTeam: "Conectado à equipe de suporte", chatEnd: "Encerrar",
+    chatConvoClosed: "Esta conversa foi encerrada", chatStartNew: "Iniciar nova conversa",
+    chatHereToHelp: "Estamos aqui para ajudar — pergunte qualquer coisa",
+    chatReturnLive: "Voltar ao Chat ao Vivo", chatActiveConvo: "Você tem uma conversa ativa com o suporte",
+    chatConnectAgent: "Falar com Agente", chatConnectAgentDesc: "Conecte-se à nossa equipe para ajuda em tempo real",
+    chatConnectedLive: "Conectado ao Suporte ao Vivo", chatAgentRespondSoon: "Um agente responderá em breve.\nDigite uma mensagem para começar.",
+    chatEnded: "Chat encerrado",
+    chatArchivedChat: "Chat Arquivado", chatHistory: "Histórico de Chat", chatClearAll: "Limpar Tudo", chatDelete: "Excluir",
+    chatNoArchives: "Nenhum chat arquivado", chatLiveAgentChat: "Chat com Agente", chatBotConvo: "Conversa com Bot",
+    chatBackToArchives: "Voltar aos arquivos", chatConversations: "conversas", chatMessages: "mensagens",
+    chatTranslate: "Traduzir", chatShowOriginal: "Mostrar original", chatTranslating: "Traduzindo…",
+    chatTranslateAll: "Traduzir tudo", chatAutoTranslate: "Tradução automática",
+    chatTranslatedFrom: "Traduzido de", chatTranslationFailed: "Falha na tradução",
+    adminTitle: "Painel Admin", adminDashboardTitle: "Dashboard Admin", adminDashboardSubtitle: "Gerencie sua plataforma de viagem",
+    adminTabDashboard: "Dashboard", adminTabBookings: "Reservas", adminTabChat: "Chat",
+    adminTabDestinations: "Destinos", adminTabPackages: "Pacotes", adminTabUsers: "Usuários",
+    adminCancel: "Cancelar", adminSave: "Salvar", adminEdit: "Editar", adminDelete: "Excluir", adminSearch: "Buscar",
+    adminValidation: "Validação", adminTapUpload: "Toque para enviar", adminChange: "Alterar", adminRemove: "Remover",
+    adminPermissionNeeded: "Permissão necessária", adminGrantCameraAccess: "Conceda acesso ao rolo da câmera para enviar imagens.",
+    adminTotalBookings: "Total de Reservas", adminTotalBookingsTrend: "+12% este mês",
+    adminRevenue: "Receita", adminRevenueTrend: "+8% este mês",
+    adminTotalUsers: "Total de Usuários", adminTotalUsersTrend: "+3 esta semana",
+    adminDestinations: "Destinos",
+    adminQuickActions: "Ações Rápidas", adminAddDestination: "Adicionar Destino", adminCreatePackage: "Criar Pacote",
+    adminSendNotification: "Enviar Notificação", adminViewReports: "Ver Relatórios",
+    adminRecentBookings: "Reservas Recentes", adminNoBookingsYet: "Nenhuma reserva ainda",
+    adminReports: "Relatórios", adminDone: "Pronto",
+    adminBookingStatus: "Status da Reserva", adminConfirmed: "Confirmado", adminPending: "Pendente", adminCancelled: "Cancelado",
+    adminMonthlyBookings: "Reservas Mensais (Últimos 6 Meses)", adminTotalPeriod: "Total neste período",
+    adminRevenueLabel: "receita", adminRevenueByPackage: "Receita por Pacote", adminNoRevenueYet: "Sem dados de receita",
+    adminLatestBookings: "Últimas Reservas", adminCustomTrip: "Viagem Personalizada", adminAvgBooking: "Média / Reserva",
+    adminSendTo: "Enviar Para", adminAllUsers: "Todos os Usuários", adminSelectUsers: "Selecionar Usuários",
+    adminNotifTitle: "Título", adminNotifTitlePlaceholder: "ex. Promoção de Verão — 30% Desc",
+    adminNotifMessage: "Mensagem", adminNotifMessagePlaceholder: "Mensagem da notificação...", adminNotifType: "Tipo",
+    adminTitleMessageRequired: "Título e mensagem são obrigatórios.", adminSelectAtLeastOne: "Selecione pelo menos um usuário.",
+    adminSent: "Enviado", adminNotifSentTo: "Notificação enviada para", adminUsersSelected: "selecionados", adminClear: "Limpar",
+    adminBookingDetails: "Detalhes da Reserva", adminFullName: "Nome Completo", adminEmail: "Email", adminPhone: "Telefone",
+    adminTravelers: "Viajantes", adminCheckIn: "Check-in", adminCheckOut: "Check-out", adminDatePlaceholder: "AAAA-MM-DD",
+    adminUpdated: "Atualizado", adminBookingUpdated: "Detalhes da reserva atualizados (demo local).",
+    adminAll: "Todos", adminNoBookingsFound: "Nenhuma reserva encontrada", adminConfirm: "Confirmar", adminPax: "pax", adminNA: "N/D",
+    adminEditDestination: "Editar Destino", adminAddDestinationTitle: "Adicionar Destino",
+    adminCoverImage: "Imagem de Capa", adminName: "Nome", adminNamePlaceholder: "ex. Santorini",
+    adminCountry: "País", adminCountryPlaceholder: "ex. Grécia", adminRating: "Avaliação (1-5)",
+    adminDescription: "Descrição", adminDescPlaceholder: "Descrição breve...",
+    adminSearchDestinations: "Buscar destinos...", adminAddNewDestination: "Adicionar Novo Destino",
+    adminDeleteDestination: "Excluir Destino", adminDeleteConfirm: "Tem certeza que deseja excluir",
+    adminNameCountryRequired: "Nome e país são obrigatórios.",
+    adminEditPackage: "Editar Pacote", adminAddPackageTitle: "Adicionar Pacote",
+    adminPackageImage: "Imagem do Pacote", adminPackageTitle: "Título", adminTitlePlaceholder: "ex. Férias na Praia",
+    adminLocation: "Local", adminLocationPlaceholder: "ex. Malásia",
+    adminDuration: "Duração", adminDurationPlaceholder: "ex. 7D/6N", adminMaxPax: "Máx. Pessoas",
+    adminPrice: "Preço ($)", adminPricePlaceholder: "ex. 750",
+    adminPackageDescPlaceholder: "Descrição do pacote...", adminSearchPackages: "Buscar pacotes...",
+    adminAddNewPackage: "Adicionar Novo Pacote", adminDeletePackage: "Excluir Pacote",
+    adminTitleLocationPriceRequired: "Título, local e preço são obrigatórios.", adminReviews: "avaliações",
+    adminEditUser: "Editar Usuário", adminAvatar: "Avatar", adminRole: "Função",
+    adminSearchUsers: "Buscar usuários...", adminActive: "Ativo", adminSuspended: "Suspenso", adminAdmins: "Admins",
+    adminJoined: "Entrou", adminBookingsCount: "reservas",
+    adminPromote: "Promover", adminDemote: "Rebaixar", adminSuspend: "Suspender", adminActivate: "Ativar",
+    adminNameEmailRequired: "Nome e email são obrigatórios.",
+    adminConversations: "Conversas", adminLive: "Ao Vivo", adminNoConvoYet: "Nenhuma conversa ainda",
+    adminNoConvoDesc: "Quando usuários iniciarem o chat ao vivo,\nsuas conversas aparecerão aqui.",
+    adminNoMessages: "Nenhuma mensagem", adminReopen: "Reabrir", adminClose: "Fechar",
+    adminConvoClosed: "Conversa encerrada", adminTypeReply: "Digite uma resposta...",
+    adminYou: "Você: ", adminClosed: "Fechado", adminUnread: "não lidas",
   },
 
   // ─────────────────────────── Korean ───────────────────────────
@@ -1842,6 +3222,135 @@ const translations: Record<Language, Translations> = {
     addToBooking: "예약에 추가", skipExtras: "건너뛰고 확인으로",
     // Featured
     featuredBadge: "추천", sponsoredBadge: "스폰서", trendingBadge: "인기",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "#1 AI 기반 여행 앱",
+    landingHeroTitle: "Tourly와\n함께 세계를\n탐험하세요", landingHeroSubtitle: "숨 막히는 여행지, 엄선된 패키지, AI 여행 계획 — 모두 하나의 앱에서.",
+    landingCTA: "시작하기",
+    landingStatTrips: "50K+", landingStatTripsLabel: "예약된 여행", landingStatDest: "120+", landingStatDestLabel: "여행지", landingStatRating: "4.9", landingStatRatingLabel: "앱 평점",
+    landingWhyEyebrow: "왜 Tourly", landingWhyTitle: "스마트하게 여행,\n힘들지 않게", landingWhySubtitle: "최신 기술과 현지 인사이트로 완벽한 여행에 필요한 모든 것.",
+    landingFeatureAI: "AI 여행 플래너", landingFeatureAIDesc: "선호도와 예산에 맞춰 AI가 만든 맞춤 여행 일정을 받으세요.",
+    landingFeatureDest: "50+ 여행지", landingFeatureDestDesc: "6개 대륙의 숨겨진 보석부터 상징적인 랜드마크까지 엄선된 여행지를 탐험하세요.",
+    landingFeatureSecure: "안전한 예약", landingFeatureSecureDesc: "종단 간 암호화 결제, 유연한 취소 및 전액 환불 보장.",
+    landingFeatureConcierge: "24/7 컨시어지", landingFeatureConciergeDesc: "목적지의 구석구석을 아는 현지 전문가의 실시간 지원.",
+    landingTrendingEyebrow: "트렌딩", landingTrendingTitle: "인기 여행지",
+    landingCuratedEyebrow: "당신을 위해 엄선", landingCuratedTitle: "여행 패키지",
+    landingTestimonialsEyebrow: "후기", landingTestimonialsTitle: "여행자들이 사랑합니다",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "뉴욕, 미국",
+    landingTestimonial1Quote: "Tourly 덕분에 허니문 계획이 쉬워졌어요. AI가 찾지 못했을 장소를 추천해줬어요!",
+    landingTestimonial2Name: "다나카 켄지", landingTestimonial2Location: "도쿄, 일본",
+    landingTestimonial2Quote: "컨시어지 서비스가 놀라웠어요. 방문한 모든 도시에 현지 친구가 있는 것 같았어요.",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "아크라, 가나",
+    landingTestimonial3Quote: "최고의 여행 앱입니다. 할인이 진짜고 예약 과정이 매끄러워요.",
+    landingReadyCTA: "다음 모험 준비 되셨나요?", landingReadyDesc: "Tourly로 계획하고 예약하는 5만 명 이상의 여행자에 합류하세요. 오늘 무료 계정을 만드세요.",
+    landingCreateAccount: "무료 계정 생성",
+    landingFooterTagline: "2024년부터 여행을 접근 가능하고, 맞춤화되고, 잊을 수 없게 만들어갑니다.",
+    landingFooterAbout: "소개", landingFooterContact: "연락처", landingFooterDeals: "특가",
+    landingFooterCopyright: "© 2024–2026 Tourly. 모든 권리 보유.",
+    landingExplore: "탐험",
+    // Download page
+    downloadTitle: "앱 다운로드",
+    downloadHeroSubtitle: "주머니 속 여행 동반자.\n탐색, 예약, 출발 — 모두 하나의 앱으로.",
+    downloadOnThe: "에서 다운로드", downloadGetItOn: "에서 받기", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "앱 평점", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "다운로드",
+    downloadStatDest: "100+", downloadStatDestLabel: "여행지", downloadStatSupport: "24/7", downloadStatSupportLabel: "지원",
+    downloadExclusiveEyebrow: "앱 전용", downloadWhyTitle: "왜 Tourly를 다운로드하나요?", downloadWhySubtitle: "앱은 브라우저에서 사용할 수 없는 기능을 제공합니다.",
+    downloadFeatureFast: "초고속", downloadFeatureFastDesc: "브라우저보다 부드러운 네이티브 성능.",
+    downloadFeatureNotif: "푸시 알림", downloadFeatureNotifDesc: "특가를 놓치지 마세요 — 플래시 세일 즉시 알림을 받으세요.",
+    downloadFeatureOffline: "오프라인 액세스", downloadFeatureOfflineDesc: "인터넷 없이 사용할 수 있도록 일정과 지도를 저장하세요.",
+    downloadFeatureOneTap: "원탭 예약", downloadFeatureOneTapDesc: "저장된 결제 정보로 몇 초 만에 예약하세요.",
+    downloadFeatureAI: "AI 여행 플래너", downloadFeatureAIDesc: "AI 기반 맞춤 여행 제안이 앱에 바로 내장되어 있습니다.",
+    downloadFeatureSecure: "안전하고 개인적", downloadFeatureSecureDesc: "생체 인증 로그인과 암호화된 데이터로 정보를 안전하게.",
+    downloadReviewsEyebrow: "여행자들이 사랑합니다", downloadReviewsTitle: "사용자 후기",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "최고의 여행 앱! 발리 여행을 2분 만에 예약했어요.",
+    downloadReview2Name: "James K.", downloadReview2Text: "오프라인 지도가 일본 시골에서 도움이 됐어요. 완전 게임체인저.",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "푸시 알림으로 40% 플래시 세일을 잡았어요. 여행에서 $300 절약!",
+    downloadCompareTitle: "앱 vs. 브라우저", downloadCompareApp: "앱", downloadCompareWeb: "웹",
+    downloadComparePush: "푸시 알림", downloadCompareOffline: "오프라인 액세스", downloadCompareBiometric: "생체 인증 로그인",
+    downloadCompareOneTap: "원탭 예약", downloadCompareAI: "AI 여행 플래너", downloadCompareBrowse: "여행지 탐색",
+    downloadBottomCTATitle: "더 스마트하게 여행할 준비가 되셨나요?", downloadBottomCTADesc: "iOS와 Android에서 Tourly를 무료로 다운로드하세요.",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    authError: "오류", authInvalidCredentials: "잘못된 자격 증명",
+    authSignInFailed: "로그인 실패. 다시 시도해주세요.", authSignUpFailed: "회원가입 실패. 다시 시도해주세요.",
+    authOAuthFailed: "OAuth 로그인 실패. 다시 시도해주세요.", authGoogle: "Google", authApple: "Apple",
+    getTheApp: "앱 다운로드", adminPanel: "관리자 패널", adminPanelDesc: "예약, 사용자 및 여행지 관리",
+    tierElite: "엘리트", tierPro: "프로", aiLabel: "AI",
+    premiumNoPurchases: "이전 구매 내역이 없습니다.",
+    thankYou: "감사합니다!", shareDestination: "Tourly에서 이 여행지를 확인하세요!", sharePackage: "Tourly에서 이 패키지를 확인하세요!",
+    shareVia: "공유하기", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "이메일", shareSMS: "SMS", shareCopyLink: "링크 복사", shareLinkCopied: "클립보드에 링크가 복사되었습니다!", shareMoreOptions: "더 많은 옵션",
+    aiResponseBali: "발리는 환상적인 선택입니다! 5일 추천 일정입니다:\n\n📍 1일차: 도착, 스미냑 비치 탐방\n📍 2일차: 우붓 라이스 테라스 & 원숭이 숲\n📍 3일차: 울루와투 사원 & 케차크 댄스\n📍 4일차: 누사 페니다 당일 여행\n📍 5일차: 스파 데이 & 출발\n\n최적 시기: 4월-10월 (건기). 예산: 편안함에 따라 ~$50-150/일.",
+    aiResponseFamily: "훌륭한 가족 여행지:\n\n🏖️ 몰디브 - 수상 빌라, 스노클링\n🏰 일본 - 도쿄 디즈니랜드, 문화 체험\n🌴 태국 - 해변, 코끼리 보호구역\n🏔️ 스위스 - 파노라마 기차, 하이킹\n🦁 케냐 - 가족 사파리\n\n더 자세한 정보를 원하시나요?",
+    aiResponseBudget: "최고의 예산 여행 팁:\n\n💡 비수기(봄/가을)에 여행\n💡 화요일에 항공권 예약\n💡 대중교통 이용\n💡 게스트하우스에 숙박\n💡 현지 시장에서 식사\n💡 투어 패스 구매\n\n저렴한 여행지: 베트남, 포르투갈, 멕시코, 태국, 모로코.",
+    aiResponseEurope: "유럽 여행 계획:\n\n🇫🇷 파리 - 최소 3일\n🇮🇹 로마/피렌체 - 4일\n🇪🇸 바르셀로나 - 2-3일\n🇬🇷 산토리니 - 2-3일\n\n✈️ 팁: 도시 간 저가 항공 이용. 장거리엔 유레일 패스. 예산: €60-150/일.",
+    aiResponseDefault: "좋은 질문입니다! 최고의 할인을 위해 엄선된 패키지를 추천합니다. 영감을 위해 여행지 페이지도 확인하세요.\n\n특정 여행을 계획해 드릴까요? 말씀해 주세요:\n• 어디로 가고 싶은지\n• 며칠 동안\n• 예산 범위\n• 여행 스타일 (모험, 휴식, 문화)",
+    bannerGetApp: "Tourly 앱 받기", bannerFasterOn: "더 빠른 경험", bannerOpen: "열기",
+    chatWelcomeBack: "돌아오셨군요! 👋 다시 만나서 반갑습니다. 어떻게 도와드릴까요?",
+    chatNewConvo: "새 대화 시작! ✨ 이전 채팅이 보관되었습니다. 어떻게 도와드릴까요?",
+    chatFreshConvo: "새 대화 시작! ✨ 무엇을 도와드릴까요?",
+    chatLiveAgent: "라이브 에이전트", chatConnectedTeam: "지원팀에 연결됨", chatEnd: "종료",
+    chatConvoClosed: "이 대화가 종료되었습니다", chatStartNew: "새 대화 시작",
+    chatHereToHelp: "도움이 필요하시면 무엇이든 물어보세요",
+    chatReturnLive: "라이브 채팅으로 돌아가기", chatActiveConvo: "지원팀과 활성 대화가 있습니다",
+    chatConnectAgent: "에이전트와 채팅", chatConnectAgentDesc: "실시간 도움을 위해 지원팀에 연결하세요",
+    chatConnectedLive: "라이브 지원에 연결됨", chatAgentRespondSoon: "지원 에이전트가 곧 응답합니다.\n메시지를 입력하여 시작하세요.",
+    chatEnded: "채팅 종료",
+    chatArchivedChat: "보관된 채팅", chatHistory: "채팅 기록", chatClearAll: "모두 삭제", chatDelete: "삭제",
+    chatNoArchives: "보관된 채팅 없음", chatLiveAgentChat: "라이브 에이전트 채팅", chatBotConvo: "봇 대화",
+    chatBackToArchives: "보관함으로 돌아가기", chatConversations: "대화", chatMessages: "메시지",
+    chatTranslate: "번역", chatShowOriginal: "원문 보기", chatTranslating: "번역 중…",
+    chatTranslateAll: "모두 번역", chatAutoTranslate: "자동 번역",
+    chatTranslatedFrom: "번역 원본", chatTranslationFailed: "번역 실패",
+    adminTitle: "관리자 패널", adminDashboardTitle: "관리자 대시보드", adminDashboardSubtitle: "여행 플랫폼 관리",
+    adminTabDashboard: "대시보드", adminTabBookings: "예약", adminTabChat: "채팅",
+    adminTabDestinations: "여행지", adminTabPackages: "패키지", adminTabUsers: "사용자",
+    adminCancel: "취소", adminSave: "저장", adminEdit: "편집", adminDelete: "삭제", adminSearch: "검색",
+    adminValidation: "유효성 검사", adminTapUpload: "탭하여 업로드", adminChange: "변경", adminRemove: "제거",
+    adminPermissionNeeded: "권한 필요", adminGrantCameraAccess: "이미지 업로드를 위해 카메라 롤 접근을 허용해주세요.",
+    adminTotalBookings: "총 예약", adminTotalBookingsTrend: "이번 달 +12%",
+    adminRevenue: "수익", adminRevenueTrend: "이번 달 +8%",
+    adminTotalUsers: "총 사용자", adminTotalUsersTrend: "이번 주 +3",
+    adminDestinations: "여행지",
+    adminQuickActions: "빠른 작업", adminAddDestination: "여행지 추가", adminCreatePackage: "패키지 생성",
+    adminSendNotification: "알림 보내기", adminViewReports: "보고서 보기",
+    adminRecentBookings: "최근 예약", adminNoBookingsYet: "아직 예약이 없습니다",
+    adminReports: "보고서", adminDone: "완료",
+    adminBookingStatus: "예약 상태", adminConfirmed: "확인됨", adminPending: "대기 중", adminCancelled: "취소됨",
+    adminMonthlyBookings: "월별 예약 (최근 6개월)", adminTotalPeriod: "이 기간 합계",
+    adminRevenueLabel: "수익", adminRevenueByPackage: "패키지별 수익", adminNoRevenueYet: "수익 데이터 없음",
+    adminLatestBookings: "최신 예약", adminCustomTrip: "맞춤 여행", adminAvgBooking: "평균 / 예약",
+    adminSendTo: "보내기", adminAllUsers: "모든 사용자", adminSelectUsers: "사용자 선택",
+    adminNotifTitle: "제목", adminNotifTitlePlaceholder: "예: 여름 세일 — 30% 할인",
+    adminNotifMessage: "메시지", adminNotifMessagePlaceholder: "알림 메시지...", adminNotifType: "유형",
+    adminTitleMessageRequired: "제목과 메시지가 필요합니다.", adminSelectAtLeastOne: "사용자를 한 명 이상 선택하세요.",
+    adminSent: "전송됨", adminNotifSentTo: "알림 전송 대상", adminUsersSelected: "선택됨", adminClear: "지우기",
+    adminBookingDetails: "예약 상세", adminFullName: "이름", adminEmail: "이메일", adminPhone: "전화",
+    adminTravelers: "여행자", adminCheckIn: "체크인", adminCheckOut: "체크아웃", adminDatePlaceholder: "YYYY-MM-DD",
+    adminUpdated: "업데이트됨", adminBookingUpdated: "예약 상세 업데이트됨 (로컬 데모).",
+    adminAll: "전체", adminNoBookingsFound: "예약을 찾을 수 없음", adminConfirm: "확인", adminPax: "명", adminNA: "N/A",
+    adminEditDestination: "여행지 편집", adminAddDestinationTitle: "여행지 추가",
+    adminCoverImage: "커버 이미지", adminName: "이름", adminNamePlaceholder: "예: 산토리니",
+    adminCountry: "국가", adminCountryPlaceholder: "예: 그리스", adminRating: "평점 (1-5)",
+    adminDescription: "설명", adminDescPlaceholder: "간단한 설명...",
+    adminSearchDestinations: "여행지 검색...", adminAddNewDestination: "새 여행지 추가",
+    adminDeleteDestination: "여행지 삭제", adminDeleteConfirm: "정말 삭제하시겠습니까",
+    adminNameCountryRequired: "이름과 국가가 필요합니다.",
+    adminEditPackage: "패키지 편집", adminAddPackageTitle: "패키지 추가",
+    adminPackageImage: "패키지 이미지", adminPackageTitle: "제목", adminTitlePlaceholder: "예: 해변 휴가",
+    adminLocation: "위치", adminLocationPlaceholder: "예: 말레이시아",
+    adminDuration: "기간", adminDurationPlaceholder: "예: 7일/6박", adminMaxPax: "최대 인원",
+    adminPrice: "가격 ($)", adminPricePlaceholder: "예: 750",
+    adminPackageDescPlaceholder: "패키지 설명...", adminSearchPackages: "패키지 검색...",
+    adminAddNewPackage: "새 패키지 추가", adminDeletePackage: "패키지 삭제",
+    adminTitleLocationPriceRequired: "제목, 위치, 가격이 필요합니다.", adminReviews: "리뷰",
+    adminEditUser: "사용자 편집", adminAvatar: "아바타", adminRole: "역할",
+    adminSearchUsers: "사용자 검색...", adminActive: "활성", adminSuspended: "정지됨", adminAdmins: "관리자",
+    adminJoined: "가입일", adminBookingsCount: "예약",
+    adminPromote: "승격", adminDemote: "강등", adminSuspend: "정지", adminActivate: "활성화",
+    adminNameEmailRequired: "이름과 이메일이 필요합니다.",
+    adminConversations: "대화", adminLive: "라이브", adminNoConvoYet: "아직 대화가 없습니다",
+    adminNoConvoDesc: "사용자가 라이브 채팅을 시작하면\n대화가 여기에 표시됩니다.",
+    adminNoMessages: "메시지 없음", adminReopen: "재개", adminClose: "닫기",
+    adminConvoClosed: "대화가 종료되었습니다", adminTypeReply: "답장 입력...",
+    adminYou: "나: ", adminClosed: "종료됨", adminUnread: "읽지 않음",
   },
 
   // ─────────────────────────── Chinese (Simplified) ───────────────────────────
@@ -2005,6 +3514,135 @@ const translations: Record<Language, Translations> = {
     addToBooking: "添加到预订", skipExtras: "跳过，继续确认",
     // Featured
     featuredBadge: "精选", sponsoredBadge: "赞助", trendingBadge: "热门",
+    // Landing page
+    landingBrand: "Tourly", landingHeroBadge: "#1 AI驱动旅行应用",
+    landingHeroTitle: "用Tourly\n探索\n世界", landingHeroSubtitle: "发现令人惊叹的目的地、精选套餐和AI旅行规划 — 尽在一个应用中。",
+    landingCTA: "立即开始",
+    landingStatTrips: "50K+", landingStatTripsLabel: "已预订旅行", landingStatDest: "120+", landingStatDestLabel: "目的地", landingStatRating: "4.9", landingStatRatingLabel: "应用评分",
+    landingWhyEyebrow: "为什么选择Tourly", landingWhyTitle: "智慧旅行,\n不再困难", landingWhySubtitle: "现代技术和本地专业知识驱动，为完美旅行提供所需的一切。",
+    landingFeatureAI: "AI旅行规划", landingFeatureAIDesc: "根据您的喜好和预算，获得AI创建的个性化行程。",
+    landingFeatureDest: "50+目的地", landingFeatureDestDesc: "探索6大洲的精选目的地，从隐藏宝石到标志性地标。",
+    landingFeatureSecure: "安全预订", landingFeatureSecureDesc: "端到端加密支付，灵活取消和全额退款保障。",
+    landingFeatureConcierge: "24/7礼宾服务", landingFeatureConciergeDesc: "熟悉目的地每个角落的本地专家实时支持。",
+    landingTrendingEyebrow: "热门趋势", landingTrendingTitle: "热门目的地",
+    landingCuratedEyebrow: "为您精选", landingCuratedTitle: "旅行套餐",
+    landingTestimonialsEyebrow: "用户评价", landingTestimonialsTitle: "深受旅行者喜爱",
+    landingTestimonial1Name: "Sarah Mitchell", landingTestimonial1Location: "纽约，美国",
+    landingTestimonial1Quote: "Tourly让蜜月计划变得轻松。AI推荐了我们永远找不到的地方！",
+    landingTestimonial2Name: "田中健二", landingTestimonial2Location: "东京，日本",
+    landingTestimonial2Quote: "礼宾服务太棒了。感觉每个城市都有一个当地朋友。",
+    landingTestimonial3Name: "Amara Osei", landingTestimonial3Location: "阿克拉，加纳",
+    landingTestimonial3Quote: "用过最好的旅行应用。优惠是真实的，预订过程很流畅。",
+    landingReadyCTA: "准备好下一次冒险了吗？", landingReadyDesc: "加入超过5万名使用Tourly计划和预订的旅行者。今天就创建免费账户。",
+    landingCreateAccount: "创建免费账户",
+    landingFooterTagline: "自2024年起，让旅行触手可及、个性化且难忘。",
+    landingFooterAbout: "关于我们", landingFooterContact: "联系", landingFooterDeals: "优惠",
+    landingFooterCopyright: "© 2024–2026 Tourly。保留所有权利。",
+    landingExplore: "探索",
+    // Download page
+    downloadTitle: "下载应用",
+    downloadHeroSubtitle: "您的口袋旅行伙伴。\n探索、预订、出发 — 一个应用搞定。",
+    downloadOnThe: "下载于", downloadGetItOn: "获取于", downloadAppStore: "App Store", downloadGooglePlay: "Google Play",
+    downloadStatRating: "4.9", downloadStatRatingLabel: "应用评分", downloadStatDownloads: "500K+", downloadStatDownloadsLabel: "下载量",
+    downloadStatDest: "100+", downloadStatDestLabel: "目的地", downloadStatSupport: "24/7", downloadStatSupportLabel: "支持",
+    downloadExclusiveEyebrow: "应用专属", downloadWhyTitle: "为什么下载Tourly？", downloadWhySubtitle: "应用解锁浏览器中无法使用的功能。",
+    downloadFeatureFast: "极速", downloadFeatureFastDesc: "比任何浏览器体验更流畅的原生性能。",
+    downloadFeatureNotif: "推送通知", downloadFeatureNotifDesc: "不错过任何优惠 — 获取限时特卖的即时提醒。",
+    downloadFeatureOffline: "离线访问", downloadFeatureOfflineDesc: "保存行程和地图，在没有网络时使用。",
+    downloadFeatureOneTap: "一键预订", downloadFeatureOneTapDesc: "使用已保存的支付和旅客信息，几秒钟内完成预订。",
+    downloadFeatureAI: "AI旅行规划", downloadFeatureAIDesc: "AI驱动的个性化旅行建议，直接集成在应用中。",
+    downloadFeatureSecure: "安全私密", downloadFeatureSecureDesc: "生物识别登录和加密数据保护您的信息安全。",
+    downloadReviewsEyebrow: "深受旅行者喜爱", downloadReviewsTitle: "用户评价",
+    downloadReview1Name: "Sarah M.", downloadReview1Text: "最好的旅行应用！不到2分钟就预订了巴厘岛之旅。",
+    downloadReview2Name: "James K.", downloadReview2Text: "离线地图在日本乡村救了我。绝对的游戏改变者。",
+    downloadReview3Name: "Aisha R.", downloadReview3Text: "推送通知捕获了40%限时特卖。旅行节省了$300！",
+    downloadCompareTitle: "应用 vs. 浏览器", downloadCompareApp: "应用", downloadCompareWeb: "网页",
+    downloadComparePush: "推送通知", downloadCompareOffline: "离线访问", downloadCompareBiometric: "生物识别登录",
+    downloadCompareOneTap: "一键预订", downloadCompareAI: "AI旅行规划", downloadCompareBrowse: "浏览目的地",
+    downloadBottomCTATitle: "准备好更智慧地旅行了吗？", downloadBottomCTADesc: "在iOS和Android上免费下载Tourly。",
+    downloadPlatformIOS: "iOS", downloadPlatformAndroid: "Android",
+    authError: "错误", authInvalidCredentials: "凭证无效",
+    authSignInFailed: "登录失败，请重试。", authSignUpFailed: "注册失败，请重试。",
+    authOAuthFailed: "OAuth登录失败，请重试。", authGoogle: "Google", authApple: "Apple",
+    getTheApp: "下载应用", adminPanel: "管理面板", adminPanelDesc: "管理预订、用户和目的地",
+    tierElite: "精英", tierPro: "专业", aiLabel: "AI",
+    premiumNoPurchases: "未找到以前的购买记录。",
+    thankYou: "谢谢！", shareDestination: "在Tourly上查看这个目的地！", sharePackage: "在Tourly上查看这个套餐！",
+    shareVia: "分享到", shareWhatsApp: "WhatsApp", shareTwitter: "X (Twitter)", shareFacebook: "Facebook", shareTelegram: "Telegram", shareEmail: "电子邮件", shareSMS: "短信", shareCopyLink: "复制链接", shareLinkCopied: "链接已复制到剪贴板！", shareMoreOptions: "更多选项",
+    aiResponseBali: "巴厘岛是绝佳选择！这是5天推荐行程：\n\n📍 第1天：抵达，探索库塔海滩\n📍 第2天：乌布梯田和猴子森林\n📍 第3天：乌鲁瓦图寺和克查克舞\n📍 第4天：努沙佩尼达一日游\n📍 第5天：水疗日和出发\n\n最佳时间：4月-10月（旱季）。预算：~$50-150/天。",
+    aiResponseFamily: "绝佳家庭旅行地：\n\n🏖️ 马尔代夫 - 水上别墅、浮潜\n🏰 日本 - 东京迪士尼、文化体验\n🌴 泰国 - 海滩、大象保护区\n🏔️ 瑞士 - 观景火车、徒步\n🦁 肯尼亚 - 家庭野生动物园\n\n想了解更多细节吗？",
+    aiResponseBudget: "最佳预算旅行贴士：\n\n💡 淡旺季之间出行\n💡 周二订机票最优惠\n💡 使用当地交通\n💡 住民宿或青旅\n💡 在当地市场用餐\n💡 购买城市通票\n\n经济实惠目的地：越南、葡萄牙、墨西哥、泰国、摩洛哥。",
+    aiResponseEurope: "欧洲旅行规划：\n\n🇫🇷 巴黎 - 至少3天\n🇮🇹 罗马/佛罗伦萨 - 4天\n🇪🇸 巴塞罗那 - 2-3天\n🇬🇷 圣托里尼 - 2-3天\n\n✈️ 专业提示：城市间使用廉价航空。长途用欧铁通票。预算：€60-150/天。",
+    aiResponseDefault: "好问题！建议探索我们的精选套餐获取最优惠价。也可以查看目的地页面获取灵感。\n\n需要我帮您规划特定旅行吗？告诉我：\n• 想去哪里\n• 几天\n• 预算范围\n• 旅行风格（冒险、休闲、文化）",
+    bannerGetApp: "获取Tourly应用", bannerFasterOn: "更快的体验", bannerOpen: "打开",
+    chatWelcomeBack: "欢迎回来！👋 很高兴再见到你。今天有什么可以帮忙的？",
+    chatNewConvo: "新对话已开始！✨ 之前的聊天已归档。有什么可以帮您？",
+    chatFreshConvo: "开始新对话！✨ 有什么可以帮您？",
+    chatLiveAgent: "真人客服", chatConnectedTeam: "已连接支持团队", chatEnd: "结束",
+    chatConvoClosed: "此对话已关闭", chatStartNew: "开始新对话",
+    chatHereToHelp: "我们随时为您提供帮助 — 有什么问题请随时问",
+    chatReturnLive: "返回在线聊天", chatActiveConvo: "您有一个与支持团队的活跃对话",
+    chatConnectAgent: "与客服聊天", chatConnectAgentDesc: "连接我们的支持团队获取实时帮助",
+    chatConnectedLive: "已连接在线客服", chatAgentRespondSoon: "客服人员将很快回复。\n请输入消息开始。",
+    chatEnded: "聊天已结束",
+    chatArchivedChat: "已归档聊天", chatHistory: "聊天记录", chatClearAll: "清除全部", chatDelete: "删除",
+    chatNoArchives: "没有归档的聊天", chatLiveAgentChat: "真人客服聊天", chatBotConvo: "机器人对话",
+    chatBackToArchives: "返回归档", chatConversations: "对话", chatMessages: "消息",
+    chatTranslate: "翻译", chatShowOriginal: "显示原文", chatTranslating: "翻译中…",
+    chatTranslateAll: "全部翻译", chatAutoTranslate: "自动翻译",
+    chatTranslatedFrom: "翻译自", chatTranslationFailed: "翻译失败",
+    adminTitle: "管理面板", adminDashboardTitle: "管理仪表板", adminDashboardSubtitle: "管理您的旅行平台",
+    adminTabDashboard: "仪表板", adminTabBookings: "预订", adminTabChat: "聊天",
+    adminTabDestinations: "目的地", adminTabPackages: "套餐", adminTabUsers: "用户",
+    adminCancel: "取消", adminSave: "保存", adminEdit: "编辑", adminDelete: "删除", adminSearch: "搜索",
+    adminValidation: "验证", adminTapUpload: "点击上传", adminChange: "更改", adminRemove: "移除",
+    adminPermissionNeeded: "需要权限", adminGrantCameraAccess: "请授予相册访问权限以上传图片。",
+    adminTotalBookings: "总预订", adminTotalBookingsTrend: "本月+12%",
+    adminRevenue: "收入", adminRevenueTrend: "本月+8%",
+    adminTotalUsers: "总用户", adminTotalUsersTrend: "本周+3",
+    adminDestinations: "目的地",
+    adminQuickActions: "快速操作", adminAddDestination: "添加目的地", adminCreatePackage: "创建套餐",
+    adminSendNotification: "发送通知", adminViewReports: "查看报告",
+    adminRecentBookings: "最近预订", adminNoBookingsYet: "暂无预订",
+    adminReports: "报告", adminDone: "完成",
+    adminBookingStatus: "预订状态", adminConfirmed: "已确认", adminPending: "待处理", adminCancelled: "已取消",
+    adminMonthlyBookings: "月度预订（近6个月）", adminTotalPeriod: "本期总计",
+    adminRevenueLabel: "收入", adminRevenueByPackage: "套餐收入", adminNoRevenueYet: "暂无收入数据",
+    adminLatestBookings: "最新预订", adminCustomTrip: "定制旅行", adminAvgBooking: "均价 / 预订",
+    adminSendTo: "发送至", adminAllUsers: "所有用户", adminSelectUsers: "选择用户",
+    adminNotifTitle: "标题", adminNotifTitlePlaceholder: "例：夏季特卖 — 七折优惠",
+    adminNotifMessage: "消息", adminNotifMessagePlaceholder: "通知消息...", adminNotifType: "类型",
+    adminTitleMessageRequired: "标题和消息为必填项。", adminSelectAtLeastOne: "请至少选择一个用户。",
+    adminSent: "已发送", adminNotifSentTo: "通知已发送至", adminUsersSelected: "已选择", adminClear: "清除",
+    adminBookingDetails: "预订详情", adminFullName: "全名", adminEmail: "邮箱", adminPhone: "电话",
+    adminTravelers: "旅客", adminCheckIn: "入住", adminCheckOut: "退房", adminDatePlaceholder: "YYYY-MM-DD",
+    adminUpdated: "已更新", adminBookingUpdated: "预订详情已更新（本地演示）。",
+    adminAll: "全部", adminNoBookingsFound: "未找到预订", adminConfirm: "确认", adminPax: "人", adminNA: "无",
+    adminEditDestination: "编辑目的地", adminAddDestinationTitle: "添加目的地",
+    adminCoverImage: "封面图片", adminName: "名称", adminNamePlaceholder: "例：圣托里尼",
+    adminCountry: "国家", adminCountryPlaceholder: "例：希腊", adminRating: "评分 (1-5)",
+    adminDescription: "描述", adminDescPlaceholder: "简短描述...",
+    adminSearchDestinations: "搜索目的地...", adminAddNewDestination: "添加新目的地",
+    adminDeleteDestination: "删除目的地", adminDeleteConfirm: "确定要删除吗",
+    adminNameCountryRequired: "名称和国家为必填项。",
+    adminEditPackage: "编辑套餐", adminAddPackageTitle: "添加套餐",
+    adminPackageImage: "套餐图片", adminPackageTitle: "标题", adminTitlePlaceholder: "例：海滩度假",
+    adminLocation: "位置", adminLocationPlaceholder: "例：马来西亚",
+    adminDuration: "时长", adminDurationPlaceholder: "例：7天/6晚", adminMaxPax: "最大人数",
+    adminPrice: "价格 ($)", adminPricePlaceholder: "例：750",
+    adminPackageDescPlaceholder: "套餐描述...", adminSearchPackages: "搜索套餐...",
+    adminAddNewPackage: "添加新套餐", adminDeletePackage: "删除套餐",
+    adminTitleLocationPriceRequired: "标题、位置和价格为必填项。", adminReviews: "评价",
+    adminEditUser: "编辑用户", adminAvatar: "头像", adminRole: "角色",
+    adminSearchUsers: "搜索用户...", adminActive: "活跃", adminSuspended: "已暂停", adminAdmins: "管理员",
+    adminJoined: "加入日期", adminBookingsCount: "预订",
+    adminPromote: "升级", adminDemote: "降级", adminSuspend: "暂停", adminActivate: "激活",
+    adminNameEmailRequired: "名称和邮箱为必填项。",
+    adminConversations: "对话", adminLive: "在线", adminNoConvoYet: "暂无对话",
+    adminNoConvoDesc: "当用户开始在线聊天时，\n他们的对话将显示在这里。",
+    adminNoMessages: "暂无消息", adminReopen: "重新打开", adminClose: "关闭",
+    adminConvoClosed: "对话已关闭", adminTypeReply: "输入回复...",
+    adminYou: "你: ", adminClosed: "已关闭", adminUnread: "未读",
   },
 };
 

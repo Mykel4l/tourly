@@ -1,11 +1,11 @@
 // Fallback for using MaterialIcons on Android and web.
 
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { SymbolWeight, SymbolViewProps } from "expo-symbols";
+import { SymbolWeight } from "expo-symbols";
 import { ComponentProps } from "react";
 import { OpaqueColorValue, type StyleProp, type TextStyle } from "react-native";
 
-type IconMapping = Record<SymbolViewProps["name"], ComponentProps<typeof MaterialIcons>["name"]>;
+type IconMapping = Partial<Record<string, ComponentProps<typeof MaterialIcons>["name"]>>;
 type IconSymbolName = keyof typeof MAPPING;
 
 /**
@@ -25,6 +25,9 @@ const MAPPING = {
   "arrow.up": "arrow-upward",
   "arrow.up.arrow.down": "swap-vert",
   "arrow.clockwise": "refresh",
+  "arrow.up.right": "trending-up",
+  "arrow.down.right": "trending-down",
+  "square.grid.2x2.fill": "grid-view",
   // People & profile
   "person.fill": "person",
   "person.2.fill": "people",
@@ -36,19 +39,23 @@ const MAPPING = {
   // Notifications & communication
   "bell.fill": "notifications",
   "bell": "notifications-none",
+  "bell.badge.fill": "notification-important",
   "paperplane.fill": "send",
   "envelope.fill": "email",
   "phone.fill": "phone",
   "bubble.left.fill": "chat-bubble",
+  "bubble.left.and.bubble.right": "chat",
   "bubble.left.and.bubble.right.fill": "chat",
   "megaphone.fill": "campaign",
   // Travel & maps
   "map.fill": "map",
   "suitcase.fill": "work",
   "location.fill": "location-on",
+  "mappin.and.ellipse": "place",
   "airplane": "flight",
   "car.fill": "directions-car",
   "globe.americas.fill": "public",
+  "shippingbox.fill": "inventory-2",
   // Media
   "photo.fill": "photo-library",
   "square.and.arrow.up": "share",
@@ -71,6 +78,7 @@ const MAPPING = {
   "crown.fill": "workspace-premium",
   "sparkles": "auto-awesome",
   "gift.fill": "card-giftcard",
+  "nosign": "block",
   // Time & data
   "clock.fill": "access-time",
   "calendar": "calendar-today",
@@ -90,11 +98,27 @@ const MAPPING = {
   "eye.slash.fill": "visibility-off",
   "headphones": "headset",
   "shield.checkered": "shield",
+  "shield.lefthalf.filled": "shield",
   "antenna.radiowaves.left.and.right": "signal-cellular-alt",
+  // Actions & editing
+  "pencil": "edit",
+  "plus.circle.fill": "add-circle",
+  "plus.rectangle.fill": "add-box",
+  "tray.fill": "inbox",
+  "chart.bar.fill": "bar-chart",
+  "dollarsign.circle.fill": "monetization-on",
+  // Store & download
+  "apple.logo": "apple",
+  "play.fill": "play-arrow",
+  "arrow.down.circle.fill": "file-download",
+  "arrow.down.app.fill": "get-app",
+  "bolt.fill": "bolt",
+  "hand.tap.fill": "touch-app",
+  "lock.shield.fill": "enhanced-encryption",
   // Nav mode toggle
   "pin.fill": "keep",
   "pin": "keep-off",
-} as IconMapping;
+} as unknown as IconMapping;
 
 /**
  * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
@@ -113,5 +137,5 @@ export function IconSymbol({
   style?: StyleProp<TextStyle>;
   weight?: SymbolWeight;
 }) {
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+  return <MaterialIcons color={color} size={size} name={MAPPING[name] ?? "help-outline"} style={style} />;
 }
